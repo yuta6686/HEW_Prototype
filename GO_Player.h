@@ -1,4 +1,8 @@
 #pragma once
+//---------------------------
+//	[GO_Player.h]
+//	Yuta Yanagisawa 
+//---------------------------
 #include "GameObject.h"
 
 struct VERTEX_T {
@@ -26,7 +30,6 @@ private:
 	//テクスチャの名前
 	char PLAYER_TEX_NAME[128] = "data/TEXTURE/player.png";
 
-	//パラメータ情報 -> VertexInf.h
 	VERTEX_T Player_Vertex;
 };
 

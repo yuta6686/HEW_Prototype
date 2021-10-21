@@ -1,3 +1,7 @@
+//---------------------------
+//	プレイヤー　[GO_Player.cpp]
+//	Yuta Yanagisawa 
+//---------------------------
 #include "GO_Player.h"
 #include "Texture.h"
 #include "sprite.h"
