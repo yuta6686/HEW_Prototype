@@ -21,6 +21,39 @@ GameFramework::GameFramework()
 	Create();
 }
 
+void GameFramework::Create()
+{
+	//null
+	{
+		mp_player = nullptr;
+		mp_vortex = nullptr;
+		mp_VoRot = nullptr;
+	}
+
+
+	//new
+	{
+		mp_player = new GO_Player;
+		mp_vortex = new GO_Vortex;
+		mp_VoRot = new GO_VortexRotation;
+	}
+
+	//Register
+	{
+		Register(mp_vortex);
+		Register(mp_player);
+		Register(mp_VoRot);
+	}
+
+}
+
+void GameFramework::SetGameObject()
+{
+	mp_VoRot->SetPlayer(mp_player);
+	mp_VoRot->SetVortex(mp_vortex);
+}
+
+
 GameFramework::~GameFramework()
 {
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
@@ -51,6 +84,7 @@ void GameFramework::Finalize(void)
 }
 void GameFramework::Update(void)
 {
+	//GameScene.hŽQÆ‚µ‚Ä‚­‚¾‚³‚¢
 	for (int i = m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][0]; 
 		i < m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][1]; i++) {
 		if (m_pGameObjects[i]) {
@@ -60,6 +94,7 @@ void GameFramework::Update(void)
 }
 void GameFramework::Draw(void)
 {
+	//GameScene.hŽQÆ‚µ‚Ä‚­‚¾‚³‚¢
 	for (int i = m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][0];
 		i < m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][1]; i++) {
 		if (m_pGameObjects[i]) {
@@ -78,34 +113,3 @@ void GameFramework::Register(GameObject* pGameObject)
 	}
 }
 
-void GameFramework::Create()
-{
-	//null
-	{
-		mp_player = nullptr;
-		mp_vortex = nullptr;
-		mp_VoRot = nullptr;
-	}
-	
-
-	//new
-	{
-		mp_player = new GO_Player;
-		mp_vortex = new GO_Vortex;
-		mp_VoRot = new GO_VortexRotation;
-	}
-
-	//Register
-	{
-		Register(mp_vortex);
-		Register(mp_player);
-		Register(mp_VoRot);
-	}
-	
-}
-
-void GameFramework::SetGameObject()
-{
-	mp_VoRot->SetPlayer(mp_player);
-	mp_VoRot->SetVortex(mp_vortex);
-}

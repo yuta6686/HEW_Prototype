@@ -5,8 +5,6 @@
 //---------------------------
 #include "GameObject.h"
 
-
-
 class GO_Player :public GameObject
 {
 public:

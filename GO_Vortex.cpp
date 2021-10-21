@@ -1,3 +1,12 @@
+//---------------------------
+//Vortex　＝　うずまき
+//---------------------------
+//	[GameFramework.cpp]
+//	Yuta Yanagisawa 
+//---------------------------
+//	納豆混ぜるシーン（主に描画）
+//
+
 #include "GO_Vortex.h"
 #include "Texture.h"
 #include "sprite.h"
