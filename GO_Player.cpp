@@ -40,6 +40,11 @@ void GO_Player::Update(void)
 
 	if (GetKeyboardPress(DIK_RIGHT))
 		Player_Vertex.pos.x += 1.0f;
+
+	if (IsMouseLeftPressed()) {
+		Player_Vertex.pos.x = GetMousePosX();
+		Player_Vertex.pos.y = GetMousePosY();
+	}
 }
 
 void GO_Player::Draw(void)

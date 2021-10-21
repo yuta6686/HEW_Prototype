@@ -17,6 +17,8 @@ GameFramework::GameFramework()
 	//mp_enemy = nullptr;
 	mp_player = nullptr;
 	//mp_collision = nullptr;
+
+	Create();
 }
 
 GameFramework::~GameFramework()
@@ -72,4 +74,18 @@ void GameFramework::Register(GameObject* pGameObject)
 			break;
 		}
 	}
+}
+
+void GameFramework::Create()
+{
+	//new
+	{
+		mp_player = new GO_Player;
+	}
+
+	//Register
+	{
+		Register(mp_player);
+	}
+	
 }

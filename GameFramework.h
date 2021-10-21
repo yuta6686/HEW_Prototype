@@ -6,7 +6,7 @@
 
 class GameObject;
 class Enemy;
-class Player;
+class GO_Player;
 class Collision;
 
 class GameFramework {
@@ -20,8 +20,9 @@ public:
 	void Draw(void);
 
 	void Register(GameObject* pGameObject);
+	void Create();
 
-	void SetPlayer(Player* pPlayer) { mp_player = pPlayer; }
+	void SetPlayer(GO_Player* pPlayer) { mp_player = pPlayer; }
 	//void SetEnemy(Enemy* pEnemy) { mp_enemy = pEnemy; }
 	//void SetCollision(Collision* pColl) { mp_collision = pColl; }
 
@@ -31,7 +32,7 @@ private:
 
 	GameObject* m_pGameObjects[GAME_OBJECT_MAX];
 
-	Player* mp_player;
+	GO_Player* mp_player;
 	//Enemy* mp_enemy;
 	//Collision* mp_collision;
 };

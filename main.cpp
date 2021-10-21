@@ -38,6 +38,8 @@ void Draw(void);
 //*****************************************************************************
 // グローバル変数:
 //*****************************************************************************
+long g_MouseX = 0;
+long g_MouseY = 0;
 
 #ifdef _DEBUG
 int		g_CountFPS;							// FPSカウンタ
@@ -189,6 +191,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 
+	case WM_MOUSEMOVE:
+		g_MouseX = LOWORD(lParam);
+		g_MouseY = HIWORD(lParam);
+		break;
+
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
@@ -273,3 +280,11 @@ void Draw(void)
 }
 
 
+long GetMousePosX(void) {
+	return g_MouseX;
+}
+
+long GetMousePosY(void)
+{
+	return g_MouseY;
+}
