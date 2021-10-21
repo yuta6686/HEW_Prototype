@@ -1,3 +1,10 @@
+//---------------------------
+//	[VertexParameter.h]
+//	Yuta Yanagisawa 
+//---------------------------
+
+//ここでパラメータ？の整理してください。。。
+
 #pragma once
 #include "main.h"
 

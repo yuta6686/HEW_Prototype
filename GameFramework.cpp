@@ -8,15 +8,12 @@
 #include "GO_Player.h"
 #include "GO_Vortex.h"
 #include "GO_VortexRotation.h"
-//#include "GO_Enemy.h"
-//#include "GO_Collision.h"
 
 GameFramework::GameFramework()
 {
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
 		m_pGameObjects[i] = nullptr;
 	}
-	
 
 	Create();
 }
