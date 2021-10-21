@@ -3,6 +3,7 @@
 //	[GameFramework.h]
 //	Yuta Yanagisawa 
 //---------------------------
+#include "GameScene.h"
 
 class GameObject;
 class Enemy;
@@ -39,6 +40,8 @@ private:
 	GO_VortexRotation* mp_VoRot;
 	//Enemy* mp_enemy;
 	//Collision* mp_collision;
+
+	GameScene m_GameScene;
 
 	void Create();
 

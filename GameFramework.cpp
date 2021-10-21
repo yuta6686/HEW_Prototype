@@ -51,7 +51,8 @@ void GameFramework::Finalize(void)
 }
 void GameFramework::Update(void)
 {
-	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
+	for (int i = m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][0]; 
+		i < m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][1]; i++) {
 		if (m_pGameObjects[i]) {
 			m_pGameObjects[i]->Update();
 		}
@@ -59,7 +60,8 @@ void GameFramework::Update(void)
 }
 void GameFramework::Draw(void)
 {
-	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
+	for (int i = m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][0];
+		i < m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][1]; i++) {
 		if (m_pGameObjects[i]) {
 			m_pGameObjects[i]->Draw();
 		}

@@ -79,7 +79,7 @@
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="GO_VortexRotation.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +129,10 @@
       <Filter>ヘッダー ファイル\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GO_VortexRotation.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

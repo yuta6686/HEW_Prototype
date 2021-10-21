@@ -145,6 +145,7 @@
     <ClInclude Include="GameFramework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GO_Player.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="GO_Vortex.h" />
     <ClInclude Include="GO_VortexRotation.h" />
     <ClInclude Include="input.h" />

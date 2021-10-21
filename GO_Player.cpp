@@ -53,7 +53,7 @@ void GO_Player::Update(void)
 void GO_Player::Draw(void)
 {
 	DrawSprite(Player_Texture, Player_Vertex.pos.x, Player_Vertex.pos.y,
-		Player_Vertex.vel.x, Player_Vertex.vel.y,
+		Player_Vertex.size.x, Player_Vertex.size.y,
 		0.0f, 0.0f, 0.5f, 0.5f);
 }
 
