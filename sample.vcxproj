@@ -128,6 +128,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameFramework.cpp" />
     <ClCompile Include="GO_Player.cpp" />
+    <ClCompile Include="GO_Vortex.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="renderer.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="GameFramework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GO_Player.h" />
+    <ClInclude Include="GO_Vortex.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="renderer.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="sprite.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="title.h" />
+    <ClInclude Include="VertexParameter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

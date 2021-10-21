@@ -6,6 +6,7 @@
 #include "GameFramework.h"
 #include "GameObject.h"
 #include "GO_Player.h"
+#include "GO_Vortex.h"
 //#include "GO_Enemy.h"
 //#include "GO_Collision.h"
 
@@ -17,6 +18,7 @@ GameFramework::GameFramework()
 	//mp_enemy = nullptr;
 	mp_player = nullptr;
 	//mp_collision = nullptr;
+	mp_vortex = nullptr;
 
 	Create();
 }
@@ -81,11 +83,14 @@ void GameFramework::Create()
 	//new
 	{
 		mp_player = new GO_Player;
+		mp_vortex = new GO_Vortex;
 	}
 
 	//Register
 	{
+		Register(mp_vortex);
 		Register(mp_player);
+		
 	}
 	
 }

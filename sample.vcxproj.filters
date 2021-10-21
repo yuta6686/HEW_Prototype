@@ -75,6 +75,9 @@
     <ClCompile Include="GO_Player.cpp">
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GO_Vortex.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -115,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="GO_Player.h">
       <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_Vortex.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexParameter.h">
+      <Filter>ヘッダー ファイル\main</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

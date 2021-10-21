@@ -8,6 +8,7 @@ class GameObject;
 class Enemy;
 class GO_Player;
 class Collision;
+class GO_Vortex;
 
 class GameFramework {
 public:
@@ -33,6 +34,7 @@ private:
 	GameObject* m_pGameObjects[GAME_OBJECT_MAX];
 
 	GO_Player* mp_player;
+	GO_Vortex* mp_vortex;
 	//Enemy* mp_enemy;
 	//Collision* mp_collision;
 };
