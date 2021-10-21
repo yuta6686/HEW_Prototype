@@ -9,6 +9,7 @@ class Enemy;
 class GO_Player;
 class Collision;
 class GO_Vortex;
+class GO_VortexRotation;
 
 class GameFramework {
 public:
@@ -21,7 +22,7 @@ public:
 	void Draw(void);
 
 	void Register(GameObject* pGameObject);
-	void Create();
+	
 
 	void SetPlayer(GO_Player* pPlayer) { mp_player = pPlayer; }
 	//void SetEnemy(Enemy* pEnemy) { mp_enemy = pEnemy; }
@@ -35,6 +36,11 @@ private:
 
 	GO_Player* mp_player;
 	GO_Vortex* mp_vortex;
+	GO_VortexRotation* mp_VoRot;
 	//Enemy* mp_enemy;
 	//Collision* mp_collision;
+
+	void Create();
+
+	void SetGameObject();
 };

@@ -16,6 +16,9 @@ void GO_Player::Initialize(void)
 	Player_Vertex.pos.x = SCREEN_WIDTH / 2;
 	Player_Vertex.pos.y = 440;
 
+	Player_Vertex.size.x = 50.0f;
+	Player_Vertex.size.y = 50.0f;
+
 	Player_Vertex.vel.x = 1.0f;
 	Player_Vertex.vel.y = 1.0f;
 
@@ -49,7 +52,9 @@ void GO_Player::Update(void)
 
 void GO_Player::Draw(void)
 {
-	DrawSprite(Player_Texture, Player_Vertex.pos.x, Player_Vertex.pos.y, 50, 50, 0.0f, 0.0f, 0.5f, 0.5f);
+	DrawSprite(Player_Texture, Player_Vertex.pos.x, Player_Vertex.pos.y,
+		Player_Vertex.vel.x, Player_Vertex.vel.y,
+		0.0f, 0.0f, 0.5f, 0.5f);
 }
 
 float frand(void)

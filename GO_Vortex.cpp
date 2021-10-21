@@ -21,18 +21,17 @@ void GO_Vortex::Finalize(void)
 
 void GO_Vortex::Update(void)
 {
-	if (Vortex_Vertex.angle >= 360.0f) {
+	/*if (Vortex_Vertex.angle >= 360.0f) {
 		Vortex_Vertex.angle = 0.0f;
 	}
 	else {
 		Vortex_Vertex.angle += 1.0f;
-	}
-	
+	}*/
 }
 
 void GO_Vortex::Draw(void)
 {
 	DrawSpriteColorRotate(Vortex_texture, Vortex_Vertex.pos.x, Vortex_Vertex.pos.y, 
 		Vortex_Vertex.size.x, Vortex_Vertex.size.y,
-		0.0f, 0.0f, 1.0f, 1.0f, Vortex_Vertex.color, Vortex_Vertex.angle*RADIAN);
+		0.0f, 0.0f, 1.0f, 1.0f, Vortex_Vertex.color, Vortex_Vertex.angle);
 }

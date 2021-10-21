@@ -15,6 +15,10 @@ public:
 
     virtual void Draw(void) override;
 
+    void SetVortexAngle(float angle) { Vortex_Vertex.angle = angle; }
+
+    D3DXVECTOR2 GetVortexPos(){return Vortex_Vertex.pos;}
+
 private:
     char TEX_NAME[128] = "data/TEXTURE/Vortex.png";
     int Vortex_texture;

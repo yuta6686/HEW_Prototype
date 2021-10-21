@@ -19,6 +19,8 @@ public:
 
 	virtual void Draw(void) override;
 
+	D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
+
 private:
 	//テクスチャのインデックス
 	int Player_Texture;
