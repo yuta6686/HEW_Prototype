@@ -82,7 +82,7 @@
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="GO_Natto.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +138,7 @@
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="GO_Natto.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

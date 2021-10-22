@@ -12,7 +12,7 @@ public:
 
 private:
     int Natto_Texture;
-    char TEX_NAME[128] = "data/TEXTURE/";
+    char TEX_NAME[128] = "data/TEXTURE/”[“¤.png";
 
 };
 
