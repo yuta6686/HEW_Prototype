@@ -9,6 +9,9 @@
 //Œp³‚¹‚¸‚Ég‚¢‚½‚¢ê‡‚ÍŒ¾‚Á‚Ä‚­‚¾‚³‚¢B
 
 #include "main.h"
+#include "Texture.h"
+#include "sprite.h"
+#include "input.h"
 
 class GameObject {
 public:

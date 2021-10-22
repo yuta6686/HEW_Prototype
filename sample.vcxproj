@@ -127,6 +127,7 @@
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameFramework.cpp" />
+    <ClCompile Include="GO_Natto.cpp" />
     <ClCompile Include="GO_Player.cpp" />
     <ClCompile Include="GO_Vortex.cpp" />
     <ClCompile Include="GO_VortexRotation.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameFramework.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GO_Natto.h" />
     <ClInclude Include="GO_Player.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GO_Vortex.h" />

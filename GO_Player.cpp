@@ -3,9 +3,7 @@
 //	Yuta Yanagisawa 
 //---------------------------
 #include "GO_Player.h"
-#include "Texture.h"
-#include "sprite.h"
-#include "input.h"
+
 
 
 void GO_Player::Initialize(void)
