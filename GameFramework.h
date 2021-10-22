@@ -32,6 +32,7 @@ private:
 
 	//GameObject‚Ìƒ|ƒCƒ“ƒ^
 	GameObject* m_pGameObjects[GAME_OBJECT_MAX];
+
 	GO_Player* mp_player;
 	GO_Vortex* mp_vortex;
 	GO_VortexRotation* mp_VoRot;

@@ -21,8 +21,8 @@ public:
     //GAMESCENEによってGameObjectのUpdateとDrawの範囲を設定する
     //[GameScene][最初なら0,後なら1]
     const int GameSceneSelect[GAMESCENE_MAX][2] = {
-        {0,3},  
-        {4,10},
+        {0,3},          //納豆混ぜる
+        {4,10},         //バンジージャンプ
     };
 
     //ここをBUNGEE_JUMPに変えてGameFrameworkのレジスタに後ろから詰め込めば4から10番目のオブジェクトだけが

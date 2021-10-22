@@ -25,6 +25,9 @@ void GameFramework::Create()
 		mp_player = nullptr;
 		mp_vortex = nullptr;
 		mp_VoRot = nullptr;
+
+		/*ここで新しいゲームオブジェクトのポインタを初期化する*/
+
 	}
 
 
@@ -33,6 +36,9 @@ void GameFramework::Create()
 		mp_player = new GO_Player;
 		mp_vortex = new GO_Vortex;
 		mp_VoRot = new GO_VortexRotation;
+
+		/*ゲームオブジェクト動的生成*/
+
 	}
 
 	//Register
@@ -40,6 +46,9 @@ void GameFramework::Create()
 		Register(mp_vortex);
 		Register(mp_player);
 		Register(mp_VoRot);
+
+		/*GameObjectクラスを継承してれば、登録できます。*/
+
 	}
 
 }
