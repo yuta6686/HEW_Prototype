@@ -129,8 +129,8 @@
     <ClCompile Include="GameFramework.cpp" />
     <ClCompile Include="GO_Natto.cpp" />
     <ClCompile Include="GO_Player.cpp" />
-    <ClCompile Include="GO_Vortex.cpp" />
-    <ClCompile Include="GO_VortexRotation.cpp" />
+    <ClCompile Include="GO_Scramble.cpp" />
+    <ClCompile Include="GO_ScrambleRotation.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="renderer.cpp" />
@@ -148,8 +148,8 @@
     <ClInclude Include="GO_Natto.h" />
     <ClInclude Include="GO_Player.h" />
     <ClInclude Include="GameScene.h" />
-    <ClInclude Include="GO_Vortex.h" />
-    <ClInclude Include="GO_VortexRotation.h" />
+    <ClInclude Include="GO_Scramble.h" />
+    <ClInclude Include="GO_ScrambleRotation.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="renderer.h" />

@@ -6,8 +6,8 @@
 #include "GameFramework.h"
 #include "GameObject.h"
 #include "GO_Player.h"
-#include "GO_Vortex.h"
-#include "GO_VortexRotation.h"
+#include "GO_Scramble.h"
+#include "GO_ScrambleRotation.h"
 
 GameFramework::GameFramework()
 {
@@ -34,8 +34,8 @@ void GameFramework::Create()
 	//new
 	{
 		mp_player = new GO_Player;
-		mp_vortex = new GO_Vortex;
-		mp_VoRot = new GO_VortexRotation;
+		mp_vortex = new GO_Scramble;
+		mp_VoRot = new GO_ScrambleRotation;
 
 		/*ゲームオブジェクト動的生成*/
 
@@ -91,21 +91,22 @@ void GameFramework::Finalize(void)
 void GameFramework::Update(void)
 {
 	//GameScene.h参照してください
-	for (int i = m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][0]; 
-		i < m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][1]; i++) {
-		if (m_pGameObjects[i]) {
-			m_pGameObjects[i]->Update();
-		}
+	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
+		if (!m_pGameObjects[i])continue;
+		if (m_pGameObjects[i]->GetGameScene() != m_GameScene)continue;
+		
+		m_pGameObjects[i]->Update();
+		
 	}
 }
 void GameFramework::Draw(void)
 {
 	//GameScene.h参照してください
-	for (int i = m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][0];
-		i < m_GameScene.GameSceneSelect[m_GameScene.m_GameScene][1]; i++) {
-		if (m_pGameObjects[i]) {
+	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
+		if (!m_pGameObjects[i])continue;
+		if (m_pGameObjects[i]->GetGameScene() != m_GameScene)continue;
 			m_pGameObjects[i]->Draw();
-		}
+		
 	}
 }
 

@@ -1,9 +1,9 @@
 #pragma once
 #include "GameObject.h"
 class GO_Player;
-class GO_Vortex;
+class GO_Scramble;
 
-class GO_VortexRotation :
+class GO_ScrambleRotation :
     public GameObject
 {
 public:
@@ -13,11 +13,18 @@ public:
     virtual void Update(void) override ;
     virtual void Draw(void) override { /*ïœçXÇ»Çµ*/ };
 
+    virtual int GetGameScene(void) override { return m_GameScene; }
+
     void SetPlayer(GO_Player* p_player) { mp_player = p_player; }
-    void SetVortex(GO_Vortex* p_vortex) { mp_vortex = p_vortex; }
+    void SetVortex(GO_Scramble* p_vortex) { mp_vortex = p_vortex; }
+
+    
+    
 
 private:
     GO_Player* mp_player;
-    GO_Vortex* mp_vortex;
+    GO_Scramble* mp_vortex;
+
+    const int m_GameScene = GAMESCENE_SCRAMBLE;
 };
 

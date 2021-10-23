@@ -9,10 +9,12 @@ public:
     virtual void Finalize(void) override;
     virtual void Update(void) override;
     virtual void Draw(void) override;
-
+    virtual int GetGameScene(void) override { return m_GameScene; }
 private:
     int Natto_Texture;
     char TEX_NAME[128] = "data/TEXTURE/”[“¤.png";
-
+    const int GAME_SCENE = GAMESCENE_SCRAMBLE;
+    
+    const int m_GameScene = GAMESCENE_SCRAMBLE;
 };
 

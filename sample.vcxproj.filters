@@ -75,10 +75,10 @@
     <ClCompile Include="GO_Player.cpp">
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="GO_Vortex.cpp">
+    <ClCompile Include="GO_Scramble.cpp">
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="GO_VortexRotation.cpp">
+    <ClCompile Include="GO_ScrambleRotation.cpp">
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="GO_Natto.cpp">
@@ -128,10 +128,10 @@
     <ClInclude Include="VertexParameter.h">
       <Filter>ヘッダー ファイル\main</Filter>
     </ClInclude>
-    <ClInclude Include="GO_Vortex.h">
+    <ClInclude Include="GO_Scramble.h">
       <Filter>ヘッダー ファイル\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="GO_VortexRotation.h">
+    <ClInclude Include="GO_ScrambleRotation.h">
       <Filter>ヘッダー ファイル\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">

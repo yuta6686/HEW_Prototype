@@ -2,7 +2,7 @@
 #include "GameObject.h"
 
 
-class GO_Vortex :
+class GO_Scramble :
     public GameObject
 {
 public:
@@ -15,13 +15,19 @@ public:
 
     virtual void Draw(void) override;
 
-    void SetVortexAngle(float angle) { Vortex_Vertex.angle = angle; }
+    virtual int GetGameScene(void) override { return m_GameScene; }
 
-    D3DXVECTOR2 GetVortexPos(){return Vortex_Vertex.pos;}
+
+    void SetScrambleAngle(float angle) { Vortex_Vertex.angle = angle; }
+
+    D3DXVECTOR2 GetScramblePos(){return Vortex_Vertex.pos;}
 
 private:
     char TEX_NAME[128] = "data/TEXTURE/Vortex.png";
-    int Vortex_texture;
+
+    int Scramble_texture;
+
+    const int m_GameScene = GAMESCENE_SCRAMBLE;
 
     VERTEX_A Vortex_Vertex;
 };

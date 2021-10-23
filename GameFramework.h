@@ -10,8 +10,8 @@ class GameObject;
 class Enemy;
 class GO_Player;
 class Collision;
-class GO_Vortex;
-class GO_VortexRotation;
+class GO_Scramble;
+class GO_ScrambleRotation;
 
 //クラス　ゲームフレームワーク
 class GameFramework {
@@ -34,11 +34,11 @@ private:
 	GameObject* m_pGameObjects[GAME_OBJECT_MAX];
 
 	GO_Player* mp_player;
-	GO_Vortex* mp_vortex;
-	GO_VortexRotation* mp_VoRot;
+	GO_Scramble* mp_vortex;
+	GO_ScrambleRotation* mp_VoRot;
 
 	//GameScene
-	GameScene m_GameScene;
+	int m_GameScene = GAMESCENE_SCRAMBLE;
 
 	//nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
 	//コンストラクタで使用

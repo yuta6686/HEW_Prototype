@@ -17,6 +17,8 @@ public:
 
 	virtual void Draw(void) override;
 
+	virtual int GetGameScene(void) override { return m_GameScene; }
+
 	D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
 
 private:
@@ -27,5 +29,7 @@ private:
 	char PLAYER_TEX_NAME[128] = "data/TEXTURE/player.png";
 
 	VERTEX_T Player_Vertex;
+
+	const int m_GameScene = GAMESCENE_SCRAMBLE;
 };
 
