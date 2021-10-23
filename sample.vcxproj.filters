@@ -87,6 +87,9 @@
     <ClCompile Include="GO_Throw.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="test_.cpp">
+      <Filter>ソース ファイル\GameFramework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">

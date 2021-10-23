@@ -138,6 +138,7 @@
     <ClCompile Include="result.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="test_.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
   </ItemGroup>
