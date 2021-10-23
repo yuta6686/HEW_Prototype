@@ -8,8 +8,8 @@ class GO_Throw :
     virtual void Finalize(void) override;
     virtual void Update(void) override;
     virtual void Draw(void) override;
-    virtual int GetGameScene(void) override { return GAME_SCENE; }
 
+    virtual int GetGameScene(void) override { return GAME_SCENE; }
 
 private:
     //Texture用のインデックス
