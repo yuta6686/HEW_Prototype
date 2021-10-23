@@ -12,6 +12,7 @@ class GO_Player;
 class Collision;
 class GO_Scramble;
 class GO_ScrambleRotation;
+class GO_Throw;
 
 //クラス　ゲームフレームワーク
 class GameFramework {
@@ -36,9 +37,10 @@ private:
 	GO_Player* mp_player;
 	GO_Scramble* mp_vortex;
 	GO_ScrambleRotation* mp_VoRot;
+	GO_Throw* mp_Throw;
 
 	//GameScene
-	int m_GameScene = GAMESCENE_SCRAMBLE;
+	int m_GameScene = GAMESCENE_BUNGEE_JUMP;
 
 	//nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
 	//コンストラクタで使用
