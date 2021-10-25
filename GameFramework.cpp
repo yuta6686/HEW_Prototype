@@ -9,6 +9,7 @@
 #include "GO_Scramble.h"
 #include "GO_ScrambleRotation.h"
 #include "GO_Throw.h"
+#include "GO_Timer.h"
 
 GameFramework::GameFramework()
 {
@@ -30,6 +31,7 @@ void GameFramework::Create()
 		/*ここで新しいゲームオブジェクトのポインタを初期化する*/
 
 		mp_Throw = nullptr;
+		mp_Timer = nullptr;
 	}
 
 
@@ -42,6 +44,7 @@ void GameFramework::Create()
 		/*ゲームオブジェクト動的生成*/
 
 		mp_Throw = new GO_Throw;
+		mp_Timer = new GO_Timer;
 	}
 
 	//Register
@@ -53,6 +56,7 @@ void GameFramework::Create()
 		/*GameObjectクラスを継承してれば、登録できます。*/
 
 		Register(mp_Throw);
+		Register(mp_Timer);
 	}
 
 }

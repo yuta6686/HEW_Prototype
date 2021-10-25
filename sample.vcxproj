@@ -132,6 +132,7 @@
     <ClCompile Include="GO_Scramble.cpp" />
     <ClCompile Include="GO_ScrambleRotation.cpp" />
     <ClCompile Include="GO_Throw.cpp" />
+    <ClCompile Include="GO_Timer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="renderer.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="GO_Scramble.h" />
     <ClInclude Include="GO_ScrambleRotation.h" />
     <ClInclude Include="GO_Throw.h" />
+    <ClInclude Include="GO_Timer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="renderer.h" />
