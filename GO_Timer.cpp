@@ -29,6 +29,8 @@ void GO_Timer::Update(void)
 
 	int cnt = 0;
 	cnt = ((600 - Timer_Vertex.counter) / 60);
+
+	Timer_Vertex.alpha = ((600 - Timer_Vertex.counter) % 60)/10;
 	
 	Timer_Vertex.u = NUMBER_WIDTH * (cnt % NUMBER_X);
 	Timer_Vertex.v = NUMBER_HEIGHT * (cnt / NUMBER_Y);
@@ -36,11 +38,10 @@ void GO_Timer::Update(void)
 
 void GO_Timer::Draw(void)
 {
-	
-
-	//4Œ…–Ú	
-	DrawSprite(Number_Texture, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 75, 75,
-		Timer_Vertex.u, Timer_Vertex.v, NUMBER_WIDTH, NUMBER_HEIGHT);
+	DrawSpriteColor(Number_Texture, SCREEN_WIDTH/2, SCREEN_HEIGHT/2,
+		Timer_Vertex.size.x, Timer_Vertex.size.y,
+		Timer_Vertex.u, Timer_Vertex.v, NUMBER_WIDTH, NUMBER_HEIGHT,
+		D3DXCOLOR(1.0f,1.0f,1.0f, Timer_Vertex.alpha));
 
 }
 
