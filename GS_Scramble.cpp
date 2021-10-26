@@ -7,13 +7,32 @@
 #include "GO_Throw.h"
 #include "GO_Timer.h"
 
-void GS_Scramble::Initialize(void)
+GS_Scramble::GS_Scramble()
 {
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
 		m_pGameObjects[i] = nullptr;
 	}
 
 	Create();
+}
+
+GS_Scramble::~GS_Scramble()
+{
+	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
+		// nullptr‚ðdelete‚µ‚Ä‚à‘åä•v
+		delete m_pGameObjects[i];
+	}
+}
+
+void GS_Scramble::Initialize(void)
+{
+	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
+		if (m_pGameObjects[i]) {
+			m_pGameObjects[i]->Initialize();
+		}
+	}
+
+	SetGameObject();
 }
 
 void GS_Scramble::Finalize(void)

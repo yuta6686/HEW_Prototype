@@ -13,6 +13,9 @@ class GO_Timer;
 class GS_Scramble :public GameScene
 {
 public:
+	GS_Scramble();
+	~GS_Scramble();
+
 	// GameScene を介して継承されました
 	virtual void Initialize(void) override;
 
@@ -37,8 +40,6 @@ private:
 	GO_Throw* mp_Throw;
 	GO_Timer* mp_Timer;
 
-	//GameScene
-	int m_GameScene = GAMESCENE_SCRAMBLE;
 
 	//nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
 	//コンストラクタで使用
