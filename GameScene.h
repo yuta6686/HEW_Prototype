@@ -17,6 +17,9 @@ enum GAMESCENE{
 class GameScene
 {
 public:
-    int m_GameScene = GAMESCENE_BUNGEE_JUMP;
+    virtual void Initialize(void) = 0;
+    virtual void Finalize(void) = 0;
+    virtual void Update(void) = 0;
+    virtual void Draw(void) = 0;
 };
 

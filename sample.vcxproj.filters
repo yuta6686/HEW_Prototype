@@ -37,6 +37,9 @@
     <Filter Include="ソース ファイル\Scene">
       <UniqueIdentifier>{855e34e3-292f-4222-8916-39d6815024ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Scene\GameScene">
+      <UniqueIdentifier>{a08f07d4-eb39-41b6-a3e0-cedfa46fd73f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -93,6 +96,9 @@
     <ClCompile Include="GO_Timer.cpp">
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GS_Scramble.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -143,9 +149,6 @@
     <ClInclude Include="GO_ScrambleRotation.h">
       <Filter>ヘッダー ファイル\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>ヘッダー ファイル\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="GO_Natto.h">
       <Filter>ヘッダー ファイル\GameObjects</Filter>
     </ClInclude>
@@ -154,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="GO_Timer.h">
       <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>ヘッダー ファイル\Scene\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_Scramble.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
