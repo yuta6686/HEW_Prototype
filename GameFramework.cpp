@@ -80,8 +80,11 @@ void GameFramework::TransitionScene()
 			mp_Timer->SetTimerUse(true);
 
 			//ƒV[ƒ“‚ª•Ï‚í‚ê‚ÎTimer‚ÌUpdate‚à”­¶‚µ‚È‚¢
-			m_GameScene = GAMESCENE_BUNGEE_JUMP;
+			m_GameScene = GAMESCENE_FALL;
 		}
+		break;
+
+	case GAMESCENE_FALL:
 		break;
 
 	case GAMESCENE_BUNGEE_JUMP:

@@ -9,8 +9,9 @@
 
 enum GAMESCENE{
     GAMESCENE_NONE,
-    GAMESCENE_SCRAMBLE,       //納豆混ぜるシーン
-    GAMESCENE_BUNGEE_JUMP,  //バンジージャンプのシーン
+    GAMESCENE_SCRAMBLE,         //納豆混ぜるシーン
+    GAMESCENE_FALL,             //落ちるシーン
+    GAMESCENE_BUNGEE_JUMP,      //バンジージャンプのシーン
     GAMESCENE_MAX
 };
 
