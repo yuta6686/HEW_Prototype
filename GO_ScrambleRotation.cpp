@@ -4,9 +4,11 @@
 
 void GO_ScrambleRotation::Update(void){
 
-	//見ずらいけど、角度取ってセットしてるだけ。
-	mp_vortex->SetScrambleAngle(atan2((double)mp_player->GetPos().x - (double)mp_vortex->GetScramblePos().x,
-		(double)mp_player->GetPos().y - (double)mp_vortex->GetScramblePos().y));
+	double x_distance = (double)mp_player->GetPos().x - (double)mp_vortex->GetScramblePos().x;
+	double y_distance = (double)mp_player->GetPos().y - (double)mp_vortex->GetScramblePos().y;
+	float angle = atan2(x_distance, y_distance);
+
+	mp_vortex->SetScrambleAngle(angle);
 }
 
 
