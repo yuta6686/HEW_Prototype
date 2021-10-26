@@ -67,12 +67,33 @@ void GameFramework::SetGameObject()
 	mp_VoRot->SetVortex(mp_vortex);
 }
 
+//シーン遷移処理
 void GameFramework::TransitionScene()
 {
-	if (!mp_Timer->GetTimerUse()) {
-		m_GameScene = GAMESCENE_BUNGEE_JUMP;
-		mp_Timer->SetTimerUse(true);
+	switch (m_GameScene)
+	{
+	case GAMESCENE_SCRAMBLE:
+		//Timerは10秒経過したらフラグがfalseになる
+		if (!mp_Timer->GetTimerUse()) {
+
+			//もうここに入らないように、true状態にしておく
+			mp_Timer->SetTimerUse(true);
+
+			//シーンが変わればTimerのUpdateも発生しない
+			m_GameScene = GAMESCENE_BUNGEE_JUMP;
+		}
+		break;
+
+	case GAMESCENE_BUNGEE_JUMP:
+
+
+
+		break;
+	default:
+		break;
 	}
+
+	
 }
 
 
