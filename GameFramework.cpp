@@ -10,6 +10,7 @@
 #include "GO_ScrambleRotation.h"
 #include "GO_Throw.h"
 #include "GO_Timer.h"
+#include "GO_Fall.h"
 
 GameFramework::GameFramework()
 {
@@ -32,6 +33,7 @@ void GameFramework::Create()
 
 		mp_Throw = nullptr;
 		mp_Timer = nullptr;
+		mp_Fall = nullptr;
 	}
 
 
@@ -45,6 +47,7 @@ void GameFramework::Create()
 
 		mp_Throw = new GO_Throw;
 		mp_Timer = new GO_Timer;
+		mp_Fall = new GO_Fall;
 	}
 
 	//Register
@@ -57,6 +60,7 @@ void GameFramework::Create()
 
 		Register(mp_Throw);
 		Register(mp_Timer);
+		Register(mp_Fall);
 	}
 
 }

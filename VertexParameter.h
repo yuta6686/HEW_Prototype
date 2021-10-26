@@ -26,7 +26,13 @@ struct VERTEX_NOMAL {
 	D3DXVECTOR2 size;
 };
 
+struct VERTEX_ANIMATION_USE :public VERTEX_NOMAL {
+	bool use;
 
+	FLOAT u;
+	FLOAT v;
+	int counter;
+};
 
 
 //alpha & use & animation
