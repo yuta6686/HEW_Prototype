@@ -67,6 +67,14 @@ void GameFramework::SetGameObject()
 	mp_VoRot->SetVortex(mp_vortex);
 }
 
+void GameFramework::TransitionScene()
+{
+	if (!mp_Timer->GetTimerUse()) {
+		m_GameScene = GAMESCENE_BUNGEE_JUMP;
+		mp_Timer->SetTimerUse(true);
+	}
+}
+
 
 GameFramework::~GameFramework()
 {
@@ -98,6 +106,8 @@ void GameFramework::Finalize(void)
 }
 void GameFramework::Update(void)
 {
+	TransitionScene();
+
 	//GameScene.héQè∆ÇµÇƒÇ≠ÇæÇ≥Ç¢
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
 		if (!m_pGameObjects[i])continue;

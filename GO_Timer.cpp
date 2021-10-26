@@ -19,9 +19,12 @@ void GO_Timer::Finalize(void)
 
 void GO_Timer::Update(void)
 {
+	if (Timer_Vertex.use == false)return;
+
 	if (Timer_Vertex.counter >= 600) {
 		Timer_Vertex.counter = 0;
 		//î[ì§Ç‹Ç∫Ç‹Ç∫èIóπ
+		Timer_Vertex.use = false;
 	}
 	else {
 		Timer_Vertex.counter++;
@@ -38,6 +41,8 @@ void GO_Timer::Update(void)
 
 void GO_Timer::Draw(void)
 {
+	if (Timer_Vertex.use == false)return;
+
 	DrawSpriteColor(Number_Texture, SCREEN_WIDTH/2, SCREEN_HEIGHT/2,
 		Timer_Vertex.size.x, Timer_Vertex.size.y,
 		Timer_Vertex.u, Timer_Vertex.v, NUMBER_WIDTH, NUMBER_HEIGHT,

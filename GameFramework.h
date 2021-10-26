@@ -50,4 +50,9 @@ private:
 
 	//他のゲームフレームワークに干渉したい場合使用
 	void SetGameObject();
+
+
+	void SetGameScene(int GameScene) { m_GameScene = GameScene; }
+
+	void TransitionScene();
 };

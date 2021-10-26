@@ -14,6 +14,9 @@ public:
 
 	GO_Timer(){}
 
+	bool GetTimerUse(void) { return Timer_Vertex.use; }
+	void SetTimerUse(bool flag) { Timer_Vertex.use = flag; }
+
 private:
 	char TEX_NAME[128] = "data/TEXTURE/number2.png";
 	int Number_Texture;
