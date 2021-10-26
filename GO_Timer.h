@@ -12,12 +12,20 @@ public:
 	virtual void Draw(void) override;
 	virtual int GetGameScene(void) override { return GAME_SCENE; };
 
+	GO_Timer(){}
 
 private:
 	char TEX_NAME[128] = "data/TEXTURE/number2.png";
 	int Number_Texture;
 	const int GAME_SCENE = GAMESCENE_SCRAMBLE;
 
-	int m_counter;
+	const int NUMBER_X = 4;
+	const int NUMBER_Y = 4;
+	const float NUMBER_WIDTH = 1.0f / (float)NUMBER_X;
+	const float NUMBER_HEIGHT = 1.0f / (float)NUMBER_Y;
+
+	VERTEX_ALPHA_ANIMATION_USE Timer_Vertex;
+
+	
 };
 
