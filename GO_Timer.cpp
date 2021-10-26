@@ -21,9 +21,11 @@ void GO_Timer::Update(void)
 {
 	if (Timer_Vertex.use == false)return;
 
+	//ÇPïbÇΩÇ¡ÇΩÇÁ
 	if (Timer_Vertex.counter >= 600) {
-		Timer_Vertex.counter = 0;
+
 		//î[ì§Ç‹Ç∫Ç‹Ç∫èIóπ
+		Timer_Vertex.counter = 0;
 		Timer_Vertex.use = false;
 	}
 	else {
@@ -49,11 +51,3 @@ void GO_Timer::Draw(void)
 		D3DXCOLOR(1.0f,1.0f,1.0f, Timer_Vertex.alpha));
 
 }
-
-// first = 1.11 % 10 ;
-// 
-// 1.11 * 10;
-// 
-// second = 11.1 % 10;
-// 
-// third = 11.1 * 10;
