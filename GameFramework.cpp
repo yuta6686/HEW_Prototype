@@ -89,6 +89,12 @@ void GameFramework::TransitionScene()
 		break;
 
 	case GAMESCENE_FALL:
+		if (!mp_Fall->GetIsTransition()) {
+
+			mp_Fall->SetIsTransition(true);
+
+			m_GameScene = GAMESCENE_BUNGEE_JUMP;
+		}
 		break;
 
 	case GAMESCENE_BUNGEE_JUMP:
