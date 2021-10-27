@@ -11,6 +11,15 @@ void GO_Timer::Initialize(void)
 	Timer_Vertex.u = 0.0f;
 	Timer_Vertex.v = 0.0f;
 	Timer_Vertex.use = true;
+
+
+	Timer_Second.alpha = 1.0f;
+	Timer_Second.counter = 0;
+	Timer_Second.pos = D3DXVECTOR2((SCREEN_WIDTH / 2 )+ 100.0f, SCREEN_HEIGHT / 2);
+	Timer_Second.size = D3DXVECTOR2(75, 75);
+	Timer_Second.u = 0.0f;
+	Timer_Second.v = 0.0f;
+	Timer_Second.use = true;
 }
 
 void GO_Timer::Finalize(void)
@@ -45,9 +54,13 @@ void GO_Timer::Draw(void)
 {
 	if (Timer_Vertex.use == false)return;
 
-	DrawSpriteColor(Number_Texture, SCREEN_WIDTH/2, SCREEN_HEIGHT/2,
+	DrawSpriteColor(Number_Texture, Timer_Vertex.pos.x, Timer_Vertex.pos.y,
 		Timer_Vertex.size.x, Timer_Vertex.size.y,
 		Timer_Vertex.u, Timer_Vertex.v, NUMBER_WIDTH, NUMBER_HEIGHT,
 		D3DXCOLOR(1.0f,1.0f,1.0f, Timer_Vertex.alpha));
 
+	DrawSpriteColor(Number_Texture, Timer_Second.pos.x, Timer_Second.pos.y,
+		Timer_Second.size.x, Timer_Second.size.y,
+		Timer_Second.u, Timer_Second.v, NUMBER_WIDTH, NUMBER_HEIGHT,
+		D3DXCOLOR(1.0f,1.0f,1.0f, Timer_Second.alpha));
 }

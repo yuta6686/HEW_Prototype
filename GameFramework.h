@@ -44,7 +44,7 @@ private:
 	GO_Fall* mp_Fall;
 
 	//GameScene
-	int m_GameScene = GAMESCENE_FALL;
+	int m_GameScene = GAMESCENE_SCRAMBLE;
 
 	//nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
 	//コンストラクタで使用

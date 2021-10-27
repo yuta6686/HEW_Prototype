@@ -28,6 +28,7 @@ private:
 	const float NUMBER_HEIGHT = 1.0f / (float)NUMBER_Y;
 
 	VERTEX_ALPHA_ANIMATION_USE Timer_Vertex;
+	VERTEX_ALPHA_ANIMATION_USE Timer_Second;
 
 	
 };
