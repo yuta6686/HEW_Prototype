@@ -28,8 +28,12 @@ private:
 	const float NUMBER_HEIGHT = 1.0f / (float)NUMBER_Y;
 
 	VERTEX_ALPHA_ANIMATION_USE Timer_Vertex;
-	VERTEX_ALPHA_ANIMATION_USE Timer_Second;
+	VERTEX_UV Timer_Second;
+	VERTEX_UV Timer_Third;
 
 	
+	void FirstNum(void);
+	void SecondNum(void);
+	void ThirdNum(void);
 };
 

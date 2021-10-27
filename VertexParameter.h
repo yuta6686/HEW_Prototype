@@ -44,3 +44,8 @@ struct VERTEX_ALPHA_ANIMATION_USE :public VERTEX_NOMAL {
 	FLOAT v;
 	int counter;
 };
+
+struct VERTEX_UV :public VERTEX_NOMAL {
+	FLOAT u;
+	FLOAT v;
+};
