@@ -1,6 +1,7 @@
 //---------------------------
 //	[VertexParameter.h]
-//	Yuta Yanagisawa 
+// --------------------------
+//	Author:Yuta Yanagisawa 
 //---------------------------
 
 //ここでパラメータ？の整理してください。。。
@@ -45,6 +46,7 @@ struct VERTEX_ALPHA_ANIMATION_USE :public VERTEX_NOMAL {
 	int counter;
 };
 
+//uv
 struct VERTEX_UV :public VERTEX_NOMAL {
 	FLOAT u;
 	FLOAT v;

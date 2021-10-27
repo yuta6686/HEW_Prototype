@@ -1,8 +1,10 @@
-//---------------------------
+//---------------------------------------------
 //	[GameFramework.cpp]
-//	Yuta Yanagisawa 
-//---------------------------
+// --------------------------------------------
+//	Haruyakakoubou
+//---------------------------------------------
 
+//インクルード
 #include "GameFramework.h"
 #include "GameObject.h"
 #include "GO_Player.h"
@@ -12,6 +14,9 @@
 #include "GO_Timer.h"
 #include "GO_Fall.h"
 
+/*---------------------------------------------
+				コンストラクタ
+---------------------------------------------*/
 GameFramework::GameFramework()
 {
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
@@ -21,6 +26,11 @@ GameFramework::GameFramework()
 	Create();
 }
 
+/*---------------------------------------------
+				クリエイト
+-----------------------------------------------
+	ポインタ初期化、生成、レジスター
+---------------------------------------------*/
 void GameFramework::Create()
 {
 	//null
@@ -65,13 +75,33 @@ void GameFramework::Create()
 
 }
 
+/*---------------------------------------------
+	SetGameObject()	
+-----------------------------------------------
+	ゲームオブジェクト内で他のオブジェクトを使用したい場合
+
+	自身のヘッダーファイルでSet関数を作って使用する
+
+	*この関数は初期化処理の最後に使用
+---------------------------------------------*/
 void GameFramework::SetGameObject()
 {
 	mp_VoRot->SetPlayer(mp_player);
 	mp_VoRot->SetVortex(mp_vortex);
 }
 
-//シーン遷移処理
+/*---------------------------------------------
+			シーン遷移処理
+---------------------------------------------*/
+/*---------------------------------------------
+ex)	case GAMESCENE_SCRANBLE
+
+	mp_Timerのuse
+
+	最初は			true
+	処理が終わると	false
+	シーンを変えて	true
+---------------------------------------------*/
 void GameFramework::TransitionScene()
 {
 	switch (m_GameScene)
@@ -109,7 +139,9 @@ void GameFramework::TransitionScene()
 	
 }
 
-
+/*---------------------------------------------
+*				デストラクタ
+---------------------------------------------*/
 GameFramework::~GameFramework()
 {
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
@@ -118,6 +150,9 @@ GameFramework::~GameFramework()
 	}
 }
 
+/*---------------------------------------------
+*				初期化処理
+---------------------------------------------*/
 void GameFramework::Initialize(void)
 {
 
@@ -130,6 +165,10 @@ void GameFramework::Initialize(void)
 	SetGameObject();
 	
 }
+
+/*---------------------------------------------
+*				終了処理
+---------------------------------------------*/
 void GameFramework::Finalize(void)
 {
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
@@ -138,6 +177,10 @@ void GameFramework::Finalize(void)
 		}
 	}
 }
+
+/*---------------------------------------------
+*				更新処理
+---------------------------------------------*/
 void GameFramework::Update(void)
 {
 	TransitionScene();
@@ -151,6 +194,9 @@ void GameFramework::Update(void)
 		
 	}
 }
+/*---------------------------------------------
+*				描画処理
+---------------------------------------------*/
 void GameFramework::Draw(void)
 {
 	//GameScene.h参照してください
@@ -162,6 +208,9 @@ void GameFramework::Draw(void)
 	}
 }
 
+/*---------------------------------------------
+*				登録処理
+---------------------------------------------*/
 void GameFramework::Register(GameObject* pGameObject)
 {
 	for (int i = 0; i < GAME_OBJECT_MAX; i++) {
