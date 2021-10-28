@@ -15,6 +15,7 @@ class GO_ScrambleRotation;
 class GO_Throw;
 class GO_Timer;
 class GO_Fall;
+class GO_Bungee;
 
 //クラス　ゲームフレームワーク
 class GameFramework {
@@ -42,9 +43,16 @@ private:
 	GO_Throw* mp_Throw;
 	GO_Timer* mp_Timer;
 	GO_Fall* mp_Fall;
+	GO_Bungee* mp_Bungee;
 
 	//GameScene
-	int m_GameScene = GAMESCENE_SCRAMBLE;
+	int m_GameScene = GAMESCENE_BUNGEE_JUMP;
+
+	/*
+	* GAMESCENE_SCRAMBLE
+	* GAMESCENE_FALL
+	* GAMESCENE_BUNGEE_JUMP
+	*/
 
 	//nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
 	//コンストラクタで使用

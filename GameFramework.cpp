@@ -13,6 +13,7 @@
 #include "GO_Throw.h"
 #include "GO_Timer.h"
 #include "GO_Fall.h"
+#include "GO_Bungee.h"
 
 /*---------------------------------------------
 				コンストラクタ
@@ -44,6 +45,7 @@ void GameFramework::Create()
 		mp_Throw = nullptr;
 		mp_Timer = nullptr;
 		mp_Fall = nullptr;
+		mp_Bungee = nullptr;
 	}
 
 
@@ -58,6 +60,7 @@ void GameFramework::Create()
 		mp_Throw = new GO_Throw;
 		mp_Timer = new GO_Timer;
 		mp_Fall = new GO_Fall;
+		mp_Bungee = new GO_Bungee;
 	}
 
 	//Register
@@ -71,6 +74,7 @@ void GameFramework::Create()
 		Register(mp_Throw);
 		Register(mp_Timer);
 		Register(mp_Fall);
+		Register(mp_Bungee);
 	}
 
 }
