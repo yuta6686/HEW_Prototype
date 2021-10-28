@@ -51,3 +51,12 @@ struct VERTEX_UV :public VERTEX_NOMAL {
 	FLOAT u;
 	FLOAT v;
 };
+
+struct VERTEX_PLAYER :public VERTEX_NOMAL {
+	FLOAT delay;
+	
+};
+
+struct VERTEX_BACKGROUND :public VERTEX_NOMAL {
+
+};

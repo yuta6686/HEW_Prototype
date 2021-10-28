@@ -8,7 +8,7 @@ void GO_Bungee::Initialize(void)
 {
 	Player_Texture = LoadTexture(TEX_NAME);
 
-	Player_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH/2, -100.0f);
+	Player_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH/4, -100.0f);
 	Player_Vertex.size = D3DXVECTOR2(200.0f, 200.0f);
 
 	m_Gravity = DEFAULT_GRAVITY;
@@ -24,7 +24,7 @@ void GO_Bungee::Update(void)
 		m_Gravity = DEFAULT_GRAVITY * m_Jump;
 	}
 	
-	m_Gravity += m_Acceleration;
+	m_Gravity += GRAVITY_ACCELERATION;
 	Player_Vertex.pos.y += m_Gravity;
 }
 

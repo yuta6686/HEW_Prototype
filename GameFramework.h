@@ -48,7 +48,7 @@ private:
 	GO_SS_Manager* mp_ssManager;
 
 	//GameScene
-	int m_GameScene = GAMESCENE_SCRAMBLE;
+	int m_GameScene = GAMESCENE_GAME_TEST;
 
 	/*
 	* GAMESCENE_SCRAMBLE

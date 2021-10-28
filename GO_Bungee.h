@@ -15,12 +15,14 @@ public:
     virtual void Draw(void) override;
 
     virtual int GetGameScene(void) override { return GAME_SCENE; }
+    
+    FLOAT GetPosY(void) { return Player_Vertex.pos.y; }
 
 private:
     //ジャンプ用変数
     float m_Gravity;                        //重力
     float m_Jump = -15.0f;                  //ジャンプ
-    const float m_Acceleration = 0.3f;      //重力加速度
+    const float GRAVITY_ACCELERATION = 0.3f;      //重力加速度
     const float DEFAULT_GRAVITY = 1.0f;     //重力を元に戻す用
 
 

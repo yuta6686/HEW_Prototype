@@ -3,6 +3,7 @@
 class GO_ShootString;
 class GO_SS_Player;
 class GO_SS_Wall;
+class GO_SS_BackGround;
 
 class GO_SS_Manager :
     public GameObject
@@ -33,6 +34,7 @@ private:
     GameObject* m_ssGameObject[SS_GAMEOBJECT_MAX];
     GO_SS_Player* mp_ssPlayer;
     GO_SS_Wall* mp_ssWall;
+    GO_SS_BackGround* mp_ssBackGround;
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
     //コンストラクタで使用

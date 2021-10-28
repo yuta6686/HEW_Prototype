@@ -5,7 +5,6 @@ class GO_SS_Player :
     public GameObject
 {
 public:
-    // GO_ShootString ÇâÓÇµÇƒåpè≥Ç≥ÇÍÇ‹ÇµÇΩ
     virtual void Initialize(void) override;
 
     virtual void Finalize(void) override;
@@ -14,14 +13,25 @@ public:
 
     virtual void Draw(void) override;
 
-    // GO_ShootString ÇâÓÇµÇƒåpè≥Ç≥ÇÍÇ‹ÇµÇΩ
     virtual int GetGameScene(void) override { return GAME_SCENE; }
 
 
 private:
-    //ÉQÅ[ÉÄÉVÅ[Éì
+    //GameScene
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
 
+    //Texture
+    int Player_Texture;
+    char TEX_NAME[64] = "data/TEXTURE/fall1.png";
+
+    //Action
+    FLOAT m_Gravity;
+    FLOAT m_Jump = -15.0f;
+    const FLOAT GRAVITY_ACCELERATION = 0.3f;
+    const FLOAT DEFAULT_GRAVITY = 1.0f;
+
+    //Vertex Parameter
+    VERTEX_PLAYER Player_Vertex;
 protected:
 
 };

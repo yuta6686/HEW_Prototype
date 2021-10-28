@@ -1,6 +1,7 @@
 #include "GO_SS_Manager.h"
 #include "GO_SS_Player.h"
 #include "GO_SS_Wall.h"
+#include "GO_SS_BackGround.h"
 /*---------------------------------------------
 				コンストラクタ
 ---------------------------------------------*/
@@ -22,20 +23,26 @@ void GO_SS_Manager::Create()
 {
 	//null
 	{
+		mp_ssBackGround = nullptr;
 		mp_ssPlayer = nullptr;
 		mp_ssWall = nullptr;
+		
 	}
 
 	//new
 	{
+		mp_ssBackGround = new GO_SS_BackGround;
 		mp_ssPlayer = new GO_SS_Player;
 		mp_ssWall = new GO_SS_Wall;
+		
 	}
 
 	//Register
 	{
+		Register(mp_ssBackGround);
 		Register(mp_ssPlayer);
 		Register(mp_ssWall);
+		
 	}
 }
 
