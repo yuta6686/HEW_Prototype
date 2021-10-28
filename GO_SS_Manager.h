@@ -4,6 +4,8 @@ class GO_ShootString;
 class GO_SS_Player;
 class GO_SS_Wall;
 class GO_SS_BackGround;
+class GO_SS_PseudoMove;
+class GO_SS_Target;
 
 class GO_SS_Manager :
     public GameObject
@@ -35,6 +37,8 @@ private:
     GO_SS_Player* mp_ssPlayer;
     GO_SS_Wall* mp_ssWall;
     GO_SS_BackGround* mp_ssBackGround;
+    GO_SS_PseudoMove* mp_ssPseudoMove;
+    GO_SS_Target* mp_ssTarget;
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
     //コンストラクタで使用
