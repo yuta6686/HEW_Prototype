@@ -26,6 +26,7 @@ void GO_SS_Player::Finalize(void)
 ---------------------------------------------*/
 void GO_SS_Player::Update(void)
 {
+	
 	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
 		m_Gravity = DEFAULT_GRAVITY * m_Jump;
 	}
