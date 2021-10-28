@@ -16,6 +16,7 @@ class GO_Throw;
 class GO_Timer;
 class GO_Fall;
 class GO_Bungee;
+class GO_SS_Manager;
 
 //クラス　ゲームフレームワーク
 class GameFramework {
@@ -44,14 +45,16 @@ private:
 	GO_Timer* mp_Timer;
 	GO_Fall* mp_Fall;
 	GO_Bungee* mp_Bungee;
+	GO_SS_Manager* mp_ssManager;
 
 	//GameScene
-	int m_GameScene = GAMESCENE_BUNGEE_JUMP;
+	int m_GameScene = GAMESCENE_SCRAMBLE;
 
 	/*
 	* GAMESCENE_SCRAMBLE
 	* GAMESCENE_FALL
 	* GAMESCENE_BUNGEE_JUMP
+	* GAMESCENE_GAME_TEST
 	*/
 
 	//nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。

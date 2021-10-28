@@ -133,6 +133,9 @@
     <ClCompile Include="GO_Player.cpp" />
     <ClCompile Include="GO_Scramble.cpp" />
     <ClCompile Include="GO_ScrambleRotation.cpp" />
+    <ClCompile Include="GO_SS_Manager.cpp" />
+    <ClCompile Include="GO_SS_Player.cpp" />
+    <ClCompile Include="GO_SS_Wall.cpp" />
     <ClCompile Include="GO_Throw.cpp" />
     <ClCompile Include="GO_Timer.cpp" />
     <ClCompile Include="input.cpp" />
@@ -157,6 +160,9 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GO_Scramble.h" />
     <ClInclude Include="GO_ScrambleRotation.h" />
+    <ClInclude Include="GO_SS_Manager.h" />
+    <ClInclude Include="GO_SS_Player.h" />
+    <ClInclude Include="GO_SS_Wall.h" />
     <ClInclude Include="GO_Throw.h" />
     <ClInclude Include="GO_Timer.h" />
     <ClInclude Include="input.h" />

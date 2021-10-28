@@ -12,6 +12,7 @@ enum GAMESCENE{
     GAMESCENE_SCRAMBLE,         //納豆混ぜるシーン
     GAMESCENE_FALL,             //落ちるシーン
     GAMESCENE_BUNGEE_JUMP,      //バンジージャンプのシーン
+    GAMESCENE_GAME_TEST,
     GAMESCENE_MAX
 };
 

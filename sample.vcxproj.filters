@@ -37,6 +37,12 @@
     <Filter Include="ソース ファイル\Scene">
       <UniqueIdentifier>{855e34e3-292f-4222-8916-39d6815024ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\GameObjects\GO_SS">
+      <UniqueIdentifier>{75a18f92-dc4d-4d07-92ce-576995716c13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObjects\GO_SS">
+      <UniqueIdentifier>{0de75e5b-a027-4e56-b1c8-40d3a23b8623}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -98,6 +104,15 @@
     </ClCompile>
     <ClCompile Include="GO_Bungee.cpp">
       <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Player.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Manager.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Wall.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +181,15 @@
     </ClInclude>
     <ClInclude Include="GO_Bungee.h">
       <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Player.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Manager.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Wall.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

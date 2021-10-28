@@ -14,7 +14,7 @@
 #include "GO_Timer.h"
 #include "GO_Fall.h"
 #include "GO_Bungee.h"
-
+#include "GO_SS_Manager.h"
 /*---------------------------------------------
 				コンストラクタ
 ---------------------------------------------*/
@@ -46,6 +46,7 @@ void GameFramework::Create()
 		mp_Timer = nullptr;
 		mp_Fall = nullptr;
 		mp_Bungee = nullptr;
+		mp_ssManager = nullptr;
 	}
 
 
@@ -61,6 +62,7 @@ void GameFramework::Create()
 		mp_Timer = new GO_Timer;
 		mp_Fall = new GO_Fall;
 		mp_Bungee = new GO_Bungee;
+		mp_ssManager = new GO_SS_Manager;
 	}
 
 	//Register
@@ -75,6 +77,7 @@ void GameFramework::Create()
 		Register(mp_Timer);
 		Register(mp_Fall);
 		Register(mp_Bungee);
+		Register(mp_ssManager);
 	}
 
 }
