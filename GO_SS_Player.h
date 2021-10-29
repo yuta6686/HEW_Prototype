@@ -15,6 +15,7 @@ public:
 
     virtual int GetGameScene(void) override { return GAME_SCENE; }
 
+    D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
 
 private:
     //GameScene

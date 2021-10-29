@@ -4,6 +4,8 @@
 #include "GO_SS_BackGround.h"
 #include "GO_SS_PseudoMove.h"
 #include "GO_SS_Target.h"
+#include "GO_SS_ShotString.h"
+
 /*---------------------------------------------
 				コンストラクタ
 ---------------------------------------------*/
@@ -30,6 +32,7 @@ void GO_SS_Manager::Create()
 		mp_ssWall = nullptr;
 		mp_ssPseudoMove= nullptr;
 		mp_ssTarget = nullptr;
+		mp_ssShotString = nullptr;
 	}
 
 	//new
@@ -40,6 +43,7 @@ void GO_SS_Manager::Create()
 		mp_ssPseudoMove = new GO_SS_PseudoMove;
 
 		mp_ssTarget = new GO_SS_Target;
+		mp_ssShotString = new GO_SS_ShotString;
 	}
 
 	//Register
@@ -49,6 +53,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssWall);
 		Register(mp_ssPseudoMove);
 		Register(mp_ssTarget);
+		Register(mp_ssShotString);
 	}
 }
 
@@ -61,6 +66,7 @@ void GO_SS_Manager::SetGameObject()
 {
 	mp_ssPseudoMove->SetBackGround(mp_ssBackGround);
 	mp_ssPseudoMove->SetPlayer(mp_ssPlayer);
+	mp_ssShotString->SetPlayer(mp_ssPlayer);
 }
 /*---------------------------------------------
 *				デストラクタ
