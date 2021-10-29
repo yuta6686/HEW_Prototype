@@ -20,11 +20,13 @@ public:
 private:
     //テクスチャ用変数
     int BackGround_Texture;
-    char TEX_NAME[128] = "data/TEXTURE/wall.png";
+    char TEX_NAME[128] = "data/TEXTURE/mati.png";
 
     //ゲームシーン用変数
     const int GAME_SCENE = GAMESCENE_BUNGEE_JUMP;
 
     VERTEX_BACKGROUND BackGround_Vertex;
+
+    const FLOAT UC_SCROLL = 0.001f;
 };
 
