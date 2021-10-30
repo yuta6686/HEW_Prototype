@@ -8,7 +8,7 @@
 void GO_SS_Communication::Update(void)
 {
 	SetShotStringPlayer(); 
-	JumpMoveBackGround();
+	JumpMoveBackGround_Pat1();
 }
 
 void GO_SS_Communication::SetShotStringPlayer()
@@ -22,7 +22,7 @@ void GO_SS_Communication::SetShotStringPlayer()
 //	必要なものは？		ー＞ジャンプしたときのフラグ、フレームを測る変数(int)
 //							angle
 //	どう動かす？		ー＞ジャンプフラグが上がって数フレーム間、AddU(cosf(angle));
-void GO_SS_Communication::JumpMoveBackGround()
+void GO_SS_Communication::JumpMoveBackGround_Pat1()
 {
 	if (!m_pPlayer->IsJump)return;
 

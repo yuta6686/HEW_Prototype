@@ -50,6 +50,7 @@ private:
 
     //ƒƒ“ƒoŠÖ”
     void SetShotStringPlayer();
-    void JumpMoveBackGround();
+
+    void JumpMoveBackGround_Pat1();
 };
 
