@@ -13,16 +13,28 @@ public:
 	virtual void Draw(void) override;
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
+	//ゲッター
+	FLOAT GetAngle(void) { return String_Vertex.angle; }
+
+	//セッター
 	void SetPos(D3DXVECTOR2 pos) { String_Vertex.pos = pos; }
 
-	FLOAT GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2);
+
 
 private:
+	//ゲームシーン用
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
+
+	//テクスチャ用
 	char TEX_NAME[64] = "data/TEXTURE/String.png";
 	int String_Texture;
 
+	//頂点パラメータ
 	VERTEX_SHOOTSTIRNG String_Vertex;
+
+	//カーソルポジション
 	D3DXVECTOR2 CursorPos;
 	
+	//カーソルとプライヤーの距離取得
+	FLOAT GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2);
 };
