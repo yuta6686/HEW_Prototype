@@ -9,6 +9,7 @@ void GO_SS_ShotString::Initialize(void)
 	String_Vertex.size.y = 5.0f;
 	String_Vertex.pos = D3DXVECTOR2(0.0f, 0.0f);
 	String_Vertex.angle = 0.0f;
+
 }
 
 void GO_SS_ShotString::Finalize(void)
@@ -34,6 +35,8 @@ void GO_SS_ShotString::Update(void)
 	if (IsMouseLeftTriggered()) {
 		String_Vertex.size.x = 0.0f;
 	}
+
+	
 
 	//…‚Ì’·‚³‚ªƒJ[ƒ\ƒ‹‚Æ‚Ì‹——£‚Ü‚Å‚É§ŒÀ
 	if (GetDistance(String_Vertex.pos, CursorPos) * 2.0f <= String_Vertex.size.x) {
