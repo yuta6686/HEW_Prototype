@@ -134,9 +134,9 @@
     <ClCompile Include="GO_Scramble.cpp" />
     <ClCompile Include="GO_ScrambleRotation.cpp" />
     <ClCompile Include="GO_SS_BackGround.cpp" />
+    <ClCompile Include="GO_SS_Communication.cpp" />
     <ClCompile Include="GO_SS_Manager.cpp" />
     <ClCompile Include="GO_SS_Player.cpp" />
-    <ClCompile Include="GO_SS_PseudoMove.cpp" />
     <ClCompile Include="GO_SS_Target.cpp" />
     <ClCompile Include="GO_SS_Wall.cpp" />
     <ClCompile Include="GO_SS_ShotString.cpp" />
@@ -165,9 +165,9 @@
     <ClInclude Include="GO_Scramble.h" />
     <ClInclude Include="GO_ScrambleRotation.h" />
     <ClInclude Include="GO_SS_BackGround.h" />
+    <ClInclude Include="GO_SS_Communication.h" />
     <ClInclude Include="GO_SS_Manager.h" />
     <ClInclude Include="GO_SS_Player.h" />
-    <ClInclude Include="GO_SS_PseudoMove.h" />
     <ClInclude Include="GO_SS_Target.h" />
     <ClInclude Include="GO_SS_Wall.h" />
     <ClInclude Include="GO_SS_ShotString.h" />

@@ -17,7 +17,16 @@ public:
 
     virtual int GetGameScene(void) override {  return GAME_SCENE;  }
 
+
+  
+
+    void AddU(FLOAT add) { BackGround_Vertex.u += add; }
+    void SubU(FLOAT sub) { BackGround_Vertex.u -= sub; }
+
 private:
+    void AddU(void) { BackGround_Vertex.u += UV_SCROLL; }
+    void SubU(void) { BackGround_Vertex.u -= UV_SCROLL; }
+
     //テクスチャ用変数
     int BackGround_Texture;
     char TEX_NAME[128] = "data/TEXTURE/mati.png";
@@ -27,6 +36,6 @@ private:
 
     VERTEX_BACKGROUND BackGround_Vertex;
 
-    const FLOAT UC_SCROLL = 0.001f;
+    const FLOAT UV_SCROLL = 0.001f;
 };
 

@@ -117,13 +117,13 @@
     <ClCompile Include="GO_SS_BackGround.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_PseudoMove.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
     <ClCompile Include="GO_SS_Target.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_ShotString.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Communication.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
   </ItemGroup>
@@ -206,13 +206,13 @@
     <ClInclude Include="GO_SS_BackGround.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
-    <ClInclude Include="GO_SS_PseudoMove.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
-    </ClInclude>
     <ClInclude Include="GO_SS_Target.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_ShotString.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Communication.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
   </ItemGroup>

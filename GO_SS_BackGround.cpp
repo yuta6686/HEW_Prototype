@@ -15,13 +15,12 @@ void GO_SS_BackGround::Finalize(void)
 
 void GO_SS_BackGround::Update(void)
 {
-
 	if (GetKeyboardPress(DIK_D)) {
-		BackGround_Vertex.u += 0.001f;
+		AddU();
 	}
-	
+
 	if (GetKeyboardPress(DIK_A)) {
-		BackGround_Vertex.u -= 0.001f;
+		SubU();
 	}
 }
 
