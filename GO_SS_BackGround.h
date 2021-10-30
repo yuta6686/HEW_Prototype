@@ -34,6 +34,7 @@ private:
     //ゲームシーン用変数
     const int GAME_SCENE = GAMESCENE_BUNGEE_JUMP;
 
+    //頂点座標
     VERTEX_BACKGROUND BackGround_Vertex;
 
     const FLOAT UV_SCROLL = 0.001f;

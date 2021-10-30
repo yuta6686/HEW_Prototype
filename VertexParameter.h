@@ -60,3 +60,7 @@ struct VERTEX_PLAYER :public VERTEX_NOMAL {
 struct VERTEX_BACKGROUND :public VERTEX_NOMAL {
 	FLOAT u;
 };
+
+struct VERTEX_WALL :public VERTEX_NOMAL {
+	bool use;
+};
