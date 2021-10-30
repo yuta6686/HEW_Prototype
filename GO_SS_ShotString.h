@@ -14,6 +14,7 @@ public:
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
 	void SetPlayer(GO_SS_Player* p_player) { mp_player = p_player; }
+	FLOAT GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2);
 
 private:
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;

@@ -66,6 +66,8 @@ void GO_SS_Manager::SetGameObject()
 {
 	mp_ssPseudoMove->SetBackGround(mp_ssBackGround);
 	mp_ssPseudoMove->SetPlayer(mp_ssPlayer);
+	mp_ssPseudoMove->SetWall(mp_ssWall);
+
 	mp_ssShotString->SetPlayer(mp_ssPlayer);
 }
 /*---------------------------------------------
