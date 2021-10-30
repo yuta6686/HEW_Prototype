@@ -13,6 +13,7 @@ void GO_SS_Player::Initialize(void)
 	Player_Vertex.delay = 1.0f;
 
 	m_Gravity = DEFAULT_GRAVITY;
+	IsJump = false;
 }
 /*---------------------------------------------
 *				I—¹ˆ—
@@ -28,9 +29,10 @@ void GO_SS_Player::Update(void)
 {
 	
 	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
+		IsJump = true;
 		m_Gravity = DEFAULT_GRAVITY * m_Jump;
 	}
-
+	
 	m_Gravity += GRAVITY_ACCELERATION;
 	Player_Vertex.pos.y += m_Gravity;
 }

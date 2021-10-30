@@ -17,6 +17,8 @@ public:
 
     D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
 
+    bool IsJump;
+
 private:
     //GameScene
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
