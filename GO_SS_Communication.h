@@ -52,5 +52,6 @@ private:
     void SetShotStringPlayer();
 
     void JumpMoveBackGround_Pat1();
+    void JumpMoveBackGround_Pat2();
 };
 

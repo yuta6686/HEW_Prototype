@@ -15,7 +15,13 @@ public:
 
     virtual int GetGameScene(void) override { return GAME_SCENE; }
 
+    //ÉÅÉìÉoä÷êî
+
     D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
+
+    void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
+
+    void WavePosY(FLOAT angle);
 
     bool IsJump;
 
