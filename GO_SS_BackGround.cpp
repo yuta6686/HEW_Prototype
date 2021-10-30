@@ -22,6 +22,8 @@ void GO_SS_BackGround::Update(void)
 	if (GetKeyboardPress(DIK_A)) {
 		SubU();
 	}
+
+	
 }
 
 void GO_SS_BackGround::Draw(void)
