@@ -60,13 +60,13 @@ void GO_SS_Manager::Create()
 /*---------------------------------------------
 	SetGameObject()
 -----------------------------------------------
-	ディスパッチシステムを使うので使用するかわからない。
+	
 ---------------------------------------------*/
 void GO_SS_Manager::SetGameObject()
 {
 	mp_ssCommunication->SetBackGround(mp_ssBackGround);
 	mp_ssCommunication->SetPlayer(mp_ssPlayer);
-	mp_ssShotString->SetPlayer(mp_ssPlayer);
+	mp_ssCommunication->SetShotString(mp_ssShotString);
 }
 /*---------------------------------------------
 *				デストラクタ

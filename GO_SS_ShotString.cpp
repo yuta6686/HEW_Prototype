@@ -7,6 +7,8 @@ void GO_SS_ShotString::Initialize(void)
 
 	String_Vertex.size.x = 0.0f;
 	String_Vertex.size.y = 5.0f;
+	String_Vertex.pos = D3DXVECTOR2(0.0f, 0.0f);
+	String_Vertex.angle = 0.0f;
 }
 
 void GO_SS_ShotString::Finalize(void)
@@ -15,31 +17,41 @@ void GO_SS_ShotString::Finalize(void)
 
 void GO_SS_ShotString::Update(void)
 {
-	player_Parameter.pos = mp_player->GetPos();
 	
 
-	if (IsMouseLeftTriggered())
+	
+	if(IsMouseLeftPressed())
 	{
 		CursorPos.x = GetMousePosX();
 		CursorPos.y = GetMousePosY();
 
-		angle = atan2f(CursorPos.y - player_Parameter.pos.y,
-			CursorPos.x - player_Parameter.pos.x);
+		String_Vertex.angle = atan2f(CursorPos.y - String_Vertex.pos.y,
+			CursorPos.x - String_Vertex.pos.x);
 	
-		//String_Vertex.size.x = 0.0f;
-		String_Vertex.size.x = GetDistance(player_Parameter.pos, CursorPos) * 2.0f;
 		
 	}
-	//String_Vertex.size.x += 20.0f;
+
+	if (IsMouseLeftTriggered()) {
+		String_Vertex.size.x = 0.0f;
+	}
+
+	if (GetDistance(String_Vertex.pos, CursorPos) * 2.0f <= String_Vertex.size.x) {
+		String_Vertex.size.x = GetDistance(String_Vertex.pos, CursorPos) * 2.0f;
+	}
+	else {
+		String_Vertex.size.x += 20.0f;
+	}
+	
 }
 
 void GO_SS_ShotString::Draw(void)
 {
-	DrawSpriteColorRotate(String_Texture, player_Parameter.pos.x, player_Parameter.pos.y, String_Vertex.size.x, String_Vertex.size.y,
-		0.1f, 0.1f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), angle);
+	DrawSpriteColorRotate(String_Texture, String_Vertex.pos.x, String_Vertex.pos.y,
+		String_Vertex.size.x, String_Vertex.size.y,
+		0.1f, 0.1f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
 }
 
 FLOAT GO_SS_ShotString::GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2)
 {
-	return sqrt(pow(((double)p1.x - (double)p2.x), 2) + pow((double)p1.y - (double)p2.y, 2));
+	return sqrtf(powf(p1.x - p2.x, 2) + powf(p1.y - p2.y, 2));
 }

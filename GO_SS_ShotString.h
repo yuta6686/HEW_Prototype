@@ -13,7 +13,8 @@ public:
 	virtual void Draw(void) override;
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
-	void SetPlayer(GO_SS_Player* p_player) { mp_player = p_player; }
+	void SetPos(D3DXVECTOR2 pos) { String_Vertex.pos = pos; }
+
 	FLOAT GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2);
 
 private:
@@ -21,9 +22,7 @@ private:
 	char TEX_NAME[64] = "data/TEXTURE/String.png";
 	int String_Texture;
 
-	GO_SS_Player* mp_player;
-	VERTEX_NOMAL player_Parameter;
-	VERTEX_NOMAL String_Vertex;
+	VERTEX_SHOOTSTIRNG String_Vertex;
 	D3DXVECTOR2 CursorPos;
-	float angle;
+	
 };

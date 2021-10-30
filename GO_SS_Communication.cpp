@@ -12,6 +12,6 @@ void GO_SS_Communication::Update(void)
 
 void GO_SS_Communication::SetShotStringPlayer()
 {
-	//m_pShotString->SetPos(m_pPlayer->GetPos());
+	m_pShotString->SetPos(m_pPlayer->GetPos());
 }
 
