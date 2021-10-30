@@ -17,24 +17,25 @@ void GO_SS_ShotString::Finalize(void)
 
 void GO_SS_ShotString::Update(void)
 {
-	
-
-	
+	//押されている間
 	if(IsMouseLeftPressed())
 	{
+		//カーソル取得
 		CursorPos.x = GetMousePosX();
 		CursorPos.y = GetMousePosY();
 
+
+		//プレイヤーとカーソルの角度取得
 		String_Vertex.angle = atan2f(CursorPos.y - String_Vertex.pos.y,
 			CursorPos.x - String_Vertex.pos.x);
-	
-		
 	}
 
+	//押されたら
 	if (IsMouseLeftTriggered()) {
 		String_Vertex.size.x = 0.0f;
 	}
 
+	//糸の長さがカーソルとの距離までに制限
 	if (GetDistance(String_Vertex.pos, CursorPos) * 2.0f <= String_Vertex.size.x) {
 		String_Vertex.size.x = GetDistance(String_Vertex.pos, CursorPos) * 2.0f;
 	}
