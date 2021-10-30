@@ -77,7 +77,7 @@ void GO_SS_Communication::JumpMoveBackGround_Pat2()
 	}
 
 	if (JumpCounter <= 1) {
-		JumpCountMax = (int)(cosf(m_pShotString->GetAngle())) * 180.0f;
+		JumpCountMax = (int)(cosf(cosf(m_pShotString->GetAngle())) * 180.0f);
 	}
 }
 
