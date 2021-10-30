@@ -33,6 +33,7 @@ void GO_SS_ShotString::Update(void)
 
 	//‰Ÿ‚³‚ê‚½‚ç
 	if (IsMouseLeftTriggered()) {
+		IsClick = true;
 		String_Vertex.size.x = 0.0f;
 	}
 

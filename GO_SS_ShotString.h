@@ -19,7 +19,8 @@ public:
 	//セッター
 	void SetPos(D3DXVECTOR2 pos) { String_Vertex.pos = pos; }
 
-
+	//public 変数
+	bool IsClick = false;
 
 private:
 	//ゲームシーン用

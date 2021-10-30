@@ -45,6 +45,12 @@ void GO_SS_Player::Draw(void)
 		Player_Vertex.size.x, Player_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
+void GO_SS_Player::WavePosY(FLOAT angle)
+{
+	FLOAT posy = Player_Vertex.pos.y;
+	Player_Vertex.pos.y -= (posy / 7.0f) * sinf(angle);
+}
+
 
 
 
