@@ -3,7 +3,7 @@
 #include "GO_SS_BackGround.h"
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
-
+#include <cmath>
 
 void GO_SS_Communication::Update(void)
 {
@@ -61,23 +61,26 @@ void GO_SS_Communication::JumpMoveBackGround_Pat1()
 
 }
 
+//ƒNƒŠƒbƒN‚µ‚½‚ç“®‚­
 void GO_SS_Communication::JumpMoveBackGround_Pat2()
 {
 	if (!m_pShotString->IsClick)return;
 
 	if (JumpCounter >= JumpCountMax) {
-		m_pShotString->IsClick = false;
 		m_pPlayer->SetGravityDefault();
+		m_pShotString->IsClick = false;
 		JumpCounter = 0;
 	}
 	else {
 		m_pBackGround->AddU(cosf(m_pShotString->GetAngle()) / 100.0f);
-		m_pPlayer->WavePosY((float)(JumpCounter) * RADIAN);
+
+		m_pPlayer->WavePos((float)(JumpCounter) * RADIAN);
+
 		JumpCounter++;
 	}
 
 	if (JumpCounter <= 1) {
-		JumpCountMax = (int)(cosf(cosf(m_pShotString->GetAngle())) * 180.0f);
+		JumpCountMax = (int)(fabs(cosf(m_pShotString->GetAngle())* 60.0f));
 	}
 }
 
