@@ -75,7 +75,7 @@ void GO_SS_ShotString::DebugOut(void)
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
 	wsprintf(g_DebugStr, WINDOW_CAPTION);
 	wsprintf(&g_DebugStr[strlen(g_DebugStr)], " angle:%d",
-		(int)(String_Vertex.angle * (FLOAT)180.0f / (FLOAT)PI) );
+		(int)(String_Vertex.angle * (FLOAT)180.0f / (FLOAT)PI));
 
 	SetWindowText(GethWnd()[0], g_DebugStr);
 #endif

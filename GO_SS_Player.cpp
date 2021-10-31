@@ -69,7 +69,7 @@ void GO_SS_Player::WavePosMinus(FLOAT angle)
 	FLOAT posy = Player_Vertex.pos.y;
 	FLOAT centerx = (SCREEN_WIDTH / 2.0f - posx);
 
-	Player_Vertex.pos.y -= (posy / 100.0f) * sinf(angle);
+	Player_Vertex.pos.y -= (posy / 10.0f) * sinf(angle);
 	Player_Vertex.pos.x -= (100.0f / 10.0f) * cosf(angle);
 }
 
