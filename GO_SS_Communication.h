@@ -16,6 +16,13 @@ class GO_SS_Player;
 class GO_SS_Wall;
 class GO_SS_ShotString;
 
+enum PlayerMove {
+    PLAYERMOVE_NONE,
+    PLAYERMOVE_NOJUMP,
+    PLAYERMOVE_YESJUMP,
+    PLAYERMOVE_MAX,
+};
+
 class GO_SS_Communication :
     public GameObject
 {
@@ -51,7 +58,10 @@ private:
     //ÉÅÉìÉoä÷êî
     void SetShotStringPlayer();
 
-    void JumpMoveBackGround_Pat1();
-    void JumpMoveBackGround_Pat2();
+    void JumpMoveBackGround_NoJump();
+    void JumpMoveBackGround_YesJump();
+
+    void PlayerMoveSwitch(PlayerMove index);
 };
+
 

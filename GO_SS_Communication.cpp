@@ -7,80 +7,120 @@
 
 void GO_SS_Communication::Update(void)
 {
+	//ShotStringにプレイヤーのポジション登録
 	SetShotStringPlayer(); 
 
-	int index = 2;
-	switch (index)
-	{
-	case 1:
-		JumpMoveBackGround_Pat1();
-		break;
+	/*	プライヤーの挙動	-> 切り替え(index)
+	
+		PLAYERMOVE_NOJUMP
+		PLAYERMOVE_YESJUMP
+	*/
+	PlayerMove index = PLAYERMOVE_YESJUMP;
 
-	case 2:
-		JumpMoveBackGround_Pat2();
-		break;
-	default:
-		break;
-	}
+
+	PlayerMoveSwitch(index);
 	
 }
 
 void GO_SS_Communication::SetShotStringPlayer()
 {
 	m_pShotString->SetPos(m_pPlayer->GetPos());
-
-	
 }
 
 //-----------------------------------------------------------------------------------------
 //	JumpMoveBackGround_Pat1()
 //-----------------------------------------------------------------------------------------
 //	アングルのcosθ分、背景を動かす
-//	なんフレーム？		ー＞120くらい
+//	なんフレーム？		ー＞120くらい	ー＞Angleによって変わる
 //	どのタイミング？	ー＞ジャンプ(space key )が押されたら
 //	必要なものは？		ー＞ジャンプしたときのフラグ、フレームを測る変数(int)
 //							angle
 //	どう動かす？		ー＞ジャンプフラグが上がって数フレーム間、AddU(cosf(angle));
 //-----------------------------------------------------------------------------------------
-void GO_SS_Communication::JumpMoveBackGround_Pat1()
+void GO_SS_Communication::JumpMoveBackGround_NoJump()
 {
-	if (!m_pPlayer->IsJump)return;
+	//糸を出したら
+	if (!m_pShotString->IsClick)return;
 
+	//カウンターが上限に達したら
 	if (JumpCounter >= JumpCountMax) {
-		m_pPlayer->IsJump = false;
+
+		//ショットストリングのクリックフラグ下ろす
+		m_pShotString->IsClick = false;
+
+		//ジャンプフラグリセット
 		JumpCounter = 0;
 	}
 	else {
+
+		//背景スクロール処理
 		m_pBackGround->AddU(cosf(m_pShotString->GetAngle()) / 100.0f);
+
+		//カウンターインクリメント
 		JumpCounter++;
 	}
 
+	//ジャンプ中の最初の1回だけ
 	if (JumpCounter <= 1) {
+		//カウンター上限調整
 		JumpCountMax = (int)(cosf(cosf(m_pShotString->GetAngle())) * 60.0f);
 	}
 
 }
 
 //クリックしたら動く
-void GO_SS_Communication::JumpMoveBackGround_Pat2()
+void GO_SS_Communication::JumpMoveBackGround_YesJump()
 {
+	//糸を出したら
 	if (!m_pShotString->IsClick)return;
 
+	//カウンターが上限に達したら
 	if (JumpCounter >= JumpCountMax) {
+		//重力リセット
 		m_pPlayer->SetGravityDefault();
+
+		//ショットストリングのクリックフラグ下ろす
 		m_pShotString->IsClick = false;
+
+		//ジャンプカウンターリセット
 		JumpCounter = 0;
 	}
 	else {
+		//背景スクロール処理
 		m_pBackGround->AddU(cosf(m_pShotString->GetAngle()) / 100.0f);
 
+		//プライヤーの動き調整
 		m_pPlayer->WavePos((float)(JumpCounter) * RADIAN);
-
+	
+		//カウンター
 		JumpCounter++;
 	}
 
+	//ジャンプ中の最初の1回だけ
 	if (JumpCounter <= 1) {
+
+		//ジャンプのフレーム数調整
 		JumpCountMax = (int)(fabs(cosf(m_pShotString->GetAngle())* 60.0f));
+	}
+}
+
+void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
+{
+	//プライヤーの動きー＞切り替え可能
+	switch (index)
+	{
+	case PLAYERMOVE_NONE:
+		break;
+	case PLAYERMOVE_NOJUMP:
+		JumpMoveBackGround_NoJump();
+		break;
+	case PLAYERMOVE_YESJUMP:
+		JumpMoveBackGround_YesJump();
+		break;
+	case PLAYERMOVE_MAX:
+		break;
+	default:
+		break;
 	}
 }
 
