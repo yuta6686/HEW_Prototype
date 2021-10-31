@@ -101,10 +101,10 @@ void GO_SS_Communication::JumpMoveBackGround_YesJump()
 		if (angle >= 90 && angle < 180
 			|| angle >= -180 && angle < -90) {
 
-			m_pPlayer->WavePosPlus((float)(JumpCounter * 2.0f)*RADIAN);
+			m_pPlayer->WavePosPlus((float)(JumpCounter)*RADIAN);
 		}
 		else {
-			m_pPlayer->WavePosMinus((float)(JumpCounter * 2.0f) * RADIAN );
+			m_pPlayer->WavePosMinus((float)(JumpCounter) * RADIAN );
 		}
 		
 

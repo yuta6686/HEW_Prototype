@@ -53,7 +53,7 @@ private:
 
     //ƒƒ“ƒo•Ï”
     int JumpCounter = 0;
-    int JumpCountMax = 30;
+    int JumpCountMax = 60;
 
     //ƒƒ“ƒoŠÖ”
     void SetShotStringPlayer();

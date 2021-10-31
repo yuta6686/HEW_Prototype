@@ -59,17 +59,17 @@ void GO_SS_Player::WavePosPlus(FLOAT angle)
 	FLOAT posy = Player_Vertex.pos.y;
 	FLOAT centerx = (SCREEN_WIDTH / 2.0f - posx);
 
-	Player_Vertex.pos.y -= (posy / 10.0f) * sinf(angle);
+	Player_Vertex.pos.y -= (posy / 5.0f) * sinf(angle);
 	Player_Vertex.pos.x += (100.0f / 10.0f) * cosf(angle);
 }
 
 void GO_SS_Player::WavePosMinus(FLOAT angle)
 {
 	FLOAT posx = Player_Vertex.pos.x;
-	FLOAT posy = Player_Vertex.pos.y;
+	FLOAT posy =  Player_Vertex.pos.y;
 	FLOAT centerx = (SCREEN_WIDTH / 2.0f - posx);
 
-	Player_Vertex.pos.y -= (posy / 10.0f) * sinf(angle);
+	Player_Vertex.pos.y -= (posy / 5.0f) * sinf(angle);
 	Player_Vertex.pos.x -= (100.0f / 10.0f) * cosf(angle);
 }
 
