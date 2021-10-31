@@ -1,6 +1,10 @@
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
 
+#ifdef _DEBUG
+static char	g_DebugStr[2048] = WINDOW_CAPTION;	// デバッグ文字表示用
+#endif
+
 void GO_SS_ShotString::Initialize(void)
 {
 	String_Texture = LoadTexture(TEX_NAME);
@@ -18,6 +22,9 @@ void GO_SS_ShotString::Finalize(void)
 
 void GO_SS_ShotString::Update(void)
 {
+
+	DebugOut();
+
 	//押されている間
 	if(IsMouseLeftPressed())
 	{
@@ -27,8 +34,10 @@ void GO_SS_ShotString::Update(void)
 
 
 		//プレイヤーとカーソルの角度取得
-		String_Vertex.angle = atan2f(CursorPos.y - String_Vertex.pos.y,
-			CursorPos.x - String_Vertex.pos.x);
+		String_Vertex.angle = atan2f(String_Vertex.pos.y - CursorPos.y,
+			String_Vertex.pos.x - CursorPos.x);
+
+
 	}
 
 	//押されたら
@@ -53,10 +62,21 @@ void GO_SS_ShotString::Draw(void)
 {
 	DrawSpriteColorRotate(String_Texture, String_Vertex.pos.x, String_Vertex.pos.y,
 		String_Vertex.size.x, String_Vertex.size.y,
-		0.1f, 0.1f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
+		0.0f, 0.0f, 0.8f, 0.8f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
 }
 
 FLOAT GO_SS_ShotString::GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2)
 {
 	return sqrtf(powf(p1.x - p2.x, 2) + powf(p1.y - p2.y, 2));
+}
+
+void GO_SS_ShotString::DebugOut(void)
+{
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+	wsprintf(g_DebugStr, WINDOW_CAPTION);
+	wsprintf(&g_DebugStr[strlen(g_DebugStr)], " angle:%d",
+		(int)(String_Vertex.angle * (FLOAT)180.0f / (FLOAT)PI) );
+
+	SetWindowText(GethWnd()[0], g_DebugStr);
+#endif
 }

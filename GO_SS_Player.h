@@ -21,7 +21,8 @@ public:
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
 
-    void WavePos(FLOAT angle);
+    void WavePosPlus(FLOAT angle);
+    void WavePosMinus(FLOAT angle);
 
     bool IsJump;
 

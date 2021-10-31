@@ -89,8 +89,19 @@ void GO_SS_Communication::JumpMoveBackGround_YesJump()
 		//背景スクロール処理
 		m_pBackGround->AddU(cosf(m_pShotString->GetAngle()) / 100.0f);
 
+		FLOAT angle = m_pShotString->GetAngle() * (FLOAT)180.0f / (FLOAT)PI;
+
 		//プライヤーの動き調整
-		m_pPlayer->WavePos((float)(JumpCounter) * RADIAN);
+		if (angle >= 90 && angle < 180
+			|| angle >= -360 && angle < -180) {
+
+			m_pPlayer->WavePosPlus((float)(JumpCounter * 2.0f)*RADIAN);
+		}
+		else {
+			m_pPlayer->WavePosMinus((float)(JumpCounter * 2.0f) * RADIAN );
+		}
+		
+
 	
 		//カウンター
 		JumpCounter++;

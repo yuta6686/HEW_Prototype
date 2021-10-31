@@ -14,12 +14,12 @@
 #include "scene.h"
 #include "fade.h"
 #include "sprite.h"
+#include "GameFramework.h"
 
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define CLASS_NAME			"GameWindow"			// ウインドウのクラス名
-#define WINDOW_CAPTION		"シーン遷移"			// ウインドウのキャプション名
+
 
 //*****************************************************************************
 // 構造体定義
@@ -35,18 +35,24 @@ void Update(void);
 void Draw(void);
 
 
+
 //*****************************************************************************
 // グローバル変数:
 //*****************************************************************************
 long g_MouseX = 0;
 long g_MouseY = 0;
 
-#ifdef _DEBUG
-int		g_CountFPS;							// FPSカウンタ
-char	g_DebugStr[2048] = WINDOW_CAPTION;	// デバッグ文字表示用
 
+
+#ifdef _DEBUG
+HWND* phWnd;
+int		g_CountFPS;							// FPSカウンタ
+static char	g_DebugStr[2048] = WINDOW_CAPTION;	// デバッグ文字表示用
 #endif
 
+#ifdef _DEBUG
+HWND* GethWnd(void) { return phWnd; }
+#endif
 											//=============================================================================
 // メイン関数
 //=============================================================================
@@ -81,6 +87,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	HWND		hWnd;
 	MSG			msg;
 	
+#ifdef _DEBUG
+	phWnd = &hWnd;
+#endif
+
 	// ウィンドウクラスの登録
 	RegisterClassEx(&wcex);
 

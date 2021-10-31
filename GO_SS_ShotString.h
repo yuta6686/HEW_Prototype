@@ -27,7 +27,7 @@ private:
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
 
 	//テクスチャ用
-	char TEX_NAME[64] = "data/TEXTURE/String.png";
+	char TEX_NAME[64] = "data/TEXTURE/String1.png";
 	int String_Texture;
 
 	//頂点パラメータ
@@ -38,4 +38,7 @@ private:
 	
 	//カーソルとプライヤーの距離取得
 	FLOAT GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2);
+
+	//デバッグ用
+	void DebugOut(void);
 };
