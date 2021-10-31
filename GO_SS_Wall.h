@@ -23,7 +23,7 @@ public:
 private:
     //テクスチャ用変数
     int Wall_Texture;
-    char TEX_NAME[128] = "data/TEXTURE/wall.png";
+    char TEX_NAME[128] = "data/TEXTURE/wall1.png";
 
     //ゲームシーン
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
