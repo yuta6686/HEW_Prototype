@@ -20,6 +20,7 @@ void GO_SS_Communication::Update(void)
 
 	PlayerMoveSwitch(index);
 	
+	TergetUpdate();
 }
 
 void GO_SS_Communication::SetShotStringPlayer()
@@ -139,5 +140,11 @@ void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
 	default:
 		break;
 	}
+}
+
+//
+void GO_SS_Communication::TergetUpdate()
+{
+	/* èëÇ≠èÍèä */
 }
 

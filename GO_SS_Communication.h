@@ -62,6 +62,8 @@ private:
     void JumpMoveBackGround_YesJump();
 
     void PlayerMoveSwitch(PlayerMove index);
+
+    void TergetUpdate();
 };
 
 
