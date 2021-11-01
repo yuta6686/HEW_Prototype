@@ -10,6 +10,7 @@ void GO_SS_Wall::Initialize(void)
         m_vWall[i].use = false;
     }
     
+    once = true;
 }
 
 void GO_SS_Wall::Finalize(void)
@@ -18,6 +19,7 @@ void GO_SS_Wall::Finalize(void)
 
 void GO_SS_Wall::Update(void)
 {
+    SetWallOnce();
 }
 
 void GO_SS_Wall::Draw(void)
@@ -58,6 +60,19 @@ void GO_SS_Wall::SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size)
         m_vWall[i].pos = pos;
         m_vWall[i].size = size;
         m_vWall[i].use = true;
+    }
+}
+
+void GO_SS_Wall::SetWallOnce()
+{
+    if (once) {
+        once = false;
+        
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 16; j++) {
+                SetWall(D3DXVECTOR2( WALL_WIDTH * j,WALL_HEIGHT*i),D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
+            }
+        }
     }
 }
 

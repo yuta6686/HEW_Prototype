@@ -62,7 +62,7 @@ void GO_SS_ShotString::Draw(void)
 {
 	DrawSpriteColorRotate(String_Texture, String_Vertex.pos.x, String_Vertex.pos.y,
 		String_Vertex.size.x, String_Vertex.size.y,
-		0.0f, 0.0f, 0.8f, 0.8f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
+		0.0f, 0.0f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
 }
 
 FLOAT GO_SS_ShotString::GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2)
