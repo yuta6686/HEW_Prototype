@@ -31,9 +31,15 @@ private:
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
     
     //íËêîíËã`
-    static const int WALL_NUM_MAX = 100;
-    const float WALL_WIDTH = SCREEN_WIDTH / 16.0f;
-    const float WALL_HEIGHT = SCREEN_HEIGHT / 9.0f;
+    static const int WALL_NUM_MAX = 300;
+
+    const int WALL_NUM_X = 32;
+    const int WALL_NUM_Y = 18;
+
+    const float WALL_WIDTH = SCREEN_WIDTH / (float)WALL_NUM_X;
+    const float WALL_HEIGHT = SCREEN_HEIGHT / (float)WALL_NUM_Y;
+
+
 
 
     //í∏ì_èÓïÒ
