@@ -127,6 +127,7 @@
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameFramework.cpp" />
+    <ClCompile Include="gameOver.cpp" />
     <ClCompile Include="GO_Bungee.cpp" />
     <ClCompile Include="GO_Fall.cpp" />
     <ClCompile Include="GO_Natto.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameFramework.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="gameOver.h" />
     <ClInclude Include="GO_Bungee.h" />
     <ClInclude Include="GO_Fall.h" />
     <ClInclude Include="GO_Natto.h" />
