@@ -25,7 +25,7 @@ public:
     void WavePosMinus(FLOAT angle);
 
     bool IsJump;
-    bool SceneTransition;
+    
 
 private:
     //GameScene

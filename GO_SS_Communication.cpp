@@ -147,6 +147,6 @@ void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
 void GO_SS_Communication::TergetUpdate()
 {
 	/* ‘‚­êŠ */
-	m_pPlayer->GetPos()
+	m_pPlayer->GetPos();
 }
 

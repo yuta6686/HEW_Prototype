@@ -1,5 +1,6 @@
 #include "GO_SS_Player.h"
 #include "GO_SS_Wall.h"
+#include "fade.h"
 #include <cmath>
 /*---------------------------------------------
 *				初期化処理
@@ -27,6 +28,14 @@ void GO_SS_Player::Finalize(void)
 ---------------------------------------------*/
 void GO_SS_Player::Update(void)
 {
+	//スペースキーが押されていて、フェード処理中ではないとき
+	if (GetPos().y >= SCREEN_HEIGHT && GetFadeState() == FADE_NONE) {
+
+		//RESULTへ移行する
+		SceneTransition(SCENE_GAMEOVER);
+	}
+
+
 	
 	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
 		IsJump = true;
