@@ -43,7 +43,17 @@ private:
 
     //Vertex Parameter
     VERTEX_PLAYER Player_Vertex;
-protected:
 
+//メンバ関数
+
+    //プライヤーが画面下に落ちたらGameoverへ
+    void SceneToGameOver(void);
+
+    //キーボード・マウスからの入力をもらってプレイヤーの動きを処理する
+    void InputPlayerMove(void);
+
+    //プレイヤーの重力処理
+    void PlayerGravity(void);
+    
 };
 

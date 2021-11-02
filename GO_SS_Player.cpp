@@ -28,30 +28,16 @@ void GO_SS_Player::Finalize(void)
 ---------------------------------------------*/
 void GO_SS_Player::Update(void)
 {
-	//スペースキーが押されていて、フェード処理中ではないとき
-	if (GetPos().y >= SCREEN_HEIGHT && GetFadeState() == FADE_NONE) {
+	//プライヤーが画面下に落ちたらGameoverへ
+	SceneToGameOver();
+	
+	//キーボード・マウスからの入力をもらってプレイヤーの動きを処理する
+	InputPlayerMove();
 
-		//RESULTへ移行する
-		SceneTransition(SCENE_GAMEOVER);
-	}
-
+	//プレイヤーの重力処理
+	PlayerGravity();
 
 	
-	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
-		IsJump = true;
-		m_Gravity = DEFAULT_GRAVITY * m_Jump;
-	}
-	
-	if (GetKeyboardPress(DIK_A)) {
-		Player_Vertex.pos.x -= 4.0f;
-	}
-
-	if (GetKeyboardPress(DIK_D)) {
-		Player_Vertex.pos.x += 4.0f;
-	}
-
-	m_Gravity += GRAVITY_ACCELERATION;
-	Player_Vertex.pos.y += m_Gravity;
 }
 /*---------------------------------------------
 *				描画処理
@@ -62,6 +48,8 @@ void GO_SS_Player::Draw(void)
 		Player_Vertex.size.x, Player_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
+//	クリックしたときのプレイヤーの挙動
+//	カーソルがプレイヤーより右のときの処理
 void GO_SS_Player::WavePosPlus(FLOAT angle)
 {
 	FLOAT posx = Player_Vertex.pos.x;
@@ -72,6 +60,8 @@ void GO_SS_Player::WavePosPlus(FLOAT angle)
 	Player_Vertex.pos.x += (centerx / 10.0f) * cosf(angle);
 }
 
+//	クリックしたときのプレイヤーの挙動
+//	カーソルがプレイヤーより左のときの処理
 void GO_SS_Player::WavePosMinus(FLOAT angle)
 {
 	FLOAT posx = Player_Vertex.pos.x;
@@ -81,6 +71,43 @@ void GO_SS_Player::WavePosMinus(FLOAT angle)
 	Player_Vertex.pos.y -= (posy / 5.0f) * sinf(angle);
 	Player_Vertex.pos.x -= (centerx / 10.0f) * cosf(angle);
 }
+
+//プライヤーが画面下に落ちたらGameoverへ
+void GO_SS_Player::SceneToGameOver(void)
+{
+	//プライヤーが画面したにいる、フェード処理中ではないとき
+	if (GetPos().y >= SCREEN_HEIGHT && GetFadeState() == FADE_NONE) {
+
+		//GAMEOVERへ移行する
+		SceneTransition(SCENE_GAMEOVER);
+	}
+}
+
+//キーボード・マウスからの入力をもらってプレイヤーの動きを処理する
+void GO_SS_Player::InputPlayerMove(void)
+{
+	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
+		IsJump = true;
+		m_Gravity = DEFAULT_GRAVITY * m_Jump;
+	}
+
+	if (GetKeyboardPress(DIK_A)) {
+		Player_Vertex.pos.x -= 4.0f;
+	}
+
+	if (GetKeyboardPress(DIK_D)) {
+		Player_Vertex.pos.x += 4.0f;
+	}
+}
+
+//プレイヤーの重力処理
+void GO_SS_Player::PlayerGravity(void)
+{
+	m_Gravity += GRAVITY_ACCELERATION;
+	Player_Vertex.pos.y += m_Gravity;
+}
+
+
 
 
 
