@@ -11,6 +11,7 @@
 #include "title.h"
 #include "game.h"
 #include "result.h"
+#include "gameOver.h"
 #include "fade.h"
 
 
@@ -56,6 +57,10 @@ void InitScene(SCENE index)
 	case SCENE_RESULT:
 		InitResult();
 		break;
+
+	case SCENE_GAMEOVER:
+		InitGameOver();
+		break;
 	}
 }
 
@@ -80,6 +85,10 @@ void UninitScene(void)
 	case SCENE_RESULT:
 		UninitResult();
 		break;
+
+	case SCENE_GAMEOVER:
+		UninitGameOver();
+		break;
 	}
 }
 
@@ -103,6 +112,10 @@ void UpdateScene(void)
 
 	case SCENE_RESULT:
 		UpdateResult();
+		break;
+
+	case SCENE_GAMEOVER:
+		UpdateGameOver();
 		break;
 	}
 
@@ -129,6 +142,10 @@ void DrawScene(void)
 
 	case SCENE_RESULT:
 		DrawResult();
+		break;
+
+	case SCENE_GAMEOVER:
+		DrawGameOver();
 		break;
 	}
 
