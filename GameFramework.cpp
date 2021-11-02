@@ -136,9 +136,12 @@ void GameFramework::TransitionScene()
 
 	case GAMESCENE_BUNGEE_JUMP:
 		if (mp_Bungee->GetPosY() >= SCREEN_HEIGHT) {
+
 			m_GameScene = GAMESCENE_GAME_TEST;
 		}
+		break;
 
+	case GAMESCENE_GAME_TEST:
 
 		break;
 	default:
