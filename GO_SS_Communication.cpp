@@ -3,6 +3,7 @@
 #include "GO_SS_BackGround.h"
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
+#include "GO_SS_Target.h"
 #include <cmath>
 
 void GO_SS_Communication::Update(void)
@@ -146,5 +147,6 @@ void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
 void GO_SS_Communication::TergetUpdate()
 {
 	/* ‘‚­êŠ */
+	m_pPlayer->GetPos()
 }
 
