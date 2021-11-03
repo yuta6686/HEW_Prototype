@@ -176,3 +176,11 @@ void CheckScene(void)
 		InitScene(g_SceneNextIndex);
 	}
 }
+
+
+
+
+
+void Scene::Begin()
+{
+}

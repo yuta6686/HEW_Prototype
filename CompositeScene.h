@@ -1,35 +1,11 @@
 #pragma once
-#include <vector>
+#include "scene.h"
 
-// 登録シーン一覧
-enum SCENE
+class CompositScene :
+    public Scene
 {
-	SCENE_NONE,		//シーン処理なし
-	SCENE_TITLE,	//タイトル
-	SCENE_GAME,		//ゲーム
-	SCENE_RESULT,	//リザルト
-	SCENE_GAMEOVER,	//ゲームオーバー
-
-	SCENE_MAX		//最後だとわかる奴をいれる
-};
-
-void InitScene(SCENE index);
-void UninitScene(void);
-void UpdateScene(void);
-void DrawScene(void);
-
-void SetScene(SCENE index);
-void CheckScene(void);
-
-class Scene
-{
-protected:
-	//子シーン配列
-	std::vector<Scene*> m_SceneAry;
-
-	//親シーン
-	Scene* m_pParent;
-
+private:
+	
 public:
 	//子シーンを追加
 	virtual void AddScene(Scene* s) {
@@ -56,4 +32,7 @@ public:
 
 	//シーン開始
 	virtual void Begin();
+
+	
 };
+

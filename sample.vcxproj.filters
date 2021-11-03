@@ -43,6 +43,9 @@
     <Filter Include="ソース ファイル\GameObjects\GO_SS">
       <UniqueIdentifier>{0de75e5b-a027-4e56-b1c8-40d3a23b8623}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\Composite">
+      <UniqueIdentifier>{1cbdfa60-569a-4a0e-ad42-53338c1b32c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -131,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="GO_SS_Collision.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Com_Scene.cpp">
+      <Filter>ソース ファイル\Scene\Composite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +231,9 @@
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_Collision.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
