@@ -18,6 +18,9 @@ public:
     //メンバ関数
 
     D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
+    D3DXVECTOR2 GetSize() { return  Player_Vertex.size; }
+    
+    
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
 
@@ -25,7 +28,7 @@ public:
     void WavePosMinus(FLOAT angle);
 
     bool IsJump;
-    bool SceneTransition;
+    bool IsColl;
 
 private:
     //GameScene
@@ -43,7 +46,17 @@ private:
 
     //Vertex Parameter
     VERTEX_PLAYER Player_Vertex;
-protected:
 
+//メンバ関数
+
+    //プライヤーが画面下に落ちたらGameoverへ
+    void SceneToGameOver(void);
+
+    //キーボード・マウスからの入力をもらってプレイヤーの動きを処理する
+    void InputPlayerMove(void);
+
+    //プレイヤーの重力処理
+    void PlayerGravity(void);
+    
 };
 

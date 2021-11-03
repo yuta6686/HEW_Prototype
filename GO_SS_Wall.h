@@ -16,6 +16,8 @@ public:
 
     virtual int GetGameScene(void) override;
 
+    static const int GetWallNumMax(void) { return WALL_NUM_MAX; }
+    VERTEX_WALL GetvWall(int index) { return m_vWall[index]; }
 
     void SetWall();
     void SetWall(D3DXVECTOR2 pos);
@@ -25,7 +27,7 @@ public:
 private:
     //テクスチャ用変数
     int Wall_Texture;
-    char TEX_NAME[128] = "data/TEXTURE/wall1.png";
+    char TEX_NAME[128] = "data/TEXTURE/wall.png";
 
     //ゲームシーン
     const int GAME_SCENE = GAMESCENE_GAME_TEST;

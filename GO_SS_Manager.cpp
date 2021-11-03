@@ -5,7 +5,7 @@
 #include "GO_SS_Communication.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_ShotString.h"
-
+#include "GO_SS_Collision.h"
 /*---------------------------------------------
 				コンストラクタ
 ---------------------------------------------*/
@@ -64,9 +64,15 @@ void GO_SS_Manager::Create()
 ---------------------------------------------*/
 void GO_SS_Manager::SetGameObject()
 {
-	mp_ssCommunication->SetBackGround(mp_ssBackGround);
-	mp_ssCommunication->SetPlayer(mp_ssPlayer);
-	mp_ssCommunication->SetShotString(mp_ssShotString);
+	//mp_ssComunication
+	{
+		mp_ssCommunication->SetBackGround(mp_ssBackGround);
+		mp_ssCommunication->SetPlayer(mp_ssPlayer);
+		mp_ssCommunication->SetShotString(mp_ssShotString);
+		mp_ssCommunication->SetWall(mp_ssWall);
+		mp_ssCommunication->SetTarget(mp_ssTarget);
+	}
+
 }
 /*---------------------------------------------
 *				デストラクタ

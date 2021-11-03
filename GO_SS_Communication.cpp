@@ -3,6 +3,7 @@
 #include "GO_SS_BackGround.h"
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
+#include "GO_SS_Target.h"
 #include <cmath>
 
 void GO_SS_Communication::Update(void)
@@ -15,13 +16,18 @@ void GO_SS_Communication::Update(void)
 		PLAYERMOVE_NOJUMP
 		PLAYERMOVE_YESJUMP
 	*/
-	PlayerMove index = PLAYERMOVE_YESJUMP;
-
-
-	PlayerMoveSwitch(index);
+	PlayerMoveSwitch(PLAYERMOVE_YESJUMP);
 	
+	//ターゲットの更新処理　
 	TergetUpdate();
+
+	//当たり判定の更新処理
+	m_ssCollision.CollisionUpdate();
+	
 }
+
+
+
 
 void GO_SS_Communication::SetShotStringPlayer()
 {
@@ -146,5 +152,6 @@ void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
 void GO_SS_Communication::TergetUpdate()
 {
 	/* 書く場所 */
+	m_pPlayer->GetPos();
 }
 
