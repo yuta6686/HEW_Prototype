@@ -9,12 +9,13 @@ void GO_SS_Player::Initialize(void)
 {
 	Player_Texture = LoadTexture(TEX_NAME);
 
-	Player_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH / 4, -100.0f);
+	Player_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH / 4, 100.0f);
 	Player_Vertex.size = D3DXVECTOR2(200.0f, 200.0f);
 	Player_Vertex.delay = 1.0f;
 
 	m_Gravity = DEFAULT_GRAVITY;
 	IsJump = false;
+	IsColl = false;
 }
 /*---------------------------------------------
 *				終了処理
@@ -30,7 +31,7 @@ void GO_SS_Player::Update(void)
 {
 	//プライヤーが画面下に落ちたらGameoverへ
 	SceneToGameOver();
-	
+
 	//キーボード・マウスからの入力をもらってプレイヤーの動きを処理する
 	InputPlayerMove();
 
@@ -86,6 +87,7 @@ void GO_SS_Player::SceneToGameOver(void)
 //キーボード・マウスからの入力をもらってプレイヤーの動きを処理する
 void GO_SS_Player::InputPlayerMove(void)
 {
+
 	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
 		IsJump = true;
 		m_Gravity = DEFAULT_GRAVITY * m_Jump;
@@ -103,6 +105,7 @@ void GO_SS_Player::InputPlayerMove(void)
 //プレイヤーの重力処理
 void GO_SS_Player::PlayerGravity(void)
 {
+	if (IsColl)return;
 	m_Gravity += GRAVITY_ACCELERATION;
 	Player_Vertex.pos.y += m_Gravity;
 }

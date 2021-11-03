@@ -52,6 +52,7 @@ static char	g_DebugStr[2048] = WINDOW_CAPTION;	// デバッグ文字表示用
 
 #ifdef _DEBUG
 HWND* GethWnd(void) { return phWnd; }
+char* GetDebugStr(void) { return g_DebugStr; }
 #endif
 //=============================================================================
 // メイン関数

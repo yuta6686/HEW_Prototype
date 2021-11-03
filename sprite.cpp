@@ -12,9 +12,6 @@
 // マクロ定義
 //*****************************************************************************
 #define NUM_VERTEX 4	//必要な頂点の数
-#ifdef _DEBUG
-static char	g_DebugStr[2048] = WINDOW_CAPTION;	// デバッグ文字表示用
-#endif
 
 //*****************************************************************************
 // プロトタイプ宣言
@@ -228,13 +225,6 @@ void DrawSpriteColorRotate(int texNo, float X, float Y, float Width, float Heigh
 	hh = Height * 0.5f;
 
 	float BaseAngle = atan2f(hh, hw);		// 中心点から頂点に対する角度
-
-#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
-	wsprintf(g_DebugStr, WINDOW_CAPTION);
-	wsprintf(&g_DebugStr[strlen(g_DebugStr)], " angle:%d",(BaseAngle));
-
-	SetWindowText(GethWnd()[0], g_DebugStr);
-#endif
 
 
 	D3DXVECTOR2 temp = D3DXVECTOR2(hw, hh);

@@ -18,6 +18,9 @@ public:
     //ÉÅÉìÉoä÷êî
 
     D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
+    D3DXVECTOR2 GetSize() { return  Player_Vertex.size; }
+    
+    
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
 
@@ -25,7 +28,7 @@ public:
     void WavePosMinus(FLOAT angle);
 
     bool IsJump;
-    
+    bool IsColl;
 
 private:
     //GameScene

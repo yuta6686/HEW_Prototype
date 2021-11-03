@@ -63,3 +63,4 @@ long GetMousePosX(void);
 long GetMousePosY(void);
 
 HWND* GethWnd(void);
+char* GetDebugStr(void);

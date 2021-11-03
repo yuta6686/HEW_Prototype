@@ -16,13 +16,18 @@ void GO_SS_Communication::Update(void)
 		PLAYERMOVE_NOJUMP
 		PLAYERMOVE_YESJUMP
 	*/
-	PlayerMove index = PLAYERMOVE_YESJUMP;
-
-
-	PlayerMoveSwitch(index);
+	PlayerMoveSwitch(PLAYERMOVE_YESJUMP);
 	
+	//ターゲットの更新処理　
 	TergetUpdate();
+
+	//当たり判定の更新処理
+	m_ssCollision.CollisionUpdate();
+	
 }
+
+
+
 
 void GO_SS_Communication::SetShotStringPlayer()
 {

@@ -16,6 +16,8 @@ public:
 
     virtual int GetGameScene(void) override;
 
+    static const int GetWallNumMax(void) { return WALL_NUM_MAX; }
+    VERTEX_WALL GetvWall(int index) { return m_vWall[index]; }
 
     void SetWall();
     void SetWall(D3DXVECTOR2 pos);
