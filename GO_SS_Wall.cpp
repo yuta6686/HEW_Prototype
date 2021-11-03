@@ -75,7 +75,7 @@ void GO_SS_Wall::SetWallOnce()
             for (int j = 0; j < WALL_NUM_X; j++) {
                // SetWall(D3DXVECTOR2( WALL_WIDTH * j,WALL_HEIGHT*i),D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
 
-                SetWall(D3DXVECTOR2(WALL_WIDTH * j, WALL_HEIGHT * 10), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
+                SetWall(D3DXVECTOR2(WALL_WIDTH * j, WALL_HEIGHT * 15), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
             }
            // SetWall(D3DXVECTOR2(WALL_WIDTH * 5, WALL_HEIGHT * i), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
         }

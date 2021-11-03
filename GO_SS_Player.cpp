@@ -49,6 +49,8 @@ void GO_SS_Player::Draw(void)
 		Player_Vertex.size.x, Player_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
+
+
 //	クリックしたときのプレイヤーの挙動
 //	カーソルがプレイヤーより右のときの処理
 void GO_SS_Player::WavePosPlus(FLOAT angle)
@@ -91,6 +93,7 @@ void GO_SS_Player::InputPlayerMove(void)
 	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
 		IsJump = true;
 		m_Gravity = DEFAULT_GRAVITY * m_Jump;
+		Player_Vertex.pos.y += m_Gravity;
 	}
 
 	if (GetKeyboardPress(DIK_A)) {
