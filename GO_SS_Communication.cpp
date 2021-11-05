@@ -4,6 +4,7 @@
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
 #include "GO_SS_Target.h"
+#include "GO_SS_Wall.h"
 #include <cmath>
 
 void GO_SS_Communication::Update(void)
@@ -63,6 +64,8 @@ void GO_SS_Communication::JumpMoveBackGround_NoJump()
 		//背景スクロール処理
 		m_pBackGround->AddU(cosf(m_pShotString->GetAngle()) / 100.0f);
 
+		
+
 		//カウンターインクリメント
 		JumpCounter++;
 	}
@@ -95,6 +98,9 @@ void GO_SS_Communication::JumpMoveBackGround_YesJump()
 	else {
 		//背景スクロール処理
 		m_pBackGround->SubU(cosf(m_pShotString->GetAngle()) / 100.0f);
+
+
+		m_pWall->AddX(cosf(m_pShotString->GetAngle())*10.0f);
 
 		FLOAT angle = m_pShotString->GetAngle() * (FLOAT)180.0f / (FLOAT)PI;
 
@@ -154,4 +160,6 @@ void GO_SS_Communication::TergetUpdate()
 	/* 書く場所 */
 	m_pPlayer->GetPos();
 }
+
+
 

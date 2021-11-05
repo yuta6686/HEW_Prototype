@@ -20,6 +20,14 @@ void GO_SS_Wall::Finalize(void)
 void GO_SS_Wall::Update(void)
 {
     SetWallOnce();
+
+    if (GetKeyboardPress(DIK_D)) {
+        AddX(-5.0f);
+    }
+
+    if (GetKeyboardPress(DIK_A)) {
+        AddX(5.0f);
+    }
 }
 
 void GO_SS_Wall::Draw(void)
@@ -71,14 +79,26 @@ void GO_SS_Wall::SetWallOnce()
     if (once) {
         once = false;
         
-        for (int i = 0; i < WALL_NUM_Y; i++) {
-            for (int j = 0; j < WALL_NUM_X; j++) {
-               // SetWall(D3DXVECTOR2( WALL_WIDTH * j,WALL_HEIGHT*i),D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
+        //for (int i = 0; i < WALL_NUM_Y; i++) {
+        //    for (int j = 0; j < WALL_NUM_X; j++) {
+        //       // SetWall(D3DXVECTOR2( WALL_WIDTH * j,WALL_HEIGHT*i),D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
 
-                SetWall(D3DXVECTOR2(WALL_WIDTH * j, WALL_HEIGHT * 15), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
-            }
-           // SetWall(D3DXVECTOR2(WALL_WIDTH * 5, WALL_HEIGHT * i), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
+        //        SetWall(D3DXVECTOR2(WALL_WIDTH * j, WALL_HEIGHT * 15), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
+        //    }
+        //   // SetWall(D3DXVECTOR2(WALL_WIDTH * 5, WALL_HEIGHT * i), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
+        //}
+        for (int i = 0; i < WALL_NUM_X * 5; i++) {
+            SetWall(D3DXVECTOR2(WALL_WIDTH * i, WALL_HEIGHT * 15), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
         }
+
+    }
+}
+
+void GO_SS_Wall::AddX(FLOAT x)
+{
+    for (int i = 0; i < WALL_NUM_MAX; i++) {
+        if (!m_vWall[i].use)continue;
+        m_vWall[i].pos.x += x;
     }
 }
 

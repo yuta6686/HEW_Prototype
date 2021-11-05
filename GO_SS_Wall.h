@@ -24,6 +24,8 @@ public:
     void SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size);
 
     void SetWallOnce();
+
+    void AddX(FLOAT x);
 private:
     //テクスチャ用変数
     int Wall_Texture;
@@ -41,12 +43,12 @@ private:
     const float WALL_WIDTH = SCREEN_WIDTH / (float)WALL_NUM_X;
     const float WALL_HEIGHT = SCREEN_HEIGHT / (float)WALL_NUM_Y;
 
-
-
-
     //頂点情報
     VERTEX_WALL m_vWall[WALL_NUM_MAX];
 
     bool once;
+
+    
+
 };
 
