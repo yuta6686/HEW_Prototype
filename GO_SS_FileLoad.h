@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "GameObject.h"
 #include <iostream>
 
@@ -17,15 +17,15 @@ public:
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 private:
-	static const int MAP_WIDTH_DIV = 16;	//‰¡•ªŠ„”
-	static const int MAP_HEIGHT_DIV = 9;	//c•ªŠ„”
-	static const int BLOCK_WIDTH = SCREEN_WIDTH / MAP_WIDTH_DIV;	//‰¡1ƒuƒƒbƒN‚Ì•
-	static const int BLOCK_HEIGHT = SCREEN_HEIGHT / MAP_HEIGHT_DIV;	//c1ƒuƒƒbƒN‚Ì•
+	static const int MAP_WIDTH_DIV = 16;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static const int MAP_HEIGHT_DIV = 9;	//ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static const int BLOCK_WIDTH = SCREEN_WIDTH / MAP_WIDTH_DIV;	//ï¿½ï¿½1ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½Ì•ï¿½
+	static const int BLOCK_HEIGHT = SCREEN_HEIGHT / MAP_HEIGHT_DIV;	//ï¿½c1ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½Ì•ï¿½
 
 	const char* MapFileName = "data/MapData.csv";
 
-	std::ifstream ifs;	//ƒtƒ@ƒCƒ‹ƒXƒgƒŠ[ƒ€
-	int MapData[MAP_HEIGHT_DIV][MAP_WIDTH_DIV];	//ƒ}ƒbƒvƒf[ƒ^
+	std::ifstream ifs;	//ãƒ•ã‚¡ã‚¤ãƒ«ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+	int MapData[MAP_HEIGHT_DIV][MAP_WIDTH_DIV];	//ï¿½}ï¿½bï¿½vï¿½fï¿½[ï¿½^
 
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
 };

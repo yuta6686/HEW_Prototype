@@ -1,4 +1,4 @@
-#include "GO_SS_FileLoad.h"
+ï»¿#include "GO_SS_FileLoad.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -11,7 +11,7 @@ void GO_SS_FileLoad::Initialize(void)
 	ifs.open(MapFileName);
 	if (!ifs)
 	{
-		cerr << "ƒ}ƒbƒvƒf[ƒ^‚Ì“Ç‚Ýž‚Ý‚ÉŽ¸”s" << endl;
+		cerr << "ï¿½}ï¿½bï¿½vï¿½fï¿½[ï¿½^ï¿½Ì“Ç‚Ýï¿½ï¿½Ý‚ÉŽï¿½ï¿½s" << endl;
 	}
 }
 
@@ -33,10 +33,10 @@ void GO_SS_FileLoad::MapFileLoad(void)
 	string line;
 	for (int y = 0; y < MAP_HEIGHT_DIV; y++)
 	{
-		////Žæ‚èo‚µ
+		////å–ã‚Šå‡ºã—
 		//getline(ifs,line);
 
-		////’u‚«Š·‚¦
+		////ç½®ãæ›ãˆ
 		//line.replace(line.begin(), line.end(), ',', ' ');
 
 		for (int x = 0; x < MAP_WIDTH_DIV; x++)
@@ -44,10 +44,10 @@ void GO_SS_FileLoad::MapFileLoad(void)
 			////iss
 			//istringstream iss(line);
 
-			////Žæ‚èo‚µ
+			////å–ã‚Šå‡ºã—
 			//iss >> MapData[y][x];
 
-			//Žæ‚èo‚µ
+			//ï¿½ï¿½ï¿½oï¿½ï¿½
 			ifs >> MapData[y][x];
 		}
 	}
