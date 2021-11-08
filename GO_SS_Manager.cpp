@@ -6,6 +6,7 @@
 #include "GO_SS_Target.h"
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Collision.h"
+#include "GO_SS_FileLoad.h"
 /*---------------------------------------------
 				コンストラクタ
 ---------------------------------------------*/
@@ -33,6 +34,7 @@ void GO_SS_Manager::Create()
 		mp_ssCommunication= nullptr;
 		mp_ssTarget = nullptr;
 		mp_ssShotString = nullptr;
+		mp_ssFileLoad = nullptr;
 	}
 
 	//new
@@ -44,6 +46,7 @@ void GO_SS_Manager::Create()
 
 		mp_ssTarget = new GO_SS_Target;
 		mp_ssShotString = new GO_SS_ShotString;
+		mp_ssFileLoad = new GO_SS_FileLoad;
 	}
 
 	//Register
@@ -54,6 +57,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssCommunication);
 		Register(mp_ssTarget);
 		Register(mp_ssShotString);
+		Register(mp_ssFileLoad);
 	}
 }
 
