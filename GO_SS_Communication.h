@@ -21,8 +21,8 @@ class GO_SS_Target;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
-    PLAYERMOVE_NOJUMP,
-    PLAYERMOVE_YESJUMP,
+    PLAYERMOVE_LINEAR,
+    PLAYERMOVE_CURVE,
     PLAYERMOVE_MAX,
 };
 
@@ -77,14 +77,14 @@ private:
     GO_SS_Collision m_ssCollision;      //ìñÇΩÇËîªíËÇéiÇÈé“
 
     //ÉÅÉìÉoä÷êî
-    void SetShotStringPlayer();
+    void SetShotStringParameter();
 
-    void JumpMoveBackGround_NoJump();
-    void JumpMoveBackGround_YesJump();
+    void JumpMoveBackGround_Liner();
+    void JumpMoveBackGround_Curve();
 
     void PlayerMoveSwitch(PlayerMove index);
 
-    void TergetUpdate();
+ 
 
    
 };

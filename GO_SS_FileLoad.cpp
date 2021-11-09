@@ -48,7 +48,7 @@ void GO_SS_FileLoad::MapFileLoad(void)
 			//iss >> MapData[y][x];
 
 			//���o��
-			ifs >> MapData[y][x];
+		//	ifs >> MapData[y][x];
 		}
 	}
 }

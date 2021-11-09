@@ -37,8 +37,8 @@ private:
     //íËêîíËã`
     static const int WALL_NUM_MAX = 300;
 
-    const int WALL_NUM_X = 32;
-    const int WALL_NUM_Y = 18;
+    const int WALL_NUM_X = 16;
+    const int WALL_NUM_Y = 9;
 
     const float WALL_WIDTH = SCREEN_WIDTH / (float)WALL_NUM_X;
     const float WALL_HEIGHT = SCREEN_HEIGHT / (float)WALL_NUM_Y;

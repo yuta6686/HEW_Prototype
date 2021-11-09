@@ -1,38 +1,36 @@
-
 #include "GO_SS_Communication.h"
 #include "GO_SS_BackGround.h"
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
+
 #include <cmath>
 
 void GO_SS_Communication::Update(void)
 {
 	//ShotStringにプレイヤーのポジション登録
-	SetShotStringPlayer(); 
+	SetShotStringParameter(); 
 
 	/*	プライヤーの挙動	-> 切り替え(index)
+		PLAYERMOVE_LINEAR,
+		PLAYERMOVE_CURVE,	*/
+	PlayerMoveSwitch(PLAYERMOVE_CURVE);
 	
-		PLAYERMOVE_NOJUMP
-		PLAYERMOVE_YESJUMP
-	*/
-	PlayerMoveSwitch(PLAYERMOVE_YESJUMP);
 	
-	//ターゲットの更新処理　
-	TergetUpdate();
 
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
 	
 }
 
-
-
-
-void GO_SS_Communication::SetShotStringPlayer()
+void GO_SS_Communication::SetShotStringParameter()
 {
+	//ShootString に プレイヤーのポジション登録
 	m_pShotString->SetPos(m_pPlayer->GetPos());
+
+	//ShootStringのIsClickTargetフラグにターゲットをクリックしていたらTrue
+	m_pShotString->IsClickTarget = m_pTarget->IsTergetClick();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -45,41 +43,14 @@ void GO_SS_Communication::SetShotStringPlayer()
 //							angle
 //	どう動かす？		ー＞ジャンプフラグが上がって数フレーム間、AddU(cosf(angle));
 //-----------------------------------------------------------------------------------------
-void GO_SS_Communication::JumpMoveBackGround_NoJump()
+void GO_SS_Communication::JumpMoveBackGround_Liner()
 {
-	//糸を出したら
-	if (!m_pShotString->IsClick)return;
 
-	//カウンターが上限に達したら
-	if (JumpCounter >= JumpCountMax) {
-
-		//ショットストリングのクリックフラグ下ろす
-		m_pShotString->IsClick = false;
-
-		//ジャンプフラグリセット
-		JumpCounter = 0;
-	}
-	else {
-
-		//背景スクロール処理
-		m_pBackGround->AddU(cosf(m_pShotString->GetAngle()) / 100.0f);
-
-		
-
-		//カウンターインクリメント
-		JumpCounter++;
-	}
-
-	//ジャンプ中の最初の1回だけ
-	if (JumpCounter <= 1) {
-		//カウンター上限調整
-		JumpCountMax = (int)(cosf(cosf(m_pShotString->GetAngle())) * 60.0f);
-	}
 
 }
 
 //クリックしたら動く
-void GO_SS_Communication::JumpMoveBackGround_YesJump()
+void GO_SS_Communication::JumpMoveBackGround_Curve()
 {
 	//糸を出したら
 	if (!m_pShotString->IsClick)return;
@@ -141,11 +112,11 @@ void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
 	{
 	case PLAYERMOVE_NONE:
 		break;
-	case PLAYERMOVE_NOJUMP:
-		JumpMoveBackGround_NoJump();
+	case PLAYERMOVE_LINEAR:
+		JumpMoveBackGround_Liner();
 		break;
-	case PLAYERMOVE_YESJUMP:
-		JumpMoveBackGround_YesJump();
+	case PLAYERMOVE_CURVE:
+		JumpMoveBackGround_Curve();
 		break;
 	case PLAYERMOVE_MAX:
 		break;
@@ -154,12 +125,7 @@ void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
 	}
 }
 
-//
-void GO_SS_Communication::TergetUpdate()
-{
-	/* 書く場所 */
-	m_pPlayer->GetPos();
-}
+
 
 
 

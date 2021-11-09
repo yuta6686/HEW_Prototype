@@ -22,21 +22,26 @@ public:
     virtual int GetGameScene(void) override { return GAME_SCENE; }
 
 
-    void SETTarget();
+    void SetTarget();
     void SetTarget(D3DXVECTOR2 pos);
     void SetTarget(D3DXVECTOR2 pos, D3DXVECTOR2 size);
 
     void SetTargetOnce();
 
+    bool IsTergetClick();
+
 private:
     int Target_Texture;
-    char TEX_NAME[128] = "date/TEXTURE/target.png";
+    char TEX_NAME[128] = "data/TEXTURE/target.png";
     //ゲームシーン
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
 
     //テクスチャ用変数
-    const float TARGET_WIDTH = SCREEN_WIDTH / 16.0f;
-    const float TARGET_HEIGHT = SCREEN_HEIGHT / 9.0f;
+    const int TARGET_NUM_X = 16;
+    const int TARGET_NUM_Y = 9;
+
+    const float TARGET_WIDTH = SCREEN_WIDTH / TARGET_NUM_X * 2.0f;
+    const float TARGET_HEIGHT = SCREEN_HEIGHT / TARGET_NUM_Y * 2.0f;
 
 
     //

@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "GameObject.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 class GO_SS_FileLoad :public GameObject
 {

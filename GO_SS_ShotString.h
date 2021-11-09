@@ -22,6 +22,8 @@ public:
 	//public 変数
 	bool IsClick = false;
 
+	bool IsClickTarget = false;
+
 private:
 	//ゲームシーン用
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -41,4 +43,6 @@ private:
 
 	//デバッグ用
 	void DebugOut(void);
+
+
 };
