@@ -123,7 +123,7 @@
     <ClCompile Include="GO_SS_ShotString.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_Communication.cpp">
+    <ClCompile Include="GO_SS_Movement.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="gameOver.cpp">
@@ -221,7 +221,7 @@
     <ClInclude Include="GO_SS_ShotString.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
-    <ClInclude Include="GO_SS_Communication.h">
+    <ClInclude Include="GO_SS_Movement.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
     <ClInclude Include="gameOver.h">

@@ -4,7 +4,7 @@ class GO_ShootString;
 class GO_SS_Player;
 class GO_SS_Wall;
 class GO_SS_BackGround;
-class GO_SS_Communication;
+class GO_SS_Movement;
 class GO_SS_Target;
 class GO_SS_ShotString;
 class GO_SS_FileLoad;
@@ -39,7 +39,7 @@ private:
     GO_SS_Player* mp_ssPlayer;
     GO_SS_Wall* mp_ssWall;
     GO_SS_BackGround* mp_ssBackGround;
-    GO_SS_Communication* mp_ssCommunication;
+    GO_SS_Movement* mp_ssMovement;
     GO_SS_Target* mp_ssTarget;
     GO_SS_ShotString* mp_ssShotString;
     GO_SS_FileLoad* mp_ssFileLoad;

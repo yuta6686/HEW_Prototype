@@ -2,7 +2,7 @@
 #include "GO_SS_Player.h"
 #include "GO_SS_Wall.h"
 #include "GO_SS_BackGround.h"
-#include "GO_SS_Communication.h"
+#include "GO_SS_Movement.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Collision.h"
@@ -31,7 +31,7 @@ void GO_SS_Manager::Create()
 		mp_ssBackGround = nullptr;
 		mp_ssPlayer = nullptr;
 		mp_ssWall = nullptr;
-		mp_ssCommunication= nullptr;
+		mp_ssMovement= nullptr;
 		mp_ssTarget = nullptr;
 		mp_ssShotString = nullptr;
 		mp_ssFileLoad = nullptr;
@@ -42,7 +42,7 @@ void GO_SS_Manager::Create()
 		mp_ssBackGround = new GO_SS_BackGround;
 		mp_ssPlayer = new GO_SS_Player;
 		mp_ssWall = new GO_SS_Wall;
-		mp_ssCommunication = new GO_SS_Communication;
+		mp_ssMovement = new GO_SS_Movement;
 
 		mp_ssTarget = new GO_SS_Target;
 		mp_ssShotString = new GO_SS_ShotString;
@@ -54,7 +54,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssBackGround);
 		Register(mp_ssPlayer);
 		Register(mp_ssWall);
-		Register(mp_ssCommunication);
+		Register(mp_ssMovement);
 		Register(mp_ssTarget);
 		Register(mp_ssShotString);
 		Register(mp_ssFileLoad);
@@ -70,11 +70,11 @@ void GO_SS_Manager::SetGameObject()
 {
 	//mp_ssComunication
 	{
-		mp_ssCommunication->SetBackGround(mp_ssBackGround);
-		mp_ssCommunication->SetPlayer(mp_ssPlayer);
-		mp_ssCommunication->SetShotString(mp_ssShotString);
-		mp_ssCommunication->SetWall(mp_ssWall);
-		mp_ssCommunication->SetTarget(mp_ssTarget);
+		mp_ssMovement->SetBackGround(mp_ssBackGround);
+		mp_ssMovement->SetPlayer(mp_ssPlayer);
+		mp_ssMovement->SetShotString(mp_ssShotString);
+		mp_ssMovement->SetWall(mp_ssWall);
+		mp_ssMovement->SetTarget(mp_ssTarget);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 	}

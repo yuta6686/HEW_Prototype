@@ -26,7 +26,7 @@ enum PlayerMove {
     PLAYERMOVE_MAX,
 };
 
-class GO_SS_Communication :
+class GO_SS_Movement :
     public GameObject
 {
 public:

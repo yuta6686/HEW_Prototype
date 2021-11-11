@@ -1,4 +1,4 @@
-#include "GO_SS_Communication.h"
+#include "GO_SS_Movement.h"
 #include "GO_SS_BackGround.h"
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
@@ -7,7 +7,7 @@
 
 #include <cmath>
 
-void GO_SS_Communication::Update(void)
+void GO_SS_Movement::Update(void)
 {
 
 	/*	プライヤーの挙動	-> 切り替え(index)
@@ -34,14 +34,14 @@ void GO_SS_Communication::Update(void)
 //							angle
 //	どう動かす？		ー＞ジャンプフラグが上がって数フレーム間、AddU(cosf(angle));
 //-----------------------------------------------------------------------------------------
-void GO_SS_Communication::JumpMoveBackGround_Liner()
+void GO_SS_Movement::JumpMoveBackGround_Liner()
 {
 
 
 }
 
 //クリックしたら動く
-void GO_SS_Communication::JumpMoveBackGround_Curve()
+void GO_SS_Movement::JumpMoveBackGround_Curve()
 {
 	//糸を出したら
 	if (!m_pShotString->IsClick)return;
@@ -96,7 +96,7 @@ void GO_SS_Communication::JumpMoveBackGround_Curve()
 	}
 }
 
-void GO_SS_Communication::PlayerMoveSwitch(PlayerMove index)
+void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 {
 	//プライヤーの動きー＞切り替え可能
 	switch (index)
