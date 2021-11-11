@@ -31,6 +31,9 @@ private:
     int BackGround_Texture;
     char TEX_NAME[128] = "data/TEXTURE/mati.png";
 
+    int CmpTexture;
+    char CMP_TEX_NAME[128] = "data/TEXTURE/cmp1.png";
+
     //ゲームシーン用変数
     const int GAME_SCENE = GAMESCENE_BUNGEE_JUMP;
 
