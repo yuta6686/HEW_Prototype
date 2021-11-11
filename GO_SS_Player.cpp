@@ -90,7 +90,7 @@ void GO_SS_Player::SceneToGameOver(void)
 void GO_SS_Player::InputPlayerMove(void)
 {
 
-	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
+	if (GetKeyboardTrigger(DIK_SPACE) && m_Gravity >= JUMP_DELAY) {
 		IsJump = true;
 		m_Gravity = DEFAULT_GRAVITY * m_Jump;
 		Player_Vertex.pos.y += m_Gravity;

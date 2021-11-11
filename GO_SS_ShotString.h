@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 class GO_SS_Player;
+class GO_SS_Target;
 
 class GO_SS_ShotString :public GameObject
 {
@@ -18,11 +19,16 @@ public:
 
 	//セッター
 	void SetPlayer(GO_SS_Player* p) { m_pPlayer = p; }
+	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
+
+	点
 
 	//public 変数
 	bool IsClick = false;
 
 	bool IsClickTarget = false;
+
+	bool IsInsideTarget = false;
 
 private:
 	//ゲームシーン用
@@ -45,6 +51,7 @@ private:
 	void DebugOut(void);
 
 	GO_SS_Player* m_pPlayer;
+	GO_SS_Target* m_pTarget;
 
 //メンバ関数
 	
@@ -53,4 +60,6 @@ private:
 
 	//ターゲットをクリックした
 	void TargetClick(void);
+
+	bool IsMouseInsideTarget(void);
 };

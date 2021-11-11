@@ -40,9 +40,10 @@ private:
 
     //Action
     FLOAT m_Gravity;
-    FLOAT m_Jump = -15.0f;
+    FLOAT m_Jump = -12.5f;
     const FLOAT GRAVITY_ACCELERATION = 0.3f;
     const FLOAT DEFAULT_GRAVITY = 1.0f;
+    const FLOAT JUMP_DELAY = 12.0f;
 
     //Vertex Parameter
     VERTEX_PLAYER Player_Vertex;

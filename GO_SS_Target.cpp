@@ -33,6 +33,7 @@ void GO_SS_Target::Draw(void)
         DrawSprite(Target_Texture, Target_Vertex[i].pos.x, Target_Vertex[i].pos.y,
             Target_Vertex[i].size.x, Target_Vertex[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 
+
     }
 
 }
@@ -78,19 +79,5 @@ void GO_SS_Target::SetTargetOnce()
 
     }
 
-}
-
-bool GO_SS_Target::IsTergetClick()
-{
-   
-    /* èëÇ≠èÍèä */
-    D3DXVECTOR2 MousePos;
-    MousePos.x = GetMousePosX();
-    MousePos.y = GetMousePosY();
-
-
-    //if()
-     
-    return false;
 }
 
