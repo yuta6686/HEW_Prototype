@@ -29,14 +29,16 @@ private:
     GO_SS_Target* m_pTarget;
  
 //当たり判定         CollisionJudge_ -> CJ_
-    //プレイヤーと壁
-    int CJ_PlayerWall(void);
 
+//プレイヤーと壁
+    int CJ_PlayerWall(void);
 
 //当たり判定テンプレート
     bool BBCollision(D3DXVECTOR2 pos1,D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
 
-    //3つ目以降の引数に入るのがLeftTop                                          ↓                ↓
+//3つ目以降の引数に入るのがLeftTop                                              ↓                ↓
     bool BBCollision_LeftTop2(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
+
+
 };
 

@@ -28,7 +28,10 @@ public:
 
     void SetTargetOnce();
 
-    bool IsTergetClick();
+
+    VERTEX_TARGET* GetTarget(void) { return &Target_Vertex[0]; }
+
+    int GetTargetNumMax(void) { return TARGET_NUM_MAX; }
 
 private:
     int Target_Texture;

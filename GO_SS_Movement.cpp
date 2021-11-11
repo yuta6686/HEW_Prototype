@@ -15,7 +15,7 @@ void GO_SS_Movement::Update(void)
 		PLAYERMOVE_CURVE,	
 		PLAYERMOVE_PENDULUM,
 	*/
-	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
+	PlayerMoveSwitch(PLAYERMOVE_CURVE);
 	
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
@@ -43,7 +43,7 @@ void GO_SS_Movement::JumpMove_Liner()
 void GO_SS_Movement::JumpMove_Curve()
 {
 	//糸を出したら
-	if (!m_pShotString->IsClick)return;
+	if (!m_pShotString->IsClickTarget)return;
 
 	//カウンターが上限に達したら
 	if (JumpCounter >= JumpCountMax) {
@@ -51,7 +51,7 @@ void GO_SS_Movement::JumpMove_Curve()
 		m_pPlayer->SetGravityDefault();
 
 		//ショットストリングのクリックフラグ下ろす
-		m_pShotString->IsClick = false;
+		m_pShotString->IsClickTarget = false;
 
 		//ジャンプカウンターリセット
 		JumpCounter = 0;

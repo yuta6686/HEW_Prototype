@@ -1,5 +1,6 @@
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
+#include "GO_SS_Target.h"
 
 void GO_SS_ShotString::Initialize(void)
 {
@@ -25,7 +26,7 @@ void GO_SS_ShotString::Update(void)
 	String_Vertex.pos = m_pPlayer->GetPos();
 
 	//押されている間
-	if(IsMouseLeftPressed())
+	if (IsMouseLeftPressed())
 	{
 		//カーソル取得
 		CursorPos.x = GetMousePosX();
@@ -43,19 +44,19 @@ void GO_SS_ShotString::Update(void)
 
 	//ターゲットをクリック
 	TargetClick();
-	
 
-	
+
+
 
 	//糸の長さがカーソルとの距離までに制限
 	if (GetDistance(String_Vertex.pos, CursorPos) * 2.0f <= String_Vertex.size.x) {
 		String_Vertex.size.x = GetDistance(String_Vertex.pos, CursorPos) * 2.0f;
 	}
 	else {
-	//糸の長さ伸ばす
+		//糸の長さ伸ばす
 		String_Vertex.size.x += 20.0f;
 	}
-	
+
 }
 
 void GO_SS_ShotString::Draw(void)
@@ -107,8 +108,42 @@ void GO_SS_ShotString::NoTargetClick(void)
 //ターゲットをクリックした
 void GO_SS_ShotString::TargetClick(void)
 {
+	IsInsideTarget = IsMouseInsideTarget();
+
 	//糸サイズリセット
-	if (IsClickTarget) {
+	if (IsMouseLeftTriggered() && IsInsideTarget) {
 		String_Vertex.size.x = 0.0f;
 	}
+
+	if (IsMouseLeftPressed() && IsInsideTarget){
+		IsClickTarget = true;
+	}
+	else {
+		IsClickTarget = false;
+	}
+}
+
+
+bool GO_SS_ShotString::IsMouseInsideTarget(void)
+{	
+	for (int i = 0; i < m_pTarget->GetTargetNumMax(); i++) {
+		VERTEX_TARGET vt = m_pTarget->GetTarget()[i];
+		if (!vt.use)continue;
+		/*if (CursorPos.x > vt.pos.x - vt.size.x / 4 &&
+			CursorPos.x < vt.pos.x + vt.size.x / 4 &&
+			CursorPos.y > vt.pos.y - vt.size.y / 2 &&
+			CursorPos.y < vt.pos.y + vt.size.y / 2) {
+			return true;
+		}*/
+
+		FLOAT x = powf(CursorPos.x - vt.pos.x, 2.0f);
+		FLOAT y = powf(CursorPos.y - vt.pos.y, 2.0f);
+		FLOAT dist = sqrtf(x + y);
+
+		if (dist <= vt.size.x - 100.0f) {
+			return true;
+		}
+	}
+	
+	return false;
 }
