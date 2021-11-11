@@ -77,7 +77,6 @@ private:
     GO_SS_Collision m_ssCollision;      //“–‚½‚è”»’è‚ği‚éÒ
 
     //ƒƒ“ƒoŠÖ”
-    void SetShotStringParameter();
 
     void JumpMoveBackGround_Liner();
     void JumpMoveBackGround_Curve();

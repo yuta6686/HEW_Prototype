@@ -21,6 +21,8 @@ void GO_SS_ShotString::Update(void)
 {
 	DebugOut();
 
+	String_Vertex.pos = m_pPlayer->GetPos();
+
 	//‰Ÿ‚³‚ê‚Ä‚¢‚éŠÔ
 	if(IsMouseLeftPressed())
 	{

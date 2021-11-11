@@ -75,6 +75,8 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssCommunication->SetShotString(mp_ssShotString);
 		mp_ssCommunication->SetWall(mp_ssWall);
 		mp_ssCommunication->SetTarget(mp_ssTarget);
+
+		mp_ssShotString->SetPlayer(mp_ssPlayer);
 	}
 
 }

@@ -9,12 +9,11 @@
 
 void GO_SS_Communication::Update(void)
 {
-	//ShotStringにプレイヤーのポジション登録
-	SetShotStringParameter(); 
 
 	/*	プライヤーの挙動	-> 切り替え(index)
 		PLAYERMOVE_LINEAR,
-		PLAYERMOVE_CURVE,	*/
+		PLAYERMOVE_CURVE,	
+	*/
 	PlayerMoveSwitch(PLAYERMOVE_CURVE);
 	
 	
@@ -24,14 +23,6 @@ void GO_SS_Communication::Update(void)
 	
 }
 
-void GO_SS_Communication::SetShotStringParameter()
-{
-	//ShootString に プレイヤーのポジション登録
-	m_pShotString->SetPos(m_pPlayer->GetPos());
-
-	//ShootStringのIsClickTargetフラグにターゲットをクリックしていたらTrue
-	m_pShotString->IsClickTarget = m_pTarget->IsTergetClick();
-}
 
 //-----------------------------------------------------------------------------------------
 //	JumpMoveBackGround_Pat1()

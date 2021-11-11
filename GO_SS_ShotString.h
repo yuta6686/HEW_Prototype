@@ -17,7 +17,7 @@ public:
 	FLOAT GetAngle(void) { return String_Vertex.angle; }
 
 	//セッター
-	void SetPos(D3DXVECTOR2 pos) { String_Vertex.pos = pos; }
+	void SetPlayer(GO_SS_Player* p) { m_pPlayer = p; }
 
 	//public 変数
 	bool IsClick = false;
@@ -44,5 +44,5 @@ private:
 	//デバッグ用
 	void DebugOut(void);
 
-
+	GO_SS_Player* m_pPlayer;
 };
