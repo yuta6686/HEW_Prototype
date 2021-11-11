@@ -45,4 +45,12 @@ private:
 	void DebugOut(void);
 
 	GO_SS_Player* m_pPlayer;
+
+//メンバ関数
+	
+	//ターゲットではない場所をクリック
+	void NoTargetClick(void);
+
+	//ターゲットをクリックした
+	void TargetClick(void);
 };

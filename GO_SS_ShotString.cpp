@@ -21,6 +21,7 @@ void GO_SS_ShotString::Update(void)
 {
 	DebugOut();
 
+	//ポジションをプレイヤーのポジションにする
 	String_Vertex.pos = m_pPlayer->GetPos();
 
 	//押されている間
@@ -37,22 +38,21 @@ void GO_SS_ShotString::Update(void)
 
 	}
 
-	//押されたら
-	if (IsMouseLeftTriggered()) {
-		IsClick = true;
-		String_Vertex.size.x = 0.0f;
-	}
+	//ターゲットではない場所をクリック
+	NoTargetClick();
 
-	//糸発射
-	if (IsClickTarget) {
-		String_Vertex.size.x = 0.0f;
-	}
+	//ターゲットをクリック
+	TargetClick();
+	
+
+	
 
 	//糸の長さがカーソルとの距離までに制限
 	if (GetDistance(String_Vertex.pos, CursorPos) * 2.0f <= String_Vertex.size.x) {
 		String_Vertex.size.x = GetDistance(String_Vertex.pos, CursorPos) * 2.0f;
 	}
 	else {
+	//糸の長さ伸ばす
 		String_Vertex.size.x += 20.0f;
 	}
 	
@@ -82,4 +82,33 @@ void GO_SS_ShotString::DebugOut(void)
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
+}
+
+//ターゲットではない場所をクリック
+void GO_SS_ShotString::NoTargetClick(void)
+{
+	//押されたら
+	if (IsMouseLeftTriggered()) {
+		String_Vertex.size.x = 0.0f;
+	}
+
+	//押していたら
+	if (IsMouseLeftPressed()) {
+
+		IsClick = true;
+
+	}
+	//離されたら
+	else {
+		IsClick = false;
+	}
+}
+
+//ターゲットをクリックした
+void GO_SS_ShotString::TargetClick(void)
+{
+	//糸サイズリセット
+	if (IsClickTarget) {
+		String_Vertex.size.x = 0.0f;
+	}
 }

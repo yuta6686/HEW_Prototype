@@ -10,14 +10,13 @@
 void GO_SS_Movement::Update(void)
 {
 
-	/*	プライヤーの挙動	-> 切り替え(index)
+	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
 		PLAYERMOVE_LINEAR,
 		PLAYERMOVE_CURVE,	
+		PLAYERMOVE_PENDULUM,
 	*/
-	PlayerMoveSwitch(PLAYERMOVE_CURVE);
+	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
 	
-	
-
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
 	
@@ -25,23 +24,23 @@ void GO_SS_Movement::Update(void)
 
 
 //-----------------------------------------------------------------------------------------
-//	JumpMoveBackGround_Pat1()
+//	JumpMove_Liner()
 //-----------------------------------------------------------------------------------------
-//	アングルのcosθ分、背景を動かす
-//	なんフレーム？		ー＞120くらい	ー＞Angleによって変わる
-//	どのタイミング？	ー＞ジャンプ(space key )が押されたら
-//	必要なものは？		ー＞ジャンプしたときのフラグ、フレームを測る変数(int)
-//							angle
-//	どう動かす？		ー＞ジャンプフラグが上がって数フレーム間、AddU(cosf(angle));
+//	直線的な動き
+//	ターゲットまで直で向かう
 //-----------------------------------------------------------------------------------------
-void GO_SS_Movement::JumpMoveBackGround_Liner()
+void GO_SS_Movement::JumpMove_Liner()
 {
 
 
 }
 
-//クリックしたら動く
-void GO_SS_Movement::JumpMoveBackGround_Curve()
+//-----------------------------------------------------------------------------------------
+//	JumpMove_Curve()
+//-----------------------------------------------------------------------------------------
+//	プロトタイプのときの動き
+//-----------------------------------------------------------------------------------------
+void GO_SS_Movement::JumpMove_Curve()
 {
 	//糸を出したら
 	if (!m_pShotString->IsClick)return;
@@ -96,6 +95,16 @@ void GO_SS_Movement::JumpMoveBackGround_Curve()
 	}
 }
 
+//-----------------------------------------------------------------------------------------
+//	JumpMove_Pendulum()
+//-----------------------------------------------------------------------------------------
+//	振り子のような動き
+//	下に動いてから、上に上がる
+//-----------------------------------------------------------------------------------------
+void GO_SS_Movement::JumpMove_Pendulum()
+{
+}
+
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 {
 	//プライヤーの動きー＞切り替え可能
@@ -104,10 +113,13 @@ void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 	case PLAYERMOVE_NONE:
 		break;
 	case PLAYERMOVE_LINEAR:
-		JumpMoveBackGround_Liner();
+		JumpMove_Liner();
 		break;
 	case PLAYERMOVE_CURVE:
-		JumpMoveBackGround_Curve();
+		JumpMove_Curve();
+		break;
+	case PLAYERMOVE_PENDULUM:
+		JumpMove_Pendulum();
 		break;
 	case PLAYERMOVE_MAX:
 		break;
