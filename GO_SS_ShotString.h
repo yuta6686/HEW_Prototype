@@ -21,7 +21,7 @@ public:
 	void SetPlayer(GO_SS_Player* p) { m_pPlayer = p; }
 	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
 
-	“_
+	
 
 	//public •Ï”
 	bool IsClick = false;

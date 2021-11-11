@@ -11,6 +11,8 @@ void GO_SS_Target::Initialize(void)
         Target_Vertex[i].use = false;
     }
 
+    Target_Eff = LoadTexture(TE_TEX_NAME);
+
     once = true;
 }
 
@@ -33,7 +35,8 @@ void GO_SS_Target::Draw(void)
         DrawSprite(Target_Texture, Target_Vertex[i].pos.x, Target_Vertex[i].pos.y,
             Target_Vertex[i].size.x, Target_Vertex[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 
-
+        DrawSprite(Target_Eff, Target_Vertex[i].pos.x, Target_Vertex[i].pos.y + 10.0f,
+            Target_Vertex[i].size.x, Target_Vertex[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
     }
 
 }

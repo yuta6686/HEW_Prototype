@@ -36,6 +36,10 @@ public:
 private:
     int Target_Texture;
     char TEX_NAME[128] = "data/TEXTURE/target.png";
+
+    int Target_Eff;
+    char TE_TEX_NAME[128] = "data/TEXTURE/eff_target.png";
+
     //ÉQÅ[ÉÄÉVÅ[Éì
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
 
