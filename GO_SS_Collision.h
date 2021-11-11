@@ -35,5 +35,8 @@ private:
 
 //当たり判定テンプレート
     bool BBCollision(D3DXVECTOR2 pos1,D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
+
+    //3つ目以降の引数に入るのがLeftTop                                          ↓                ↓
+    bool BBCollision_LeftTop2(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
 };
 

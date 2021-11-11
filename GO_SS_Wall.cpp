@@ -34,7 +34,7 @@ void GO_SS_Wall::Draw(void)
 {
     for (int i = 0; i < WALL_NUM_MAX; i++) {
         if (!m_vWall[i].use)continue;
-        DrawSprite(Wall_Texture, m_vWall[i].pos.x, m_vWall[i].pos.y,
+        DrawSpriteLeftTop(Wall_Texture, m_vWall[i].pos.x, m_vWall[i].pos.y,
             m_vWall[i].size.x, m_vWall[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
     }
 }
@@ -88,7 +88,7 @@ void GO_SS_Wall::SetWallOnce()
         //   // SetWall(D3DXVECTOR2(WALL_WIDTH * 5, WALL_HEIGHT * i), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
         //}
         for (int i = 0; i < WALL_NUM_X * 5; i++) {
-            SetWall(D3DXVECTOR2(WALL_WIDTH * i, WALL_HEIGHT * 8 + WALL_HEIGHT/2), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
+            SetWall(D3DXVECTOR2(WALL_WIDTH * i, WALL_HEIGHT * 8), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
         }
 
         for (int i = 0; i < WALL_NUM_Y; i++) {
