@@ -53,6 +53,9 @@ private:
 	GO_SS_Player* m_pPlayer;
 	GO_SS_Target* m_pTarget;
 
+	//ジャンプカウンター
+	int m_jumpCounter = 0;
+
 //メンバ関数
 	
 	//ターゲットではない場所をクリック

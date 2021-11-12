@@ -27,6 +27,9 @@ public:
     void WavePosPlus(FLOAT angle);
     void WavePosMinus(FLOAT angle);
 
+    void AddXPos(FLOAT x) { Player_Vertex.pos.x += x; }
+    void AddYPos(FLOAT y) { Player_Vertex.pos.y += y; }
+
     bool IsJump;
     bool IsColl;
 

@@ -84,3 +84,11 @@ void GO_SS_Target::SetTargetOnce()
 
 }
 
+void GO_SS_Target::AddPosX(FLOAT x)
+{
+    for (int i = 0; i < TARGET_NUM_MAX; i++) {
+        if (!Target_Vertex[i].use)continue;
+        Target_Vertex[i].pos.x += x;
+    }
+}
+

@@ -28,6 +28,7 @@ public:
 
     void SetTargetOnce();
 
+    void AddPosX(FLOAT x);
 
     VERTEX_TARGET* GetTarget(void) { return &Target_Vertex[0]; }
 
