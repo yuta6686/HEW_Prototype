@@ -20,6 +20,8 @@ void GO_SS_Movement::Update(void)
 	//“–‚½‚è”»’è‚ÌXVˆ—
 	m_ssCollision.CollisionUpdate();
 	
+	//“Þ—Ž‚©‚ç‚Ì•œŠˆ
+	FromAbyss();
 }
 
 
@@ -142,6 +144,13 @@ void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 		break;
 	default:
 		break;
+	}
+}
+
+void GO_SS_Movement::FromAbyss()
+{
+	if (m_pPlayer->GetPos().y >= SCREEN_HEIGHT) {
+		m_pPlayer->SetPosY(0.0f);
 	}
 }
 
