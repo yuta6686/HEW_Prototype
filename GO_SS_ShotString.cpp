@@ -11,6 +11,9 @@ void GO_SS_ShotString::Initialize(void)
 	String_Vertex.pos = D3DXVECTOR2(0.0f, 0.0f);
 	String_Vertex.angle = 0.0f;
 
+	for (int i = 0; i < 4; i++) {
+		Coordinate[i] = D3DXVECTOR2(0.0f, 0.0f);
+	}
 }
 
 void GO_SS_ShotString::Finalize(void)
@@ -120,7 +123,7 @@ void GO_SS_ShotString::TargetClick(void)
 	if (IsMouseLeftPressed() && IsClickTarget){
 		if (m_jumpCounter >= 120) {
 			IsClickTarget = false;
-			m_pPlayer->SetGravityDefault();
+			
 		}
 		else {
 			m_jumpCounter++;
@@ -156,3 +159,57 @@ bool GO_SS_ShotString::IsMouseInsideTarget(void)
 	
 	return false;
 }
+
+bool GO_SS_ShotString::IsStringConnectTarget(void)
+{
+	/*if (use) {
+		if (((Coordinate[1].x - Coordinate[0].x) * (pos.y - Coordinate[0].y)) -
+			((pos.x - Coordinate[0].x) * (Coordinate[1].y - Coordinate[0].y)) <= 0 &&
+
+			((Coordinate[2].x - Coordinate[1].x) * (pos.y - Coordinate[1].y)) -
+			((pos.x - Coordinate[1].x) * (Coordinate[2].y - Coordinate[1].y)) <= 0 &&
+
+			((Coordinate[3].x - Coordinate[2].x) * (pos.y - Coordinate[2].y)) -
+			((pos.x - Coordinate[2].x) * (Coordinate[3].y - Coordinate[2].y)) <= 0 &&
+
+			((Coordinate[0].x - Coordinate[3].x) * (pos.y - Coordinate[3].y)) -
+			((pos.x - Coordinate[3].x) * (Coordinate[0].y - Coordinate[3].y)) <= 0) {
+			return true;
+		}
+	}*/
+	return false;
+}
+
+void GO_SS_ShotString::SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle)
+{
+	size.y /= 4;
+
+	float hw, hh;
+	hw = size.x * 0.5f;
+	hh = size.y * 0.5f;
+
+	float rad = RADIAN * angle;
+
+	float rot_x = +hw * 2.0f;
+	float rot_y = -hh;
+
+	Coordinate[0] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+
+
+	rot_x = 0.0f;
+	rot_y = -hh;
+	Coordinate[1] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+
+	rot_x = +hw * 2.0f;
+	rot_y = +hh;
+	Coordinate[3] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+
+	rot_x = 0.0f;
+	rot_y = +hh;
+	Coordinate[2] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+}
+

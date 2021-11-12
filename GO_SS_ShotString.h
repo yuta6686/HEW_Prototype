@@ -41,6 +41,9 @@ private:
 	//頂点パラメータ
 	VERTEX_SHOOTSTIRNG String_Vertex;
 
+	//判定用
+	D3DXVECTOR2 Coordinate[4];
+
 	//カーソルポジション
 	D3DXVECTOR2 CursorPos;
 	
@@ -65,4 +68,8 @@ private:
 	void TargetClick(void);
 
 	bool IsMouseInsideTarget(void);
+
+	bool IsStringConnectTarget(void);
+
+	void SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle);
 };

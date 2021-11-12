@@ -23,6 +23,7 @@ public:
     
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
+    void SetGravitysoft(FLOAT f) { m_Gravity -= f; }
 
     void WavePosPlus(FLOAT angle);
     void WavePosMinus(FLOAT angle);
