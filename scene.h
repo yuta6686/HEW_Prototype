@@ -6,6 +6,7 @@ enum SCENE
 	SCENE_NONE,		//シーン処理なし
 	SCENE_TITLE,	//タイトル
 	SCENE_GAME,		//ゲーム
+	SCENE_SCRAMBLE, //納豆混ぜモード
 	SCENE_RESULT,	//リザルト
 	SCENE_GAMEOVER,	//ゲームオーバー
 

@@ -10,6 +10,7 @@
 #include "scene.h"
 #include "title.h"
 #include "game.h"
+#include "scramble.h"
 #include "result.h"
 #include "gameOver.h"
 #include "fade.h"
@@ -54,6 +55,10 @@ void InitScene(SCENE index)
 		InitGame();
 		break;
 
+	case SCENE_SCRAMBLE:
+		InitScramble();
+		break;
+
 	case SCENE_RESULT:
 		InitResult();
 		break;
@@ -80,6 +85,10 @@ void UninitScene(void)
 
 	case SCENE_GAME:
 		UninitGame();
+		break;
+
+	case SCENE_SCRAMBLE:
+		UninitScramble();
 		break;
 
 	case SCENE_RESULT:
@@ -110,6 +119,10 @@ void UpdateScene(void)
 		UpdateGame();
 		break;
 
+	case SCENE_SCRAMBLE:
+		UpdateScramble();
+		break;
+
 	case SCENE_RESULT:
 		UpdateResult();
 		break;
@@ -138,6 +151,10 @@ void DrawScene(void)
 
 	case SCENE_GAME:
 		DrawGame();
+		break;
+
+	case SCENE_SCRAMBLE:
+		DrawScramble();
 		break;
 
 	case SCENE_RESULT:
