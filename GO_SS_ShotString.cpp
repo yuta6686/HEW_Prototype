@@ -160,9 +160,9 @@ bool GO_SS_ShotString::IsMouseInsideTarget(void)
 	return false;
 }
 
-bool GO_SS_ShotString::IsStringConnectTarget(void)
+bool GO_SS_ShotString::IsStringConnectTarget(D3DXVECTOR2 pos)
 {
-	/*if (use) {
+	if (IsClick) {
 		if (((Coordinate[1].x - Coordinate[0].x) * (pos.y - Coordinate[0].y)) -
 			((pos.x - Coordinate[0].x) * (Coordinate[1].y - Coordinate[0].y)) <= 0 &&
 
@@ -176,7 +176,7 @@ bool GO_SS_ShotString::IsStringConnectTarget(void)
 			((pos.x - Coordinate[3].x) * (Coordinate[0].y - Coordinate[3].y)) <= 0) {
 			return true;
 		}
-	}*/
+	}
 	return false;
 }
 

@@ -155,6 +155,7 @@
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
+    <ClCompile Include="Title_Object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fade.h" />
@@ -189,6 +190,7 @@
     <ClInclude Include="sprite.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="title.h" />
+    <ClInclude Include="Title_Object.h" />
     <ClInclude Include="VertexParameter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

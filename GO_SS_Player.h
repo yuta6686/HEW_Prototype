@@ -20,6 +20,7 @@ public:
     D3DXVECTOR2 GetPos() { return Player_Vertex.pos; }
     D3DXVECTOR2 GetSize() { return  Player_Vertex.size; }
     
+    void SetPosY(FLOAT y) { Player_Vertex.pos.y = y; }
     
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }

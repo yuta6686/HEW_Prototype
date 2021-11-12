@@ -21,8 +21,6 @@ public:
 	void SetPlayer(GO_SS_Player* p) { m_pPlayer = p; }
 	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
 
-	
-
 	//public ïœêî
 	bool IsClick = false;
 
@@ -69,7 +67,8 @@ private:
 
 	bool IsMouseInsideTarget(void);
 
-	bool IsStringConnectTarget(void);
+	bool IsStringConnectTarget(D3DXVECTOR2 pos);
 
 	void SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle);
+
 };
