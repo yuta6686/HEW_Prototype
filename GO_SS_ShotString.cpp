@@ -113,10 +113,19 @@ void GO_SS_ShotString::TargetClick(void)
 	//糸サイズリセット
 	if (IsMouseLeftTriggered() && IsInsideTarget) {
 		String_Vertex.size.x = 0.0f;
+		m_jumpCounter = 0;
+		IsClickTarget = true;
 	}
 
-	if (IsMouseLeftPressed() && IsInsideTarget){
-		IsClickTarget = true;
+	if (IsMouseLeftPressed() && IsClickTarget){
+		if (m_jumpCounter >= 120) {
+			IsClickTarget = false;
+			m_pPlayer->SetGravityDefault();
+		}
+		else {
+			m_jumpCounter++;
+			IsClickTarget = true;
+		}
 	}
 	else {
 		IsClickTarget = false;
