@@ -8,6 +8,7 @@ class GO_SS_Movement;
 class GO_SS_Target;
 class GO_SS_ShotString;
 class GO_SS_FileLoad;
+class GO_SS_Map;
 
 class GO_SS_Manager :
     public GameObject
@@ -43,6 +44,8 @@ private:
     GO_SS_Target* mp_ssTarget;
     GO_SS_ShotString* mp_ssShotString;
     GO_SS_FileLoad* mp_ssFileLoad;
+    GO_SS_Map* mp_ssMap;
+
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
     //コンストラクタで使用

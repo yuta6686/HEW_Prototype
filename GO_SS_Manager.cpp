@@ -7,6 +7,7 @@
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Collision.h"
 #include "GO_SS_FileLoad.h"
+#include "GO_SS_Map.h"
 /*---------------------------------------------
 				コンストラクタ
 ---------------------------------------------*/
@@ -35,6 +36,7 @@ void GO_SS_Manager::Create()
 		mp_ssTarget = nullptr;
 		mp_ssShotString = nullptr;
 		mp_ssFileLoad = nullptr;
+		mp_ssMap = nullptr;
 	}
 
 	//new
@@ -47,6 +49,7 @@ void GO_SS_Manager::Create()
 		mp_ssTarget = new GO_SS_Target;
 		mp_ssShotString = new GO_SS_ShotString;
 		mp_ssFileLoad = new GO_SS_FileLoad;
+		mp_ssMap = new GO_SS_Map;
 	}
 
 	//Register
@@ -58,6 +61,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssTarget);
 		Register(mp_ssShotString);
 		Register(mp_ssFileLoad);
+		Register(mp_ssMap);
 	}
 }
 
@@ -77,6 +81,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetTarget(mp_ssTarget);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
+		mp_ssMap->SetFileLoad(mp_ssFileLoad);
 	}
 
 }

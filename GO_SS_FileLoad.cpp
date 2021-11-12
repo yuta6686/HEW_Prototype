@@ -11,7 +11,7 @@ void GO_SS_FileLoad::Initialize(void)
 	ifs.open(MapFileName);
 	if (!ifs)
 	{
-		cerr << "�}�b�v�f�[�^�̓ǂݍ��݂Ɏ��s" << endl;
+		cerr << "エラー" << endl;
 	}
 }
 
@@ -28,7 +28,7 @@ void GO_SS_FileLoad::Draw(void)
 {
 }
 
-void GO_SS_FileLoad::MapFileLoad(void)
+int* GO_SS_FileLoad::MapFileLoad(void)
 {
 	string line;
 	for (int y = 0; y < MAP_HEIGHT_DIV; y++)
@@ -47,8 +47,9 @@ void GO_SS_FileLoad::MapFileLoad(void)
 			////取り出し
 			//iss >> MapData[y][x];
 
-			//���o��
-		//	ifs >> MapData[y][x];
+			////取り出し
+			ifs >> MapData[y][x];
 		}
 	}
+	return *MapData;
 }

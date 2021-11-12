@@ -15,19 +15,19 @@ public:
 
 	virtual void Draw(void) override;
 
-	void MapFileLoad(void);
+	int* MapFileLoad(void);
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 private:
-	static const int MAP_WIDTH_DIV = 16;	//��������
-	static const int MAP_HEIGHT_DIV = 9;	//�c������
-	static const int BLOCK_WIDTH = SCREEN_WIDTH / MAP_WIDTH_DIV;	//��1�u���b�N�̕�
-	static const int BLOCK_HEIGHT = SCREEN_HEIGHT / MAP_HEIGHT_DIV;	//�c1�u���b�N�̕�
+	static const int MAP_WIDTH_DIV = 16;	//マップの横分割数
+	static const int MAP_HEIGHT_DIV = 9;	//マップの縦分割数
+	static const int BLOCK_WIDTH = SCREEN_WIDTH / MAP_WIDTH_DIV;	//1ブロックの横
+	static const int BLOCK_HEIGHT = SCREEN_HEIGHT / MAP_HEIGHT_DIV;	//1ブロックの縦
 
 	const char* MapFileName = "data/MapData.csv";
 
 	std::ifstream ifs;	//ファイルストリーム
-	int MapData[MAP_HEIGHT_DIV][MAP_WIDTH_DIV];	//�}�b�v�f�[�^
+	int MapData[MAP_HEIGHT_DIV][MAP_WIDTH_DIV];	//まっぷでーた
 
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
 };
