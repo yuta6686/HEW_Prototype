@@ -23,7 +23,13 @@ public:
     void SetWall(D3DXVECTOR2 pos);
     void SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size);
 
-    void SetWallOnce();
+    void ResetOnce(void) { 
+        for (int i = 0; i < WALL_NUM_MAX; i++) {
+            m_vWall[i].use = false;
+        }
+        once = true; 
+    }
+    
 
     void AddX(FLOAT x);
 private:
@@ -48,7 +54,7 @@ private:
 
     bool once;
 
-    
+    void SetWallOnce();
 
 };
 

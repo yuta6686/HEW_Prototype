@@ -151,6 +151,8 @@ void GO_SS_Movement::FromAbyss()
 {
 	if (m_pPlayer->GetPos().y >= SCREEN_HEIGHT) {
 		m_pPlayer->SetPosY(0.0f);
+		m_pTarget->ResetOnce();
+		m_pWall->ResetOnce();
 	}
 }
 
