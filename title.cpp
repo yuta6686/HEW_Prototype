@@ -25,12 +25,13 @@
 //*****************************************************************************
 static int				g_TextureNo = 0;	// テクスチャ情報
 
-
 //=============================================================================
 // 初期化処理
 //=============================================================================
 HRESULT InitTitle(void)
 {
+	TO_Init();
+
 	//テクスチャ生成
 	g_TextureNo = LoadTexture("data/TEXTURE/title.png");
 
@@ -43,7 +44,7 @@ HRESULT InitTitle(void)
 //=============================================================================
 void UninitTitle(void)
 {
-
+	TO_Uninit();
 }
 
 //=============================================================================
@@ -51,6 +52,8 @@ void UninitTitle(void)
 //=============================================================================
 void UpdateTitle(void)
 {
+	TO_Update();
+
 	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
 	{
 		SceneTransition(SCENE_GAME);
@@ -62,6 +65,8 @@ void UpdateTitle(void)
 //=============================================================================
 void DrawTitle(void)
 {
+	TO_Draw();
+
 	// １枚のポリゴンの頂点とテクスチャ座標を設定
 	DrawSpriteLeftTop(g_TextureNo, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f);
 }
