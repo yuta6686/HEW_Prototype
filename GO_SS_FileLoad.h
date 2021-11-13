@@ -24,9 +24,6 @@ private:
 	static const int BLOCK_WIDTH = SCREEN_WIDTH / MAP_WIDTH_DIV;	//1ブロックの横
 	static const int BLOCK_HEIGHT = SCREEN_HEIGHT / MAP_HEIGHT_DIV;	//1ブロックの縦
 
-	const char* MapFileName = "data/MapData.csv";
-
-	std::ifstream ifs;	//ファイルストリーム
 	int MapData[MAP_HEIGHT_DIV][MAP_WIDTH_DIV];	//まっぷでーた
 
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;

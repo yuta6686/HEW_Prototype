@@ -2,22 +2,19 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
+
 
 using namespace std;
 
 
 void GO_SS_FileLoad::Initialize(void)
 {
-	ifs.open(MapFileName);
-	if (!ifs)
-	{
-		cerr << "エラー" << endl;
-	}
 }
 
 void GO_SS_FileLoad::Finalize(void)
 {
-	ifs.close();
+	
 }
 
 void GO_SS_FileLoad::Update(void)
@@ -30,26 +27,34 @@ void GO_SS_FileLoad::Draw(void)
 
 int* GO_SS_FileLoad::MapFileLoad(void)
 {
-	string line;
+	ifstream ifs;	//ファイルストリーム
+	string line;	//バッファ
+	int data;
+
+	//ファイルオープン
+	ifs.open("data/MapData.csv");
+	if (!ifs)
+	{
+		cerr <<"data/MapData.csvを読み込めません" << endl;
+	}
+
 	for (int y = 0; y < MAP_HEIGHT_DIV; y++)
 	{
-		////取り出し
-		//getline(ifs,line);
+		getline(ifs, line);
 
-		////置き換え
-		//line.replace(line.begin(), line.end(), ',', ' ');
+		//,を空白に置き換え
+		replace(line.begin(), line.end(), ',', ' ');
 
-		for (int x = 0; x < MAP_WIDTH_DIV; x++)
+		istringstream iss(line); //文字列をistringstreamに代入
+
+		//1数値ずつ取り出し
+		for (int x = 0; x < MAP_WIDTH_DIV, iss >> data; x++)
 		{
-			////iss
-			//istringstream iss(line);
-
-			////取り出し
-			//iss >> MapData[y][x];
-
-			////取り出し
-			ifs >> MapData[y][x];
+			MapData[y][x] = data;
 		}
 	}
+
+
+	ifs.close();
 	return *MapData;
 }

@@ -82,8 +82,8 @@ void GO_SS_Manager::SetGameObject()
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssMap->SetFileLoad(mp_ssFileLoad);
+		mp_ssMap->SetWall(mp_ssWall);
 	}
-
 }
 /*---------------------------------------------
 *				デストラクタ

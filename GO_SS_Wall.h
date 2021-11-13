@@ -47,8 +47,5 @@ private:
     VERTEX_WALL m_vWall[WALL_NUM_MAX];
 
     bool once;
-
-    
-
 };
 
