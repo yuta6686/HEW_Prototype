@@ -14,16 +14,9 @@ public:
 
 	virtual void Draw(void) override;
 
-	std::vector<std::vector<int>> GO_SS_FileLoad::MapFileLoad(void);
+	void GO_SS_FileLoad::MapFileLoad(int(*MapData)[WALL_NUM_X]);
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 private:
-	static const int MAP_WIDTH_DIV = 16;	//マップの横分割数
-	static const int MAP_HEIGHT_DIV = 9;	//マップの縦分割数
-	static const int BLOCK_WIDTH = SCREEN_WIDTH / MAP_WIDTH_DIV;	//1ブロックの横
-	static const int BLOCK_HEIGHT = SCREEN_HEIGHT / MAP_HEIGHT_DIV;	//1ブロックの縦
-
-	std::vector<std::vector<int> > MapData;	//まっぷでーた
-
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
 };

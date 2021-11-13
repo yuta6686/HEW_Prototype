@@ -6,19 +6,15 @@
 
 using namespace std;
 
-std::vector<std::string> split(std::string str, char del);
 
 void GO_SS_FileLoad::Initialize(void)
 {
-	MapData.resize(MAP_HEIGHT_DIV);
-	for (int i = 0; i < MAP_HEIGHT_DIV; i++)
-	{
-		MapData[i].resize(MAP_WIDTH_DIV);
-	}
+
 }
 
 void GO_SS_FileLoad::Finalize(void)
 {
+
 }
 
 void GO_SS_FileLoad::Update(void)
@@ -29,54 +25,34 @@ void GO_SS_FileLoad::Draw(void)
 {
 }
 
-vector<vector<int>> GO_SS_FileLoad::MapFileLoad(void)
+void GO_SS_FileLoad::MapFileLoad(int (*MapData)[WALL_NUM_X])
 {
-	ifstream ifs;	//ファイルストリーム
-	string line;	//バッファ
-	vector<stri> data;
+	ifstream ifs("data/MapData.csv");	//ファイルストリーム
+	string str;					//分割する為のstring
+	int x = 0;					
+	int y = 0;
 
-	//ファイルオープン
-	ifs.open("data/MapData.csv", ios::in);
+	//エラー
 	if (!ifs)
 	{
-		cerr <<"data/MapData.csvを読み込めません" << endl;
+		cerr << "error" << endl;
 	}
 
-	for (int y = 0; y < MAP_HEIGHT_DIV; y++)
+	//取り出し
+	while (getline(ifs, str))
 	{
-		getline(ifs, line);
+		//分解格納用
+		string token;
 
-		//,を空白に置き換え
-		//replace(line.begin(), line.end(), ',', ' ');
+		//入出力用変換
+		istringstream iss(str);
 
-		data = split(line, ',');
-
-		//1数値ずつ取り出し
-		MapData[y].push_back(data);
-		
-	}
-
-
-	ifs.close();
-	return MapData;
-}
-
-vector<int> split(string str, char del) 
-{
-	int first = 0;
-	int last = str.find_first_of(del);
-	vector<string> result;
-
-	while (first < str.size())
-	{
-		string subStr(str, first, last - first);
-		result.push_back(subStr);
-		first = last + 1;
-		last = str.find_first_of(del, first);
-		if (last == string::npos) 
+		while (getline(iss, token, ','))
 		{
-			last = str.size();
+			MapData[y][x] = stoi(token.c_str());
+			x++;
 		}
+		y++;
 	}
-	return result;
+	ifs.close();
 }

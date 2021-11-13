@@ -22,17 +22,11 @@ public:
 
 private:
 	int GAME_SCENE = GAMESCENE_GAME_TEST;	
-	std::vector<std::vector<int>> p_MapData;
+	int MapData[WALL_NUM_Y][WALL_NUM_X];//まっぷでーた
+
 	GO_SS_FileLoad* m_pFileLoad;	//FileLoadポインタ
 	GO_SS_Wall* m_pWall;			//Wallポインタ
 
 	//定数
-	const int WALL_NUM = 1;	//壁の番号
-
-	const int WALL_NUM_X = 16;
-	const int WALL_NUM_Y = 9;
-
-	const float WALL_WIDTH = SCREEN_WIDTH / (float)WALL_NUM_X;
-	const float WALL_HEIGHT = SCREEN_HEIGHT / (float)WALL_NUM_Y;
-
+	static const int WALL_NUM = 1;	//壁の番号
 };

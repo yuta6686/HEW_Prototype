@@ -4,7 +4,7 @@
 
 void GO_SS_Map::Initialize(void)
 {
-	p_MapData = m_pFileLoad->MapFileLoad();
+	m_pFileLoad->MapFileLoad(MapData);
 
 }
 
@@ -24,7 +24,12 @@ void GO_SS_Map::Draw(void)
 	{
 		for (int x = 0; x < WALL_NUM_X; x++)
 		{
-			m_pWall->SetWall(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+			switch (MapData[y][x])
+			{
+			case WALL_NUM:
+				m_pWall->SetWall(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y),D3DXVECTOR2(WALL_WIDTH,WALL_HEIGHT));
+				break;
+			}
 		}
 	}
 }

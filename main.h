@@ -64,3 +64,13 @@ long GetMousePosY(void);
 
 HWND* GethWnd(void);
 char* GetDebugStr(void);
+
+
+//*****************************************************************************
+// íËêî
+//*****************************************************************************
+const int WALL_NUM_X = 16;
+const int WALL_NUM_Y = 9;
+
+const float WALL_WIDTH = SCREEN_WIDTH / (float)WALL_NUM_X;
+const float WALL_HEIGHT = SCREEN_HEIGHT / (float)WALL_NUM_Y;
