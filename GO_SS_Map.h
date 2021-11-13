@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include <iostream>
+#include <vector>
 
 class GO_SS_FileLoad;
 class GO_SS_Wall;
@@ -20,7 +22,7 @@ public:
 
 private:
 	int GAME_SCENE = GAMESCENE_GAME_TEST;	
-	int* p_MapData;
+	std::vector<std::vector<int>> p_MapData;
 	GO_SS_FileLoad* m_pFileLoad;	//FileLoadポインタ
 	GO_SS_Wall* m_pWall;			//Wallポインタ
 

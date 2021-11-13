@@ -1,8 +1,7 @@
 ﻿#pragma once
 #include "GameObject.h"
 #include <iostream>
-#include <fstream>
-#include <sstream>
+#include <vector>
 
 class GO_SS_FileLoad :public GameObject
 {
@@ -15,7 +14,7 @@ public:
 
 	virtual void Draw(void) override;
 
-	int* MapFileLoad(void);
+	std::vector<std::vector<int>> GO_SS_FileLoad::MapFileLoad(void);
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 private:
@@ -24,7 +23,7 @@ private:
 	static const int BLOCK_WIDTH = SCREEN_WIDTH / MAP_WIDTH_DIV;	//1ブロックの横
 	static const int BLOCK_HEIGHT = SCREEN_HEIGHT / MAP_HEIGHT_DIV;	//1ブロックの縦
 
-	int MapData[MAP_HEIGHT_DIV][MAP_WIDTH_DIV];	//まっぷでーた
+	std::vector<std::vector<int> > MapData;	//まっぷでーた
 
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
 };
