@@ -28,6 +28,8 @@ public:
 
 	bool IsInsideTarget = false;
 
+	bool IsCollTarget = false;
+
 private:
 	//ゲームシーン用
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -67,8 +69,10 @@ private:
 
 	bool IsMouseInsideTarget(void);
 
-	bool IsStringConnectTarget(D3DXVECTOR2 pos);
+	bool IsStringConnectTarget();
 
+
+	//糸の頂点座標をCoordinateにセット
 	void SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle);
 
 };
