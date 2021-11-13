@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 class GO_SS_Player;
+class GO_SS_Target;
 
 class GO_SS_ShotString :public GameObject
 {
@@ -18,11 +19,16 @@ public:
 
 	//セッター
 	void SetPlayer(GO_SS_Player* p) { m_pPlayer = p; }
+	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
 
 	//public 変数
 	bool IsClick = false;
 
 	bool IsClickTarget = false;
+
+	bool IsInsideTarget = false;
+
+	bool IsCollTarget = false;
 
 private:
 	//ゲームシーン用
@@ -35,6 +41,9 @@ private:
 	//頂点パラメータ
 	VERTEX_SHOOTSTIRNG String_Vertex;
 
+	//判定用
+	D3DXVECTOR2 Coordinate[4];
+
 	//カーソルポジション
 	D3DXVECTOR2 CursorPos;
 	
@@ -45,6 +54,10 @@ private:
 	void DebugOut(void);
 
 	GO_SS_Player* m_pPlayer;
+	GO_SS_Target* m_pTarget;
+
+	//ジャンプカウンター
+	int m_jumpCounter = 0;
 
 //メンバ関数
 	
@@ -53,4 +66,13 @@ private:
 
 	//ターゲットをクリックした
 	void TargetClick(void);
+
+	bool IsMouseInsideTarget(void);
+
+	bool IsStringConnectTarget();
+
+
+	//糸の頂点座標をCoordinateにセット
+	void SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle);
+
 };

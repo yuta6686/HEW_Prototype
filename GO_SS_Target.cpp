@@ -11,6 +11,8 @@ void GO_SS_Target::Initialize(void)
         Target_Vertex[i].use = false;
     }
 
+    Target_Eff = LoadTexture(TE_TEX_NAME);
+
     once = true;
 }
 
@@ -33,6 +35,8 @@ void GO_SS_Target::Draw(void)
         DrawSprite(Target_Texture, Target_Vertex[i].pos.x, Target_Vertex[i].pos.y,
             Target_Vertex[i].size.x, Target_Vertex[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 
+        DrawSprite(Target_Eff, Target_Vertex[i].pos.x, Target_Vertex[i].pos.y + 10.0f,
+            Target_Vertex[i].size.x, Target_Vertex[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
     }
 
 }
@@ -80,17 +84,11 @@ void GO_SS_Target::SetTargetOnce()
 
 }
 
-bool GO_SS_Target::IsTergetClick()
+void GO_SS_Target::AddPosX(FLOAT x)
 {
-   
-    /* èëÇ≠èÍèä */
-    D3DXVECTOR2 MousePos;
-    MousePos.x = GetMousePosX();
-    MousePos.y = GetMousePosY();
-
-
-    //if()
-     
-    return false;
+    for (int i = 0; i < TARGET_NUM_MAX; i++) {
+        if (!Target_Vertex[i].use)continue;
+        Target_Vertex[i].pos.x += x;
+    }
 }
 

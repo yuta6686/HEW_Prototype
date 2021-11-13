@@ -5,7 +5,7 @@ class GO_SS_Wall :
 {
 public:
 
-    // GO_ShootString を介して継承されました
+    // GO_ShootString ????p??????????
     virtual void Initialize(void) override;
 
     virtual void Finalize(void) override;
@@ -23,23 +23,32 @@ public:
     void SetWall(D3DXVECTOR2 pos);
     void SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size);
 
-    void SetWallOnce();
+    void ResetOnce(void) { 
+        for (int i = 0; i < WALL_NUM_MAX; i++) {
+            m_vWall[i].use = false;
+        }
+        once = true; 
+    }
+    
 
     void AddX(FLOAT x);
 private:
-    //テクスチャ用変数
+    //?e?N?X?`???p???
     int Wall_Texture;
     char TEX_NAME[128] = "data/TEXTURE/wall.png";
 
-    //ゲームシーン
+    //?Q?[???V?[??
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
     
-    //定数定義
+    //????`
     static const int WALL_NUM_MAX = 300;
 
-    //頂点情報
+    //???_???
     VERTEX_WALL m_vWall[WALL_NUM_MAX];
 
     bool once;
+
+    void SetWallOnce();
+
 };
 

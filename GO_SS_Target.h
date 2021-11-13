@@ -28,11 +28,26 @@ public:
 
     void SetTargetOnce();
 
-    bool IsTergetClick();
+    void AddPosX(FLOAT x);
+
+    VERTEX_TARGET* GetTarget(void) { return &Target_Vertex[0]; }
+
+    int GetTargetNumMax(void) { return TARGET_NUM_MAX; }
+
+    void ResetOnce(void) { 
+        for (int i = 0; i < TARGET_NUM_MAX; i++) {
+            Target_Vertex[i].use = false;
+        }
+        once = true; 
+    }
 
 private:
     int Target_Texture;
     char TEX_NAME[128] = "data/TEXTURE/target.png";
+
+    int Target_Eff;
+    char TE_TEX_NAME[128] = "data/TEXTURE/eff_target.png";
+
     //ƒQ[ƒ€ƒV[ƒ“
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
 

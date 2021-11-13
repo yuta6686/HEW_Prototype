@@ -129,11 +129,17 @@
     <ClCompile Include="gameOver.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_Collision.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="GO_SS_FileLoad.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Collision.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Test.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Title_Object.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Map.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
@@ -230,11 +236,17 @@
     <ClInclude Include="gameOver.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="GO_SS_Collision.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GO_SS_FileLoad.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Collision.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Test.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Title_Object.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_Map.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>

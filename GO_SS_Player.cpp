@@ -38,7 +38,7 @@ void GO_SS_Player::Update(void)
 	//プレイヤーの重力処理
 	PlayerGravity();
 
-	
+
 }
 /*---------------------------------------------
 *				描画処理
@@ -90,7 +90,7 @@ void GO_SS_Player::SceneToGameOver(void)
 void GO_SS_Player::InputPlayerMove(void)
 {
 
-	if (GetKeyboardTrigger(DIK_SPACE) && Player_Vertex.pos.y >= SCREEN_HEIGHT / 4) {
+	if (GetKeyboardTrigger(DIK_SPACE) && m_Gravity >= JUMP_DELAY) {
 		IsJump = true;
 		m_Gravity = DEFAULT_GRAVITY * m_Jump;
 		Player_Vertex.pos.y += m_Gravity;
@@ -108,14 +108,9 @@ void GO_SS_Player::InputPlayerMove(void)
 //プレイヤーの重力処理
 void GO_SS_Player::PlayerGravity(void)
 {
-	if (IsColl)return;
+	if (IsColl && m_Gravity >= 5.0f)return;
+
 	m_Gravity += GRAVITY_ACCELERATION;
 	Player_Vertex.pos.y += m_Gravity;
 }
-
-
-
-
-
-
 
