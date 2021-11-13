@@ -35,6 +35,7 @@ void GO_SS_Movement::JumpMove_Liner()
 {
 	//糸を出したら
 	if (!m_pShotString->IsClickTarget)return;
+	//if (!m_pShotString->IsCollTarget)return;
 
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
