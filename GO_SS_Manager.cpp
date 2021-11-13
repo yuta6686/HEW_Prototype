@@ -7,8 +7,9 @@
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Collision.h"
 #include "GO_SS_FileLoad.h"
+#include "GO_SS_Map.h"
 /*---------------------------------------------
-				コンストラクタ
+				?R???X?g???N?^
 ---------------------------------------------*/
 GO_SS_Manager::GO_SS_Manager()
 {
@@ -20,9 +21,9 @@ GO_SS_Manager::GO_SS_Manager()
 }
 
 /*---------------------------------------------
-				クリエイト
+				?N???G?C?g
 -----------------------------------------------
-	ポインタ初期化、生成、レジスター
+	?|?C???^???????A?????A???W?X?^?[
 ---------------------------------------------*/
 void GO_SS_Manager::Create()
 {
@@ -35,6 +36,7 @@ void GO_SS_Manager::Create()
 		mp_ssTarget = nullptr;
 		mp_ssShotString = nullptr;
 		mp_ssFileLoad = nullptr;
+		mp_ssMap = nullptr;
 	}
 
 	//new
@@ -47,6 +49,7 @@ void GO_SS_Manager::Create()
 		mp_ssTarget = new GO_SS_Target;
 		mp_ssShotString = new GO_SS_ShotString;
 		mp_ssFileLoad = new GO_SS_FileLoad;
+		mp_ssMap = new GO_SS_Map;
 	}
 
 	//Register
@@ -58,6 +61,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssTarget);
 		Register(mp_ssShotString);
 		Register(mp_ssFileLoad);
+		Register(mp_ssMap);
 	}
 }
 
@@ -78,21 +82,22 @@ void GO_SS_Manager::SetGameObject()
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);
+		mp_ssMap->SetFileLoad(mp_ssFileLoad);
+		mp_ssMap->SetWall(mp_ssWall);
 	}
-
 }
 /*---------------------------------------------
-*				デストラクタ
+*				?f?X?g???N?^
 ---------------------------------------------*/
 GO_SS_Manager::~GO_SS_Manager()
 {
 	for (int i = 0; i < SS_GAMEOBJECT_MAX; i++) {
-		// nullptrをdeleteしても大丈夫
+		// nullptr??delete???????v
 		delete m_ssGameObject[i];
 	}
 }
 /*---------------------------------------------
-*				初期化処理
+*				??????????
 ---------------------------------------------*/
 void GO_SS_Manager::Initialize(void)
 {
@@ -104,7 +109,7 @@ void GO_SS_Manager::Initialize(void)
 	SetGameObject();
 }
 /*---------------------------------------------
-*				終了処理
+*				?I??????
 ---------------------------------------------*/
 void GO_SS_Manager::Finalize(void)
 {
@@ -115,7 +120,7 @@ void GO_SS_Manager::Finalize(void)
 	}
 }
 /*---------------------------------------------
-*				更新処理
+*				?X?V????
 ---------------------------------------------*/
 void GO_SS_Manager::Update(void)
 {
@@ -128,7 +133,7 @@ void GO_SS_Manager::Update(void)
 	
 }
 /*---------------------------------------------
-*				描画処理
+*				?`????
 ---------------------------------------------*/
 void GO_SS_Manager::Draw(void)
 {
@@ -139,7 +144,7 @@ void GO_SS_Manager::Draw(void)
 	}
 }
 /*---------------------------------------------
-*				登録処理
+*				?o?^????
 ---------------------------------------------*/
 void GO_SS_Manager::Register(GameObject* pSSObject)
 {
