@@ -18,6 +18,7 @@ class GO_SS_Player;
 class GO_SS_Wall;
 class GO_SS_ShotString;
 class GO_SS_Target;
+class GO_SS_Map;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
@@ -59,7 +60,7 @@ public:
         m_pTarget = pTarget; 
         m_ssCollision.SetTarget(pTarget);
     }
-    
+    void SetMap(GO_SS_Map* p) { m_pMap = p; }
     
 private:
     //ゲームシーン
@@ -70,6 +71,7 @@ private:
     GO_SS_Wall* m_pWall;
     GO_SS_ShotString* m_pShotString;
     GO_SS_Target* m_pTarget;
+    GO_SS_Map* m_pMap;
 
     //メンバ変数
     int JumpCounter = 0;

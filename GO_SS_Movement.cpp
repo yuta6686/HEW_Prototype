@@ -4,6 +4,7 @@
 #include "GO_SS_Player.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
+#include "GO_SS_Map.h"
 
 #include <cmath>
 
@@ -154,6 +155,7 @@ void GO_SS_Movement::FromAbyss()
 		m_pPlayer->SetPosY(0.0f);
 		m_pTarget->ResetOnce();
 		m_pWall->ResetOnce();
+		m_pMap->ResetOnce();
 	}
 }
 

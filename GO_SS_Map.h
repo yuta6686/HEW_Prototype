@@ -20,6 +20,8 @@ public:
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
+	void ResetOnce(void) { once = true; }
+
 private:
 	int GAME_SCENE = GAMESCENE_GAME_TEST;	
 	int MapData[WALL_NUM_Y][WALL_NUM_X];//Ç‹Ç¡Ç’Ç≈Å[ÇΩ
@@ -29,4 +31,7 @@ private:
 
 	//íËêî
 	static const int WALL_NUM = 1;	//ï«ÇÃî‘çÜ
+
+	bool once;
+
 };
