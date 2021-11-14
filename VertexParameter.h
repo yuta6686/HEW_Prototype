@@ -69,3 +69,11 @@ struct VERTEX_SHOOTSTIRNG :public VERTEX_NOMAL {
 struct VERTEX_WALL :public VERTEX_NOMAL {
 	bool use;
 };
+
+struct VERTEX_EFF :public VERTEX_NOMAL {
+	bool use;
+
+	FLOAT alpha;
+
+	FLOAT u;
+};

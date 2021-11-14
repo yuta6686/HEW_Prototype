@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="fade.cpp" />
+    <ClCompile Include="GO_SS_Effect_Wind.cpp" />
     <ClCompile Include="GO_SS_FileLoad.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameFramework.cpp" />
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fade.h" />
+    <ClInclude Include="GO_SS_Effect_Wind.h" />
     <ClInclude Include="GO_SS_FileLoad.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameFramework.h" />

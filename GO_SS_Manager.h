@@ -10,6 +10,8 @@ class GO_SS_ShotString;
 class GO_SS_FileLoad;
 class GO_SS_Map;
 
+//class GO_SS_Effect_Wind;
+
 class GO_SS_Manager :
     public GameObject
 {
@@ -45,6 +47,7 @@ private:
     GO_SS_ShotString* mp_ssShotString;
     GO_SS_FileLoad* mp_ssFileLoad;
     GO_SS_Map* mp_ssMap;
+   // GO_SS_Effect_Wind* mp_ssEffWind;
 
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。

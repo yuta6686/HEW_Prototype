@@ -19,6 +19,7 @@ class GO_SS_Wall;
 class GO_SS_ShotString;
 class GO_SS_Target;
 class GO_SS_Map;
+//class GO_SS_Effect_Wind;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
@@ -61,6 +62,7 @@ public:
         m_ssCollision.SetTarget(pTarget);
     }
     void SetMap(GO_SS_Map* p) { m_pMap = p; }
+   // void SetEffWind(GO_SS_Effect_Wind* p) { m_pEffectWind = p; }
     
 private:
     //ゲームシーン
@@ -72,6 +74,7 @@ private:
     GO_SS_ShotString* m_pShotString;
     GO_SS_Target* m_pTarget;
     GO_SS_Map* m_pMap;
+   // GO_SS_Effect_Wind* m_pEffectWind;
 
     //メンバ変数
     int JumpCounter = 0;

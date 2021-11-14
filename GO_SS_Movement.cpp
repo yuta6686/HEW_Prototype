@@ -5,6 +5,7 @@
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
 #include "GO_SS_Map.h"
+#include "GO_SS_Effect_Wind.h"
 
 #include <cmath>
 
@@ -54,6 +55,8 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pWall->AddX(-10.0f);
 
 	m_pTarget->AddPosX(-10.0f);
+
+	//m_pEffectWind->SetEffTrue();
 }
 
 //-----------------------------------------------------------------------------------------
