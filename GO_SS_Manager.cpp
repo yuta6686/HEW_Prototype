@@ -8,7 +8,7 @@
 #include "GO_SS_Collision.h"
 #include "GO_SS_FileLoad.h"
 #include "GO_SS_Map.h"
-//#include "GO_SS_Effect_Wind.h"
+#include "GO_SS_Effect_Wind.h"
 /*---------------------------------------------
 				?R???X?g???N?^
 ---------------------------------------------*/
@@ -38,7 +38,7 @@ void GO_SS_Manager::Create()
 		mp_ssShotString = nullptr;
 		mp_ssFileLoad = nullptr;
 		mp_ssMap = nullptr;
-		//mp_ssEffWind = nullptr;
+		mp_ssEffWind = nullptr;
 	}
 
 	//new
@@ -52,7 +52,7 @@ void GO_SS_Manager::Create()
 		mp_ssShotString = new GO_SS_ShotString;
 		mp_ssFileLoad = new GO_SS_FileLoad;
 		mp_ssMap = new GO_SS_Map;
-		//mp_ssEffWind = new GO_SS_Effect_Wind;
+		mp_ssEffWind = new GO_SS_Effect_Wind;
 	}
 
 	//Register
@@ -65,7 +65,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssShotString);
 		Register(mp_ssFileLoad);
 		Register(mp_ssMap);
-		//Register(mp_ssEffWind);
+		Register(mp_ssEffWind);
 	}
 }
 
@@ -84,7 +84,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetWall(mp_ssWall);
 		mp_ssMovement->SetTarget(mp_ssTarget);
 		mp_ssMovement->SetMap(mp_ssMap);
-		//mp_ssMovement->SetEffWind(mp_ssEffWind);
+		mp_ssMovement->SetEffWind(mp_ssEffWind);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);
