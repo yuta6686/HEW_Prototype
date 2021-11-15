@@ -2,22 +2,19 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
 
 void GO_SS_FileLoad::Initialize(void)
 {
-	ifs.open(MapFileName);
-	if (!ifs)
-	{
-		cerr << "�}�b�v�f�[�^�̓ǂݍ��݂Ɏ��s" << endl;
-	}
+
 }
 
 void GO_SS_FileLoad::Finalize(void)
 {
-	ifs.close();
+
 }
 
 void GO_SS_FileLoad::Update(void)
@@ -28,27 +25,34 @@ void GO_SS_FileLoad::Draw(void)
 {
 }
 
-void GO_SS_FileLoad::MapFileLoad(void)
+void GO_SS_FileLoad::MapFileLoad(int MapData[][WALL_NUM_X])
 {
-	string line;
-	for (int y = 0; y < MAP_HEIGHT_DIV; y++)
+	ifstream ifs("data/MapData.csv");	//ファイルストリーム
+	string str;					//分割する為のstring
+	//int x = 0;					
+	//int y = 0;
+
+	//エラー
+	if (!ifs)
 	{
-		////取り出し
-		//getline(ifs,line);
+		cerr << "error" << endl;
+	}
 
-		////置き換え
-		//line.replace(line.begin(), line.end(), ',', ' ');
+	//取り出し
+	//while (getline(ifs, str))
+	for (int y = 0; y < STAGE_WALL_NUM_Y, getline(ifs, str); y++)
+	{
+		//分解格納用
+		string token;
 
-		for (int x = 0; x < MAP_WIDTH_DIV; x++)
+		//入出力用変換
+		istringstream iss(str);
+
+		//while (getline(iss, token, ','))
+		for (int x = 0; x < STAGE_WALL_NUM_X, getline(iss, token, ','); x++)
 		{
-			////iss
-			//istringstream iss(line);
-
-			////取り出し
-			//iss >> MapData[y][x];
-
-			//���o��
-		//	ifs >> MapData[y][x];
+			MapData[y][x] = stoi(token.c_str());
 		}
 	}
+	ifs.close();
 }

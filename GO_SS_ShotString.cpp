@@ -9,8 +9,11 @@ void GO_SS_ShotString::Initialize(void)
 	String_Vertex.size.x = 0.0f;
 	String_Vertex.size.y = 5.0f;
 	String_Vertex.pos = D3DXVECTOR2(0.0f, 0.0f);
-	String_Vertex.angle = 0.0f;
+	String_Vertex.angle = 0.0f;																			
 
+	for (int i = 0; i < 4; i++) {
+		Coordinate[i] = D3DXVECTOR2(0.0f, 0.0f);
+	}
 }
 
 void GO_SS_ShotString::Finalize(void)
@@ -38,6 +41,11 @@ void GO_SS_ShotString::Update(void)
 			String_Vertex.pos.x - CursorPos.x);
 
 	}
+
+	//糸の頂点座標をCoordinateにセット
+	SetCoord(String_Vertex.pos, String_Vertex.size, 0.0f, 0.0f, 0.9f, 0.9f, 
+		atan2f(CursorPos.y - String_Vertex.pos.y,
+			CursorPos.x - String_Vertex.pos.x));
 
 	//ターゲットではない場所をクリック
 	NoTargetClick();
@@ -78,8 +86,8 @@ void GO_SS_ShotString::DebugOut(void)
 {
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
 	wsprintf(GetDebugStr(), WINDOW_CAPTION);
-	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " angle:%d",
-		(int)(String_Vertex.angle * (FLOAT)180.0f / (FLOAT)PI));
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " IsCollTarget:%d",
+		IsStringConnectTarget());
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
@@ -110,6 +118,8 @@ void GO_SS_ShotString::TargetClick(void)
 {
 	IsInsideTarget = IsMouseInsideTarget();
 
+	IsCollTarget = IsStringConnectTarget();
+
 	//糸サイズリセット
 	if (IsMouseLeftTriggered() && IsInsideTarget) {
 		String_Vertex.size.x = 0.0f;
@@ -118,17 +128,21 @@ void GO_SS_ShotString::TargetClick(void)
 	}
 
 	if (IsMouseLeftPressed() && IsClickTarget){
-		if (m_jumpCounter >= 120) {
-			IsClickTarget = false;
-			m_pPlayer->SetGravityDefault();
-		}
-		else {
-			m_jumpCounter++;
-			IsClickTarget = true;
-		}
+		//if (IsCollTarget) {
+			if (m_jumpCounter >= 120) {
+				IsClickTarget = false;
+				IsCollTarget = false;
+			}
+			else {
+				m_jumpCounter++;
+				IsClickTarget = true;
+				IsCollTarget = true;
+			}
+		//}
 	}
 	else {
 		IsClickTarget = false;
+		IsCollTarget = false;
 	}
 }
 
@@ -156,3 +170,60 @@ bool GO_SS_ShotString::IsMouseInsideTarget(void)
 	
 	return false;
 }
+
+bool GO_SS_ShotString::IsStringConnectTarget()
+{
+	for (int i = 0; i < m_pTarget->GetTargetNumMax(); i++) {
+		VERTEX_TARGET vt = m_pTarget->GetTarget()[i];
+		if (vt.use == false)continue;
+		if (IsClick == false)continue;
+		if (((Coordinate[1].x - Coordinate[0].x) * (vt.pos.y - Coordinate[0].y)) -
+			((vt.pos.x - Coordinate[0].x) * (Coordinate[1].y - Coordinate[0].y)) <= 0 &&
+
+			((Coordinate[2].x - Coordinate[1].x) * (vt.pos.y - Coordinate[1].y)) -
+			((vt.pos.x - Coordinate[1].x) * (Coordinate[2].y - Coordinate[1].y)) <= 0 &&
+
+			((Coordinate[3].x - Coordinate[2].x) * (vt.pos.y - Coordinate[2].y)) -
+			((vt.pos.x - Coordinate[2].x) * (Coordinate[3].y - Coordinate[2].y)) <= 0 &&
+
+			((Coordinate[0].x - Coordinate[3].x) * (vt.pos.y - Coordinate[3].y)) -
+			((vt.pos.x - Coordinate[3].x) * (Coordinate[0].y - Coordinate[3].y)) <= 0) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void GO_SS_ShotString::SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle)
+{
+	size.y += 100.0f;
+
+	float hw, hh;
+	hw = size.x * 0.5f;
+	hh = size.y * 0.5f;
+
+	float rad = RADIAN * angle;
+
+	float rot_x = +hw * 2.0f;
+	float rot_y = -hh;
+
+	Coordinate[0] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+
+
+	rot_x = 0.0f;
+	rot_y = -hh;
+	Coordinate[1] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+
+	rot_x = +hw * 2.0f;
+	rot_y = +hh;
+	Coordinate[3] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+
+	rot_x = 0.0f;
+	rot_y = +hh;
+	Coordinate[2] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
+		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
+}
+

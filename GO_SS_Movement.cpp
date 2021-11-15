@@ -4,6 +4,8 @@
 #include "GO_SS_Player.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
+#include "GO_SS_Map.h"
+#include "GO_SS_Effect_Wind.h"
 
 #include <cmath>
 
@@ -20,6 +22,8 @@ void GO_SS_Movement::Update(void)
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
 	
+	//奈落からの復活
+	FromAbyss();
 }
 
 
@@ -33,6 +37,7 @@ void GO_SS_Movement::JumpMove_Liner()
 {
 	//糸を出したら
 	if (!m_pShotString->IsClickTarget)return;
+	//if (!m_pShotString->IsCollTarget)return;
 
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
@@ -50,6 +55,8 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pWall->AddX(-10.0f);
 
 	m_pTarget->AddPosX(-10.0f);
+
+	m_pEffectWind->SetEffTrue();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -142,6 +149,16 @@ void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 		break;
 	default:
 		break;
+	}
+}
+
+void GO_SS_Movement::FromAbyss()
+{
+	if (m_pPlayer->GetPos().y >= SCREEN_HEIGHT) {
+		m_pPlayer->SetPosY(0.0f);
+		m_pTarget->ResetOnce();
+		m_pWall->ResetOnce();
+		m_pMap->ResetOnce();
 	}
 }
 

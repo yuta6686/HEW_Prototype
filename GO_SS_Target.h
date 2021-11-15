@@ -34,6 +34,13 @@ public:
 
     int GetTargetNumMax(void) { return TARGET_NUM_MAX; }
 
+    void ResetOnce(void) { 
+        for (int i = 0; i < TARGET_NUM_MAX; i++) {
+            Target_Vertex[i].use = false;
+        }
+        once = true; 
+    }
+
 private:
     int Target_Texture;
     char TEX_NAME[128] = "data/TEXTURE/target.png";

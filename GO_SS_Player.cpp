@@ -38,7 +38,7 @@ void GO_SS_Player::Update(void)
 	//プレイヤーの重力処理
 	PlayerGravity();
 
-	
+
 }
 /*---------------------------------------------
 *				描画処理
@@ -109,13 +109,8 @@ void GO_SS_Player::InputPlayerMove(void)
 void GO_SS_Player::PlayerGravity(void)
 {
 	if (IsColl && m_Gravity >= 5.0f)return;
+
 	m_Gravity += GRAVITY_ACCELERATION;
 	Player_Vertex.pos.y += m_Gravity;
 }
-
-
-
-
-
-
 
