@@ -25,12 +25,12 @@ void GO_SS_FileLoad::Draw(void)
 {
 }
 
-void GO_SS_FileLoad::MapFileLoad(int (*MapData)[WALL_NUM_X])
+void GO_SS_FileLoad::MapFileLoad(int MapData[][WALL_NUM_X])
 {
 	ifstream ifs("data/MapData.csv");	//ファイルストリーム
 	string str;					//分割する為のstring
-	int x = 0;					
-	int y = 0;
+	//int x = 0;					
+	//int y = 0;
 
 	//エラー
 	if (!ifs)
@@ -39,7 +39,8 @@ void GO_SS_FileLoad::MapFileLoad(int (*MapData)[WALL_NUM_X])
 	}
 
 	//取り出し
-	while (getline(ifs, str))
+	//while (getline(ifs, str))
+	for (int y = 0; y < STAGE_WALL_NUM_Y, getline(ifs, str); y++)
 	{
 		//分解格納用
 		string token;
@@ -47,12 +48,11 @@ void GO_SS_FileLoad::MapFileLoad(int (*MapData)[WALL_NUM_X])
 		//入出力用変換
 		istringstream iss(str);
 
-		while (getline(iss, token, ','))
+		//while (getline(iss, token, ','))
+		for (int x = 0; x < STAGE_WALL_NUM_X, getline(iss, token, ','); x++)
 		{
 			MapData[y][x] = stoi(token.c_str());
-			x++;
 		}
-		y++;
 	}
 	ifs.close();
 }

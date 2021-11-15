@@ -9,7 +9,7 @@ void GO_SS_ShotString::Initialize(void)
 	String_Vertex.size.x = 0.0f;
 	String_Vertex.size.y = 5.0f;
 	String_Vertex.pos = D3DXVECTOR2(0.0f, 0.0f);
-	String_Vertex.angle = 0.0f;
+	String_Vertex.angle = 0.0f;																			
 
 	for (int i = 0; i < 4; i++) {
 		Coordinate[i] = D3DXVECTOR2(0.0f, 0.0f);
