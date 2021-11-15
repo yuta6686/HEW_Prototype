@@ -72,5 +72,8 @@ char* GetDebugStr(void);
 const int WALL_NUM_X = 16;
 const int WALL_NUM_Y = 9;
 
+const int STAGE_WALL_NUM_X = 16;     //1ステージの横マス数
+const int STAGE_WALL_NUM_Y = 9;     //1ステージの縦マス数
+
 const float WALL_WIDTH = SCREEN_WIDTH / (float)WALL_NUM_X;
 const float WALL_HEIGHT = SCREEN_HEIGHT / (float)WALL_NUM_Y;

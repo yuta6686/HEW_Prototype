@@ -40,7 +40,7 @@ void GO_SS_FileLoad::MapFileLoad(int MapData[][WALL_NUM_X])
 
 	//取り出し
 	//while (getline(ifs, str))
-	for(int y=0;y<WALL_NUM_Y, getline(ifs, str);y++)
+	for (int y = 0; y < STAGE_WALL_NUM_Y, getline(ifs, str); y++)
 	{
 		//分解格納用
 		string token;
@@ -49,7 +49,7 @@ void GO_SS_FileLoad::MapFileLoad(int MapData[][WALL_NUM_X])
 		istringstream iss(str);
 
 		//while (getline(iss, token, ','))
-		for (int x = 0; x < WALL_NUM_X, getline(iss, token, ','); x++)
+		for (int x = 0; x < STAGE_WALL_NUM_X, getline(iss, token, ','); x++)
 		{
 			MapData[y][x] = stoi(token.c_str());
 		}

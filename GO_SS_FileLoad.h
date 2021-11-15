@@ -14,7 +14,7 @@ public:
 
 	virtual void Draw(void) override;
 
-	void GO_SS_FileLoad::MapFileLoad(int MapData[][WALL_NUM_X]);
+	void GO_SS_FileLoad::MapFileLoad(int MapData[][STAGE_WALL_NUM_X]);
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 private:
