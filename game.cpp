@@ -57,11 +57,11 @@ void UpdateGame(void)
 {
 	g_GameFramework.Update();
 
-	if (IsMouseRightPressed()) {
+	//if (IsMouseRightPressed()) {
 
-		//SCRAMBLEへ移行する
-		SceneTransition(SCENE_SCRAMBLE);
-	}
+	//	//SCRAMBLEへ移行する
+	//	SceneTransition(SCENE_SCRAMBLE);
+	//}
 
 	//スペースキーが押されていて、フェード処理中ではないとき
 	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE) {

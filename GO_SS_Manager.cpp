@@ -7,6 +7,7 @@
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Collision.h"
 #include "GO_SS_FileLoad.h"
+#include "GO_SS_Scramble.h"
 /*---------------------------------------------
 				コンストラクタ
 ---------------------------------------------*/
@@ -31,12 +32,13 @@ void GO_SS_Manager::Create()
 		mp_ssBackGround = nullptr;
 		mp_ssPlayer = nullptr;
 		mp_ssWall = nullptr;
-		mp_ssMovement= nullptr;
+		mp_ssMovement = nullptr;
 		mp_ssTarget = nullptr;
 		mp_ssShotString = nullptr;
 		mp_ssFileLoad = nullptr;
-	}
+		mp_ssScramble = nullptr;
 
+	}
 	//new
 	{
 		mp_ssBackGround = new GO_SS_BackGround;
@@ -47,17 +49,21 @@ void GO_SS_Manager::Create()
 		mp_ssTarget = new GO_SS_Target;
 		mp_ssShotString = new GO_SS_ShotString;
 		mp_ssFileLoad = new GO_SS_FileLoad;
+		mp_ssScramble = new GO_SS_Scramble;
 	}
 
 	//Register
 	{
+
 		Register(mp_ssBackGround);
+		Register(mp_ssScramble);
 		Register(mp_ssPlayer);
 		Register(mp_ssWall);
 		Register(mp_ssMovement);
 		Register(mp_ssTarget);
 		Register(mp_ssShotString);
 		Register(mp_ssFileLoad);
+
 	}
 }
 
@@ -78,6 +84,7 @@ void GO_SS_Manager::SetGameObject()
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);
+		mp_ssScramble->SetPlayer(mp_ssPlayer);
 	}
 
 }

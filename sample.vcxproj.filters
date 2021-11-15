@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="ヘッダー ファイル\GameFramework">
       <UniqueIdentifier>{d30d0ead-7f43-42f2-b80f-0ac990f4b7fd}</UniqueIdentifier>
     </Filter>
@@ -42,6 +38,10 @@
     </Filter>
     <Filter Include="ソース ファイル\GameObjects\GO_SS">
       <UniqueIdentifier>{0de75e5b-a027-4e56-b1c8-40d3a23b8623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +137,9 @@
     </ClCompile>
     <ClCompile Include="scramble.cpp">
       <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Scramble.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="scramble.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Scramble.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
