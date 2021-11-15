@@ -142,6 +142,7 @@
     <ClCompile Include="GO_SS_Movement.cpp" />
     <ClCompile Include="GO_SS_Manager.cpp" />
     <ClCompile Include="GO_SS_Player.cpp" />
+    <ClCompile Include="GO_SS_Scramble.cpp" />
     <ClCompile Include="GO_SS_Target.cpp" />
     <ClCompile Include="GO_SS_Test.cpp" />
     <ClCompile Include="GO_SS_Wall.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="GO_SS_Movement.h" />
     <ClInclude Include="GO_SS_Manager.h" />
     <ClInclude Include="GO_SS_Player.h" />
+    <ClInclude Include="GO_SS_Scramble.h" />
     <ClInclude Include="GO_SS_Target.h" />
     <ClInclude Include="GO_SS_Test.h" />
     <ClInclude Include="GO_SS_Wall.h" />

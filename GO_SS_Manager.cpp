@@ -9,6 +9,7 @@
 #include "GO_SS_FileLoad.h"
 #include "GO_SS_Map.h"
 #include "GO_SS_Effect_Wind.h"
+#include "GO_SS_Scramble.h"
 /*---------------------------------------------
 				?R???X?g???N?^
 ---------------------------------------------*/
@@ -39,6 +40,7 @@ void GO_SS_Manager::Create()
 		mp_ssFileLoad = nullptr;
 		mp_ssMap = nullptr;
 		mp_ssEffWind = nullptr;
+		mp_ssScramble = nullptr;
 	}
 
 	//new
@@ -53,11 +55,13 @@ void GO_SS_Manager::Create()
 		mp_ssFileLoad = new GO_SS_FileLoad;
 		mp_ssMap = new GO_SS_Map;
 		mp_ssEffWind = new GO_SS_Effect_Wind;
+		mp_ssScramble = new GO_SS_Scramble;
 	}
 
 	//Register
 	{
 		Register(mp_ssBackGround);
+		Register(mp_ssScramble);
 		Register(mp_ssPlayer);
 		Register(mp_ssWall);
 		Register(mp_ssMovement);
@@ -91,6 +95,8 @@ void GO_SS_Manager::SetGameObject()
 
 		mp_ssMap->SetFileLoad(mp_ssFileLoad);
 		mp_ssMap->SetWall(mp_ssWall);
+
+		mp_ssScramble->SetPlayer(mp_ssPlayer);
 	}
 }
 /*---------------------------------------------
