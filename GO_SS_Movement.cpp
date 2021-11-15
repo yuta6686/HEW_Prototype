@@ -56,7 +56,7 @@ void GO_SS_Movement::JumpMove_Liner()
 
 	m_pTarget->AddPosX(-10.0f);
 
-	//m_pEffectWind->SetEffTrue();
+	m_pEffectWind->SetEffTrue();
 }
 
 //-----------------------------------------------------------------------------------------
