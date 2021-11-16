@@ -31,21 +31,25 @@ void GO_SS_ShotString::Update(void)
 	//押されている間
 	if (IsMouseLeftPressed())
 	{
-		//カーソル取得
-		CursorPos.x = GetMousePosX();
-		CursorPos.y = GetMousePosY();
-
+		if (IsInsideTarget > -1) {
+			AimPos = m_pTarget->GetTarget()[IsInsideTarget].pos;
+		}
+		else {
+			AimPos.x = GetMousePosX();
+			AimPos.y = GetMousePosY();
+		}
+		
 
 		//プレイヤーとカーソルの角度取得
-		String_Vertex.angle = atan2f(String_Vertex.pos.y - CursorPos.y,
-			String_Vertex.pos.x - CursorPos.x);
+		String_Vertex.angle = atan2f(String_Vertex.pos.y - AimPos.y,
+			String_Vertex.pos.x - AimPos.x);
 
 	}
 
 	//糸の頂点座標をCoordinateにセット
 	SetCoord(String_Vertex.pos, String_Vertex.size, 0.0f, 0.0f, 0.9f, 0.9f, 
-		atan2f(CursorPos.y - String_Vertex.pos.y,
-			CursorPos.x - String_Vertex.pos.x));
+		atan2f(AimPos.y - String_Vertex.pos.y,
+			AimPos.x - String_Vertex.pos.x));
 
 	//ターゲットではない場所をクリック
 	NoTargetClick();
@@ -57,8 +61,8 @@ void GO_SS_ShotString::Update(void)
 
 
 	//糸の長さがカーソルとの距離までに制限
-	if (GetDistance(String_Vertex.pos, CursorPos) * 2.0f <= String_Vertex.size.x) {
-		String_Vertex.size.x = GetDistance(String_Vertex.pos, CursorPos) * 2.0f;
+	if (GetDistance(String_Vertex.pos, AimPos) * 2.0f <= String_Vertex.size.x) {
+		String_Vertex.size.x = GetDistance(String_Vertex.pos, AimPos) * 2.0f;
 	}
 	else {
 		//糸の長さ伸ばす
@@ -118,10 +122,10 @@ void GO_SS_ShotString::TargetClick(void)
 {
 	IsInsideTarget = IsMouseInsideTarget();
 
-	IsCollTarget = IsStringConnectTarget();
+	//IsCollTarget = IsStringConnectTarget();
 
 	//糸サイズリセット
-	if (IsMouseLeftTriggered() && IsInsideTarget) {
+	if (IsMouseLeftTriggered() && IsInsideTarget > -1) {
 		String_Vertex.size.x = 0.0f;
 		m_jumpCounter = 0;
 		IsClickTarget = true;
@@ -131,23 +135,23 @@ void GO_SS_ShotString::TargetClick(void)
 		//if (IsCollTarget) {
 			if (m_jumpCounter >= 120) {
 				IsClickTarget = false;
-				IsCollTarget = false;
+				//IsCollTarget = false;
 			}
 			else {
 				m_jumpCounter++;
 				IsClickTarget = true;
-				IsCollTarget = true;
+				//IsCollTarget = true;
 			}
 		//}
 	}
 	else {
 		IsClickTarget = false;
-		IsCollTarget = false;
+		//IsCollTarget = false;
 	}
 }
 
 
-bool GO_SS_ShotString::IsMouseInsideTarget(void)
+int GO_SS_ShotString::IsMouseInsideTarget(void)
 {	
 	for (int i = 0; i < m_pTarget->GetTargetNumMax(); i++) {
 		VERTEX_TARGET vt = m_pTarget->GetTarget()[i];
@@ -159,16 +163,16 @@ bool GO_SS_ShotString::IsMouseInsideTarget(void)
 			return true;
 		}*/
 
-		FLOAT x = powf(CursorPos.x - vt.pos.x, 2.0f);
-		FLOAT y = powf(CursorPos.y - vt.pos.y, 2.0f);
+		FLOAT x = powf(AimPos.x - vt.pos.x, 2.0f);
+		FLOAT y = powf(AimPos.y - vt.pos.y, 2.0f);
 		FLOAT dist = sqrtf(x + y);
 
 		if (dist <= vt.size.x - 100.0f) {
-			return true;
+			return i;
 		}
 	}
 	
-	return false;
+	return -1;
 }
 
 bool GO_SS_ShotString::IsStringConnectTarget()

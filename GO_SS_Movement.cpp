@@ -39,6 +39,8 @@ void GO_SS_Movement::JumpMove_Liner()
 	if (!m_pShotString->IsClickTarget)return;
 	//if (!m_pShotString->IsCollTarget)return;
 
+	m_pShotString->SetPos(m_pTarget->GetTarget()[0].pos);
+
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
 
