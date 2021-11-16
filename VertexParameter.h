@@ -77,3 +77,7 @@ struct VERTEX_EFF :public VERTEX_NOMAL {
 
 	FLOAT u;
 };
+
+struct VERTEX_CIRCLE :public VERTEX_NOMAL {
+	FLOAT alpha;
+};
