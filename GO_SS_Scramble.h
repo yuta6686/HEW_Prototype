@@ -25,7 +25,7 @@ public:
     D3DXVECTOR2 GetScramblePos(){return Vortex_Vertex.pos;}
 
 private:
-    char TEX_NAME[128] = "data/TEXTURE/Vortex.png";
+    char TEX_NAME[128] = "data/TEXTURE/natto.png";
 
     int Scramble_texture;
 
