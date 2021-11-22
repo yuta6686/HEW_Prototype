@@ -13,7 +13,7 @@ void GO_SS_Timer::Initialize(void)
 	{
 		Timer_Vertex.alpha = 1.0f;
 		Timer_Vertex.counter = 0;
-		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH *6.5/8, SCREEN_HEIGHT / 10);
 		Timer_Vertex.size = D3DXVECTOR2(75, 75);
 		Timer_Vertex.u = 0.0f;
 		Timer_Vertex.v = 0.0f;
@@ -22,7 +22,7 @@ void GO_SS_Timer::Initialize(void)
 
 	//è¨êîì_ëÊ1à 
 	{
-		Timer_Second.pos = D3DXVECTOR2((SCREEN_WIDTH / 2) + 100.0f, SCREEN_HEIGHT / 2);
+		Timer_Second.pos = D3DXVECTOR2(Timer_Vertex.pos.x + 100.0f, SCREEN_HEIGHT / 10);
 		Timer_Second.size = D3DXVECTOR2(75, 75);
 		Timer_Second.u = 0.0f;
 		Timer_Second.v = 0.0f;
@@ -30,7 +30,7 @@ void GO_SS_Timer::Initialize(void)
 
 	//è¨êîì_ëÊ2à 
 	{
-		Timer_Third.pos = D3DXVECTOR2((SCREEN_WIDTH / 2) + 200.0f, SCREEN_HEIGHT / 2);
+		Timer_Third.pos = D3DXVECTOR2(Timer_Vertex.pos.x + 200.0f, SCREEN_HEIGHT / 10);
 		Timer_Third.size = D3DXVECTOR2(75, 75);
 		Timer_Third.u = 0.0f;
 		Timer_Third.v = 0.0f;
@@ -97,7 +97,7 @@ void GO_SS_Timer::FirstNum(void)
 	if (Timer_Vertex.counter == 0) {
 
 		//GAMEOVERÇ÷à⁄çsÇ∑ÇÈ
-		SceneTransition(SCENE_GAMEOVER);
+		//SceneTransition(SCENE_GAMEOVER);
 	}
 
 	//---------------------------------------------
