@@ -24,6 +24,14 @@ void GO_SS_Target::Finalize(void)
 void GO_SS_Target::Update(void)
 {
     SetTargetOnce();
+
+    if (GetKeyboardPress(DIK_D)) {
+        AddPosX(-5.0f);
+    }
+
+    if (GetKeyboardPress(DIK_A)) {
+        AddPosX(5.0f);
+    }
 }
 
 void GO_SS_Target::Draw(void)
@@ -79,7 +87,7 @@ void GO_SS_Target::SetTargetOnce()
     if (once) {
         once = false;
         SetTarget(D3DXVECTOR2(1000.0f, 300.0f));
-
+        SetTarget(D3DXVECTOR2(2000.0f, 300.0f));
     }
 
 }
@@ -91,4 +99,5 @@ void GO_SS_Target::AddPosX(FLOAT x)
         Target_Vertex[i].pos.x += x;
     }
 }
+
 

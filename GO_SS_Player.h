@@ -33,8 +33,10 @@ public:
     void AddYPos(FLOAT y) { Player_Vertex.pos.y += y; }
 
     bool IsJump;
+    bool OkJump;
     bool IsColl;
 
+    
 private:
     //GameScene
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -63,6 +65,8 @@ private:
 
     //プレイヤーの重力処理
     void PlayerGravity(void);
+
+    void PlayerJumpMove(void);
     
 };
 
