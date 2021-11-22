@@ -34,12 +34,12 @@ void GO_SS_Scramble::Finalize(void)
 void GO_SS_Scramble::Update(void)
 {
 	playerPos = m_pPlayer->GetPos();
-	/*if (Vortex_Vertex.angle >= 360.0f) {
+	if (Vortex_Vertex.angle >= 360.0f) {
 		Vortex_Vertex.angle = 0.0f;
 	}
 	else {
-		Vortex_Vertex.angle += 1.0f;
-	}*/
+		Vortex_Vertex.angle += 0.05f;
+	}
 
 	
 

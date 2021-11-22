@@ -10,6 +10,7 @@
 #include "GO_SS_Map.h"
 #include "GO_SS_Effect_Wind.h"
 #include "GO_SS_Scramble.h"
+#include "GO_SS_Timer.h"
 /*---------------------------------------------
 				?R???X?g???N?^
 ---------------------------------------------*/
@@ -41,6 +42,7 @@ void GO_SS_Manager::Create()
 		mp_ssMap = nullptr;
 		mp_ssEffWind = nullptr;
 		mp_ssScramble = nullptr;
+		mp_ssTimer = nullptr;
 	}
 
 	//new
@@ -56,11 +58,13 @@ void GO_SS_Manager::Create()
 		mp_ssMap = new GO_SS_Map;
 		mp_ssEffWind = new GO_SS_Effect_Wind;
 		mp_ssScramble = new GO_SS_Scramble;
+		mp_ssTimer = new GO_SS_Timer;
 	}
 
 	//Register
 	{
 		Register(mp_ssBackGround);
+		Register(mp_ssTimer);
 		Register(mp_ssScramble);
 		Register(mp_ssPlayer);
 		Register(mp_ssWall);
