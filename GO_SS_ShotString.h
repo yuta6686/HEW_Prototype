@@ -8,20 +8,20 @@ class GO_SS_ShotString :public GameObject
 {
 public:
 	// GameObjectを介して継承されました
-	virtual void Initialize(void) override;
-	virtual void Finalize(void) override;
-	virtual void Update(void) override;
-	virtual void Draw(void) override;
-	virtual int GetGameScene(void) override { return GAME_SCENE; }
+	virtual void Initialize		(void)	override;
+	virtual void Finalize		(void)	override;
+	virtual void Update			(void)	override;
+	virtual void Draw			(void)	override;
+	virtual int GetGameScene	(void)	override	{ return GAME_SCENE; }
 
 	//ゲッター
-	FLOAT GetAngle(void) { return String_Vertex.angle; }
+	FLOAT GetAngle(void){ return String_Vertex.angle; }
 
 	//セッター
-	void SetPlayer(GO_SS_Player* p) { m_pPlayer = p; }
-	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
+	void SetPlayer(GO_SS_Player* p)	{ m_pPlayer = p; }
+	void SetTarget(GO_SS_Target* p)	{ m_pTarget = p; }
 
-	void SetPos(D3DXVECTOR2 pos) { String_Vertex.pos = pos; }
+	void SetPos(D3DXVECTOR2 pos)	{ String_Vertex.pos = pos; }
 
 	//public 変数
 	bool IsClick = false;

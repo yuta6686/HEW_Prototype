@@ -17,7 +17,7 @@ void GO_SS_Movement::Update(void)
 		PLAYERMOVE_CURVE,	
 		PLAYERMOVE_PENDULUM,
 	*/
-	PlayerMoveSwitch(PLAYERMOVE_LINEAR);
+	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
 	
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
@@ -129,6 +129,30 @@ void GO_SS_Movement::JumpMove_Curve()
 //-----------------------------------------------------------------------------------------
 void GO_SS_Movement::JumpMove_Pendulum()
 {
+	//糸を出したら
+	if (!m_pShotString->IsClickTarget)return;
+	//if (!m_pShotString->IsCollTarget)return;
+
+	m_pShotString->SetPos(m_pTarget->GetTarget()[0].pos);
+
+	//重力リセット
+	m_pPlayer->SetGravityDefault();
+
+	//プレイヤーと糸の角度取得
+	FLOAT angle = m_pShotString->GetAngle();
+
+	//プレイヤーのY軸　動き　
+	m_pPlayer->AddYPos(-sinf(angle) * 25.0f);
+
+	//背景スクロール処理
+	m_pBackGround->SubU(cosf(angle) / 100.0f);
+
+
+	m_pWall->AddX(-10.0f);
+
+	m_pTarget->AddPosX(-10.0f);
+
+	m_pEffectWind->SetEffTrue();
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
