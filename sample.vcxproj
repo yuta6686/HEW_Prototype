@@ -145,6 +145,7 @@
     <ClCompile Include="GO_SS_Scramble.cpp" />
     <ClCompile Include="GO_SS_Target.cpp" />
     <ClCompile Include="GO_SS_Test.cpp" />
+    <ClCompile Include="GO_SS_Timer.cpp" />
     <ClCompile Include="GO_SS_Wall.cpp" />
     <ClCompile Include="GO_SS_ShotString.cpp" />
     <ClCompile Include="GO_Throw.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="GO_SS_Scramble.h" />
     <ClInclude Include="GO_SS_Target.h" />
     <ClInclude Include="GO_SS_Test.h" />
+    <ClInclude Include="GO_SS_Timer.h" />
     <ClInclude Include="GO_SS_Wall.h" />
     <ClInclude Include="GO_SS_ShotString.h" />
     <ClInclude Include="GO_Throw.h" />

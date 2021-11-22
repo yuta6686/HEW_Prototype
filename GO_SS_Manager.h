@@ -10,6 +10,7 @@ class GO_SS_ShotString;
 class GO_SS_FileLoad;
 class GO_SS_Map;
 class GO_SS_Scramble;
+class GO_SS_Timer;
 
 class GO_SS_Effect_Wind;
 
@@ -50,6 +51,7 @@ private:
     GO_SS_Map* mp_ssMap;
     GO_SS_Effect_Wind* mp_ssEffWind;
     GO_SS_Scramble* mp_ssScramble;
+    GO_SS_Timer* mp_ssTimer;
 
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
