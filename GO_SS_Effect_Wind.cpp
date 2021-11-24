@@ -32,7 +32,7 @@ void GO_SS_Effect_Wind::Draw(void)
 {
     if (windEff.use == false)return;
 
-    DrawSpriteLeftTopColor(Eff_Texture, windEff.pos.x, windEff.pos.y, windEff.size.x, windEff.size.y,
-        windEff.u, 1.0f, 1.0f, 1.0f, D3DXCOLOR(0.0f, windEff.alpha/5.0f, windEff.alpha / 5.0f, windEff.alpha));
+    //DrawSpriteLeftTopColor(Eff_Texture, windEff.pos.x, windEff.pos.y, windEff.size.x, windEff.size.y,
+        //windEff.u, 1.0f, 1.0f, 1.0f, D3DXCOLOR(0.0f, windEff.alpha/5.0f, windEff.alpha / 5.0f, windEff.alpha));
 }
 
