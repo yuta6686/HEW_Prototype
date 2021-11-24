@@ -52,6 +52,7 @@ void GO_SS_Timer::Update(void)
 	//¬”“_‘æ2ˆÊ
 	ThirdNum();
 
+
 	SceneToGameOver();
 }
 

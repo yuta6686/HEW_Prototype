@@ -141,8 +141,9 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	//プレイヤーと糸の角度取得
 	FLOAT angle = m_pShotString->GetAngle();
 
-	//プレイヤーのY軸　動き　
-	m_pPlayer->AddYPos(-sinf(angle) * 25.0f);
+	
+
+	PlayerMove_Pendulum();
 
 	//背景スクロール処理
 	m_pBackGround->SubU(cosf(angle) / 100.0f);
@@ -153,6 +154,25 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	m_pTarget->AddPosX(-10.0f);
 
 	m_pEffectWind->SetEffTrue();
+}
+
+void GO_SS_Movement::PlayerMove_Pendulum()
+{
+	//プレイヤーのY軸　動き　
+
+	if (Pendulum_Counter >= PENDULUM_COUNTER_MAX) {
+		Pendulum_Counter = 0;
+		m_pPlayer->SetGravity(-10.0f);
+		m_pShotString->IsClickTarget = false;
+	}
+	else {
+		Pendulum_Counter++;
+		FLOAT rot = (Pendulum_Counter * 3.6f);
+		m_pPlayer->AddYPos(sinf(rot * RADIAN)  * 10.0f);
+		
+		DebugOut(rot);
+	}
+
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
@@ -186,6 +206,16 @@ void GO_SS_Movement::FromAbyss()
 		m_pWall->ResetOnce();
 		m_pMap->ResetOnce();
 	}
+}
+
+void GO_SS_Movement::DebugOut(int i)
+{
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+	wsprintf(GetDebugStr(), WINDOW_CAPTION);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " rot:%d",i);
+
+	SetWindowText(GethWnd()[0], GetDebugStr());
+#endif
 }
 
 
