@@ -21,6 +21,10 @@ public:
     void CollisionUpdate(void);
 
 private:
+    //メンバ変数
+    D3DXVECTOR2 playerPos;
+    D3DXVECTOR2 playerSize;
+
     //ポインタ変数
     GO_SS_BackGround* m_pBackGround;
     GO_SS_Player* m_pPlayer;
@@ -32,6 +36,7 @@ private:
 
 //プレイヤーと壁
     int CJ_PlayerWall(void);
+    int CJ_PWSide(void);
 
 //当たり判定テンプレート
     bool BBCollision(D3DXVECTOR2 pos1,D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
@@ -39,6 +44,6 @@ private:
 //3つ目以降の引数に入るのがLeftTop                                              ↓                ↓
     bool BBCollision_LeftTop2(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
 
-
+    void DebugOut();
 };
 

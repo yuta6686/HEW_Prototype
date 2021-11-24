@@ -20,14 +20,6 @@ void GO_SS_Wall::Finalize(void)
 void GO_SS_Wall::Update(void)
 {
     SetWallOnce();
-
-    if (GetKeyboardPress(DIK_D)) {
-        AddX(-5.0f);
-    }
-
-    if (GetKeyboardPress(DIK_A)) {
-        AddX(5.0f);
-    }
 }
 
 void GO_SS_Wall::Draw(void)
@@ -73,6 +65,7 @@ void GO_SS_Wall::SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size)
         break;
     }
 }
+
 
 void GO_SS_Wall::SetWallOnce()
 {
