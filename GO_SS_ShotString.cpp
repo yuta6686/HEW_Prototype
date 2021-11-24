@@ -45,7 +45,7 @@ void GO_SS_ShotString::Update(void)
 	//‰Ÿ‚³‚ê‚Ä‚¢‚éŠÔ
 	if (IsMouseLeftPressed())
 	{
-		if (IsInsideTarget > -1) {
+		if (IsInsideTarget > -1 && IsClickTarget) {
 			AimPos = m_pTarget->GetTarget()[IsInsideTarget].pos;
 		}
 		else {
