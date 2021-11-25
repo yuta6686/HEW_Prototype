@@ -25,7 +25,7 @@ void GO_SS_FileLoad::Draw(void)
 {
 }
 
-void GO_SS_FileLoad::MapFileLoad(int MapData[][WALL_NUM_X])
+void GO_SS_FileLoad::MapFileLoad(int MapData[][STAGE_WALL_NUM_X])
 {
 	ifstream ifs("data/MapData.csv");	//ファイルストリーム
 	string str;					//分割する為のstring

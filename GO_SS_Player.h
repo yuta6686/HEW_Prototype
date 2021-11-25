@@ -36,7 +36,7 @@ public:
     bool IsJump;
     bool OkJump;
     bool IsColl;
-
+    bool IsCollSide;
     
 private:
     //GameScene
