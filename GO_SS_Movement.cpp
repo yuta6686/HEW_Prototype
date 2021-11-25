@@ -58,7 +58,7 @@ void GO_SS_Movement::JumpMove_Liner()
 
 	m_pTarget->AddPosX(-10.0f);
 
-	m_pEffectWind->SetEffTrue();
+	//m_pEffectWind->SetEffTrue();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	if (!m_pShotString->IsClickTarget)return;
 	//if (!m_pShotString->IsCollTarget)return;
 
-	m_pShotString->SetPos(m_pTarget->GetTarget()[0].pos);
+	m_pShotString->SetPos(m_pTarget->GetTarget()[m_pShotString->IsInsideTarget].pos);
 
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
@@ -153,7 +153,7 @@ void GO_SS_Movement::JumpMove_Pendulum()
 
 	m_pTarget->AddPosX(-10.0f);
 
-	m_pEffectWind->SetEffTrue();
+	//m_pEffectWind->SetEffTrue();
 }
 
 void GO_SS_Movement::PlayerMove_Pendulum()
@@ -164,6 +164,16 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 		Pendulum_Counter = 0;
 		m_pPlayer->SetGravity(-10.0f);
 		m_pShotString->IsClickTarget = false;
+
+		m_pEffectWind->SetWindEff();
+	}
+	else if (Pendulum_Counter == 1) {
+		Pendulum_Counter++;
+		FLOAT rot = (Pendulum_Counter * 3.6f);
+		m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
+
+		m_pEffectWind->SetWindMoveEff();
+		m_pTarget->SetEff(m_pShotString->IsInsideTarget);
 	}
 	else {
 		Pendulum_Counter++;
@@ -172,7 +182,7 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 		
 		DebugOut(rot);
 	}
-
+	
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
