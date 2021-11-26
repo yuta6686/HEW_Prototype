@@ -42,7 +42,7 @@ private:
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
     
     //????`
-    static const int WALL_NUM_MAX = 300;
+    static const int WALL_NUM_MAX = 2200;
 
     //???_???
     VERTEX_WALL m_vWall[WALL_NUM_MAX];

@@ -5,10 +5,12 @@
 
 class GO_SS_FileLoad;
 class GO_SS_Wall;
+class GO_SS_Target;
 
 //マップチップの列挙型
 typedef enum{
-	WALL_NUM =1,
+	WALL_NUM = 1,
+	TARGET_NUM,
 }MAP_CHIP_NO;
 
 class GO_SS_Map :public GameObject
@@ -22,6 +24,7 @@ public:
 
 	void SetFileLoad(GO_SS_FileLoad* p) { m_pFileLoad = p; }
 	void SetWall(GO_SS_Wall* p) { m_pWall = p; }
+	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
@@ -33,6 +36,7 @@ private:
 
 	GO_SS_FileLoad* m_pFileLoad;	//FileLoadポインタ
 	GO_SS_Wall* m_pWall;			//Wallポインタ
+	GO_SS_Target* m_pTarget;		//targetポインタ
 
 	MAP_CHIP_NO mapChipNo;
 
