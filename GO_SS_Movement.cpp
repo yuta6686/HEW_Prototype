@@ -17,7 +17,7 @@ void GO_SS_Movement::Update(void)
 		PLAYERMOVE_CURVE,	
 		PLAYERMOVE_PENDULUM,
 	*/
-	PlayerMoveSwitch(PLAYERMOVE_LINEAR);
+	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
 	
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
@@ -58,7 +58,7 @@ void GO_SS_Movement::JumpMove_Liner()
 
 	m_pTarget->AddPosX(-10.0f);
 
-	m_pEffectWind->SetEffTrue();
+	//m_pEffectWind->SetEffTrue();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -129,6 +129,60 @@ void GO_SS_Movement::JumpMove_Curve()
 //-----------------------------------------------------------------------------------------
 void GO_SS_Movement::JumpMove_Pendulum()
 {
+	//糸を出したら
+	if (!m_pShotString->IsClickTarget)return;
+	//if (!m_pShotString->IsCollTarget)return;
+
+	m_pShotString->SetPos(m_pTarget->GetTarget()[m_pShotString->IsInsideTarget].pos);
+
+	//重力リセット
+	m_pPlayer->SetGravityDefault();
+
+	//プレイヤーと糸の角度取得
+	FLOAT angle = m_pShotString->GetAngle();
+
+	
+
+	PlayerMove_Pendulum();
+
+	//背景スクロール処理
+	m_pBackGround->SubU(cosf(angle) / 100.0f);
+
+
+	m_pWall->AddX(-10.0f);
+
+	m_pTarget->AddPosX(-10.0f);
+
+	//m_pEffectWind->SetEffTrue();
+}
+
+void GO_SS_Movement::PlayerMove_Pendulum()
+{
+	//プレイヤーのY軸　動き　
+
+	if (Pendulum_Counter >= PENDULUM_COUNTER_MAX) {
+		Pendulum_Counter = 0;
+		m_pPlayer->SetGravity(-10.0f);
+		m_pShotString->IsClickTarget = false;
+
+		m_pEffectWind->SetWindEff();
+	}
+	else if (Pendulum_Counter == 1) {
+		Pendulum_Counter++;
+		FLOAT rot = (Pendulum_Counter * 3.6f);
+		m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
+
+		m_pEffectWind->SetWindMoveEff();
+		m_pTarget->SetEff(m_pShotString->IsInsideTarget);
+	}
+	else {
+		Pendulum_Counter++;
+		FLOAT rot = (Pendulum_Counter * 3.6f);
+		m_pPlayer->AddYPos(sinf(rot * RADIAN)  * 10.0f);
+		
+		DebugOut(rot);
+	}
+	
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
@@ -162,6 +216,16 @@ void GO_SS_Movement::FromAbyss()
 		m_pWall->ResetOnce();
 		m_pMap->ResetOnce();
 	}
+}
+
+void GO_SS_Movement::DebugOut(int i)
+{
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+	wsprintf(GetDebugStr(), WINDOW_CAPTION);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " rot:%d",i);
+
+	SetWindowText(GethWnd()[0], GetDebugStr());
+#endif
 }
 
 

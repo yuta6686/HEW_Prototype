@@ -107,6 +107,12 @@ private:
 //-----------------------------------------------------------------------------------------
     void JumpMove_Pendulum();
 
+    void PlayerMove_Pendulum();
+
+    int Pendulum_Counter = 0;
+
+    const int PENDULUM_COUNTER_MAX = 100;
+
 //-----------------------------------------------------------------------------------------
 //    PlayerMoveSwitch(PlayerMove index);
 //-----------------------------------------------------------------------------------------
@@ -121,6 +127,8 @@ private:
     void FromAbyss();
 
    
+    //デバッグ用
+    void DebugOut(int i);
 };
 
 

@@ -5,6 +5,13 @@
 
 class GO_SS_FileLoad;
 class GO_SS_Wall;
+class GO_SS_Target;
+
+//マップチップの列挙型
+typedef enum{
+	WALL_NUM = 1,
+	TARGET_NUM,
+}MAP_CHIP_NO;
 
 class GO_SS_Map :public GameObject
 {
@@ -17,6 +24,7 @@ public:
 
 	void SetFileLoad(GO_SS_FileLoad* p) { m_pFileLoad = p; }
 	void SetWall(GO_SS_Wall* p) { m_pWall = p; }
+	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
@@ -24,13 +32,13 @@ public:
 
 private:
 	int GAME_SCENE = GAMESCENE_GAME_TEST;	
-	int MapData[WALL_NUM_Y][WALL_NUM_X];//まっぷでーた
+	int MapData[STAGE_WALL_NUM_Y][STAGE_WALL_NUM_X];//まっぷでーた
 
 	GO_SS_FileLoad* m_pFileLoad;	//FileLoadポインタ
 	GO_SS_Wall* m_pWall;			//Wallポインタ
+	GO_SS_Target* m_pTarget;		//targetポインタ
 
-	//定数
-	static const int WALL_NUM = 1;	//壁の番号
+	MAP_CHIP_NO mapChipNo;
 
 	bool once;
 

@@ -36,7 +36,7 @@ void GO_SS_ShotString::Finalize(void)
 
 void GO_SS_ShotString::Update(void)
 {
-	DebugOut();
+	//DebugOut();
 
 	//ポジションをプレイヤーのポジションにする
 	String_Vertex.pos = m_pPlayer->GetPos();
@@ -45,7 +45,7 @@ void GO_SS_ShotString::Update(void)
 	//押されている間
 	if (IsMouseLeftPressed())
 	{
-		if (IsInsideTarget > -1) {
+		if (IsInsideTarget > -1 && IsClickTarget) {
 			AimPos = m_pTarget->GetTarget()[IsInsideTarget].pos;
 		}
 		else {
@@ -179,6 +179,7 @@ void GO_SS_ShotString::TargetClick(void)
 
 int GO_SS_ShotString::IsMouseInsideTarget(void)
 {	
+	int index = -1;
 	for (int i = 0; i < m_pTarget->GetTargetNumMax(); i++) {
 		VERTEX_TARGET vt = m_pTarget->GetTarget()[i];
 		if (!vt.use)continue;
@@ -188,11 +189,11 @@ int GO_SS_ShotString::IsMouseInsideTarget(void)
 		FLOAT dist = sqrtf(x + y);
 
 		if (dist <= vt.size.x - 100.0f) {
-			return i;
+			index = i;
 		}
 	}
 	
-	return -1;
+	return index;
 }
 
 //bool GO_SS_ShotString::IsStringConnectTarget()

@@ -25,6 +25,7 @@ public:
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
     void SetGravitysoft(FLOAT f) { m_Gravity -= f; }
+    void SetGravity(FLOAT f) { m_Gravity = f; }
 
     void WavePosPlus(FLOAT angle);
     void WavePosMinus(FLOAT angle);
@@ -33,8 +34,10 @@ public:
     void AddYPos(FLOAT y) { Player_Vertex.pos.y += y; }
 
     bool IsJump;
+    bool OkJump;
     bool IsColl;
-
+    bool IsCollSide;
+    
 private:
     //GameScene
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -63,6 +66,8 @@ private:
 
     //プレイヤーの重力処理
     void PlayerGravity(void);
+
+    void PlayerJumpMove(void);
     
 };
 

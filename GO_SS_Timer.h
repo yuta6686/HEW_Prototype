@@ -1,23 +1,22 @@
-//---------------------------------------------
-//	タイマー計測	[GO_Timer.h]	Author: Yanagisawa
-//---------------------------------------------
-// 1桁目～小数点第二位までの表示
-//  
-//---------------------------------------------
 #pragma once
+#include "GameObject.h"
 
-#include"GameObject.h"
+class GO_SS_Player;
 
-class GO_Timer:
-	public GameObject
+class GO_SS_Timer :
+    public GameObject
 {
 public:
 	// GameObject を介して継承されました
 	virtual void Initialize(void) override;
+
 	virtual void Finalize(void) override;
+
 	virtual void Update(void) override;
+	
 	virtual void Draw(void) override;
-	virtual int GetGameScene(void) override { return GAME_SCENE;};
+	
+	virtual int GetGameScene(void) override { return m_GameScene; };
 
 
 	//	GameScene用のやつ
@@ -25,16 +24,17 @@ public:
 	void SetTimerUse(bool flag) { Timer_Vertex.use = flag; }
 
 private:
-//--------------------------------------------------------
-//	メンバ変数
-//--------------------------------------------------------
+	//--------------------------------------------------------
+	//	メンバ変数
+	//--------------------------------------------------------
 
-	//	Texture用変数
+		//	Texture用変数
 	char TEX_NAME[128] = "data/TEXTURE/number2.png";
+
 	int Number_Texture;
 
 	//	GameScene用変数
-	const int GAME_SCENE = GAMESCENE_GAME_TEST;
+	const int m_GameScene = GAMESCENE_GAME_TEST;
 
 	//	UV用の変数
 	const int NUMBER_X = 4;
@@ -54,7 +54,12 @@ private:
 //	Why	 --> 整理のため
 //--------------------------------------------------------
 	void FirstNum(void);
+
 	void SecondNum(void);
+	
 	void ThirdNum(void);
+
+	//タイマーが0になったらGameoverへ
+	void SceneToGameOver(void);
 };
 

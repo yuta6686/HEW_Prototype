@@ -43,18 +43,6 @@
     <Filter Include="ソース ファイル\GameObjects\GO_SS">
       <UniqueIdentifier>{0de75e5b-a027-4e56-b1c8-40d3a23b8623}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\GameObjects\GO_SS\Effect">
-      <UniqueIdentifier>{f50e0ad7-a0bc-41d0-964b-4ba7ff1a0c53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameObjects\GO_SS\Effect">
-      <UniqueIdentifier>{5d3ed2c4-c1a1-4a49-893e-46eb89774571}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameObjects\GO">
-      <UniqueIdentifier>{04dc5d48-9a15-4c2a-88ba-dd538d574e9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\GameObjects\GO">
-      <UniqueIdentifier>{614d31ce-37d3-4f41-b3d3-1ddde20a53d6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -90,8 +78,32 @@
     <ClCompile Include="title.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="GO_Player.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_Scramble.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_ScrambleRotation.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_Natto.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
     <ClCompile Include="test.cpp">
       <Filter>ソース ファイル\GameFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_Throw.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_Timer.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_Fall.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_Bungee.cpp">
+      <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Player.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
@@ -133,31 +145,13 @@
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Effect_Wind.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\Effect</Filter>
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GO_Bungee.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
+    <ClCompile Include="GO_SS_Scramble.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="GO_Fall.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_Natto.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_Player.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_Scramble.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_ScrambleRotation.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_Throw.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_Timer.cpp">
-      <Filter>ソース ファイル\GameObjects\GO</Filter>
+    <ClCompile Include="GO_SS_Timer.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +176,9 @@
     <ClInclude Include="fade.h">
       <Filter>ヘッダー ファイル\main</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
     <ClInclude Include="input.h">
       <Filter>ヘッダー ファイル\main</Filter>
     </ClInclude>
@@ -194,11 +191,35 @@
     <ClInclude Include="Texture.h">
       <Filter>ヘッダー ファイル\main</Filter>
     </ClInclude>
+    <ClInclude Include="GO_Player.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
     <ClInclude Include="VertexParameter.h">
       <Filter>ヘッダー ファイル\main</Filter>
     </ClInclude>
+    <ClInclude Include="GO_Scramble.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_ScrambleRotation.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_Natto.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_Throw.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_Timer.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_Fall.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_Bungee.h">
+      <Filter>ヘッダー ファイル\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_Player.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
@@ -240,34 +261,13 @@
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_Effect_Wind.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO_SS\Effect</Filter>
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
+    <ClInclude Include="GO_SS_Scramble.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
-    <ClInclude Include="GO_Bungee.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_Fall.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_Natto.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_Player.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_Scramble.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_ScrambleRotation.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_Throw.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_Timer.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO</Filter>
+    <ClInclude Include="GO_SS_Timer.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

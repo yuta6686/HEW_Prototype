@@ -16,6 +16,7 @@ void GO_SS_Player::Initialize(void)
 	m_Gravity = DEFAULT_GRAVITY;
 	IsJump = false;
 	IsColl = false;
+	OkJump = true;
 }
 /*---------------------------------------------
 *				終了処理
@@ -32,8 +33,17 @@ void GO_SS_Player::Update(void)
 	//プライヤーが画面下に落ちたらGameoverへ
 	SceneToGameOver();
 
+	if (IsColl) {
+		OkJump = true;
+	}
+
 	//キーボード・マウスからの入力をもらってプレイヤーの動きを処理する
 	InputPlayerMove();
+
+	
+
+	//プレイヤーのジャンプの動き
+	PlayerJumpMove();
 
 	//プレイヤーの重力処理
 	PlayerGravity();
@@ -90,18 +100,17 @@ void GO_SS_Player::SceneToGameOver(void)
 void GO_SS_Player::InputPlayerMove(void)
 {
 
-	if (GetKeyboardTrigger(DIK_SPACE) && m_Gravity >= JUMP_DELAY) {
+	if (GetKeyboardTrigger(DIK_SPACE) && OkJump) {
 		IsJump = true;
-		m_Gravity = DEFAULT_GRAVITY * m_Jump;
-		Player_Vertex.pos.y += m_Gravity;
+		OkJump = false;
 	}
 
 	if (GetKeyboardPress(DIK_A)) {
-		Player_Vertex.pos.x -= 4.0f;
+		//Player_Vertex.pos.x -= 4.0f;
 	}
 
 	if (GetKeyboardPress(DIK_D)) {
-		Player_Vertex.pos.x += 4.0f;
+		//Player_Vertex.pos.x += 4.0f;
 	}
 }
 
@@ -112,5 +121,12 @@ void GO_SS_Player::PlayerGravity(void)
 
 	m_Gravity += GRAVITY_ACCELERATION;
 	Player_Vertex.pos.y += m_Gravity;
+}
+
+void GO_SS_Player::PlayerJumpMove(void)
+{
+	if (!IsJump)return;
+	m_Gravity = DEFAULT_GRAVITY * m_Jump;
+	IsJump = false;
 }
 
