@@ -5,13 +5,19 @@
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
 
-
-
 void GO_SS_Collision::CollisionUpdate(void)
 {
+	playerPos = m_pPlayer->GetPos();
+	playerSize = m_pPlayer->GetSize();
+
+	if (CJ_PWSide() >= 0)m_pPlayer->IsCollSide = true;
+	else m_pPlayer->IsCollSide = false;
+
 	//プレイヤーと壁の衝突処理
 	if (CJ_PlayerWall() >= 0)m_pPlayer->IsColl = true;
 	else m_pPlayer->IsColl = false;
+
+	DebugOut();
 }
 
 // ----------------------------------------------------------------
@@ -32,7 +38,27 @@ int GO_SS_Collision::CJ_PlayerWall(void)
 	return -1;
 }
 
-
+//プレイヤーの横と壁
+//戻り値　1:右 2:左
+int GO_SS_Collision::CJ_PWSide(void)
+{
+	for (int i = 0; i < m_pWall->GetWallNumMax(); i++) 
+	{
+		VERTEX_WALL vwall = m_pWall->GetvWall(i);
+		if (!vwall.use)continue;
+		//左
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x - playerSize.y * 0.5f, playerPos.y * 0.8f), m_pPlayer->GetSize(), vwall.pos, vwall.size))
+		{
+			return i;
+		}
+		//右
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.y * 0.5f, playerPos.y * 0.8f), m_pPlayer->GetSize(), vwall.pos, vwall.size))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
 
 bool GO_SS_Collision::BBCollision(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2)
 {
@@ -88,4 +114,15 @@ bool GO_SS_Collision::BBCollision_LeftTop2(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, 
 		}
 	}
 	return false;
+}
+
+void GO_SS_Collision::DebugOut(void)
+{
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+	wsprintf(GetDebugStr(), WINDOW_CAPTION);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " IsCollSide:%d",
+		m_pPlayer->IsCollSide);
+
+	SetWindowText(GethWnd()[0], GetDebugStr());
+#endif
 }
