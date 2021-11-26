@@ -76,8 +76,20 @@ struct VERTEX_EFF :public VERTEX_NOMAL {
 	FLOAT alpha;
 
 	FLOAT u;
+	FLOAT v;
+};
+
+struct VERTEX_EFF_WIND :public VERTEX_EFF{
+	int frame;
 };
 
 struct VERTEX_CIRCLE :public VERTEX_NOMAL {
 	FLOAT alpha;
+};
+
+struct VERTEX_TARGET_EFF {
+	FLOAT size;
+	FLOAT alpha;
+
+	bool use;
 };

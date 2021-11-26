@@ -26,6 +26,8 @@ public:
     void SetTarget(D3DXVECTOR2 pos);
     void SetTarget(D3DXVECTOR2 pos, D3DXVECTOR2 size);
 
+    void SetEff(int index);
+
     void SetTargetOnce();
 
     void AddPosX(FLOAT x);
@@ -62,6 +64,7 @@ private:
     //
     static const int TARGET_NUM_MAX = 50;
     VERTEX_TARGET Target_Vertex[TARGET_NUM_MAX];
+    VERTEX_TARGET_EFF Target_eff[TARGET_NUM_MAX];
 
     bool once;
 };
