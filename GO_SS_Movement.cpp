@@ -6,6 +6,7 @@
 #include "GO_SS_Wall.h"
 #include "GO_SS_Map.h"
 #include "GO_SS_Effect_Wind.h"
+#include "GO_SS_Goal.h"
 
 #include <cmath>
 

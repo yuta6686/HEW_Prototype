@@ -4,6 +4,7 @@
 #include "GO_SS_Player.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
+#include "GO_SS_Goal.h"
 
 void GO_SS_Collision::CollisionUpdate(void)
 {

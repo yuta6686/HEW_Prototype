@@ -11,6 +11,7 @@
 #include "GO_SS_Effect_Wind.h"
 #include "GO_SS_Scramble.h"
 #include "GO_SS_Timer.h"
+#include "GO_SS_Goal.h"
 /*---------------------------------------------
 				?R???X?g???N?^
 ---------------------------------------------*/
@@ -43,6 +44,7 @@ void GO_SS_Manager::Create()
 		mp_ssEffWind = nullptr;
 		mp_ssScramble = nullptr;
 		mp_ssTimer = nullptr;
+		mp_ssGoal = nullptr;
 	}
 
 	//new
@@ -59,6 +61,7 @@ void GO_SS_Manager::Create()
 		mp_ssEffWind = new GO_SS_Effect_Wind;
 		mp_ssScramble = new GO_SS_Scramble;
 		mp_ssTimer = new GO_SS_Timer;
+		mp_ssGoal = new GO_SS_Goal;
 	}
 
 	//Register
@@ -67,6 +70,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssTimer);
 		Register(mp_ssScramble);
 		Register(mp_ssPlayer);
+		Register(mp_ssGoal);
 		Register(mp_ssWall);
 		Register(mp_ssMovement);
 		Register(mp_ssTarget);
@@ -89,6 +93,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetBackGround(mp_ssBackGround);
 		mp_ssMovement->SetPlayer(mp_ssPlayer);
 		mp_ssMovement->SetShotString(mp_ssShotString);
+		mp_ssMovement->SetGoal(mp_ssGoal);
 		mp_ssMovement->SetWall(mp_ssWall);
 		mp_ssMovement->SetTarget(mp_ssTarget);
 		mp_ssMovement->SetMap(mp_ssMap);

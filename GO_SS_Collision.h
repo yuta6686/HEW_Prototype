@@ -3,6 +3,7 @@
 
 class GO_SS_BackGround;
 class GO_SS_Player;
+class GO_SS_Goal;
 class GO_SS_Wall;
 class GO_SS_ShotString;
 class GO_SS_Target;
@@ -13,6 +14,7 @@ public:
     //?Z?b?^?[
     void SetBackGround(GO_SS_BackGround* p_BackGround) { m_pBackGround = p_BackGround; }
     void SetPlayer(GO_SS_Player* p_Player) { m_pPlayer = p_Player; }
+    void SetGoal(GO_SS_Goal* p_Goal) { m_pGoal = p_Goal; }
     void SetWall(GO_SS_Wall* pWall) { m_pWall = pWall; }
     void SetShotString(GO_SS_ShotString* p) { m_pShotString = p; }
     void SetTarget(GO_SS_Target* pTarget) { m_pTarget = pTarget; }
@@ -28,6 +30,7 @@ private:
     //?|?C???^???
     GO_SS_BackGround* m_pBackGround;
     GO_SS_Player* m_pPlayer;
+    GO_SS_Goal* m_pGoal;
     GO_SS_Wall* m_pWall;
     GO_SS_ShotString* m_pShotString;
     GO_SS_Target* m_pTarget;
