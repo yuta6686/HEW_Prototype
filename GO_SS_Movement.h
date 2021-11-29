@@ -130,11 +130,21 @@ private:
     void PlayerMoveSwitch(PlayerMove index);
 
 
+    //移動
+    void MovementManager(void);
+
     void FromAbyss();
 
    
     //デバッグ用
     void DebugOut(int i);
+
+    //========================================
+    //定数
+    //========================================
+    const FLOAT BG_SCROLL_SPEED = 0.001f;
+    const FLOAT TARGET_MOVING_SPEED = 5.0f;
+    const FLOAT WALL_MOVING_SPEED = 5.0f;
 };
 
 
