@@ -29,13 +29,7 @@ void GO_SS_Target::Update(void)
 {
     SetTargetOnce();
 
-    if (GetKeyboardPress(DIK_D)) {
-        AddPosX(-5.0f);
-    }
 
-    if (GetKeyboardPress(DIK_A)) {
-        AddPosX(5.0f);
-    }
 
     for (int i = 0; i < TARGET_NUM_MAX; i++) {
         if (Target_eff[i].use == false) continue;

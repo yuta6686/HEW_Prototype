@@ -17,16 +17,7 @@ void GO_SS_BackGround::Finalize(void)
 
 void GO_SS_BackGround::Update(void)
 {
-	
-	if (GetKeyboardPress(DIK_D)) {
-		AddU();
-	}
 
-	if (GetKeyboardPress(DIK_A)) {
-		SubU();
-	}
-
-	
 }
 
 void GO_SS_BackGround::Draw(void)

@@ -36,7 +36,9 @@ public:
     bool IsJump;
     bool OkJump;
     bool IsColl;
-    bool IsCollSide;
+
+    //not:-1 left:1 right:-1 
+    int IsCollSide;
     
 private:
     //GameScene
@@ -69,5 +71,6 @@ private:
 
     void PlayerJumpMove(void);
     
+
 };
 

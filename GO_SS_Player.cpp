@@ -48,7 +48,7 @@ void GO_SS_Player::Update(void)
 	//プレイヤーの重力処理
 	PlayerGravity();
 
-
+	
 }
 /*---------------------------------------------
 *				描画処理
@@ -103,14 +103,6 @@ void GO_SS_Player::InputPlayerMove(void)
 	if (GetKeyboardTrigger(DIK_SPACE) && OkJump) {
 		IsJump = true;
 		OkJump = false;
-	}
-
-	if (GetKeyboardPress(DIK_A)) {
-		//Player_Vertex.pos.x -= 4.0f;
-	}
-
-	if (GetKeyboardPress(DIK_D)) {
-		//Player_Vertex.pos.x += 4.0f;
 	}
 }
 
