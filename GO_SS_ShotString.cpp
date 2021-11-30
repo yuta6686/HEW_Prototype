@@ -48,15 +48,6 @@ void GO_SS_ShotString::Update(void)
 	//押されている間
 	if (IsMouseLeftPressed())
 	{
-		if (IsInsideTarget > -1 && IsClickTarget) {
-			AimPos = m_pTarget->GetTarget()[IsInsideTarget].pos;
-		}
-		else {
-			AimPos.x = GetMousePosX();
-			AimPos.y = GetMousePosY();
-		}
-		
-
 		//プレイヤーとカーソルの角度取得
 		String_Vertex.angle = atan2f(String_Vertex.pos.y - AimPos.y,
 			String_Vertex.pos.x - AimPos.x);
@@ -86,14 +77,12 @@ void GO_SS_ShotString::Update(void)
 		String_Vertex.size.x += 20.0f;
 	}
 
-	static int count = 0;
 
 	//円のサイズを変更する
 	if (IsMouseRightPressed()) {
-		if (count >= 2) {
-
-		}count++;
 		Circle_Vertex.size.x += m_pScramble->GetPreviousDiff()/10.0f;
+
+		Circle_Vertex.size.x -= Circle_Vertex.size.x / 200.0f;
 	}
 	else {
 		if (Circle_Vertex.size.x <= 200.0f) {
@@ -160,7 +149,7 @@ void GO_SS_ShotString::NoTargetClick(void)
 //ターゲットをクリックした
 void GO_SS_ShotString::TargetClick(void)
 {
-	IsInsideTarget = IsMouseInsideTarget();
+	IsInsideTarget = TargetIsInRange();
 
 
 	//糸サイズリセット
@@ -171,32 +160,44 @@ void GO_SS_ShotString::TargetClick(void)
 	}
 
 	if (IsMouseLeftPressed() && IsClickTarget){
-			if (m_jumpCounter >= 120) {
-				IsClickTarget = false;
-			}
-			else {
-				m_jumpCounter++;
-				IsClickTarget = true;
-			}
+		if (m_pPlayer->IsColl) {
+			m_jumpCounter += 120;
+		}
+		
+		if (m_jumpCounter >= 120) {
+			IsClickTarget = false;
+		}
+		else {
+			AimPos = m_pTarget->GetTarget()[IsInsideTarget].pos;
+
+			m_jumpCounter++;
+			IsClickTarget = true;
+
+			Circle_Vertex.size.x -= 20.0f;
+		}
 	}
 	else {
 		IsClickTarget = false;
+		AimPos.x = GetMousePosX();
+		AimPos.y = GetMousePosY();
+
 	}
 }
 
 
-int GO_SS_ShotString::IsMouseInsideTarget(void)
+int GO_SS_ShotString::TargetIsInRange(void)
 {	
 	int index = -1;
+
 	for (int i = 0; i < m_pTarget->GetTargetNumMax(); i++) {
 		VERTEX_TARGET vt = m_pTarget->GetTarget()[i];
 		if (!vt.use)continue;
 
-		FLOAT x = powf(AimPos.x - vt.pos.x, 2.0f);
-		FLOAT y = powf(AimPos.y - vt.pos.y, 2.0f);
+		FLOAT x = powf(Circle_Vertex.pos.x - vt.pos.x, 2.0f);
+		FLOAT y = powf(Circle_Vertex.pos.y - vt.pos.y, 2.0f);
 		FLOAT dist = sqrtf(x + y);
 
-		if (dist <= vt.size.x - 100.0f) {
+		if (dist <= vt.size.x + Circle_Vertex.size.x - 550.0f) {
 			index = i;
 		}
 	}

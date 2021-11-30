@@ -76,7 +76,7 @@ private:
 	//ターゲットをクリックした
 	void TargetClick(void);
 
-	int IsMouseInsideTarget(void);
+	int TargetIsInRange(void);
 
 	//bool IsStringConnectTarget();
 

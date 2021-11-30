@@ -22,6 +22,8 @@ public:
 
     virtual void Update(void) override;
 
+    void LastUpdate(void);
+
     virtual void Draw(void) override;
 
     virtual int GetGameScene(void) override { return m_GameScene; }

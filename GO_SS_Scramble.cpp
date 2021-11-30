@@ -42,6 +42,17 @@ void GO_SS_Scramble::Update(void)
 	{
 		Vortex_Vertex.use = false;
 	}
+
+	if (Vortex_Vertex.use) {
+		Vortex_Vertex.angle += GetPreviousDiff() / 20.0f;
+		Vortex_Vertex.use = true;
+	}
+}
+
+void GO_SS_Scramble::LastUpdate(void)
+{
+	m_PrePos.x = GetMousePosX();
+	m_PrePos.y = GetMousePosY();
 }
 
 void GO_SS_Scramble::Draw(void)
@@ -62,8 +73,7 @@ FLOAT GO_SS_Scramble::GetPreviousDiff(void)
 	}
 	
 
-	m_PrePos.x = GetMousePosX();
-	m_PrePos.y = GetMousePosY();
+	
 
 	return dist;
 }

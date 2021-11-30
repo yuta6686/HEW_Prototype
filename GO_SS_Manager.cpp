@@ -148,7 +148,11 @@ void GO_SS_Manager::Update(void)
 		m_ssGameObject[i]->Update();
 	}
 
-	
+	LastUpdate();
+}
+void GO_SS_Manager::LastUpdate(void)
+{
+	mp_ssScramble->LastUpdate();
 }
 /*---------------------------------------------
 *				?`????

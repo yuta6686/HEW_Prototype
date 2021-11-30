@@ -28,6 +28,8 @@ public:
 
     virtual void Update(void) override;
 
+    
+
     virtual void Draw(void) override;
 
     virtual int GetGameScene(void) override { return GAME_SCENE; }
@@ -60,5 +62,7 @@ private:
 
     //他のゲームフレームワークに干渉したい場合使用
     void SetGameObject();
+
+    void LastUpdate(void);
 };
 
