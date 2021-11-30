@@ -21,15 +21,6 @@ void GO_SS_Wall::Update(void)
 {
     SetWallOnce();
 
-    if (GetKeyboardPress(DIK_D)) {
-        AddX(-5.0f);
-        
-    }
-    
-    if (GetKeyboardPress(DIK_A)) {
-        AddX(5.0f);
-        
-    }
 }
 
 void GO_SS_Wall::Draw(void)

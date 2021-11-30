@@ -19,9 +19,13 @@ void GO_SS_Movement::Update(void)
 	*/
 	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
 	
+
 	//“–‚½‚è”»’è‚ÌXVˆ—
 	m_ssCollision.CollisionUpdate();
-	
+
+	//ˆÚ“®ˆ—
+	MovementManager();
+
 	//“Þ—Ž‚©‚ç‚Ì•œŠˆ
 	FromAbyss();
 }
@@ -205,6 +209,25 @@ void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 		break;
 	default:
 		break;
+	}
+}
+
+void GO_SS_Movement::MovementManager(void)
+{
+	//“–‚½‚è”»’è
+	//‰E“ü—Í
+	if (GetKeyboardPress(DIK_A) && m_pPlayer->IsCollSide != 1)
+	{
+		m_pBackGround->SubU(BG_SCROLL_SPEED);
+		m_pTarget->AddPosX(TARGET_MOVING_SPEED);
+		m_pWall->AddX(WALL_MOVING_SPEED);
+	}
+	//¶“ü—Í
+	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
+	{
+		m_pBackGround->AddU(BG_SCROLL_SPEED);
+		m_pTarget->AddPosX(-TARGET_MOVING_SPEED);
+		m_pWall->AddX(-WALL_MOVING_SPEED);
 	}
 }
 

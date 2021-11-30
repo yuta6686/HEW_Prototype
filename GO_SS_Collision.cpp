@@ -10,8 +10,7 @@ void GO_SS_Collision::CollisionUpdate(void)
 	playerPos = m_pPlayer->GetPos();
 	playerSize = m_pPlayer->GetSize();
 
-	if (CJ_PWSide() >= 0)m_pPlayer->IsCollSide = true;
-	else m_pPlayer->IsCollSide = false;
+	m_pPlayer->IsCollSide = CJ_PWSide();
 
 	//プレイヤーと壁の衝突処理
 	if (CJ_PlayerWall() >= 0)m_pPlayer->IsColl = true;
@@ -39,7 +38,7 @@ int GO_SS_Collision::CJ_PlayerWall(void)
 }
 
 //プレイヤーの横と壁
-//戻り値　1:右 2:左
+//戻り値 -1:当たってない　1:左 2:右
 int GO_SS_Collision::CJ_PWSide(void)
 {
 	for (int i = 0; i < m_pWall->GetWallNumMax(); i++) 
@@ -47,14 +46,14 @@ int GO_SS_Collision::CJ_PWSide(void)
 		VERTEX_WALL vwall = m_pWall->GetvWall(i);
 		if (!vwall.use)continue;
 		//左
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x - playerSize.y * 0.5f, playerPos.y * 0.8f), m_pPlayer->GetSize(), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x, playerPos.y * 0.8f), D3DXVECTOR2(playerSize.x, playerSize.y), vwall.pos, vwall.size))
 		{
-			return i;
+			return 1;
 		}
 		//右
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.y * 0.5f, playerPos.y * 0.8f), m_pPlayer->GetSize(), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.x * 0.5f, playerPos.y * 0.8f), D3DXVECTOR2(playerSize.x * 0.1f, playerSize.y), vwall.pos, vwall.size))
 		{
-			return i;
+			return 2;
 		}
 	}
 	return -1;
