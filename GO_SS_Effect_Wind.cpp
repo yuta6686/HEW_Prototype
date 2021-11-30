@@ -51,6 +51,7 @@ void GO_SS_Effect_Wind::Update(void)
             windMoveEff.alpha = 1.5f;
             windMoveEff.use = false;
         }
+
         windMoveEff.u += 0.05f;
         windMoveEff.alpha -= 0.01f;
     }

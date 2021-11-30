@@ -69,8 +69,8 @@ char* GetDebugStr(void);
 //*****************************************************************************
 // 定数
 //*****************************************************************************
-const int WALL_NUM_X = 16;
-const int WALL_NUM_Y = 9;
+const int WALL_NUM_X = 16*2;
+const int WALL_NUM_Y = 9*2;
 
 const int STAGE_WALL_NUM_X = 100;     //1ステージの横マス数
 const int STAGE_WALL_NUM_Y = 9;     //1ステージの縦マス数

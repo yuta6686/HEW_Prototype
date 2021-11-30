@@ -3,6 +3,14 @@
 
 class GO_SS_Player;
 
+struct VERTEX_SCRAMBLE :VERTEX_NOMAL {
+    bool use;
+
+    FLOAT angle;
+
+    D3DXCOLOR color;
+};
+
 class GO_SS_Scramble :
     public GameObject
 {
@@ -18,11 +26,13 @@ public:
 
     virtual int GetGameScene(void) override { return m_GameScene; }
 
-    void SetPlayer(GO_SS_Player* p) { m_pPlayer = p; };
-
     void SetScrambleAngle(float angle) { Vortex_Vertex.angle = angle; }
 
     D3DXVECTOR2 GetScramblePos(){return Vortex_Vertex.pos;}
+
+    void SetPos(D3DXVECTOR2 pos) { Vortex_Vertex.pos = pos; }
+
+    FLOAT GetPreviousDiff(void);
 
 private:
     char TEX_NAME[128] = "data/TEXTURE/natto.png";
@@ -31,12 +41,13 @@ private:
 
     const int m_GameScene = GAMESCENE_GAME_TEST;
 
-    bool scrambleflag;
+    VERTEX_SCRAMBLE Vortex_Vertex;
 
-    GO_SS_Player* m_pPlayer;
 
-    VERTEX_A Vortex_Vertex;
+    D3DXVECTOR2 m_PrePos;
+    D3DXVECTOR2 m_CurPos;
+    
+   
 
-    D3DXVECTOR2 playerPos;
 };
 

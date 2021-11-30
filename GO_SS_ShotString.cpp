@@ -1,6 +1,7 @@
 #include "GO_SS_ShotString.h"
 #include "GO_SS_Player.h"
 #include "GO_SS_Target.h"
+#include "GO_SS_Scramble.h"
 
 void GO_SS_ShotString::Initialize(void)
 {
@@ -37,6 +38,8 @@ void GO_SS_ShotString::Finalize(void)
 void GO_SS_ShotString::Update(void)
 {
 	//DebugOut();
+
+	m_pScramble->SetPos(m_pPlayer->GetPos());
 
 	//ポジションをプレイヤーのポジションにする
 	String_Vertex.pos = m_pPlayer->GetPos();
@@ -83,9 +86,14 @@ void GO_SS_ShotString::Update(void)
 		String_Vertex.size.x += 20.0f;
 	}
 
+	static int count = 0;
+
 	//円のサイズを変更する
 	if (IsMouseRightPressed()) {
-		Circle_Vertex.size.x += 3.0f;
+		if (count >= 2) {
+
+		}count++;
+		Circle_Vertex.size.x += m_pScramble->GetPreviousDiff()/10.0f;
 	}
 	else {
 		if (Circle_Vertex.size.x <= 200.0f) {
