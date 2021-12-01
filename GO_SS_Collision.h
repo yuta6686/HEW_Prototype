@@ -26,6 +26,9 @@ private:
     //ÉÅÉìÉoïœêî
     D3DXVECTOR2 playerPos;
     D3DXVECTOR2 playerSize;
+
+    VERTEX_T Goal_Vertex;
+
     
     //?|?C???^???
     GO_SS_BackGround* m_pBackGround;
@@ -40,6 +43,7 @@ private:
 //?v???C???[???
     int CJ_PlayerWall(void);
     int CJ_PWSide(void);
+     
 
 //????????e???v???[?g
     bool BBCollision(D3DXVECTOR2 pos1,D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
@@ -48,6 +52,6 @@ private:
     bool BBCollision_LeftTop2(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
 
     void DebugOut(void);
-
+    void CJ_GoalPlayer(void);
 };
 

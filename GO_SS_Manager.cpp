@@ -69,8 +69,9 @@ void GO_SS_Manager::Create()
 		Register(mp_ssBackGround);
 		Register(mp_ssTimer);
 		Register(mp_ssScramble);
-		Register(mp_ssPlayer);
 		Register(mp_ssGoal);
+		Register(mp_ssPlayer);
+		
 		Register(mp_ssWall);
 		Register(mp_ssMovement);
 		Register(mp_ssTarget);

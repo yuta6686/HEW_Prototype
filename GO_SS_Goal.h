@@ -16,9 +16,9 @@ public:
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
-	D3DXVECTOR2 GetPos() { return Goal_Vertex.pos; }
-	D3DXVECTOR2 GetSize() { return Goal_Vertex.size; }
+	VERTEX_T GetGoal() { return Goal_Vertex; }
 
+	void AddX(FLOAT x);
 private:
 
 	int Goal_Texture;

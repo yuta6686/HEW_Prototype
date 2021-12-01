@@ -5,6 +5,12 @@
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
 #include "GO_SS_Goal.h"
+#include "game.h"
+#include "main.h"
+#include "input.h"
+#include "fade.h"
+
+
 
 void GO_SS_Collision::CollisionUpdate(void)
 {
@@ -13,11 +19,16 @@ void GO_SS_Collision::CollisionUpdate(void)
 
 	m_pPlayer->IsCollSide = CJ_PWSide();
 
+	Goal_Vertex = m_pGoal->GetGoal();
+
 	//ƒvƒŒƒCƒ„[‚Æ•Ç‚ÌÕ“Ëˆ—
 	if (CJ_PlayerWall() >= 0)m_pPlayer->IsColl = true;
 	else m_pPlayer->IsColl = false;
 
+	CJ_GoalPlayer();
+
 	DebugOut();
+
 }
 
 // ----------------------------------------------------------------
@@ -125,4 +136,12 @@ void GO_SS_Collision::DebugOut(void)
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
+}
+
+void GO_SS_Collision::CJ_GoalPlayer(void)
+{
+	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), Goal_Vertex.pos, Goal_Vertex.size))
+	{
+		SceneTransition(SCENE_RESULT);
+	}
 }

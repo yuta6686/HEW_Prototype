@@ -145,6 +145,7 @@ private:
     const FLOAT BG_SCROLL_SPEED = 0.001f;
     const FLOAT TARGET_MOVING_SPEED = 5.0f;
     const FLOAT WALL_MOVING_SPEED = 5.0f;
+    const FLOAT GOAL_MOVING_SPEED = 5.0f;
 };
 
 

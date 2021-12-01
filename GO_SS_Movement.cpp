@@ -63,6 +63,8 @@ void GO_SS_Movement::JumpMove_Liner()
 
 	m_pTarget->AddPosX(-10.0f);
 
+	m_pGoal->AddX(-10.0f);
+
 	//m_pEffectWind->SetEffTrue();
 }
 
@@ -158,6 +160,8 @@ void GO_SS_Movement::JumpMove_Pendulum()
 
 	m_pTarget->AddPosX(-10.0f);
 
+	m_pGoal->AddX(-10.0f);
+
 	//m_pEffectWind->SetEffTrue();
 }
 
@@ -222,6 +226,7 @@ void GO_SS_Movement::MovementManager(void)
 		m_pBackGround->SubU(BG_SCROLL_SPEED);
 		m_pTarget->AddPosX(TARGET_MOVING_SPEED);
 		m_pWall->AddX(WALL_MOVING_SPEED);
+		m_pGoal->AddX(GOAL_MOVING_SPEED);
 	}
 	//¶“ü—Í
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
@@ -229,6 +234,7 @@ void GO_SS_Movement::MovementManager(void)
 		m_pBackGround->AddU(BG_SCROLL_SPEED);
 		m_pTarget->AddPosX(-TARGET_MOVING_SPEED);
 		m_pWall->AddX(-WALL_MOVING_SPEED);
+		m_pGoal->AddX(-GOAL_MOVING_SPEED);
 	}
 }
 

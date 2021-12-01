@@ -70,6 +70,10 @@ struct VERTEX_WALL :public VERTEX_NOMAL {
 	bool use;
 };
 
+struct VERTEX_GOAL :public VERTEX_NOMAL {
+	bool use;
+};
+
 struct VERTEX_EFF :public VERTEX_NOMAL {
 	bool use;
 
