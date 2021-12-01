@@ -3,6 +3,7 @@
 
 class GO_SS_Player;
 class GO_SS_Target;
+class GO_SS_Scramble;
 
 class GO_SS_ShotString :public GameObject
 {
@@ -20,6 +21,7 @@ public:
 	//セッター
 	void SetPlayer(GO_SS_Player* p)	{ m_pPlayer = p; }
 	void SetTarget(GO_SS_Target* p)	{ m_pTarget = p; }
+	void SetScramble(GO_SS_Scramble* p) { m_pScramble = p; }
 
 	void SetPos(D3DXVECTOR2 pos)	{ String_Vertex.pos = pos; }
 
@@ -61,6 +63,7 @@ private:
 
 	GO_SS_Player* m_pPlayer;
 	GO_SS_Target* m_pTarget;
+	GO_SS_Scramble* m_pScramble;
 
 	//ジャンプカウンター
 	int m_jumpCounter = 0;
@@ -73,7 +76,7 @@ private:
 	//ターゲットをクリックした
 	void TargetClick(void);
 
-	int IsMouseInsideTarget(void);
+	int TargetIsInRange(void);
 
 	//bool IsStringConnectTarget();
 

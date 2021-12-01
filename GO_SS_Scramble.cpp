@@ -15,16 +15,17 @@
 
 void GO_SS_Scramble::Initialize(void)
 {
-	playerPos = D3DXVECTOR2(0.0f, 0.0f);
-	Vortex_Vertex.vel = D3DXVECTOR2(0.0f, 0.0f);
 	Vortex_Vertex.color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f);
-	Vortex_Vertex.frame = 0;
 	Vortex_Vertex.angle = 0.0f;
 	Vortex_Vertex.size = D3DXVECTOR2(500.0f, 500.0f);
 
 	Scramble_texture = LoadTexture(TEX_NAME);
 
-	scrambleflag = false;
+	Vortex_Vertex.use = false;
+
+
+	m_PrePos = D3DXVECTOR2(0.0f, 0.0f);
+	m_CurPos = D3DXVECTOR2(0.0f, 0.0f);
 }
 
 void GO_SS_Scramble::Finalize(void)
@@ -33,32 +34,46 @@ void GO_SS_Scramble::Finalize(void)
 
 void GO_SS_Scramble::Update(void)
 {
-	playerPos = m_pPlayer->GetPos();
-	if (Vortex_Vertex.angle >= 360.0f) {
-		Vortex_Vertex.angle = 0.0f;
-	}
-	else {
-		Vortex_Vertex.angle += 0.05f;
-	}
-
-	
-
-
 	if (IsMouseRightPressed()) {
 
-		scrambleflag = true;
+		Vortex_Vertex.use = true;
 	}
 	else
 	{
-		scrambleflag = false;
+		Vortex_Vertex.use = false;
 	}
+
+	if (Vortex_Vertex.use) {
+		Vortex_Vertex.angle += GetPreviousDiff() / 20.0f;
+		Vortex_Vertex.use = true;
+	}
+}
+
+void GO_SS_Scramble::LastUpdate(void)
+{
+	m_PrePos.x = GetMousePosX();
+	m_PrePos.y = GetMousePosY();
 }
 
 void GO_SS_Scramble::Draw(void)
 {
-	if (scrambleflag) {
-		DrawSpriteColorRotate(Scramble_texture, playerPos.x, playerPos.y,
+	if (Vortex_Vertex.use) {
+		DrawSpriteColorRotate(Scramble_texture, Vortex_Vertex.pos.x, Vortex_Vertex.pos.y,
 			Vortex_Vertex.size.x, Vortex_Vertex.size.y,
 			0.0f, 0.0f, 1.0f, 1.0f, Vortex_Vertex.color, Vortex_Vertex.angle);
 	}
+}
+
+FLOAT GO_SS_Scramble::GetPreviousDiff(void)
+{
+	FLOAT dist = 0.0f;
+
+	if (Vortex_Vertex.use) {
+		dist = sqrtf(powf((GetMousePosX() - m_PrePos.x), 2) + powf((GetMousePosY() - m_PrePos.y), 2));
+	}
+	
+
+	
+
+	return dist;
 }

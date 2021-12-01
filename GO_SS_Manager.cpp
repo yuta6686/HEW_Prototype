@@ -102,12 +102,12 @@ void GO_SS_Manager::SetGameObject()
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);
+		mp_ssShotString->SetScramble(mp_ssScramble);
 
 		mp_ssMap->SetFileLoad(mp_ssFileLoad);
 		mp_ssMap->SetWall(mp_ssWall);
 		mp_ssMap->SetTarget(mp_ssTarget);
 
-		mp_ssScramble->SetPlayer(mp_ssPlayer);
 	}
 }
 /*---------------------------------------------
@@ -154,7 +154,11 @@ void GO_SS_Manager::Update(void)
 		m_ssGameObject[i]->Update();
 	}
 
-	
+	LastUpdate();
+}
+void GO_SS_Manager::LastUpdate(void)
+{
+	mp_ssScramble->LastUpdate();
 }
 /*---------------------------------------------
 *				?`????
