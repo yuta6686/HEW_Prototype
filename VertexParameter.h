@@ -98,3 +98,10 @@ struct VERTEX_TARGET_EFF {
 	bool use;
 };
 
+struct VERTEX_TITLE_PLAYER : public VERTEX_NOMAL {
+	bool use;
+	FLOAT angle;
+	FLOAT u;
+	FLOAT v;
+	int frame;
+};
