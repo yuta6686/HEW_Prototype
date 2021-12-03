@@ -173,7 +173,7 @@ void GO_SS_ShotString::TargetClick(void)
 			m_jumpCounter++;
 			IsClickTarget = true;
 
-			Circle_Vertex.size.x -= 20.0f;
+			Circle_Vertex.size.x -= Circle_Vertex.size.x / 20.0f;;
 		}
 	}
 	else {

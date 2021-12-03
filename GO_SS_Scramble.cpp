@@ -71,9 +71,6 @@ FLOAT GO_SS_Scramble::GetPreviousDiff(void)
 	if (Vortex_Vertex.use) {
 		dist = sqrtf(powf((GetMousePosX() - m_PrePos.x), 2) + powf((GetMousePosY() - m_PrePos.y), 2));
 	}
-	
-
-	
 
 	return dist;
 }

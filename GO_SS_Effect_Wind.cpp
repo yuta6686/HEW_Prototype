@@ -30,6 +30,7 @@ void GO_SS_Effect_Wind::Initialize(void)
 
 void GO_SS_Effect_Wind::Finalize(void)
 {
+
 }
 
 void GO_SS_Effect_Wind::Update(void)
