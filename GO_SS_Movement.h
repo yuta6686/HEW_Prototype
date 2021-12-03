@@ -20,6 +20,7 @@ class GO_SS_ShotString;
 class GO_SS_Target;
 class GO_SS_Map;
 class GO_SS_Effect_Wind;
+class GO_SS_Goal;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
@@ -49,6 +50,10 @@ public:
         m_pPlayer = p_Player; 
         m_ssCollision.SetPlayer(p_Player);
     }
+    void SetGoal(GO_SS_Goal* p_Goal) {
+        m_pGoal = p_Goal;
+        m_ssCollision.SetGoal(p_Goal);
+    }
     void SetWall(GO_SS_Wall* pWall) { 
         m_pWall = pWall; 
         m_ssCollision.SetWall(pWall);
@@ -75,6 +80,7 @@ private:
     GO_SS_Target* m_pTarget;
     GO_SS_Map* m_pMap;
     GO_SS_Effect_Wind* m_pEffectWind;
+    GO_SS_Goal* m_pGoal;
 
     //ÉÅÉìÉoïœêî
     int JumpCounter = 0;
@@ -139,6 +145,7 @@ private:
     const FLOAT BG_SCROLL_SPEED = 0.001f;
     const FLOAT TARGET_MOVING_SPEED = 5.0f;
     const FLOAT WALL_MOVING_SPEED = 5.0f;
+    const FLOAT GOAL_MOVING_SPEED = 5.0f;
 };
 
 
