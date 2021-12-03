@@ -68,6 +68,9 @@ public:
     }
     void SetMap(GO_SS_Map* p) { m_pMap = p; }
     void SetEffWind(GO_SS_Effect_Wind* p) { m_pEffectWind = p; }
+
+
+
     
 private:
     //ゲームシーン
@@ -85,6 +88,8 @@ private:
     //メンバ変数
     int JumpCounter = 0;
     int JumpCountMax = 60;
+
+    FLOAT m_TimeDelay = 1.0f;
 
     GO_SS_Collision m_ssCollision;      //当たり判定を司る者
 
@@ -134,6 +139,8 @@ private:
     void MovementManager(void);
 
     void FromAbyss();
+
+
 
    
     //デバッグ用

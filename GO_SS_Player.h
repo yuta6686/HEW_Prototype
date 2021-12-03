@@ -1,8 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include "GO_SS_TimeDelay.h"
 
 class GO_SS_Player :
-    public GameObject
+    public GO_SS_TimeDelay
 {
 public:
     virtual void Initialize(void) override;

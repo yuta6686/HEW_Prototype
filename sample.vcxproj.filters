@@ -43,6 +43,9 @@
     <Filter Include="ソース ファイル\GameObjects\GO_SS">
       <UniqueIdentifier>{0de75e5b-a027-4e56-b1c8-40d3a23b8623}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameObjects\GO_SS\TimeDelay">
+      <UniqueIdentifier>{a9dce69b-8ddf-4bfa-a992-4847a9fb28c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -105,25 +108,10 @@
     <ClCompile Include="GO_Bungee.cpp">
       <Filter>ソース ファイル\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_Player.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
     <ClCompile Include="GO_SS_Manager.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_Wall.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_BackGround.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
     <ClCompile Include="GO_SS_Target.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_ShotString.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_Movement.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="gameOver.cpp">
@@ -147,10 +135,28 @@
     <ClCompile Include="GO_SS_Effect_Wind.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_Scramble.cpp">
+    <ClCompile Include="GO_SS_Timer.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_Timer.cpp">
+    <ClCompile Include="GO_SS_TimeDelay.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Player.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Movement.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_ShotString.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Wall.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Scramble.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_BackGround.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Goal.cpp">
@@ -274,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="GO_SS_Timer.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_TimeDelay.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

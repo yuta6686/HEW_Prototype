@@ -112,7 +112,7 @@ void GO_SS_Player::PlayerGravity(void)
 	if (IsColl && m_Gravity >= 5.0f)return;
 
 	m_Gravity += GRAVITY_ACCELERATION;
-	Player_Vertex.pos.y += m_Gravity;
+	Player_Vertex.pos.y += m_Gravity * GO_SS_TimeDelay::GetTimeDelay();
 }
 
 void GO_SS_Player::PlayerJumpMove(void)
