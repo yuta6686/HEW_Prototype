@@ -12,6 +12,7 @@ class GO_SS_Map;
 class GO_SS_Scramble;
 class GO_SS_Timer;
 class GO_SS_Goal;
+class GO_SS_ZipLine;
 
 class GO_SS_Effect_Wind;
 
@@ -56,6 +57,7 @@ private:
     GO_SS_Scramble* mp_ssScramble;
     GO_SS_Timer* mp_ssTimer;
     GO_SS_Goal* mp_ssGoal;
+    GO_SS_ZipLine* mp_ssZipLine;
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
     //コンストラクタで使用

@@ -2,6 +2,7 @@
 #include "GO_SS_FileLoad.h"
 #include "GO_SS_Wall.h"
 #include "GO_SS_Target.h"
+#include "GO_SS_ZipLine.h"
 
 void GO_SS_Map::Initialize(void)
 {
@@ -31,6 +32,9 @@ void GO_SS_Map::Update(void)
 				break;
 			case TARGET_NUM:
 				m_pTarget->SetTarget(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				break;
+			case ZIPLINE_NUM:
+				m_pZipLine->SetZipLine(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 				break;
 			}
 		}

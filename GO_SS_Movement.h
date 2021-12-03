@@ -66,6 +66,11 @@ public:
         m_pTarget = pTarget; 
         m_ssCollision.SetTarget(pTarget);
     }
+    void SetZipLine(GO_SS_ZipLine* p)
+    {
+        m_pZipLine = p;
+        m_ssCollision.SetZipLine(p);
+    }
     void SetMap(GO_SS_Map* p) { m_pMap = p; }
     void SetEffWind(GO_SS_Effect_Wind* p) { m_pEffectWind = p; }
     
@@ -81,6 +86,7 @@ private:
     GO_SS_Map* m_pMap;
     GO_SS_Effect_Wind* m_pEffectWind;
     GO_SS_Goal* m_pGoal;
+    GO_SS_ZipLine* m_pZipLine;
 
     //ÉÅÉìÉoïœêî
     int JumpCounter = 0;
@@ -146,6 +152,7 @@ private:
     const FLOAT TARGET_MOVING_SPEED = 5.0f;
     const FLOAT WALL_MOVING_SPEED = 5.0f;
     const FLOAT GOAL_MOVING_SPEED = 5.0f;
+    const FLOAT ZIPLINE_MOVING_SPEED = 5.0f;
 };
 
 
