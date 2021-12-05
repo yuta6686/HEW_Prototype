@@ -33,8 +33,11 @@ void GO_SS_Map::Update(void)
 			case TARGET_NUM:
 				m_pTarget->SetTarget(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 				break;
-			case ZIPLINE_NUM:
+			case ZIPLINE_A_NUM:
+				//ZIPLINE_A_NUMが来たらBを探しに行く
+				
 				m_pZipLine->SetZipLine(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				
 				break;
 			}
 		}
@@ -44,4 +47,25 @@ void GO_SS_Map::Update(void)
 void GO_SS_Map::Draw(void)
 {
 	
+}
+
+//ziplineのBを探しに行く関数 戻り値Bの位置or-1
+int GO_SS_Map::SeekZipLineB(int CurrentNumX, int CurrentNumY)
+{
+	int y = CurrentNumY - SEEK_ZIP_MAX;
+	if (y <= 0)	y = 0;
+
+	for (y = CurrentNumY - SEEK_ZIP_MAX; y < CurrentNumY + SEEK_ZIP_MAX; y++)
+	{
+		for (int x = CurrentNumX + 1; x < CurrentNumX + SEEK_ZIP_MAX; x++)
+		{
+			if (MapData[y][x] == ZIPLINE_B_NUM)
+			{
+				return true;
+			}
+		}
+	}
+
+
+	return -1;
 }

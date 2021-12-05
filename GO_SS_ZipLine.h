@@ -6,6 +6,8 @@
 struct VERTEX_ZIPLINE :public VERTEX_NOMAL
 {
 	bool use;
+
+	D3DXVECTOR2 poleB_pos;
 };
 
 class GO_SS_ZipLine :public GameObject
@@ -21,6 +23,7 @@ public:
 	void SetZipLine(D3DXVECTOR2 pos);
 	void AddX(FLOAT x);
 
+	void LinkZipLineB(D3DXVECTOR2 pos);
 private:
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
 
