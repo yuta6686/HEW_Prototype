@@ -35,11 +35,11 @@ public:
 	void ResetOnce(void) { once = true; }
 
 private:
-	int SeekZipLineB(int CurrentNum, int CurrentNumY);
+	bool SeekZipLineB(int CurrentNum, int CurrentNumY);
 
 	int GAME_SCENE = GAMESCENE_GAME_TEST;
 	int MapData[STAGE_WALL_NUM_Y][STAGE_WALL_NUM_X];//まっぷでーた
-	const int SEEK_ZIP_MAX = 10;	//Bを探すときの最大距離
+	static const int SEEK_ZIP_MAX = 5;	//Bを探すときの最大距離
 
 	GO_SS_FileLoad* m_pFileLoad;	//FileLoadポインタ
 	GO_SS_Wall* m_pWall;			//Wallポインタ

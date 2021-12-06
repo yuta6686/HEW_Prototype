@@ -4,6 +4,8 @@
 #include "GO_SS_Target.h"
 #include "GO_SS_ZipLine.h"
 
+//#define SEEK_ZIP_MAX  5
+
 void GO_SS_Map::Initialize(void)
 {
 	m_pFileLoad->MapFileLoad(MapData);
@@ -35,9 +37,10 @@ void GO_SS_Map::Update(void)
 				break;
 			case ZIPLINE_A_NUM:
 				//ZIPLINE_A_NUMが来たらBを探しに行く
-				
-				m_pZipLine->SetZipLine(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
-				
+				if (SeekZipLineB(x, y))
+				{
+					m_pZipLine->SetZipLine(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				}
 				break;
 			}
 		}
@@ -49,8 +52,8 @@ void GO_SS_Map::Draw(void)
 	
 }
 
-//ziplineのBを探しに行く関数 戻り値Bの位置or-1
-int GO_SS_Map::SeekZipLineB(int CurrentNumX, int CurrentNumY)
+//ziplineのBを探しに行く関数
+bool GO_SS_Map::SeekZipLineB(int CurrentNumX, int CurrentNumY)
 {
 	int y = CurrentNumY - SEEK_ZIP_MAX;
 	if (y <= 0)	y = 0;
@@ -61,11 +64,10 @@ int GO_SS_Map::SeekZipLineB(int CurrentNumX, int CurrentNumY)
 		{
 			if (MapData[y][x] == ZIPLINE_B_NUM)
 			{
+				m_pZipLine->LinkZipLineB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y), x - CurrentNumX);
 				return true;
 			}
 		}
 	}
-
-
-	return -1;
+	return false;
 }
