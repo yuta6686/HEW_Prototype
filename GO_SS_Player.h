@@ -37,8 +37,12 @@ public:
     bool OkJump;
     bool IsColl;
 
-    //not:-1 left:1 right:-1 
+    //not:-1 left:1 right:2 
     int IsCollSide;
+
+
+    FLOAT m_TimeDelay;
+
     
 private:
     //GameScene

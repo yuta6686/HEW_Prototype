@@ -12,18 +12,16 @@ public:
 
     virtual void Draw(void) override {};
 
-    virtual int GetGameScene(void) override {};
+    virtual int GetGameScene(void) override { return GAMESCENE_GAME_TEST; }
 
 
 
     void SetTimeDelay(bool flag) { m_TimeDelayFlag = flag; }
+    bool GetTimeDelayFlag(void) { return m_TimeDelayFlag; }
 
     FLOAT GetTimeDelay(void) { return m_TimeDelay; }
 
-    void TimeDelayManagement(void) {
-        if (m_TimeDelayFlag) m_TimeDelay = TIME_DELAY_VALUE;
-        else m_TimeDelay = 1.0f;
-    }
+
 
 
 private:

@@ -32,6 +32,30 @@ void GO_SS_Movement::Update(void)
 }
 
 
+void GO_SS_Movement::SetTimeDelay(void)
+{
+	if (IsMouseRightPressed()) {
+		m_pTimeDelay->SetTimeDelay(true);
+	}
+	else {
+		m_pTimeDelay->SetTimeDelay(false);
+	}
+
+	if (m_pTimeDelay->GetTimeDelay()) {
+		
+	}
+	else {
+
+	}
+
+
+	m_TimeDelay = m_pTimeDelay->GetTimeDelay();
+
+	m_pShotString->m_TimeDelay = m_TimeDelay;
+	m_pTarget->m_TimeDelay = m_TimeDelay;
+	m_pPlayer->m_TimeDelay = m_TimeDelay;
+}
+
 //-----------------------------------------------------------------------------------------
 //	JumpMove_Liner()
 //-----------------------------------------------------------------------------------------
@@ -155,7 +179,6 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	//”wŒiƒXƒNƒ[ƒ‹ˆ—
 	m_pBackGround->SubU(cosf(angle) / 100.0f);
 
-
 	m_pWall->AddX(-10.0f);
 
 	m_pTarget->AddPosX(-10.0f);
@@ -223,18 +246,18 @@ void GO_SS_Movement::MovementManager(void)
 	//‰E“ü—Í
 	if (GetKeyboardPress(DIK_A) && m_pPlayer->IsCollSide != 1)
 	{
-		m_pBackGround->SubU(BG_SCROLL_SPEED);
-		m_pTarget->AddPosX(TARGET_MOVING_SPEED);
-		m_pWall->AddX(WALL_MOVING_SPEED);
-		m_pGoal->AddX(GOAL_MOVING_SPEED);
+		m_pBackGround->SubU(BG_SCROLL_SPEED * m_TimeDelay);
+		m_pTarget->AddPosX(TARGET_MOVING_SPEED * m_TimeDelay);
+		m_pWall->AddX(WALL_MOVING_SPEED * m_TimeDelay);
+		m_pGoal->AddX(GOAL_MOVING_SPEED * m_TimeDelay);
 	}
 	//¶“ü—Í
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
 	{
-		m_pBackGround->AddU(BG_SCROLL_SPEED);
-		m_pTarget->AddPosX(-TARGET_MOVING_SPEED);
-		m_pWall->AddX(-WALL_MOVING_SPEED);
-		m_pGoal->AddX(-GOAL_MOVING_SPEED);
+		m_pBackGround->AddU(BG_SCROLL_SPEED * m_TimeDelay);
+		m_pTarget->AddPosX(-TARGET_MOVING_SPEED * m_TimeDelay);
+		m_pWall->AddX(-WALL_MOVING_SPEED * m_TimeDelay);
+		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay);
 	}
 }
 
