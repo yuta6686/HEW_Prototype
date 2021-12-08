@@ -42,10 +42,10 @@ void GO_SS_Movement::SetTimeDelay(void)
 	}
 
 	if (m_pTimeDelay->GetTimeDelay()) {
-		
+		m_TimeDelay = 0.3f;
 	}
 	else {
-
+		m_TimeDelay = 1.0f;
 	}
 
 
