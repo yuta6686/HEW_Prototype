@@ -22,9 +22,10 @@ public:
 private:
     bool m_TimeDelayFlag = false;
 
-    
+    VERTEX_ALL_EFFECT m_eTimeDelay;
 
-
+    int ConcentrationLineTexture;
+    char TEX_NAME[64] = "data/TEXTURE/W’†ü3.png";
 
 };
 

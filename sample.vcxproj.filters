@@ -165,6 +165,9 @@
     <ClCompile Include="GO_SS_Timer.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
     </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -286,6 +289,9 @@
     </ClInclude>
     <ClInclude Include="GO_SS_BackGround.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
