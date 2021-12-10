@@ -12,6 +12,7 @@
 
 void GO_SS_Movement::Update(void)
 {
+	SetTimeDelay();
 
 	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
 		PLAYERMOVE_LINEAR,
@@ -41,15 +42,12 @@ void GO_SS_Movement::SetTimeDelay(void)
 		m_pTimeDelay->SetTimeDelay(false);
 	}
 
-	if (m_pTimeDelay->GetTimeDelay()) {
-		m_TimeDelay = 0.3f;
+	if (m_pTimeDelay->GetTimeDelayFlag()) {
+		m_TimeDelay = TIME_DELAY_VALUE;
 	}
 	else {
 		m_TimeDelay = 1.0f;
 	}
-
-
-	m_TimeDelay = m_pTimeDelay->GetTimeDelay();
 
 	m_pShotString->m_TimeDelay = m_TimeDelay;
 	m_pTarget->m_TimeDelay = m_TimeDelay;
@@ -177,13 +175,13 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	PlayerMove_Pendulum();
 
 	//背景スクロール処理
-	m_pBackGround->SubU(cosf(angle) / 100.0f);
+	m_pBackGround->SubU(cosf(angle) / 100.0f * m_TimeDelay);
 
-	m_pWall->AddX(-10.0f);
+	m_pWall->AddX(-10.0f * m_TimeDelay);
 
-	m_pTarget->AddPosX(-10.0f);
+	m_pTarget->AddPosX(-10.0f * m_TimeDelay);
 
-	m_pGoal->AddX(-10.0f);
+	m_pGoal->AddX(-10.0f * m_TimeDelay);
 
 	//m_pEffectWind->SetEffTrue();
 }

@@ -13,6 +13,8 @@
 #include "GameObject.h"
 #include "GO_SS_Collision.h"
 
+#define TIME_DELAY_VALUE 0.3f
+
 class GO_SS_BackGround;
 class GO_SS_Player;
 class GO_SS_Wall;

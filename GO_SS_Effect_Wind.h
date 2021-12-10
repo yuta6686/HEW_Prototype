@@ -32,7 +32,7 @@ private:
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
 
     //テクスチャ用
-    char TEX_NAME[64] = "data/TEXTURE/Wind_Effect.png";
+    char TEX_NAME[64] = "data/TEXTURE/Wind_Effect_001.png";
     int Eff_Texture;
 
     char TEX_NAME_WINDMOVE[64] = "data/TEXTURE/wind_move.png";
