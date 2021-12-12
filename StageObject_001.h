@@ -23,6 +23,9 @@ public:
 
     virtual void MouseOverUpdate(void) override;
 
+protected:
+    D3DXVECTOR2 m_MousePos;
+
 private:
     char m_TextureName[64] = "data/TEXTURE/wall.png";
     int  m_TextureIndex;

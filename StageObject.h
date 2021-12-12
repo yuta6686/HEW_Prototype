@@ -1,7 +1,13 @@
 #pragma once
-#include "SelectStage.h"
+#include "main.h"
+#include "renderer.h"
+#include "scene.h"
+#include "fade.h"
 #include "Texture.h"
 #include "sprite.h"
+#include "input.h"
+#include "Spotlight.h"
+
 class StageObject
 {
 public:
@@ -26,5 +32,7 @@ public:
 protected:
 
 	VERTEX_SELECT_STAGE m_Vertex;
+
+	Spotlight m_light;
 };
 

@@ -160,6 +160,8 @@
     <ClCompile Include="Spotlight.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="StageObject_001.cpp" />
+    <ClCompile Include="StageObject_002.cpp" />
+    <ClCompile Include="StageObject_003.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
@@ -206,6 +208,8 @@
     <ClInclude Include="StageObectFactory.h" />
     <ClInclude Include="StageObject.h" />
     <ClInclude Include="StageObject_001.h" />
+    <ClInclude Include="StageObject_002.h" />
+    <ClInclude Include="StageObject_003.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="Title_Object.h" />

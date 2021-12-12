@@ -6,14 +6,10 @@
 //=============================================================================
 #pragma once
 
-#include "main.h"
-#include "renderer.h"
-#include "scene.h"
-#include "fade.h"
+
 
 #include "StageObectFactory.h"
 
-#include<vector>
 
 //*****************************************************************************
 // É}ÉNÉçíËã`
@@ -47,8 +43,5 @@ private:
 
 	StageObject* m_pStageObjects[STAGE_OBJECT_MAX];
 
-	//StageObectFactory m_SOF;
+	StageObectFactory m_SOF;
 };
-
-
-
