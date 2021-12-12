@@ -19,7 +19,7 @@ void GO_SS_Movement::Update(void)
 		PLAYERMOVE_LINEAR,
 		PLAYERMOVE_PENDULUM,
 	*/
-	PlayerMoveSwitch(PLAYERMOVE_LINEAR);
+	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
 	
 
 	//“–‚½‚è”»’è‚ÌXVˆ—

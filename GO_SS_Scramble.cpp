@@ -43,9 +43,34 @@ void GO_SS_Scramble::Update(void)
 		Vortex_Vertex.use = false;
 	}
 
+	FLOAT pDiff = GetPreviousDiff() / 20.0f;
+
+	
+
 	if (Vortex_Vertex.use) {
-		Vortex_Vertex.angle += GetPreviousDiff() / 20.0f;
-		Vortex_Vertex.use = true;
+		if (pDiff <= 5.0f && m_Diff <= 0.5f) {
+			m_Diff = pDiff;
+		}
+		else if (m_Diff >= 0.5f) {
+			m_Diff *= 0.99f;
+			Vortex_Vertex.angle += m_Diff;
+		}
+		else {
+			Vortex_Vertex.angle += pDiff;
+		}
+
+		
+	}
+	else {
+		if (Vortex_Vertex.angle <= 1.0f) {
+			Vortex_Vertex.use = false;
+			Vortex_Vertex.angle = 0.0f;
+		}
+		else {
+			Vortex_Vertex.use = true;
+			Vortex_Vertex.angle *= 0.93f;
+		}
+		
 	}
 }
 
