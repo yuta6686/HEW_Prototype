@@ -22,3 +22,14 @@ void StageObject_002::Draw(void)
 
     m_light.Draw(m_Vertex.pos);
 }
+
+void StageObject_002::ClickUpdate(void)
+{
+    if (!IsClick())return;
+
+    //ƒV[ƒ“‘JˆÚ
+    if (GetFadeState() == FADE_NONE)
+    {
+        SceneTransition(SCENE_GAME);
+    }
+}

@@ -38,10 +38,10 @@ bool StageObject_001::IsClick(void)
 {
 	D3DXVECTOR2 min1, max1;
 
-	min1.x = m_Vertex.pos.x - m_Vertex.pos.x / 2;
-	min1.y = m_Vertex.pos.y - m_Vertex.pos.y / 2;
-	max1.x = m_Vertex.pos.x + m_Vertex.pos.x / 2;
-	max1.y = m_Vertex.pos.y + m_Vertex.pos.y / 2;
+	min1.x = m_Vertex.pos.x - m_Vertex.size.x / 2;
+	min1.y = m_Vertex.pos.y - m_Vertex.size.y / 2;
+	max1.x = m_Vertex.pos.x + m_Vertex.size.x / 2;
+	max1.y = m_Vertex.pos.y + m_Vertex.size.y / 2;
 
 
 	//X軸の判定
@@ -64,7 +64,7 @@ void StageObject_001::ClickUpdate(void)
 {
 	if (!IsClick())return;
 
-	//シーン遷移
+	//	ステージ1へ
 	if (GetFadeState() == FADE_NONE)
 	{
 		SceneTransition(SCENE_GAME);

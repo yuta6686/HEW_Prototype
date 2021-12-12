@@ -9,6 +9,7 @@
 
 
 #include "StageObectFactory.h"
+#include "EffectFactory.h"
 
 
 //*****************************************************************************
@@ -23,6 +24,7 @@
 //*****************************************************************************
 
 class StageObject;
+class Effect;
 
 class SelectStage {
 public:
@@ -43,5 +45,11 @@ private:
 
 	StageObject* m_pStageObjects[STAGE_OBJECT_MAX];
 
+	static const int EFFECT_MAX = 3;
+
+	Effect* m_effect[EFFECT_MAX];
+
+
 	StageObectFactory m_SOF;
+	EffectFactory m_EF;
 };

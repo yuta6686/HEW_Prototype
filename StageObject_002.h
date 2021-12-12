@@ -6,6 +6,7 @@ class StageObject_002 :
 public:
     virtual HRESULT Init(void) override;
     virtual void    Draw(void) override;
+    virtual void ClickUpdate(void) override;
 
 private:
     char m_TextureName[64] = "data/TEXTURE/wall.png";

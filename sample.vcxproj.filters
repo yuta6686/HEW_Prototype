@@ -55,6 +55,9 @@
     <Filter Include="ヘッダー ファイル\SelectStage">
       <UniqueIdentifier>{83306b45-e574-41cf-8f99-4ed61184061b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Effect">
+      <UniqueIdentifier>{7d86b752-4a12-4d59-a35d-5f0ca3e812c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -181,6 +184,15 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="StageObject_003.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="E_Prizum.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectFactory.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -322,6 +334,15 @@
     </ClInclude>
     <ClInclude Include="StageObject_003.h">
       <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>ヘッダー ファイル\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="E_Prizum.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectFactory.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
