@@ -12,11 +12,11 @@
 
 void GO_SS_Movement::Update(void)
 {
+	//時間停止処理
 	SetTimeDelay();
 
 	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
 		PLAYERMOVE_LINEAR,
-		PLAYERMOVE_CURVE,	
 		PLAYERMOVE_PENDULUM,
 	*/
 	PlayerMoveSwitch(PLAYERMOVE_LINEAR);
@@ -88,66 +88,6 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pGoal->AddX(-10.0f);
 
 	//m_pEffectWind->SetEffTrue();
-}
-
-//-----------------------------------------------------------------------------------------
-//	JumpMove_Curve()
-//-----------------------------------------------------------------------------------------
-//	プロトタイプのときの動き
-//-----------------------------------------------------------------------------------------
-void GO_SS_Movement::JumpMove_Curve()
-{
-	//糸を出したら
-	if (!m_pShotString->IsClickTarget)return;
-
-	//カウンターが上限に達したら
-	if (JumpCounter >= JumpCountMax) {
-		//重力リセット
-		m_pPlayer->SetGravityDefault();
-
-		//ショットストリングのクリックフラグ下ろす
-		m_pShotString->IsClickTarget = false;
-
-		//ジャンプカウンターリセット
-		JumpCounter = 0;
-	}
-	else {
-		//背景スクロール処理
-		m_pBackGround->SubU(cosf(m_pShotString->GetAngle()) / 100.0f);
-
-
-		m_pWall->AddX(cosf(m_pShotString->GetAngle())*10.0f);
-
-		FLOAT angle = m_pShotString->GetAngle() * (FLOAT)180.0f / (FLOAT)PI;
-
-		//プライヤーの動き調整
-		//		  90
-		//				
-		//	0			↑180,↓-180
-		//				
-		//		 -90
-		//これの右か左かを判定
-		if (angle >= 90 && angle < 180
-			|| angle >= -180 && angle < -90) {
-
-			m_pPlayer->WavePosPlus((float)(JumpCounter)*RADIAN);
-		}
-		else {
-			m_pPlayer->WavePosMinus((float)(JumpCounter) * RADIAN );
-		}
-		
-
-	
-		//カウンター
-		JumpCounter++;
-	}
-
-	//ジャンプ中の最初の1回だけ
-	if (JumpCounter <= 1) {
-
-		//ジャンプのフレーム数調整
-		JumpCountMax = (int)(fabs(cosf(m_pShotString->GetAngle())* 60.0f));
-	}
 }
 
 //-----------------------------------------------------------------------------------------
@@ -254,9 +194,6 @@ void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 		break;
 	case PLAYERMOVE_LINEAR:
 		JumpMove_Liner();
-		break;
-	case PLAYERMOVE_CURVE:
-		JumpMove_Curve();
 		break;
 	case PLAYERMOVE_PENDULUM:
 		JumpMove_Pendulum();
