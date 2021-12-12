@@ -115,6 +115,8 @@ void UpdateTitle(void)
 	//ƒvƒŒƒCƒ„[y•ûŒü‚Ì“®‚«
 	if (g_Player.pos.y >= SCREEN_HEIGHT / 2.0f + 75.0f) {
 		g_Player.pos.y = SCREEN_HEIGHT / 2.0f + 75.0f;
+
+
 	}
 	else {
 		g_gravity += GRAVITY_ACCELERATION;
@@ -143,6 +145,8 @@ void DrawTitle(void)
 	DrawSpriteLeftTop(g_TextureNo[3], g_Player.pos.x, g_Player.pos.y,
 		186, 223,
 		g_Player.u, g_Player.v, PLAYER_WIDTH, PLAYER_HEIGHT);
+
+
 }
 
 

@@ -41,7 +41,7 @@ public:
     int IsCollSide;
 
 
-    FLOAT m_TimeDelay;
+    FLOAT m_TimeDelay = 1.0f;
 
     
 private:

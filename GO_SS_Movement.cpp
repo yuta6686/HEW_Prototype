@@ -19,7 +19,7 @@ void GO_SS_Movement::Update(void)
 		PLAYERMOVE_CURVE,	
 		PLAYERMOVE_PENDULUM,
 	*/
-	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
+	PlayerMoveSwitch(PLAYERMOVE_LINEAR);
 	
 
 	//当たり判定の更新処理
@@ -35,7 +35,7 @@ void GO_SS_Movement::Update(void)
 
 void GO_SS_Movement::SetTimeDelay(void)
 {
-	if (IsMouseRightPressed()) {
+	if (IsMouseRightPressed() && !m_pShotString->IsClickTarget) {
 		m_pTimeDelay->SetTimeDelay(true);
 	}
 	else {
@@ -167,12 +167,73 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
 
+	
+	//プレイヤーの動き
+	PlayerMove_Pendulum();
+
+	//背景、ギミックスクロール処理
+	BackGroundMovement_Pendulum();
+
+}
+
+void GO_SS_Movement::PlayerMove_Pendulum()
+{
+	//プレイヤーのY軸　動き　
+	
+	//フレームで管理
+
+	//最後のフレームの処理
+	if (Pendulum_Counter >= PENDULUM_COUNTER_MAX)
+	{
+		Pendulum_Counter = 0;
+
+		//最後にジャンプ！
+		m_pPlayer->SetGravity(-10.0f);
+
+		//元のフラグ解除
+		m_pShotString->IsClickTarget = false;
+
+		//風エフェクト
+		m_pEffectWind->SetWindEff();
+	}
+	//最初の1フレーム目の処理
+	else if (Pendulum_Counter == 1)	
+	{
+		Pendulum_Counter++;
+
+		//	サイドにあたっていない	&&	壁にあたっている　ー＞　床にあたっている
+		if (m_pPlayer->IsCollSide < 0 && m_pPlayer->IsColl) {
+			//あたっていたらY軸方向に動かさない
+		}
+		//床にあたっていない
+		else {
+			FLOAT rot = (Pendulum_Counter * 3.6f);
+			m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
+		}
+		
+		//エフェクト
+		m_pEffectWind->SetWindMoveEff();
+		m_pTarget->SetEff(m_pShotString->IsInsideTarget);
+	}
+	//	いつもの動き
+	else {
+		Pendulum_Counter++;
+		if (m_pPlayer->IsCollSide < 0 && m_pPlayer->IsColl) {
+
+		}
+		else {
+			FLOAT rot = (Pendulum_Counter * 3.6f);
+			m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
+			DebugOut(rot);
+		}
+	}
+	
+}
+
+void GO_SS_Movement::BackGroundMovement_Pendulum()
+{
 	//プレイヤーと糸の角度取得
 	FLOAT angle = m_pShotString->GetAngle();
-
-	
-
-	PlayerMove_Pendulum();
 
 	//背景スクロール処理
 	m_pBackGround->SubU(cosf(angle) / 100.0f * m_TimeDelay);
@@ -182,37 +243,6 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	m_pTarget->AddPosX(-10.0f * m_TimeDelay);
 
 	m_pGoal->AddX(-10.0f * m_TimeDelay);
-
-	//m_pEffectWind->SetEffTrue();
-}
-
-void GO_SS_Movement::PlayerMove_Pendulum()
-{
-	//プレイヤーのY軸　動き　
-
-	if (Pendulum_Counter >= PENDULUM_COUNTER_MAX) {
-		Pendulum_Counter = 0;
-		m_pPlayer->SetGravity(-10.0f);
-		m_pShotString->IsClickTarget = false;
-
-		m_pEffectWind->SetWindEff();
-	}
-	else if (Pendulum_Counter == 1) {
-		Pendulum_Counter++;
-		FLOAT rot = (Pendulum_Counter * 3.6f);
-		m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
-
-		m_pEffectWind->SetWindMoveEff();
-		m_pTarget->SetEff(m_pShotString->IsInsideTarget);
-	}
-	else {
-		Pendulum_Counter++;
-		FLOAT rot = (Pendulum_Counter * 3.6f);
-		m_pPlayer->AddYPos(sinf(rot * RADIAN)  * 10.0f);
-		
-		DebugOut(rot);
-	}
-	
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)

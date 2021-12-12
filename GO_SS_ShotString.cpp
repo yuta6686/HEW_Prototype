@@ -160,7 +160,7 @@ void GO_SS_ShotString::TargetClick(void)
 	}
 
 	if (IsMouseLeftPressed() && IsClickTarget){
-		if (m_pPlayer->IsColl) {
+		if (m_pPlayer->IsColl && m_pPlayer->IsCollSide > -1) {
 			m_jumpCounter += 120;
 		}
 		

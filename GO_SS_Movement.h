@@ -126,6 +126,8 @@ private:
 
     void PlayerMove_Pendulum();
 
+    void BackGroundMovement_Pendulum();
+
     int Pendulum_Counter = 0;
 
     const int PENDULUM_COUNTER_MAX = 100;

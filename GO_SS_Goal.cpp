@@ -9,7 +9,7 @@ void GO_SS_Goal::Initialize(void)
 	Goal_Texture = LoadTexture(GOAL_TEX_NAME);
 
 
-	Goal_Vertex.pos = D3DXVECTOR2(1300.0f, 600.0f);
+	Goal_Vertex.pos = D3DXVECTOR2(3000.0f, 600.0f);
 	Goal_Vertex.size = D3DXVECTOR2(180.0f, 200.0f);
 
 }

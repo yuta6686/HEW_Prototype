@@ -37,24 +37,8 @@ int GO_SS_Wall::GetGameScene(void)
     return GAMESCENE_GAME_TEST;
 }
 
-void GO_SS_Wall::SetWall()
-{
-    for (int i = 0; i < WALL_NUM_MAX; i++){
-        if (m_vWall[i].use) continue;
-        m_vWall[i].use = true;
-        break;
-    }
-}
 
-void GO_SS_Wall::SetWall(D3DXVECTOR2 pos)
-{
-    for (int i = 0; i < WALL_NUM_MAX; i++) {
-        if (m_vWall[i].use) continue;
-        m_vWall[i].pos = pos;
-        m_vWall[i].use = true;
-        break;
-    }
-}
+
 
 void GO_SS_Wall::SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size)
 {
