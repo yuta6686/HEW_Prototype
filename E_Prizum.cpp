@@ -19,10 +19,6 @@ void E_Prizum::Finalize(void)
 
 void E_Prizum::Update(void)
 {
-	
-
-
-
 	if (m_Vertex.use) {
 		if (m_Vertex.frame >= m_Xnum * m_Ynum)
 		{
@@ -33,7 +29,9 @@ void E_Prizum::Update(void)
 			m_Vertex.use = false;
 		}
 		else if (m_Vertex.frame == 1) {
+
 			m_Vertex.frame++;
+
 			m_Vertex.pos.x = GetMousePosX();
 			m_Vertex.pos.y = GetMousePosY();
 		}
