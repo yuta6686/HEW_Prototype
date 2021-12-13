@@ -7,6 +7,7 @@ class GO_SS_Goal;
 class GO_SS_Wall;
 class GO_SS_ShotString;
 class GO_SS_Target;
+class GO_SS_ZipLine;
 
 class GO_SS_Collision
 {
@@ -18,6 +19,7 @@ public:
     void SetWall(GO_SS_Wall* pWall) { m_pWall = pWall; }
     void SetShotString(GO_SS_ShotString* p) { m_pShotString = p; }
     void SetTarget(GO_SS_Target* pTarget) { m_pTarget = pTarget; }
+    void SetZipLine(GO_SS_ZipLine* p) { m_pZipLine = p; }
 
     //??????????????????
     void CollisionUpdate(void);
@@ -37,6 +39,7 @@ private:
     GO_SS_Wall* m_pWall;
     GO_SS_ShotString* m_pShotString;
     GO_SS_Target* m_pTarget;
+    GO_SS_ZipLine* m_pZipLine;
  
 //????????         CollisionJudge_ -> CJ_
 

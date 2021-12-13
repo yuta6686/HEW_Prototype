@@ -2,6 +2,9 @@
 #include "GO_SS_FileLoad.h"
 #include "GO_SS_Wall.h"
 #include "GO_SS_Target.h"
+//#include "GO_SS_ZipLine.h"
+
+//#define SEEK_ZIP_MAX  5
 
 void GO_SS_Map::Initialize(void)
 {
@@ -32,6 +35,13 @@ void GO_SS_Map::Update(void)
 			case TARGET_NUM:
 				m_pTarget->SetTarget(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 				break;
+			case ZIPLINE_A_NUM:
+				//ZIPLINE_A_NUMÇ™óàÇΩÇÁBÇíTÇµÇ…çsÇ≠
+				//if (SeekZipLineB(x, y))
+				{
+					//m_pZipLine->SetZipLine(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				}
+				break;
 			}
 		}
 	}
@@ -41,3 +51,23 @@ void GO_SS_Map::Draw(void)
 {
 	
 }
+//
+////ziplineÇÃBÇíTÇµÇ…çsÇ≠ä÷êî
+//bool GO_SS_Map::SeekZipLineB(int CurrentNumX, int CurrentNumY)
+//{
+//	int y = CurrentNumY - SEEK_ZIP_MAX;
+//	if (y <= 0)	y = 0;
+//
+//	for (y = CurrentNumY - SEEK_ZIP_MAX; y < CurrentNumY + SEEK_ZIP_MAX; y++)
+//	{
+//		for (int x = CurrentNumX + 1; x < CurrentNumX + SEEK_ZIP_MAX; x++)
+//		{
+//			if (MapData[y][x] == ZIPLINE_B_NUM)
+//			{
+//				m_pZipLine->LinkZipLineB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y), x - CurrentNumX);
+//				return true;
+//			}
+//		}
+//	}
+//	return false;
+//}

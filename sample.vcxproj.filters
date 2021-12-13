@@ -314,35 +314,5 @@
     <ClInclude Include="GO_SS_BackGround.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
-    <ClInclude Include="SelectStage.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="Spotlight.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObectFactory.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_001.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_002.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_003.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="Effect.h">
-      <Filter>ヘッダー ファイル\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="E_Prizum.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="EffectFactory.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

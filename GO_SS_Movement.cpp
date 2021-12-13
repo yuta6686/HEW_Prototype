@@ -20,7 +20,7 @@ void GO_SS_Movement::Update(void)
 		PLAYERMOVE_PENDULUM,
 	*/
 	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
-	
+
 
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
@@ -78,7 +78,7 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pPlayer->AddYPos(-sinf(angle) * 25.0f);
 
 	//背景スクロール処理
-	m_pBackGround->SubU(cosf(angle)/100.0f);
+	m_pBackGround->SubU(cosf(angle) / 100.0f);
 
 
 	m_pWall->AddX(-10.0f);
@@ -107,7 +107,7 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
 
-	
+
 	//プレイヤーの動き
 	PlayerMove_Pendulum();
 
@@ -119,7 +119,7 @@ void GO_SS_Movement::JumpMove_Pendulum()
 void GO_SS_Movement::PlayerMove_Pendulum()
 {
 	//プレイヤーのY軸　動き　
-	
+
 	//フレームで管理
 
 	//最後のフレームの処理
@@ -137,7 +137,7 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 		m_pEffectWind->SetWindEff();
 	}
 	//最初の1フレーム目の処理
-	else if (Pendulum_Counter == 1)	
+	else if (Pendulum_Counter == 1)
 	{
 		Pendulum_Counter++;
 
@@ -150,7 +150,7 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 			FLOAT rot = (Pendulum_Counter * 3.6f);
 			m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
 		}
-		
+
 		//エフェクト
 		m_pEffectWind->SetWindMoveEff();
 		m_pTarget->SetEff(m_pShotString->IsInsideTarget);
@@ -167,7 +167,7 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 			DebugOut(rot);
 		}
 	}
-	
+
 }
 
 void GO_SS_Movement::BackGroundMovement_Pendulum()
@@ -240,7 +240,7 @@ void GO_SS_Movement::DebugOut(int i)
 {
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
 	wsprintf(GetDebugStr(), WINDOW_CAPTION);
-	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " rot:%d",i);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " rot:%d", i);
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif

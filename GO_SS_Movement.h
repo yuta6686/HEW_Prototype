@@ -48,24 +48,24 @@ public:
         m_pBackGround = p_BackGround;
         m_ssCollision.SetBackGround(p_BackGround);
     }
-    void SetPlayer(GO_SS_Player* p_Player) { 
-        m_pPlayer = p_Player; 
+    void SetPlayer(GO_SS_Player* p_Player) {
+        m_pPlayer = p_Player;
         m_ssCollision.SetPlayer(p_Player);
     }
     void SetGoal(GO_SS_Goal* p_Goal) {
         m_pGoal = p_Goal;
         m_ssCollision.SetGoal(p_Goal);
     }
-    void SetWall(GO_SS_Wall* pWall) { 
-        m_pWall = pWall; 
+    void SetWall(GO_SS_Wall* pWall) {
+        m_pWall = pWall;
         m_ssCollision.SetWall(pWall);
     }
-    void SetShotString(GO_SS_ShotString* p) { 
-        m_pShotString = p; 
+    void SetShotString(GO_SS_ShotString* p) {
+        m_pShotString = p;
         m_ssCollision.SetShotString(p);
     }
     void SetTarget(GO_SS_Target* pTarget) {
-        m_pTarget = pTarget; 
+        m_pTarget = pTarget;
         m_ssCollision.SetTarget(pTarget);
     }
     void SetMap(GO_SS_Map* p) { m_pMap = p; }
@@ -73,7 +73,7 @@ public:
     void SetTimeDelay(GO_SS_TimeDelay* p) { m_pTimeDelay = p; }
 
 
-    
+
 private:
     //ゲームシーン
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -108,12 +108,12 @@ private:
 //-----------------------------------------------------------------------------------------
     void JumpMove_Liner();
 
-//-----------------------------------------------------------------------------------------
-//	JumpMove_Pendulum()
-//-----------------------------------------------------------------------------------------
-//	振り子のような動き
-//	下に動いてから、上に上がる
-//-----------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------
+    //	JumpMove_Pendulum()
+    //-----------------------------------------------------------------------------------------
+    //	振り子のような動き
+    //	下に動いてから、上に上がる
+    //-----------------------------------------------------------------------------------------
     void JumpMove_Pendulum();
 
     void PlayerMove_Pendulum();
@@ -124,14 +124,14 @@ private:
 
     const int PENDULUM_COUNTER_MAX = 100;
 
-//-----------------------------------------------------------------------------------------
-//    PlayerMoveSwitch(PlayerMove index);
-//-----------------------------------------------------------------------------------------
-//	プライヤーの挙動	-> 切り替え(PlayerMove　index)
-//    PLAYERMOVE_LINEAR,
-//    PLAYERMOVE_CURVE,
-//    PLAYERMOVE_PENDULUM,
-//-----------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------
+    //    PlayerMoveSwitch(PlayerMove index);
+    //-----------------------------------------------------------------------------------------
+    //	プライヤーの挙動	-> 切り替え(PlayerMove　index)
+    //    PLAYERMOVE_LINEAR,
+    //    PLAYERMOVE_CURVE,
+    //    PLAYERMOVE_PENDULUM,
+    //-----------------------------------------------------------------------------------------
     void PlayerMoveSwitch(PlayerMove index);
 
 
@@ -142,7 +142,7 @@ private:
 
 
 
-   
+
     //デバッグ用
     void DebugOut(int i);
 
