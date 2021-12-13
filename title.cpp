@@ -98,7 +98,8 @@ void UpdateTitle(void)
 	TO_Update();
 
 	//ÉVÅ[ÉìëJà⁄
-	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
+	if (GetKeyboardTrigger(DIK_RETURN) || IsMouseLeftPressed()
+		&& GetFadeState() == FADE_NONE)
 	{
 		SceneTransition(SCENE_SELECT_STAGE);
 	}

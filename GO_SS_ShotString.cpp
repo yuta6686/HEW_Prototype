@@ -103,9 +103,11 @@ void GO_SS_ShotString::Draw(void)
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, Circle_Vertex.alpha));
 
 	if (!IsClick)return;
+	SetBlendState(BLEND_MODE_ADD);
 	DrawSpriteColorRotate(String_Texture, String_Vertex.pos.x, String_Vertex.pos.y,
 		String_Vertex.size.x, String_Vertex.size.y,
 		0.0f, 0.0f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
+	SetBlendState(BLEND_MODE_ALPHABLEND);
 }
 
 
