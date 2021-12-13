@@ -43,9 +43,6 @@
     <Filter Include="ソース ファイル\GameObjects\GO_SS">
       <UniqueIdentifier>{0de75e5b-a027-4e56-b1c8-40d3a23b8623}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameObjects\GO_SS\TimeDelay">
-      <UniqueIdentifier>{a9dce69b-8ddf-4bfa-a992-4847a9fb28c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\GameObjects\GO_SS\TimeDelay">
       <UniqueIdentifier>{240caae2-6ec2-463d-a645-7c54decd3a51}</UniqueIdentifier>
     </Filter>
@@ -58,14 +55,17 @@
     <Filter Include="ヘッダー ファイル\Effect">
       <UniqueIdentifier>{7d86b752-4a12-4d59-a35d-5f0ca3e812c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Effect">
-      <UniqueIdentifier>{0305da7a-a8e0-437a-ad3a-8e81dde84fbd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\GameObjects\GO_">
-      <UniqueIdentifier>{9db07b08-e613-4060-a9c5-627db8217814}</UniqueIdentifier>
+      <UniqueIdentifier>{56456865-c655-42da-9e8c-9a7f39f27288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Effect">
+      <UniqueIdentifier>{fb693646-463c-4fb1-bd97-9c8e25a219d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObjects\TimeDelay">
+      <UniqueIdentifier>{a9dce69b-8ddf-4bfa-a992-4847a9fb28c7}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\GameObjects\GO_">
-      <UniqueIdentifier>{bc985603-d2f6-4bdb-ae45-df77b047ffd5}</UniqueIdentifier>
+      <UniqueIdentifier>{40910256-3209-430c-8523-5d0cadae30b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -127,19 +127,19 @@
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Player.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Movement.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_ShotString.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Wall.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Scramble.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_BackGround.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
@@ -148,37 +148,10 @@
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Timer.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
+      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
     <ClCompile Include="SelectStage.cpp">
       <Filter>ソース ファイル\SelectStage</Filter>
-    </ClCompile>
-    <ClCompile Include="StageObject_001.cpp">
-      <Filter>ソース ファイル\SelectStage</Filter>
-    </ClCompile>
-    <ClCompile Include="StageObject_002.cpp">
-      <Filter>ソース ファイル\SelectStage</Filter>
-    </ClCompile>
-    <ClCompile Include="StageObject_003.cpp">
-      <Filter>ソース ファイル\SelectStage</Filter>
-    </ClCompile>
-    <ClCompile Include="E_Prizum.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Effect.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EffectFactory.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_Effect_Wind.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_TimeDelay.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_ZipLine.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="GO_Bungee.cpp">
       <Filter>ソース ファイル\GameObjects\GO_</Filter>
@@ -204,14 +177,38 @@
     <ClCompile Include="GO_Timer.cpp">
       <Filter>ソース ファイル\GameObjects\GO_</Filter>
     </ClCompile>
+    <ClCompile Include="GO_SS_Effect_Wind.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="E_Prizum.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectFactory.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_TimeDelay.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
     <ClCompile Include="Spotlight.cpp">
       <Filter>ソース ファイル\SelectStage</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_ZipLine.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="StageObject_001.cpp">
+      <Filter>ソース ファイル\SelectStage</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObject_002.cpp">
+      <Filter>ソース ファイル\SelectStage</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObject_003.cpp">
+      <Filter>ソース ファイル\SelectStage</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Fan.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_ZipLine.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,22 +296,6 @@
     <ClInclude Include="GO_SS_BackGround.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="StageObectFactory.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_001.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_002.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_003.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
     <ClInclude Include="E_Prizum.h">
       <Filter>ヘッダー ファイル\Effect</Filter>
     </ClInclude>
@@ -328,19 +309,7 @@
       <Filter>ヘッダー ファイル\Effect</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_TimeDelay.h">
-      <Filter>ソース ファイル\GameObjects\GO_SS\TimeDelay</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectStage.h">
-      <Filter>ヘッダー ファイル\SelectStage</Filter>
-    </ClInclude>
-    <ClInclude Include="Spotlight.h">
-      <Filter>ヘッダー ファイル\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_SS_ZipLine.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_Timer.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO_</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_</Filter>
@@ -365,43 +334,36 @@
     </ClInclude>
     <ClInclude Include="GO_Throw.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_</Filter>
-=======
-    <ClInclude Include="Effect.h">
-      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="EffectFactory.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="E_Prizum.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_SS_ZipLine.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectStage.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Spotlight.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObectFactory.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_001.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_002.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject_003.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="GO_Timer.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_Fan.h">
-      <Filter>ヘッダー ファイル</Filter>
->>>>>>> c71ce8f164e15929e52744122a4938f3a97a652c
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_ZipLine.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectStage.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="Spotlight.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObectFactory.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject_001.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject_002.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject_003.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

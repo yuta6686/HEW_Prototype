@@ -8,6 +8,14 @@
 #include "input.h"
 #include "Spotlight.h"
 
+enum STAGE_NUM {
+	STAGE_NUM_NONE = 0,
+	STAGE_NUM_001,
+	STAGE_NUM_002,
+	STAGE_NUM_003,
+	STAGE_NUM_MAX,
+};
+
 class StageObject
 {
 public:
@@ -28,6 +36,8 @@ public:
 	//マウスオーバー処理
 	virtual bool IsMouseOver(void) = 0;
 	virtual void MouseOverUpdate(void) = 0;
+
+	virtual STAGE_NUM ReturnStageNum(void) = 0;
 
 protected:
 

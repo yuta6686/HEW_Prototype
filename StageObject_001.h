@@ -29,5 +29,8 @@ protected:
 private:
     char m_TextureName[64] = "data/TEXTURE/wall.png";
     int  m_TextureIndex;
+
+    // StageObject ‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
+    virtual STAGE_NUM ReturnStageNum(void) override { return STAGE_NUM_001; }
 };
 
