@@ -34,6 +34,8 @@ public:
 
 	bool IsCollTarget = false;
 
+	FLOAT m_TimeDelay;
+
 private:
 	//ゲームシーン用
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;

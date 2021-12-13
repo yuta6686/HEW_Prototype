@@ -1,4 +1,5 @@
 #include "GO_SS_Target.h"
+#include "renderer.h"
 //íNÇ©Ç±Ç±Ç≈çÏÇ¡Çƒ
 
 void GO_SS_Target::Initialize(void)
@@ -55,9 +56,11 @@ void GO_SS_Target::Draw(void)
             DrawSprite(Target_Texture, Target_Vertex[i].pos.x, Target_Vertex[i].pos.y,
                 Target_Vertex[i].size.x, Target_Vertex[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 
+            SetBlendState(BLEND_MODE_ADD);
             DrawSpriteColor(Target_Eff, Target_Vertex[i].pos.x, Target_Vertex[i].pos.y + 10.0f,
                 Target_eff[i].size, Target_eff[i].size, 1.0f, 1.0f, 1.0f,1.0f,
                 D3DXCOLOR(1.0f,1.0f,1.0f, Target_eff[i].alpha));
+            SetBlendState(BLEND_MODE_ALPHABLEND);
         }
 
 

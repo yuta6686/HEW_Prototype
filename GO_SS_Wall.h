@@ -20,8 +20,6 @@ public:
     VERTEX_WALL GetvWall(int index) { return m_vWall[index]; }
 
 
-    void SetWall();
-    void SetWall(D3DXVECTOR2 pos);
     void SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size);
 
   

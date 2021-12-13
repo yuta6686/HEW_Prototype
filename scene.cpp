@@ -13,6 +13,7 @@
 #include "result.h"
 #include "gameOver.h"
 #include "fade.h"
+#include "SelectStage.h"
 
 
 /*------------------------------------------------------------------------------
@@ -33,7 +34,7 @@
 static SCENE g_SceneIndex = SCENE_NONE;
 static SCENE g_SceneNextIndex = g_SceneIndex;
 
-
+static SelectStage g_sStage;
 /*------------------------------------------------------------------------------
    èâä˙âªä÷êî
 ------------------------------------------------------------------------------*/
@@ -48,6 +49,10 @@ void InitScene(SCENE index)
 
 	case SCENE_TITLE:
 		InitTitle();
+		break;
+
+	case SCENE_SELECT_STAGE:
+		g_sStage.Init();
 		break;
 
 	case SCENE_GAME:
@@ -78,6 +83,10 @@ void UninitScene(void)
 		UninitTitle();
 		break;
 
+	case SCENE_SELECT_STAGE:
+		g_sStage.Uninit();
+		break;
+
 	case SCENE_GAME:
 		UninitGame();
 		break;
@@ -104,6 +113,10 @@ void UpdateScene(void)
 
 	case SCENE_TITLE:
 		UpdateTitle();
+		break;
+
+	case SCENE_SELECT_STAGE:
+		g_sStage.Update();
 		break;
 
 	case SCENE_GAME:
@@ -134,6 +147,10 @@ void DrawScene(void)
 
 	case SCENE_TITLE:
 		DrawTitle();
+		break;
+
+	case SCENE_SELECT_STAGE:
+		g_sStage.Draw();
 		break;
 
 	case SCENE_GAME:

@@ -1,4 +1,5 @@
 #include "GO_SS_Effect_Wind.h"
+#include "renderer.h"
 
 void GO_SS_Effect_Wind::Initialize(void)
 {
@@ -60,6 +61,8 @@ void GO_SS_Effect_Wind::Update(void)
 
 void GO_SS_Effect_Wind::Draw(void)
 {
+    SetBlendState(BLEND_MODE_ADD);
+
     if (windEff.use) {
         DrawSpriteLeftTopColor(Eff_Texture, windEff.pos.x, windEff.pos.y,
             windEff.size.x, windEff.size.y,
@@ -75,6 +78,7 @@ void GO_SS_Effect_Wind::Draw(void)
             windMoveEff.u, 1.0f, 0.5f, 1.2f,
             D3DXCOLOR(1.0f, 1.0f, 1.0f, windMoveEff.alpha));
     }
+    SetBlendState(BLEND_MODE_ALPHABLEND);
 }
 
 

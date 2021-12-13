@@ -74,7 +74,7 @@ void GO_SS_ShotString::Update(void)
 	}
 	else {
 		//Ž…‚Ì’·‚³L‚Î‚·
-		String_Vertex.size.x += 20.0f;
+		String_Vertex.size.x += 20.0f * m_TimeDelay;
 	}
 
 
@@ -82,14 +82,14 @@ void GO_SS_ShotString::Update(void)
 	if (IsMouseRightPressed()) {
 		Circle_Vertex.size.x += m_pScramble->GetPreviousDiff()/10.0f;
 
-		Circle_Vertex.size.x -= Circle_Vertex.size.x / 200.0f;
+		Circle_Vertex.size.x -= Circle_Vertex.size.x / 200.0f * m_TimeDelay;
 	}
 	else {
 		if (Circle_Vertex.size.x <= 200.0f) {
 			Circle_Vertex.size.x = 200.0f;
 		}
 		else {
-			Circle_Vertex.size.x -= 10.0f;
+			Circle_Vertex.size.x -= 10.0f * m_TimeDelay;
 		}
 	}
 
@@ -160,7 +160,7 @@ void GO_SS_ShotString::TargetClick(void)
 	}
 
 	if (IsMouseLeftPressed() && IsClickTarget){
-		if (m_pPlayer->IsColl) {
+		if (m_pPlayer->IsColl && m_pPlayer->IsCollSide > -1) {
 			m_jumpCounter += 120;
 		}
 		

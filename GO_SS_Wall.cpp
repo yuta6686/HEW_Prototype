@@ -37,24 +37,8 @@ int GO_SS_Wall::GetGameScene(void)
     return GAMESCENE_GAME_TEST;
 }
 
-void GO_SS_Wall::SetWall()
-{
-    for (int i = 0; i < WALL_NUM_MAX; i++){
-        if (m_vWall[i].use) continue;
-        m_vWall[i].use = true;
-        break;
-    }
-}
 
-void GO_SS_Wall::SetWall(D3DXVECTOR2 pos)
-{
-    for (int i = 0; i < WALL_NUM_MAX; i++) {
-        if (m_vWall[i].use) continue;
-        m_vWall[i].pos = pos;
-        m_vWall[i].use = true;
-        break;
-    }
-}
+
 
 void GO_SS_Wall::SetWall(D3DXVECTOR2 pos, D3DXVECTOR2 size)
 {
@@ -81,13 +65,13 @@ void GO_SS_Wall::SetWallOnce()
         //    }
         //   // SetWall(D3DXVECTOR2(WALL_WIDTH * 5, WALL_HEIGHT * i), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
         //}
-        for (int i = 0; i < WALL_NUM_X * 5; i++) {
+        /*for (int i = 0; i < WALL_NUM_X * 5; i++) {
             SetWall(D3DXVECTOR2(WALL_WIDTH * i, WALL_HEIGHT * 8), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
         }
 
         for (int i = 0; i < WALL_NUM_Y; i++) {
             SetWall(D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT * i), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
-        }
+        }*/
     }
 }
 

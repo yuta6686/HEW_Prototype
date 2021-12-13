@@ -105,3 +105,12 @@ struct VERTEX_TITLE_PLAYER : public VERTEX_NOMAL {
 	FLOAT v;
 	int frame;
 };
+
+struct VERTEX_ALL_EFFECT :public VERTEX_EFF {
+	int frame;
+};
+
+struct VERTEX_SELECT_STAGE :public VERTEX_NOMAL {
+	bool use;
+	FLOAT alpha;
+};

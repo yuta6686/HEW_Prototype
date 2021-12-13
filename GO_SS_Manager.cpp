@@ -12,7 +12,7 @@
 #include "GO_SS_Scramble.h"
 #include "GO_SS_Timer.h"
 #include "GO_SS_Goal.h"
-#include "GO_SS_ZipLine.h"
+#include "GO_SS_TimeDelay.h"
 /*---------------------------------------------
 				?R???X?g???N?^
 ---------------------------------------------*/
@@ -35,8 +35,8 @@ void GO_SS_Manager::Create()
 	//null
 	{
 		mp_ssBackGround = nullptr;
-		mp_ssPlayer = nullptr;
-		mp_ssWall = nullptr;
+		mp_ssPlayer		= nullptr;
+		mp_ssWall		= nullptr;
 		mp_ssMovement= nullptr;
 		mp_ssTarget = nullptr;
 		mp_ssShotString = nullptr;
@@ -46,7 +46,6 @@ void GO_SS_Manager::Create()
 		mp_ssScramble = nullptr;
 		mp_ssTimer = nullptr;
 		mp_ssGoal = nullptr;
-		mp_ssZipLine = nullptr;
 	}
 
 	//new
@@ -64,7 +63,6 @@ void GO_SS_Manager::Create()
 		mp_ssScramble = new GO_SS_Scramble;
 		mp_ssTimer = new GO_SS_Timer;
 		mp_ssGoal = new GO_SS_Goal;
-		mp_ssZipLine = new GO_SS_ZipLine;
 	}
 
 	//Register
@@ -82,7 +80,6 @@ void GO_SS_Manager::Create()
 		Register(mp_ssFileLoad);
 		Register(mp_ssMap);
 		Register(mp_ssEffWind);
-		Register(mp_ssZipLine);
 	}
 }
 
@@ -103,7 +100,6 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetTarget(mp_ssTarget);
 		mp_ssMovement->SetMap(mp_ssMap);
 		mp_ssMovement->SetEffWind(mp_ssEffWind);
-		mp_ssMovement->SetZipLine(mp_ssZipLine);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);

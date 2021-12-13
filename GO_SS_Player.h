@@ -1,8 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include "GO_SS_TimeDelay.h"
 
 class GO_SS_Player :
-    public GameObject
+    public GO_SS_TimeDelay
 {
 public:
     virtual void Initialize(void) override;
@@ -37,8 +37,12 @@ public:
     bool OkJump;
     bool IsColl;
 
-    //not:-1 left:1 right:-1 
+    //not:-1 left:1 right:2 
     int IsCollSide;
+
+
+    FLOAT m_TimeDelay = 1.0f;
+
     
 private:
     //GameScene

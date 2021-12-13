@@ -45,6 +45,7 @@ private:
 
     VERTEX_SCRAMBLE Vortex_Vertex;
 
+    FLOAT m_Diff;
 
     D3DXVECTOR2 m_PrePos;
     D3DXVECTOR2 m_CurPos;
