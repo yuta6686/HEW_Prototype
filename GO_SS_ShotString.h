@@ -17,6 +17,7 @@ public:
 
 	//ゲッター
 	FLOAT GetAngle(void){ return String_Vertex.angle; }
+	VERTEX_CIRCLE* GetCircle(void) { return &Circle_Vertex; }
 
 	//セッター
 	void SetPlayer(GO_SS_Player* p)	{ m_pPlayer = p; }
