@@ -46,6 +46,7 @@ void GO_SS_Manager::Create()
 		mp_ssScramble = nullptr;
 		mp_ssTimer = nullptr;
 		mp_ssGoal = nullptr;
+		mp_ssTimeDelay = nullptr;
 	}
 
 	//new
@@ -63,6 +64,7 @@ void GO_SS_Manager::Create()
 		mp_ssScramble = new GO_SS_Scramble;
 		mp_ssTimer = new GO_SS_Timer;
 		mp_ssGoal = new GO_SS_Goal;
+		mp_ssTimeDelay = new GO_SS_TimeDelay;
 	}
 
 	//Register
@@ -80,6 +82,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssFileLoad);
 		Register(mp_ssMap);
 		Register(mp_ssEffWind);
+		Register(mp_ssTimeDelay);
 	}
 }
 
@@ -100,6 +103,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetTarget(mp_ssTarget);
 		mp_ssMovement->SetMap(mp_ssMap);
 		mp_ssMovement->SetEffWind(mp_ssEffWind);
+		mp_ssMovement->SetTimeDelay(mp_ssTimeDelay);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);
@@ -108,7 +112,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMap->SetFileLoad(mp_ssFileLoad);
 		mp_ssMap->SetWall(mp_ssWall);
 		mp_ssMap->SetTarget(mp_ssTarget);
-		mp_ssMap->SetZipline(mp_ssZipLine);
+		//mp_ssMap->SetZipline(mp_ssZipLine);
 	}
 }
 /*---------------------------------------------

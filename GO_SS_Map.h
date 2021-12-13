@@ -6,7 +6,7 @@
 class GO_SS_FileLoad;
 class GO_SS_Wall;
 class GO_SS_Target;
-class GO_SS_ZipLine;
+//class GO_SS_ZipLine;
 
 //マップチップの列挙型
 typedef enum{
@@ -28,14 +28,14 @@ public:
 	void SetFileLoad(GO_SS_FileLoad* p) { m_pFileLoad = p; }
 	void SetWall(GO_SS_Wall* p) { m_pWall = p; }
 	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
-	void SetZipline(GO_SS_ZipLine* p) { m_pZipLine = p; }
+	//void SetZipline(GO_SS_ZipLine* p) { m_pZipLine = p; }
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
 	void ResetOnce(void) { once = true; }
 
 private:
-	bool SeekZipLineB(int CurrentNum, int CurrentNumY);
+	//bool SeekZipLineB(int CurrentNum, int CurrentNumY);
 
 	int GAME_SCENE = GAMESCENE_GAME_TEST;
 	int MapData[STAGE_WALL_NUM_Y][STAGE_WALL_NUM_X];//まっぷでーた
@@ -44,7 +44,7 @@ private:
 	GO_SS_FileLoad* m_pFileLoad;	//FileLoadポインタ
 	GO_SS_Wall* m_pWall;			//Wallポインタ
 	GO_SS_Target* m_pTarget;		//targetポインタ
-	GO_SS_ZipLine* m_pZipLine;		//ZipLineポインタ
+	//GO_SS_ZipLine* m_pZipLine;		//ZipLineポインタ
 
 	MAP_CHIP_NO mapChipNo;
 
