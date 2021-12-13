@@ -2,6 +2,7 @@
 #include "GO_SS_FileLoad.h"
 #include "GO_SS_Wall.h"
 #include "GO_SS_Target.h"
+#include "GO_SS_Fan.h"
 //#include "GO_SS_ZipLine.h"
 
 //#define SEEK_ZIP_MAX  5
@@ -32,16 +33,25 @@ void GO_SS_Map::Update(void)
 			case WALL_NUM:
 				m_pWall->SetWall(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y), D3DXVECTOR2(WALL_WIDTH, WALL_HEIGHT));
 				break;
+
 			case TARGET_NUM:
 				m_pTarget->SetTarget(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 				break;
-			case ZIPLINE_A_NUM:
-				//ZIPLINE_A_NUM‚ª—ˆ‚½‚çB‚ğ’T‚µ‚És‚­
-				//if (SeekZipLineB(x, y))
-				{
-					//m_pZipLine->SetZipLine(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
-				}
+
+			case FAN_A_NUM:
+				m_pFan->SetFan(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 				break;
+
+			case FAN_B_NUM:
+				break;
+
+			//case ZIPLINE_A_NUM:
+			//	//ZIPLINE_A_NUM‚ª—ˆ‚½‚çB‚ğ’T‚µ‚És‚­
+			//	if (SeekZipLineB(x, y))
+			//	{
+			//		m_pZipLine->SetZipLine(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+			//	}
+			//	break;
 			}
 		}
 	}
@@ -51,6 +61,21 @@ void GO_SS_Map::Draw(void)
 {
 	
 }
+void GO_SS_Map::MoveMapObject(FLOAT x)
+{
+	m_pWall->AddX(x);
+	m_pTarget->AddPosX(x);
+	m_pFan->AddX(x);
+}
+
+void GO_SS_Map::ResetOnce(void)
+{
+	m_pTarget->ResetOnce();
+	m_pWall->ResetOnce();
+	m_pFan->ResetOnce();
+	once = true;
+}
+
 //
 ////zipline‚ÌB‚ğ’T‚µ‚És‚­ŠÖ”
 //bool GO_SS_Map::SeekZipLineB(int CurrentNumX, int CurrentNumY)
