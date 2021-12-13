@@ -15,7 +15,7 @@
 
 void GO_SS_Scramble::Initialize(void)
 {
-	Vortex_Vertex.color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f);
+	Vortex_Vertex.color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.01f);
 	Vortex_Vertex.angle = 0.0f;
 	Vortex_Vertex.size = D3DXVECTOR2(500.0f, 500.0f);
 
@@ -48,6 +48,8 @@ void GO_SS_Scramble::Update(void)
 	
 
 	if (Vortex_Vertex.use) {
+
+		//	angle	äµê´
 		if (pDiff <= 5.0f && m_Diff <= 0.5f) {
 			m_Diff = pDiff;
 		}
@@ -59,16 +61,34 @@ void GO_SS_Scramble::Update(void)
 			Vortex_Vertex.angle += pDiff;
 		}
 
+		//Éøíl	äµê´
+		if (Vortex_Vertex.color.a >= 1.0f) {
+			Vortex_Vertex.color.a = 1.0f;
+		}
+		else {
+			Vortex_Vertex.color.a *= 1.1f;
+		}
 		
 	}
 	else {
+
+		//angle	äµê´
 		if (Vortex_Vertex.angle <= 1.0f) {
-			Vortex_Vertex.use = false;
+			
 			Vortex_Vertex.angle = 0.0f;
 		}
 		else {
 			Vortex_Vertex.use = true;
 			Vortex_Vertex.angle *= 0.93f;
+		}
+
+		//Éøíl	äµê´
+		if (Vortex_Vertex.color.a <= 0.1f) {
+			Vortex_Vertex.use = false;
+			Vortex_Vertex.color.a = 0.1f;
+		}
+		else {
+			Vortex_Vertex.color.a *= 0.95f;
 		}
 		
 	}

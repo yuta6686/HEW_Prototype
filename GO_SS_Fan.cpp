@@ -28,7 +28,13 @@ void GO_SS_Fan::Update(void)
 		{
 			m_FanInfo[i].isWork = true;
 		}
+		else
+		{
+			m_FanInfo[i].isWork = false;
+		}
 	}
+	
+	DebugOut();
 }
 
 void GO_SS_Fan::Draw(void)
@@ -82,4 +88,15 @@ bool GO_SS_Fan::FCCollision(D3DXVECTOR2 pos1,float size1,D3DXVECTOR2 pos2,float 
 	}
 
 	return false;
+}
+
+void GO_SS_Fan::DebugOut(void)
+{
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+	wsprintf(GetDebugStr(), WINDOW_CAPTION);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " isWork:%d",
+		m_FanInfo[0].isWork);
+
+	SetWindowText(GethWnd()[0], GetDebugStr());
+#endif
 }

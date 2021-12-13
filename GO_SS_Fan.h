@@ -33,6 +33,7 @@ public:
 private:
 
 	bool FCCollision(D3DXVECTOR2 pos1, float size1, D3DXVECTOR2 pos2, float size2);
+	void DebugOut(void);
 
 
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;

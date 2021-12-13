@@ -45,7 +45,7 @@ private:
 	char TEX_NAME[64] = "data/TEXTURE/String1.png";
 	int String_Texture;
 
-	char CIRCLE_TEX_NAME[64] = "data/TEXTURE/circle.png";
+	char CIRCLE_TEX_NAME[64] = "data/TEXTURE/circle1.png";
 	int Circle_Texture;
 
 	//頂点パラメータ
