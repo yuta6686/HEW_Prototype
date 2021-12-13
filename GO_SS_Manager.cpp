@@ -13,6 +13,7 @@
 #include "GO_SS_Timer.h"
 #include "GO_SS_Goal.h"
 #include "GO_SS_TimeDelay.h"
+#include "GO_SS_Fan.h"
 /*---------------------------------------------
 				?R???X?g???N?^
 ---------------------------------------------*/
@@ -47,6 +48,7 @@ void GO_SS_Manager::Create()
 		mp_ssTimer = nullptr;
 		mp_ssGoal = nullptr;
 		mp_ssTimeDelay = nullptr;
+		mp_ssFan = nullptr;
 	}
 
 	//new
@@ -65,6 +67,7 @@ void GO_SS_Manager::Create()
 		mp_ssTimer = new GO_SS_Timer;
 		mp_ssGoal = new GO_SS_Goal;
 		mp_ssTimeDelay = new GO_SS_TimeDelay;
+		mp_ssFan = new GO_SS_Fan;
 	}
 
 	//Register
@@ -78,11 +81,13 @@ void GO_SS_Manager::Create()
 		Register(mp_ssWall);
 		Register(mp_ssMovement);
 		Register(mp_ssTarget);
+		Register(mp_ssFan);
 		Register(mp_ssShotString);
 		Register(mp_ssFileLoad);
 		Register(mp_ssMap);
 		Register(mp_ssEffWind);
 		Register(mp_ssTimeDelay);
+	
 	}
 }
 
@@ -112,6 +117,9 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMap->SetFileLoad(mp_ssFileLoad);
 		mp_ssMap->SetWall(mp_ssWall);
 		mp_ssMap->SetTarget(mp_ssTarget);
+		mp_ssMap->SetFan(mp_ssFan);
+
+		mp_ssFan->SetCircle(mp_ssShotString->GetCircle());
 		//mp_ssMap->SetZipline(mp_ssZipLine);
 	}
 }

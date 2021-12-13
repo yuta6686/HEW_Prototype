@@ -79,11 +79,7 @@ void GO_SS_Movement::JumpMove_Liner()
 
 	//”wŒiƒXƒNƒ[ƒ‹ˆ—
 	m_pBackGround->SubU(cosf(angle) / 100.0f);
-
-
-	m_pWall->AddX(-10.0f);
-
-	m_pTarget->AddPosX(-10.0f);
+	m_pMap->MoveMapObject(-10.0f);
 
 	m_pGoal->AddX(-10.0f);
 
@@ -178,9 +174,7 @@ void GO_SS_Movement::BackGroundMovement_Pendulum()
 	//”wŒiƒXƒNƒ[ƒ‹ˆ—
 	m_pBackGround->SubU(cosf(angle) / 100.0f * m_TimeDelay);
 
-	m_pWall->AddX(-10.0f * m_TimeDelay);
-
-	m_pTarget->AddPosX(-10.0f * m_TimeDelay);
+	m_pMap->MoveMapObject(-10.0f * m_TimeDelay);
 
 	m_pGoal->AddX(-10.0f * m_TimeDelay);
 }
@@ -212,16 +206,14 @@ void GO_SS_Movement::MovementManager(void)
 	if (GetKeyboardPress(DIK_A) && m_pPlayer->IsCollSide != 1)
 	{
 		m_pBackGround->SubU(BG_SCROLL_SPEED * m_TimeDelay);
-		m_pTarget->AddPosX(TARGET_MOVING_SPEED * m_TimeDelay);
-		m_pWall->AddX(WALL_MOVING_SPEED * m_TimeDelay);
+		m_pMap->MoveMapObject(MAP_OBJ_MOVING_SPEED * m_TimeDelay);
 		m_pGoal->AddX(GOAL_MOVING_SPEED * m_TimeDelay);
 	}
 	//¶“ü—Í
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
 	{
 		m_pBackGround->AddU(BG_SCROLL_SPEED * m_TimeDelay);
-		m_pTarget->AddPosX(-TARGET_MOVING_SPEED * m_TimeDelay);
-		m_pWall->AddX(-WALL_MOVING_SPEED * m_TimeDelay);
+		m_pMap->MoveMapObject(-MAP_OBJ_MOVING_SPEED * m_TimeDelay);
 		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay);
 	}
 }
@@ -230,8 +222,6 @@ void GO_SS_Movement::FromAbyss()
 {
 	if (m_pPlayer->GetPos().y >= SCREEN_HEIGHT) {
 		m_pPlayer->SetPosY(0.0f);
-		m_pTarget->ResetOnce();
-		m_pWall->ResetOnce();
 		m_pMap->ResetOnce();
 	}
 }
