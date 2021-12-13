@@ -102,12 +102,13 @@ void GO_SS_ShotString::Draw(void)
 		Circle_Vertex.size.x, Circle_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, Circle_Vertex.alpha));
 
-	if (!IsClick)return;
-	SetBlendState(BLEND_MODE_ADD);
+	if (!IsMouseRightPressed())return;
+
+
 	DrawSpriteColorRotate(String_Texture, String_Vertex.pos.x, String_Vertex.pos.y,
 		String_Vertex.size.x, String_Vertex.size.y,
 		0.0f, 0.0f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
-	SetBlendState(BLEND_MODE_ALPHABLEND);
+
 }
 
 
@@ -136,16 +137,6 @@ void GO_SS_ShotString::NoTargetClick(void)
 		String_Vertex.size.x = 0.0f;
 	}
 
-	//押していたら
-	if (IsMouseLeftPressed()) {
-
-		IsClick = true;
-
-	}
-	//離されたら
-	else {
-		IsClick = false;
-	}
 }
 
 //ターゲットをクリックした
@@ -203,7 +194,7 @@ int GO_SS_ShotString::TargetIsInRange(void)
 			index = i;
 		}
 	}
-	
+
 	return index;
 }
 

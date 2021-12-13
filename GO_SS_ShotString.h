@@ -26,13 +26,10 @@ public:
 	void SetPos(D3DXVECTOR2 pos)	{ String_Vertex.pos = pos; }
 
 	//public ïœêî
-	bool IsClick = false;
 
 	bool IsClickTarget = false;
 
 	int IsInsideTarget = -1;
-
-	bool IsCollTarget = false;
 
 	FLOAT m_TimeDelay;
 
