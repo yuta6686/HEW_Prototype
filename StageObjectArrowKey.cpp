@@ -1,0 +1,75 @@
+#include "StageObjectArrowKey.h"
+
+
+
+void StageObjectArrowKey::Update(void)
+{
+	ArrowKeyUpdate();
+
+	EnterUpdate();
+}
+
+void StageObjectArrowKey::Draw(void)
+{
+
+}
+
+
+int StageObjectArrowKey::IsArrowKeyTriggerd(void){
+	if (GetKeyboardTrigger(DIK_RIGHTARROW)) {
+		return ARROW_KEY_RIGHT;
+	}
+	else if (GetKeyboardTrigger(DIK_LEFTARROW)) {
+		return ARROW_KEY_LEFT;
+	}
+	else {
+		return ARROW_KEY_NONE;
+	}
+
+	return ARROW_KEY_NONE;
+}
+
+void StageObjectArrowKey::ArrowKeyUpdate()
+{
+	switch (IsArrowKeyTriggerd())
+		{
+		case ARROW_KEY_NONE:
+			break;
+		case ARROW_KEY_RIGHT:
+			if (m_StageNumSelect == STAGE_NUM_NONE ||
+				m_StageNumSelect == STAGE_NUM_MAX) {
+				SetStageNumSelect(STAGE_NUM_003);
+			}
+			else {
+				StageNumAdd();
+			}
+			break;
+		case ARROW_KEY_LEFT:
+			if (m_StageNumSelect == STAGE_NUM_NONE) {
+				SetStageNumSelect(STAGE_NUM_001);
+			}
+			else {
+				StageNumSub();
+			}
+			break;
+		case ARROW_KEY_MAX:
+			break;
+		default:
+			break;
+	}
+	
+}
+
+bool StageObjectArrowKey::IsEnterTriggerd(void)
+{
+	return false;
+}
+
+void StageObjectArrowKey::EnterUpdate(void)
+{
+}
+
+STAGE_NUM StageObjectArrowKey::ReturnStageNum(void)
+{
+    return STAGE_NUM();
+}

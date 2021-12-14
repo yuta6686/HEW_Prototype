@@ -16,6 +16,13 @@ enum STAGE_NUM {
 	STAGE_NUM_MAX,
 };
 
+enum ARROW_KEYS {
+	ARROW_KEY_NONE,
+	ARROW_KEY_RIGHT,
+	ARROW_KEY_LEFT,
+	ARROW_KEY_MAX,
+};
+
 class StageObject
 {
 public:
@@ -37,12 +44,18 @@ public:
 	virtual bool IsMouseOver(void) = 0;
 	virtual void MouseOverUpdate(void) = 0;
 
+
+
 	virtual STAGE_NUM ReturnStageNum(void) = 0;
+
+	virtual D3DXVECTOR2 GetPos(void) { return m_Vertex.pos; }
 
 protected:
 
 	VERTEX_SELECT_STAGE m_Vertex;
 
 	Spotlight m_light;
+
+	
 };
 

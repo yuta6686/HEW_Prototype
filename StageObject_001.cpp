@@ -31,7 +31,7 @@ void StageObject_001::Draw(void)
         m_Vertex.size.x, m_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f,
         D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Vertex.alpha));
 
-	m_light.Draw(m_Vertex.pos);
+	m_light.Draw();
 }
 
 bool StageObject_001::IsClick(void)
@@ -97,10 +97,10 @@ bool StageObject_001::IsMouseOver(void)
 void StageObject_001::MouseOverUpdate(void)
 {
 	if (IsMouseOver()) {
-		m_light.SetIlluminate(true);
+		m_light.SetIlluminate(true,m_Vertex.pos);
 	}
 	else {
-		m_light.SetIlluminate(false);
+		m_light.SetIlluminate(false, m_Vertex.pos);
 	}
 }
 

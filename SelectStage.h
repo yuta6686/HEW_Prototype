@@ -10,7 +10,8 @@
 
 #include "StageObectFactory.h"
 #include "EffectFactory.h"
-
+#include "StageObjectArrowKey.h"
+#include "Spotlight.h"
 
 //*****************************************************************************
 // É}ÉNÉçíËã`
@@ -41,7 +42,7 @@ public:
 	void MouseOver(void);
 
 private:
-	static const int STAGE_OBJECT_MAX = 3;
+	static const int STAGE_OBJECT_MAX = 5;
 
 	StageObject* m_pStageObjects[STAGE_OBJECT_MAX];
 
@@ -50,6 +51,11 @@ private:
 	Effect* m_effect[EFFECT_MAX];
 
 
-	StageObectFactory m_SOF;
-	EffectFactory m_EF;
+	StageObectFactory	m_SO_Factory;
+	EffectFactory		m_EF;
+	StageObjectArrowKey m_SO_ArrowKey;
+	Spotlight			m_Spotlight;
+
+	void IlluminateUpdate(void);
+	void ToSelectStage(void);
 };

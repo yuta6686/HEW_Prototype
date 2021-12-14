@@ -40,7 +40,8 @@ HRESULT SelectStage::Init(void)
 		if (m_effect[i] == nullptr)continue;
 		m_effect[i]->Initialize();
 	}
-	
+	m_Spotlight.Init();
+
 	return E_NOTIMPL;
 }
 
@@ -64,6 +65,10 @@ void SelectStage::Update(void)
 
 	MouseOver();
 
+	m_SO_ArrowKey.Update();
+
+	IlluminateUpdate();
+
 	for (int i = 0; i < STAGE_OBJECT_MAX; i++) {
 		if (m_pStageObjects[i] == nullptr)continue;
 		m_pStageObjects[i]->Update();
@@ -75,6 +80,8 @@ void SelectStage::Update(void)
 		m_effect[i]->Update();
 
 	}
+
+	
 }
 
 void SelectStage::Draw(void)
@@ -91,14 +98,16 @@ void SelectStage::Draw(void)
 		m_effect[i]->Draw();
 	}
 
+	m_Spotlight.Draw();
+
 	SetBlendState(BLEND_MODE_ALPHABLEND);
 }
 
 void SelectStage::Create(void)
 {
-	m_pStageObjects[0] = m_SOF.Create_001();
-	m_pStageObjects[1] = m_SOF.Create_002();
-	m_pStageObjects[2] = m_SOF.Create_003();
+	m_pStageObjects[0] = m_SO_Factory.Create_001();
+	m_pStageObjects[1] = m_SO_Factory.Create_002();
+	m_pStageObjects[2] = m_SO_Factory.Create_003();
 
 	m_effect[0] = m_EF.Create();
 }
@@ -106,6 +115,7 @@ void SelectStage::Create(void)
 void SelectStage::Click()
 {
 	for (int i = 0; i < STAGE_OBJECT_MAX; i++) {
+
 		if (m_pStageObjects[i] == nullptr)continue;
 
 		m_pStageObjects[i]->ClickUpdate();
@@ -122,5 +132,16 @@ void SelectStage::MouseOver(void)
 		if (m_pStageObjects[i] == nullptr)continue;
 
 		m_pStageObjects[i]->MouseOverUpdate();
+	}
+}
+
+void SelectStage::IlluminateUpdate(void)
+{
+	for (int i = 0; i < STAGE_OBJECT_MAX; i++) {
+		if (m_pStageObjects[i] == nullptr)continue;
+
+		if (m_pStageObjects[i]->ReturnStageNum() == m_SO_ArrowKey.GetStageNumSelect()) {
+			m_Spotlight.SetIlluminate(true, m_pStageObjects[i]->GetPos());
+		}
 	}
 }

@@ -164,6 +164,7 @@
     <ClCompile Include="SelectStage.cpp" />
     <ClCompile Include="Spotlight.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="StageObjectArrowKey.cpp" />
     <ClCompile Include="StageObject_001.cpp" />
     <ClCompile Include="StageObject_002.cpp" />
     <ClCompile Include="StageObject_003.cpp" />
@@ -217,6 +218,7 @@
     <ClInclude Include="sprite.h" />
     <ClInclude Include="StageObectFactory.h" />
     <ClInclude Include="StageObject.h" />
+    <ClInclude Include="StageObjectArrowKey.h" />
     <ClInclude Include="StageObject_001.h" />
     <ClInclude Include="StageObject_002.h" />
     <ClInclude Include="StageObject_003.h" />

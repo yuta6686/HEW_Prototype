@@ -23,6 +23,12 @@ public:
 
     virtual void MouseOverUpdate(void) override;
 
+    
+
+
+
+    // StageObject ‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
+    virtual STAGE_NUM ReturnStageNum(void) override { return STAGE_NUM_001; }
 protected:
     D3DXVECTOR2 m_MousePos;
 
@@ -30,7 +36,8 @@ private:
     char m_TextureName[64] = "data/TEXTURE/wall.png";
     int  m_TextureIndex;
 
-    // StageObject ‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
-    virtual STAGE_NUM ReturnStageNum(void) override { return STAGE_NUM_001; }
+   
+   
+
 };
 

@@ -129,9 +129,6 @@
     <ClCompile Include="GO_SS_Player.cpp">
       <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_Movement.cpp">
-      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
-    </ClCompile>
     <ClCompile Include="GO_SS_ShotString.cpp">
       <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
     </ClCompile>
@@ -209,6 +206,12 @@
     </ClCompile>
     <ClCompile Include="GO_SS_ZipLine.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Movement.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObjectArrowKey.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +367,9 @@
     </ClInclude>
     <ClInclude Include="StageObject_003.h">
       <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObjectArrowKey.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
