@@ -59,32 +59,6 @@ void GO_SS_Player::Draw(void)
 		Player_Vertex.size.x, Player_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
-
-
-//	クリックしたときのプレイヤーの挙動
-//	カーソルがプレイヤーより右のときの処理
-void GO_SS_Player::WavePosPlus(FLOAT angle)
-{
-	FLOAT posx = Player_Vertex.pos.x;
-	FLOAT posy = Player_Vertex.pos.y;
-	FLOAT centerx = (SCREEN_WIDTH / 4.0f - posx);
-
-	Player_Vertex.pos.y -= (posy / 5.0f) * sinf(angle);
-	Player_Vertex.pos.x += (centerx / 10.0f) * cosf(angle);
-}
-
-//	クリックしたときのプレイヤーの挙動
-//	カーソルがプレイヤーより左のときの処理
-void GO_SS_Player::WavePosMinus(FLOAT angle)
-{
-	FLOAT posx = Player_Vertex.pos.x;
-	FLOAT posy =  Player_Vertex.pos.y;
-	FLOAT centerx = (SCREEN_WIDTH / 4.0f - posx);
-
-	Player_Vertex.pos.y -= (posy / 5.0f) * sinf(angle);
-	Player_Vertex.pos.x -= (centerx / 10.0f) * cosf(angle);
-}
-
 //プライヤーが画面下に落ちたらGameoverへ
 void GO_SS_Player::SceneToGameOver(void)
 {

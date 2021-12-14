@@ -1,9 +1,14 @@
 #pragma once
-
+//=============================================================================
+//
+// ステージオブジェクト工場 [StageObjectFactory.h]
+// Author :	yuta yanagisawa 
+//
+//=============================================================================
 #include "StageObject_001.h"
 #include "StageObject_002.h"
 #include "StageObject_003.h"
-//class StageObject_001;
+
 class StageObectFactory
 {
 public:

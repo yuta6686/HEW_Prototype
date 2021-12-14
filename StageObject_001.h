@@ -1,4 +1,10 @@
 #pragma once
+//=============================================================================
+//
+// ステージ選択画面オブジェクト_001 [StageObject_001.h]
+// Author :	yuta yanagisawa 
+//
+//=============================================================================
 #include "StageObject.h"
 class StageObject_001 :
     public StageObject
@@ -23,11 +29,6 @@ public:
 
     virtual void MouseOverUpdate(void) override;
 
-    
-
-
-
-    // StageObject を介して継承されました
     virtual STAGE_NUM ReturnStageNum(void) override { return STAGE_NUM_001; }
 protected:
     D3DXVECTOR2 m_MousePos;

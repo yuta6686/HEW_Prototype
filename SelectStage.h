@@ -6,8 +6,6 @@
 //=============================================================================
 #pragma once
 
-
-
 #include "StageObectFactory.h"
 #include "EffectFactory.h"
 #include "StageObjectArrowKey.h"

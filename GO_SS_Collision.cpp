@@ -58,12 +58,14 @@ int GO_SS_Collision::CJ_PWSide(void)
 		VERTEX_WALL vwall = m_pWall->GetvWall(i);
 		if (!vwall.use)continue;
 		//ç∂
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x, playerPos.y * 0.8f), D3DXVECTOR2(playerSize.x, playerSize.y), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x, playerPos.y * 0.8f),
+			D3DXVECTOR2(playerSize.x, playerSize.y), vwall.pos, vwall.size))
 		{
 			return 1;
 		}
 		//âE
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.x * 0.5f, playerPos.y * 0.8f), D3DXVECTOR2(playerSize.x * 0.1f, playerSize.y), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.x * 0.5f, playerPos.y * 0.8f),
+			D3DXVECTOR2(playerSize.x * 0.1f, playerSize.y), vwall.pos, vwall.size))
 		{
 			return 2;
 		}
