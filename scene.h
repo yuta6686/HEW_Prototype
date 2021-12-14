@@ -1,4 +1,5 @@
 #pragma once
+//#include "StageObject.h"
 
 // “o˜^ƒV[ƒ“ˆê——
 enum SCENE
@@ -20,3 +21,6 @@ void DrawScene(void);
 
 void SetScene(SCENE index);
 void CheckScene(void);
+
+void SetStageNum(int sn);
+int GetStageNum(void);

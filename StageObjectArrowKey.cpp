@@ -36,8 +36,7 @@ void StageObjectArrowKey::ArrowKeyUpdate()
 		case ARROW_KEY_NONE:
 			break;
 		case ARROW_KEY_RIGHT:
-			if (m_StageNumSelect == STAGE_NUM_NONE ||
-				m_StageNumSelect == STAGE_NUM_MAX) {
+			if (m_StageNumSelect == STAGE_NUM_MAX) {
 				SetStageNumSelect(STAGE_NUM_003);
 			}
 			else {
@@ -62,11 +61,28 @@ void StageObjectArrowKey::ArrowKeyUpdate()
 
 bool StageObjectArrowKey::IsEnterTriggerd(void)
 {
+	if (GetKeyboardTrigger(DIK_RETURN) &&
+		m_StageNumSelect != STAGE_NUM_NONE &&
+		m_StageNumSelect != STAGE_NUM_MAX) {
+		return true;
+		
+	}
 	return false;
 }
 
 void StageObjectArrowKey::EnterUpdate(void)
 {
+	if (IsEnterTriggerd()) {
+		
+		SetStageNum(m_StageNumSelect);
+		
+			               
+		if (GetFadeState() == FADE_NONE)
+		{
+			SceneTransition(SCENE_GAME);
+		}
+		
+	}
 }
 
 STAGE_NUM StageObjectArrowKey::ReturnStageNum(void)
