@@ -198,18 +198,27 @@ void UpdateTitle(void)
 	}
 
 	//ƒV[ƒ“‘JˆÚ
+<<<<<<< HEAD
 	if (GetKeyboardTrigger(DIK_RETURN) ||
 		EnterToNext()	&&
 		GetFadeState() == FADE_NONE)
+=======
+	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
+>>>>>>> 33bae8d52ab56af42f71f65eaba25faee5e7d0f2
 	{
 		Action = 9;
 	}
 
 	if (Action == 9)
 	{
+<<<<<<< HEAD
 		if (biruk[0] >= 0.05f){
 			SceneTransition(SCENE_GAME);
 		}
+=======
+		if (biruk[0] >= 0.05f)
+			SceneTransition(SCENE_GAME);
+>>>>>>> 33bae8d52ab56af42f71f65eaba25faee5e7d0f2
 		else
 		{
 			biruk[0] += 0.0016f;
