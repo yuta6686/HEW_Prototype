@@ -58,8 +58,7 @@ private:
 	//カーソルとプライヤーの距離取得
 	FLOAT GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2);
 
-	//デバッグ用
-	void DebugOut(void);
+
 
 	GO_SS_Player* m_pPlayer;
 	GO_SS_Target* m_pTarget;
@@ -78,11 +77,9 @@ private:
 
 	int TargetIsInRange(void);
 
-	//bool IsStringConnectTarget();
+	//デバッグ用
+	void DebugOut(void);
 
-
-	//糸の頂点座標をCoordinateにセット
-	//void SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle);
-
+	void ExtendLengthOfString(FLOAT amount);
 };
 

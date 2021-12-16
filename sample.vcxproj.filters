@@ -369,7 +369,7 @@
       <Filter>ヘッダー ファイル\SelectStage</Filter>
     </ClInclude>
     <ClInclude Include="StageObjectArrowKey.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

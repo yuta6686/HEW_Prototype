@@ -45,37 +45,23 @@ void GO_SS_ShotString::Update(void)
 	String_Vertex.pos = m_pPlayer->GetPos();
 	Circle_Vertex.pos = m_pPlayer->GetPos();
 
-	//押されている間
-	if (IsMouseLeftPressed())
-	{
-		//プレイヤーとカーソルの角度取得
-		String_Vertex.angle = atan2f(String_Vertex.pos.y - AimPos.y,
-			String_Vertex.pos.x - AimPos.x);
+	//プレイヤーとカーソルの角度取得
+	String_Vertex.angle = atan2f(String_Vertex.pos.y - AimPos.y,
+		String_Vertex.pos.x - AimPos.x);
 
-	}
-
-	//糸の頂点座標をCoordinateにセット
-	/*SetCoord(String_Vertex.pos, String_Vertex.size, 0.0f, 0.0f, 0.9f, 0.9f, 
-		atan2f(AimPos.y - String_Vertex.pos.y,
-			AimPos.x - String_Vertex.pos.x));*/
-
-	//ターゲットではない場所をクリック
+	//	ターゲットではない場所をクリック
 	NoTargetClick();
 
-	//ターゲットをクリック
+	//	ターゲットをクリック
 	TargetClick();
 
 
+	//--糸の長さ伸ばす--//
+	//	引数:伸ばす量	//
+	//	max -> ターゲットとプレイヤーの距離	//
+	ExtendLengthOfString(20.0f);
 
-
-	//糸の長さがカーソルとの距離までに制限
-	if (GetDistance(String_Vertex.pos, AimPos) * 2.0f <= String_Vertex.size.x) {
-		String_Vertex.size.x = GetDistance(String_Vertex.pos, AimPos) * 2.0f;
-	}
-	else {
-		//糸の長さ伸ばす
-		String_Vertex.size.x += 20.0f * m_TimeDelay;
-	}
+	
 
 
 	//円のサイズを変更する
@@ -134,6 +120,8 @@ void GO_SS_ShotString::DebugOut(void)
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
 }
+
+
 
 //ターゲットではない場所をクリック
 void GO_SS_ShotString::NoTargetClick(void)
@@ -204,59 +192,15 @@ int GO_SS_ShotString::TargetIsInRange(void)
 	return index;
 }
 
-//bool GO_SS_ShotString::IsStringConnectTarget()
-//{
-//	for (int i = 0; i < m_pTarget->GetTargetNumMax(); i++) {
-//		VERTEX_TARGET vt = m_pTarget->GetTarget()[i];
-//		if (vt.use == false)continue;
-//		if (IsClick == false)continue;
-//		if (((Coordinate[1].x - Coordinate[0].x) * (vt.pos.y - Coordinate[0].y)) -
-//			((vt.pos.x - Coordinate[0].x) * (Coordinate[1].y - Coordinate[0].y)) <= 0 &&
-//
-//			((Coordinate[2].x - Coordinate[1].x) * (vt.pos.y - Coordinate[1].y)) -
-//			((vt.pos.x - Coordinate[1].x) * (Coordinate[2].y - Coordinate[1].y)) <= 0 &&
-//
-//			((Coordinate[3].x - Coordinate[2].x) * (vt.pos.y - Coordinate[2].y)) -
-//			((vt.pos.x - Coordinate[2].x) * (Coordinate[3].y - Coordinate[2].y)) <= 0 &&
-//
-//			((Coordinate[0].x - Coordinate[3].x) * (vt.pos.y - Coordinate[3].y)) -
-//			((vt.pos.x - Coordinate[3].x) * (Coordinate[0].y - Coordinate[3].y)) <= 0) {
-//			return true;
-//		}
-//	}
-//	return false;
-//}
-//
-//void GO_SS_ShotString::SetCoord(D3DXVECTOR2 pos, D3DXVECTOR2 size, FLOAT tx, FLOAT ty, FLOAT tw, FLOAT th, FLOAT angle)
-//{
-//	size.y += 100.0f;
-//
-//	float hw, hh;
-//	hw = size.x * 0.5f;
-//	hh = size.y * 0.5f;
-//
-//	float rad = RADIAN * angle;
-//
-//	float rot_x = +hw * 2.0f;
-//	float rot_y = -hh;
-//
-//	Coordinate[0] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
-//		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
-//
-//
-//	rot_x = 0.0f;
-//	rot_y = -hh;
-//	Coordinate[1] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
-//		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
-//
-//	rot_x = +hw * 2.0f;
-//	rot_y = +hh;
-//	Coordinate[3] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
-//		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
-//
-//	rot_x = 0.0f;
-//	rot_y = +hh;
-//	Coordinate[2] = D3DXVECTOR2(rot_x * cosf(rad) - rot_y * sinf(rad) + pos.x,
-//		rot_x * sinf(rad) + rot_y * cosf(rad) + pos.y);
-//}
+void GO_SS_ShotString::ExtendLengthOfString(FLOAT amount)
+{	
+	//糸の長さがカーソルとの距離までに制限
+	if (GetDistance(String_Vertex.pos, AimPos) * 2.0f <= String_Vertex.size.x) {
+		String_Vertex.size.x = GetDistance(String_Vertex.pos, AimPos) * 2.0f;
+	}
+	else {
+		//糸の長さ伸ばす
+		String_Vertex.size.x += amount * m_TimeDelay;
+	}
+}
 
