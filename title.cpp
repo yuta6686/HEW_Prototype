@@ -186,31 +186,27 @@ void UpdateTitle(void)
 
 		if (Action == 2)
 		{
+			if (g_Player.pos.x >= SCREEN_WIDTH) {
+				Action = 3;
+			}
+
 			g_Player.pos.x += 11.0f;
 			g_Player.pos.y -= 13.0f;
 			if (g_Player.pos.y <= Target_y)
 				g_String_Vertex.size.x = 0.0f;
 
 		}
-
-
-
 	}
 
 	//ƒV[ƒ“‘JˆÚ
-	if (GetKeyboardTrigger(DIK_RETURN) ||
-		EnterToNext()	&&
-		GetFadeState() == FADE_NONE)
-	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
+	if (GetKeyboardTrigger(DIK_RETURN) ||EnterToNext()==true	&&
+		GetFadeState() == FADE_NONE && Action >= 2)
 	{
 		Action = 9;
 	}
 
 	if (Action == 9)
 	{
-		if (biruk[0] >= 0.05f){
-			SceneTransition(SCENE_GAME);
-		}
 		if (biruk[0] >= 0.05f)
 			SceneTransition(SCENE_GAME);
 		else

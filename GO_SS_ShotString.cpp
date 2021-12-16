@@ -13,6 +13,7 @@ void GO_SS_ShotString::Initialize(void)
 		String_Vertex.size.y = 5.0f;
 		String_Vertex.pos = D3DXVECTOR2(0.0f, 0.0f);
 		String_Vertex.angle = 0.0f;
+		String_Vertex.use = false;
 	}
 
 	//円　パラメータ初期化
@@ -24,10 +25,8 @@ void GO_SS_ShotString::Initialize(void)
 		Circle_Vertex.alpha = 1.0f;
 	}
 
-	//当たり判定用変数初期化
-	for (int i = 0; i < 4; i++) {
-		Coordinate[i] = D3DXVECTOR2(0.0f, 0.0f);
-	}
+
+	m_AimFlag = false;
 }
 
 void GO_SS_ShotString::Finalize(void)
@@ -37,17 +36,13 @@ void GO_SS_ShotString::Finalize(void)
 
 void GO_SS_ShotString::Update(void)
 {
-	//DebugOut();
 
 	m_pScramble->SetPos(m_pPlayer->GetPos());
 
-	//ポジションをプレイヤーのポジションにする
-	String_Vertex.pos = m_pPlayer->GetPos();
-	Circle_Vertex.pos = m_pPlayer->GetPos();
+	if (IsMouseRightPressed()) {
+		String_Vertex.use = true;
+	}
 
-	//プレイヤーとカーソルの角度取得
-	String_Vertex.angle = atan2f(String_Vertex.pos.y - AimPos.y,
-		String_Vertex.pos.x - AimPos.x);
 
 	//	ターゲットではない場所をクリック
 	NoTargetClick();
@@ -55,31 +50,24 @@ void GO_SS_ShotString::Update(void)
 	//	ターゲットをクリック
 	TargetClick();
 
+	//	↑TargetClickより下に配置
+	//	エイム変更
+	ChangeAim();
+
+	//ポジションをプレイヤーのポジションにする
+	String_Vertex.pos = m_pPlayer->GetPos();
+	Circle_Vertex.pos = m_pPlayer->GetPos();
+
+	//	プレイヤーとカーソルの角度取得
+	String_Vertex.angle = GetAnglePlayerAndCursor();
 
 	//--糸の長さ伸ばす--//
 	//	引数:伸ばす量	//
 	//	max -> ターゲットとプレイヤーの距離	//
-	ExtendLengthOfString(20.0f);
-
-	
-
+	ExtendLengthOfString(100.0f);
 
 	//円のサイズを変更する
-	if (IsMouseRightPressed()) {
-		Circle_Vertex.size.x += m_pScramble->GetPreviousDiff()/10.0f;
-
-		Circle_Vertex.size.x -= Circle_Vertex.size.x / 200.0f * m_TimeDelay;
-	}
-	else {
-		if (Circle_Vertex.size.x <= 200.0f) {
-			Circle_Vertex.size.x = 200.0f;
-		}
-		else {
-			Circle_Vertex.size.x -= 10.0f * m_TimeDelay;
-		}
-	}
-
-	Circle_Vertex.size.y = Circle_Vertex.size.x;
+	ChangeSizeOfCircle();
 
 	Circle_Vertex.alpha = Circle_Vertex.size.x / 1000.0f;
 }
@@ -94,20 +82,35 @@ void GO_SS_ShotString::Draw(void)
 
 	SetBlendState(BLEND_MODE_ADD);
 
-	if (!IsMouseRightPressed())return;
 
-
-	DrawSpriteColorRotate(String_Texture, String_Vertex.pos.x, String_Vertex.pos.y,
-		String_Vertex.size.x, String_Vertex.size.y,
-		0.0f, 0.0f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
+	if (String_Vertex.use) {
+		DrawSpriteColorRotate(String_Texture, String_Vertex.pos.x, String_Vertex.pos.y,
+			String_Vertex.size.x, String_Vertex.size.y,
+			0.0f, 0.0f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), String_Vertex.angle);
+	}
+	
 
 }
 
-
-
-FLOAT GO_SS_ShotString::GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2)
+//	円のサイズを変更する
+void GO_SS_ShotString::ChangeSizeOfCircle()
 {
-	return sqrtf(powf(p1.x - p2.x, 2) + powf(p1.y - p2.y, 2));
+	if (IsMouseRightPressed()) {
+		Circle_Vertex.size.x += m_pScramble->GetPreviousDiff() / 10.0f;
+
+		Circle_Vertex.size.x -= Circle_Vertex.size.x / m_CircleSizeMax * m_TimeDelay;
+	}
+	else {
+		if (Circle_Vertex.size.x <= m_CircleSizeMax) {
+			Circle_Vertex.size.x = m_CircleSizeMax;
+		}
+		else {
+			Circle_Vertex.size.x -= 10.0f * m_TimeDelay;
+		}
+	}
+
+	//	yとxのサイズ同じにする
+	Circle_Vertex.size.y = Circle_Vertex.size.x;
 }
 
 void GO_SS_ShotString::DebugOut(void)
@@ -121,25 +124,30 @@ void GO_SS_ShotString::DebugOut(void)
 #endif
 }
 
-
-
-//ターゲットではない場所をクリック
-void GO_SS_ShotString::NoTargetClick(void)
-{
-	//押されたら
-	if (IsMouseLeftTriggered()) {
-		String_Vertex.size.x = 0.0f;
-	}
-
-}
-
 //ターゲットをクリックした
 void GO_SS_ShotString::TargetClick(void)
 {
 	IsInsideTarget = TargetIsInRange();
 
+	if (IsInsideTarget >= 0) {
+		if (m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f) {
+			m_AimFlag = false;
+			
+		}
 
-	//糸サイズリセット
+		m_AimTarget = IsInsideTarget;
+
+		m_AimFlag = true;
+	}
+	else {
+		m_AimFlag = false;		
+	}
+
+	if (m_AimTarget < 0 || m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f) {
+		SetStringUse(false);
+	}
+
+	//	糸サイズリセット
 	if (IsMouseLeftTriggered() && IsInsideTarget > -1) {
 		String_Vertex.size.x = 0.0f;
 		m_jumpCounter = 0;
@@ -147,30 +155,37 @@ void GO_SS_ShotString::TargetClick(void)
 	}
 
 	if (IsMouseLeftPressed() && IsClickTarget){
+		//	サイドにあたっていたら強制終了
 		if (m_pPlayer->IsColl && m_pPlayer->IsCollSide > -1) {
 			m_jumpCounter += 120;
 		}
 		
+		//	終了
 		if (m_jumpCounter >= 120) {
 			IsClickTarget = false;
 		}
-		else {
-			AimPos = m_pTarget->GetTarget()[IsInsideTarget].pos;
 
+		else {
 			m_jumpCounter++;
 			IsClickTarget = true;
+			//m_AimFlag = true;
 
-			Circle_Vertex.size.x -= Circle_Vertex.size.x / 20.0f;;
+			Circle_Vertex.size.x -= Circle_Vertex.size.x / 20.0f;
 		}
 	}
 	else {
 		IsClickTarget = false;
-		AimPos.x = GetMousePosX();
-		AimPos.y = GetMousePosY();
-
+		m_AimFlag = false;
 	}
 }
 
+void GO_SS_ShotString::ChangeAim(void)
+{
+	if (m_AimFlag) {
+		m_AimTarget = IsInsideTarget;		
+	}
+	AimPos = m_pTarget->GetTarget()[m_AimTarget].pos;
+}
 
 int GO_SS_ShotString::TargetIsInRange(void)
 {	
@@ -192,6 +207,7 @@ int GO_SS_ShotString::TargetIsInRange(void)
 	return index;
 }
 
+
 void GO_SS_ShotString::ExtendLengthOfString(FLOAT amount)
 {	
 	//糸の長さがカーソルとの距離までに制限
@@ -204,3 +220,23 @@ void GO_SS_ShotString::ExtendLengthOfString(FLOAT amount)
 	}
 }
 
+//ターゲットではない場所をクリック
+void GO_SS_ShotString::NoTargetClick(void)
+{
+	//押されたら
+	if (IsMouseLeftTriggered()) {
+		String_Vertex.size.x = 0.0f;
+	}
+
+}
+
+FLOAT GO_SS_ShotString::GetDistance(D3DXVECTOR2 p1, D3DXVECTOR2 p2)
+{
+	return sqrtf(powf(p1.x - p2.x, 2) + powf(p1.y - p2.y, 2));
+}
+
+FLOAT GO_SS_ShotString::GetAnglePlayerAndCursor()
+{
+	return atan2f(String_Vertex.pos.y - AimPos.y,
+		String_Vertex.pos.x - AimPos.x);
+}

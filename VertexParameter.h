@@ -63,6 +63,7 @@ struct VERTEX_BACKGROUND :public VERTEX_NOMAL {
 
 struct VERTEX_SHOOTSTIRNG :public VERTEX_NOMAL {
 	float angle;
+	bool use;
 };
 
 
