@@ -94,13 +94,19 @@ void GO_SS_ShotString::Update(void)
 	}
 
 	Circle_Vertex.size.y = Circle_Vertex.size.x;
+
+	Circle_Vertex.alpha = Circle_Vertex.size.x / 1000.0f;
 }
 
 void GO_SS_ShotString::Draw(void)
 {
+	SetBlendState(BLEND_MODE_ADD);
+
 	DrawSpriteColor(Circle_Texture, Circle_Vertex.pos.x, Circle_Vertex.pos.y,
 		Circle_Vertex.size.x, Circle_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, Circle_Vertex.alpha));
+
+	SetBlendState(BLEND_MODE_ADD);
 
 	if (!IsMouseRightPressed())return;
 
