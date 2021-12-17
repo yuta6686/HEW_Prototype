@@ -5,6 +5,7 @@ enum SCENE
 {
 	SCENE_NONE,		//シーン処理なし
 	SCENE_TITLE,	//タイトル
+	SCENE_SELECT_STAGE,
 	SCENE_GAME,		//ゲーム
 	SCENE_RESULT,	//リザルト
 	SCENE_GAMEOVER,	//ゲームオーバー

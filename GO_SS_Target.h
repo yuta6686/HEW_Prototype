@@ -43,6 +43,8 @@ public:
         once = true; 
     }
 
+    FLOAT m_TimeDelay;
+
 private:
     int Target_Texture;
     char TEX_NAME[128] = "data/TEXTURE/target.png";

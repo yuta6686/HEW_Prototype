@@ -7,20 +7,20 @@
 #include "GO_SS_Map.h"
 #include "GO_SS_Effect_Wind.h"
 #include "GO_SS_Goal.h"
-#include "GO_SS_ZipLine.h"
 
 #include <cmath>
 
 void GO_SS_Movement::Update(void)
 {
+	//時間停止処理
+	SetTimeDelay();
 
 	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
 		PLAYERMOVE_LINEAR,
-		PLAYERMOVE_CURVE,	
 		PLAYERMOVE_PENDULUM,
 	*/
 	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
-	
+
 
 	//当たり判定の更新処理
 	m_ssCollision.CollisionUpdate();
@@ -32,6 +32,27 @@ void GO_SS_Movement::Update(void)
 	FromAbyss();
 }
 
+
+void GO_SS_Movement::SetTimeDelay(void)
+{
+	if (IsMouseRightPressed() && !m_pShotString->IsClickTarget) {
+		m_pTimeDelay->SetTimeDelay(true);
+	}
+	else {
+		m_pTimeDelay->SetTimeDelay(false);
+	}
+
+	if (m_pTimeDelay->GetTimeDelayFlag()) {
+		m_TimeDelay = TIME_DELAY_VALUE;
+	}
+	else {
+		m_TimeDelay = 1.0f;
+	}
+
+	m_pShotString->m_TimeDelay = m_TimeDelay;
+	m_pTarget->m_TimeDelay = m_TimeDelay;
+	m_pPlayer->m_TimeDelay = m_TimeDelay;
+}
 
 //-----------------------------------------------------------------------------------------
 //	JumpMove_Liner()
@@ -57,78 +78,12 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pPlayer->AddYPos(-sinf(angle) * 25.0f);
 
 	//背景スクロール処理
-	m_pBackGround->SubU(cosf(angle)/100.0f);
-
-
-	m_pWall->AddX(-10.0f);
-
-	m_pTarget->AddPosX(-10.0f);
+	m_pBackGround->SubU(cosf(angle) / 100.0f);
+	m_pMap->MoveMapObject(-10.0f);
 
 	m_pGoal->AddX(-10.0f);
 
-	m_pZipLine->AddX(-10.0f);
-
 	//m_pEffectWind->SetEffTrue();
-}
-
-//-----------------------------------------------------------------------------------------
-//	JumpMove_Curve()
-//-----------------------------------------------------------------------------------------
-//	プロトタイプのときの動き
-//-----------------------------------------------------------------------------------------
-void GO_SS_Movement::JumpMove_Curve()
-{
-	//糸を出したら
-	if (!m_pShotString->IsClickTarget)return;
-
-	//カウンターが上限に達したら
-	if (JumpCounter >= JumpCountMax) {
-		//重力リセット
-		m_pPlayer->SetGravityDefault();
-
-		//ショットストリングのクリックフラグ下ろす
-		m_pShotString->IsClickTarget = false;
-
-		//ジャンプカウンターリセット
-		JumpCounter = 0;
-	}
-	else {
-		//背景スクロール処理
-		m_pBackGround->SubU(cosf(m_pShotString->GetAngle()) / 100.0f);
-
-
-		m_pWall->AddX(cosf(m_pShotString->GetAngle())*10.0f);
-
-		FLOAT angle = m_pShotString->GetAngle() * (FLOAT)180.0f / (FLOAT)PI;
-
-		//プライヤーの動き調整
-		//		  90
-		//				
-		//	0			↑180,↓-180
-		//				
-		//		 -90
-		//これの右か左かを判定
-		if (angle >= 90 && angle < 180
-			|| angle >= -180 && angle < -90) {
-
-			m_pPlayer->WavePosPlus((float)(JumpCounter)*RADIAN);
-		}
-		else {
-			m_pPlayer->WavePosMinus((float)(JumpCounter) * RADIAN );
-		}
-		
-
-	
-		//カウンター
-		JumpCounter++;
-	}
-
-	//ジャンプ中の最初の1回だけ
-	if (JumpCounter <= 1) {
-
-		//ジャンプのフレーム数調整
-		JumpCountMax = (int)(fabs(cosf(m_pShotString->GetAngle())* 60.0f));
-	}
 }
 
 //-----------------------------------------------------------------------------------------
@@ -148,55 +103,80 @@ void GO_SS_Movement::JumpMove_Pendulum()
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
 
-	//プレイヤーと糸の角度取得
-	FLOAT angle = m_pShotString->GetAngle();
 
-	
-
+	//プレイヤーの動き
 	PlayerMove_Pendulum();
 
-	//背景スクロール処理
-	m_pBackGround->SubU(cosf(angle) / 100.0f);
+	//背景、ギミックスクロール処理
+	BackGroundMovement_Pendulum();
 
-
-	m_pWall->AddX(-10.0f);
-
-	m_pTarget->AddPosX(-10.0f);
-
-	m_pGoal->AddX(-10.0f);
-
-	m_pZipLine->AddX(-10.0f);
-
-	//m_pEffectWind->SetEffTrue();
 }
 
 void GO_SS_Movement::PlayerMove_Pendulum()
 {
 	//プレイヤーのY軸　動き　
 
-	if (Pendulum_Counter >= PENDULUM_COUNTER_MAX) {
+	//フレームで管理
+
+	//最後のフレームの処理
+	if (Pendulum_Counter >= PENDULUM_COUNTER_MAX)
+	{
 		Pendulum_Counter = 0;
+
+		//最後にジャンプ！
 		m_pPlayer->SetGravity(-10.0f);
+
+		//元のフラグ解除
 		m_pShotString->IsClickTarget = false;
 
+		//風エフェクト
 		m_pEffectWind->SetWindEff();
 	}
-	else if (Pendulum_Counter == 1) {
+	//最初の1フレーム目の処理
+	else if (Pendulum_Counter == 1)
+	{
 		Pendulum_Counter++;
-		FLOAT rot = (Pendulum_Counter * 3.6f);
-		m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
 
+		//	サイドにあたっていない	&&	壁にあたっている　ー＞　床にあたっている
+		if (m_pPlayer->IsCollSide < 0 && m_pPlayer->IsColl) {
+			//あたっていたらY軸方向に動かさない
+		}
+		//床にあたっていない
+		else {
+			FLOAT rot = (Pendulum_Counter * 3.6f);
+			m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
+		}
+
+		//エフェクト
 		m_pEffectWind->SetWindMoveEff();
 		m_pTarget->SetEff(m_pShotString->IsInsideTarget);
 	}
+	//	いつもの動き
 	else {
 		Pendulum_Counter++;
-		FLOAT rot = (Pendulum_Counter * 3.6f);
-		m_pPlayer->AddYPos(sinf(rot * RADIAN)  * 10.0f);
-		
-		DebugOut(rot);
+		if (m_pPlayer->IsCollSide < 0 && m_pPlayer->IsColl) {
+
+		}
+		else {
+			FLOAT rot = (Pendulum_Counter * 3.6f);
+			m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
+			DebugOut(rot);
+		}
 	}
-	
+
+}
+
+void GO_SS_Movement::BackGroundMovement_Pendulum()
+{
+	//プレイヤーと糸の角度取得
+	FLOAT angle = m_pShotString->GetAngle();
+
+	//背景スクロール処理
+	m_pBackGround->SubU(cosf(angle) / 100.0f * m_TimeDelay);
+
+	m_pMap->MoveMapObject(-10.0f * m_TimeDelay);
+
+	m_pGoal->AddX(-10.0f * m_TimeDelay);
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
@@ -208,9 +188,6 @@ void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 		break;
 	case PLAYERMOVE_LINEAR:
 		JumpMove_Liner();
-		break;
-	case PLAYERMOVE_CURVE:
-		JumpMove_Curve();
 		break;
 	case PLAYERMOVE_PENDULUM:
 		JumpMove_Pendulum();
@@ -228,20 +205,16 @@ void GO_SS_Movement::MovementManager(void)
 	//右入力
 	if (GetKeyboardPress(DIK_A) && m_pPlayer->IsCollSide != 1)
 	{
-		m_pBackGround->SubU(BG_SCROLL_SPEED);
-		m_pTarget->AddPosX(TARGET_MOVING_SPEED);
-		m_pWall->AddX(WALL_MOVING_SPEED);
-		m_pGoal->AddX(GOAL_MOVING_SPEED);
-		m_pZipLine->AddX(ZIPLINE_MOVING_SPEED);
+		m_pBackGround->SubU(BG_SCROLL_SPEED * m_TimeDelay);
+		m_pMap->MoveMapObject(MAP_OBJ_MOVING_SPEED * m_TimeDelay);
+		m_pGoal->AddX(GOAL_MOVING_SPEED * m_TimeDelay);
 	}
 	//左入力
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
 	{
-		m_pBackGround->AddU(BG_SCROLL_SPEED);
-		m_pTarget->AddPosX(-TARGET_MOVING_SPEED);
-		m_pWall->AddX(-WALL_MOVING_SPEED);
-		m_pGoal->AddX(-GOAL_MOVING_SPEED);
-		m_pZipLine->AddX(-ZIPLINE_MOVING_SPEED);
+		m_pBackGround->AddU(BG_SCROLL_SPEED * m_TimeDelay);
+		m_pMap->MoveMapObject(-MAP_OBJ_MOVING_SPEED * m_TimeDelay);
+		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay);
 	}
 }
 
@@ -249,8 +222,6 @@ void GO_SS_Movement::FromAbyss()
 {
 	if (m_pPlayer->GetPos().y >= SCREEN_HEIGHT) {
 		m_pPlayer->SetPosY(0.0f);
-		m_pTarget->ResetOnce();
-		m_pWall->ResetOnce();
 		m_pMap->ResetOnce();
 	}
 }
@@ -259,7 +230,7 @@ void GO_SS_Movement::DebugOut(int i)
 {
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
 	wsprintf(GetDebugStr(), WINDOW_CAPTION);
-	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " rot:%d",i);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " rot:%d", i);
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif

@@ -29,8 +29,11 @@ static int				g_TextureNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
 static VERTEX_TITLE_PLAYER g_Player;
 
 int i = 0;
-float time = 5.0f;
-float time2 = powf(time, 2.0);
+
+static const FLOAT GRAVITY_ACCELERATION = 0.3f;
+
+static FLOAT m_Jump = -10.75f;
+static FLOAT g_gravity = 1.0f;
 
 
 //=============================================================================
@@ -49,13 +52,13 @@ HRESULT InitTitle(void)
 
 	g_Player.angle = 0.0f;
 	g_Player.frame = 0;
-	g_Player.pos = D3DXVECTOR2(-80.0f, 0.0F);
+	g_Player.pos = D3DXVECTOR2(-80.0f, SCREEN_HEIGHT/7.5f);
 	g_Player.size = D3DXVECTOR2(0.0f, 0.0F);
 	g_Player.u = 0.0f;
 	g_Player.v = 0.0f;
 	g_Player.use = true;
 
-
+	g_gravity *= m_Jump;
 
 	return S_OK;
 }
@@ -73,11 +76,10 @@ void UninitTitle(void)
 //=============================================================================
 void UpdateTitle(void)
 {
-
+	//アニメーションのフレーム処理
 	if (g_Player.frame >= PLAYER_X_NUM * PLAYER_Y_NUM)
 	{
 		g_Player.frame = 0;
-		//g_Player.use = false;
 	}
 	else {
 		if (i == 20) {
@@ -95,21 +97,33 @@ void UpdateTitle(void)
 
 	TO_Update();
 
-	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
+	//シーン遷移
+	if (GetKeyboardTrigger(DIK_RETURN) || IsMouseLeftPressed()
+		&& GetFadeState() == FADE_NONE)
 	{
-		SceneTransition(SCENE_GAME);
+		SceneTransition(SCENE_SELECT_STAGE);
 	}
 
 
-	//g_Player.pos.y += 1.0f;
-	if (g_Player.pos.x >= SCREEN_WIDTH/2.0f + 100.0f) {
-		g_Player.pos.x = SCREEN_WIDTH / 2.0f + 100.0f;
+	//プレイヤーのx方向の動き
+	if (g_Player.pos.x >= SCREEN_WIDTH/ 2.0f + 200.0f) {
+		g_Player.pos.x = SCREEN_WIDTH / 2.0f + 200.0f;
 	}
 	else {
-		g_Player.pos.x += 5.0f;
+		g_Player.pos.x += 11.0f;
 	}
 	
+	//プレイヤーy方向の動き
+	if (g_Player.pos.y >= SCREEN_HEIGHT / 2.0f + 75.0f) {
+		g_Player.pos.y = SCREEN_HEIGHT / 2.0f + 75.0f;
 
+
+	}
+	else {
+		g_gravity += GRAVITY_ACCELERATION;
+		g_Player.pos.y += g_gravity;
+	}
+	
 }
 
 //=============================================================================
@@ -132,6 +146,8 @@ void DrawTitle(void)
 	DrawSpriteLeftTop(g_TextureNo[3], g_Player.pos.x, g_Player.pos.y,
 		186, 223,
 		g_Player.u, g_Player.v, PLAYER_WIDTH, PLAYER_HEIGHT);
+
+
 }
 
 

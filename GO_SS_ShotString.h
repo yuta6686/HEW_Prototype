@@ -17,6 +17,7 @@ public:
 
 	//ゲッター
 	FLOAT GetAngle(void){ return String_Vertex.angle; }
+	VERTEX_CIRCLE* GetCircle(void) { return &Circle_Vertex; }
 
 	//セッター
 	void SetPlayer(GO_SS_Player* p)	{ m_pPlayer = p; }
@@ -34,6 +35,8 @@ public:
 
 	bool IsCollTarget = false;
 
+	FLOAT m_TimeDelay;
+
 private:
 	//ゲームシーン用
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -42,7 +45,7 @@ private:
 	char TEX_NAME[64] = "data/TEXTURE/String1.png";
 	int String_Texture;
 
-	char CIRCLE_TEX_NAME[64] = "data/TEXTURE/circle.png";
+	char CIRCLE_TEX_NAME[64] = "data/TEXTURE/circle1.png";
 	int Circle_Texture;
 
 	//頂点パラメータ

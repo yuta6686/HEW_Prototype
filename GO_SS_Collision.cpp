@@ -27,7 +27,7 @@ void GO_SS_Collision::CollisionUpdate(void)
 
 	CJ_GoalPlayer();
 
-	DebugOut();
+	//DebugOut();
 
 }
 
