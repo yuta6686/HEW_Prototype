@@ -163,6 +163,8 @@ void GO_SS_ShotString::TargetClick(void)
 		//	I—¹
 		if (m_jumpCounter >= 120) {
 			IsClickTarget = false;
+
+			m_pScramble->SetNato();
 		}
 
 		else {

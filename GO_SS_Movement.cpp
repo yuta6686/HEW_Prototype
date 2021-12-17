@@ -133,6 +133,8 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 
 		//風エフェクト
 		m_pEffectWind->SetWindEff();
+
+		
 	}
 	//最初の1フレーム目の処理
 	else if (Pendulum_Counter == 1)

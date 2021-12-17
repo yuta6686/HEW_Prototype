@@ -115,3 +115,11 @@ struct VERTEX_SELECT_STAGE :public VERTEX_NOMAL {
 	bool use;
 	FLOAT alpha;
 };
+
+struct VERTEX_NATTO :public VERTEX_NOMAL {
+	bool use;
+	FLOAT alpha;
+	FLOAT angle;
+	FLOAT radius;
+	FLOAT rot;
+};
