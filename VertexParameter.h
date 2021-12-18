@@ -55,6 +55,12 @@ struct VERTEX_UV :public VERTEX_NOMAL {
 struct VERTEX_PLAYER :public VERTEX_NOMAL {
 	FLOAT delay;
 	
+	int frame;
+
+	FLOAT u;
+	FLOAT v;
+	FLOAT width;
+	FLOAT height;
 };
 
 struct VERTEX_BACKGROUND :public VERTEX_NOMAL {
@@ -122,4 +128,6 @@ struct VERTEX_NATTO :public VERTEX_NOMAL {
 	FLOAT angle;
 	FLOAT radius;
 	FLOAT rot;
+
+	D3DXVECTOR2 dpos;
 };

@@ -1,9 +1,29 @@
 #pragma once
 #include "GO_SS_TimeDelay.h"
 
+enum PLAYER_STATE {
+    
+    PS_NONE,
+    PS_RIGHT,
+    PS_LEFT,
+};
+
 class GO_SS_Player :
     public GO_SS_TimeDelay
 {
+private:
+    static const int XNUM = 5;
+    static const int YNUM = 4;
+
+    const FLOAT WIDTH = (1.0f) / XNUM;
+    const FLOAT HEIGHT = (1.0f) / YNUM;
+
+    const FLOAT m_Jump = -12.5f;
+    const FLOAT GRAVITY_ACCELERATION = 0.3f;
+    const FLOAT DEFAULT_GRAVITY = 1.0f;
+    const FLOAT JUMP_DELAY = 12.0f;
+
+    
 public:
     virtual void Initialize(void) override;
 
@@ -48,18 +68,22 @@ private:
     //Texture
     int Player_Texture;
     char TEX_NAME[64] = "data/TEXTURE/fall1.png";
+    
+    int m_RunIndex;
+    char RUN_NAME[64] = "data/TEXTURE/run.png";
 
     //Action
     FLOAT m_Gravity;
-    FLOAT m_Jump = -12.5f;
-    const FLOAT GRAVITY_ACCELERATION = 0.3f;
-    const FLOAT DEFAULT_GRAVITY = 1.0f;
-    const FLOAT JUMP_DELAY = 12.0f;
+    int m_delay = 0;
+
+    void PlayerState(void);
+    int m_State = PS_NONE;
+    bool m_IsKeyPress = false;
 
     //Vertex Parameter
     VERTEX_PLAYER Player_Vertex;
 
-//?????o???
+//ÉÅÉìÉoä÷êî
 
     //?v???C???[???????????????Gameover??
     void SceneToGameOver(void);
@@ -72,6 +96,6 @@ private:
 
     void PlayerJumpMove(void);
     
-
+    void DebugOut(void);
 };
 

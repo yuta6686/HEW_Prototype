@@ -136,7 +136,7 @@ void GO_SS_Collision::DebugOut(void)
 	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " IsCollSide:%d",
 		m_pPlayer->IsCollSide);
 
-	SetWindowText(GethWnd()[0], GetDebugStr());
+	//SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
 }
 
