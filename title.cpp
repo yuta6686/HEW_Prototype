@@ -208,7 +208,7 @@ void UpdateTitle(void)
 	if (Action == 9)
 	{
 		if (biruk[0] >= 0.05f)
-			SceneTransition(SCENE_GAME);
+			SceneTransition(SCENE_SELECT_STAGE);
 		else
 		{
 			biruk[0] += 0.0016f;

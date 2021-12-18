@@ -40,6 +40,7 @@ HRESULT SelectStage::Init(void)
 		if (m_effect[i] == nullptr)continue;
 		m_effect[i]->Initialize();
 	}
+
 	m_Spotlight.Init();
 
 	return E_NOTIMPL;

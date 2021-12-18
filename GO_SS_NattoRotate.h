@@ -1,15 +1,14 @@
 #pragma once
 #include "GameObject.h"
+#include "NRO_Natto.h"
+
 class GO_SS_NattoRotate :
     public GameObject
 {
-private:
-    static const int NATTO_MAX = 50;
-    static const int FIRST_NATTO = 10;
-
-    const FLOAT ANGLE_MIN = 0.0f;
-    const FLOAT ANGLE_MAX = 0.1f;
 public:
+    GO_SS_NattoRotate();
+    virtual ~GO_SS_NattoRotate();
+
     // GameObject ÇâÓÇµÇƒåpè≥Ç≥ÇÍÇ‹ÇµÇΩ
     virtual void Initialize(void) override;
 
@@ -21,21 +20,14 @@ public:
 
     virtual int GetGameScene(void) override;
 
-    void SetPos(D3DXVECTOR2 pos) { m_PlayerPos = pos; }
     void SetNatto(void);
 
+    void SetPos(D3DXVECTOR2 pos);
 private:
-    char m_TexName[64] = "data/TEXTURE/î[ì§.png";
-    int  m_TexIndex;
 
-    VERTEX_NATTO m_Vertex[NATTO_MAX];
 
-    D3DXVECTOR2 m_PlayerPos = D3DXVECTOR2(0.0f,0.0f);
+    static const int NATTO_ROTATE_OBJECT_MAX = 10;
+    NattoRotateObject* m_pNattoRotateObjects[NATTO_ROTATE_OBJECT_MAX];
 
-//  ÉÅÉìÉoä÷êî
-    void Rotation(int index);
-
-    FLOAT frand();
-    FLOAT frand_r();
 };
 

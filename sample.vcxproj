@@ -159,6 +159,8 @@
     <ClCompile Include="GO_Timer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NattoRotateObject.cpp" />
+    <ClCompile Include="NRO_Natto.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="scene.cpp" />
@@ -212,6 +214,8 @@
     <ClInclude Include="GO_Timer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="NattoRotateObject.h" />
+    <ClInclude Include="NRO_Natto.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="scene.h" />

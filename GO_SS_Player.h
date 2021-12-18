@@ -1,6 +1,12 @@
 #pragma once
 #include "GO_SS_TimeDelay.h"
 
+#define PLAYER_X_NUM 5
+#define PLAYER_Y_NUM 4
+
+#define PLAYER_WIDTH  (1.0f / PLAYER_X_NUM)
+#define PLAYER_HEIGHT (1.0f / PLAYER_Y_NUM)
+
 enum PLAYER_STATE {
     
     PS_NONE,
@@ -12,11 +18,7 @@ class GO_SS_Player :
     public GO_SS_TimeDelay
 {
 private:
-    static const int XNUM = 5;
-    static const int YNUM = 4;
 
-    const FLOAT WIDTH = (1.0f) / XNUM;
-    const FLOAT HEIGHT = (1.0f) / YNUM;
 
     const FLOAT m_Jump = -12.5f;
     const FLOAT GRAVITY_ACCELERATION = 0.3f;
@@ -70,7 +72,7 @@ private:
     char TEX_NAME[64] = "data/TEXTURE/fall1.png";
     
     int m_RunIndex;
-    char RUN_NAME[64] = "data/TEXTURE/run.png";
+    char RUN_NAME[64] = "data/TEXTURE/time.png";
 
     //Action
     FLOAT m_Gravity;
