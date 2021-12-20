@@ -61,7 +61,7 @@ void GO_SS_Player::Update(void)
 		Player_Vertex.frame = 0;
 	}
 	else {
-		if (m_delay >= 3) {
+		if (m_delay >= 2) {
 			Player_Vertex.frame++;
 			m_delay = 0;
 		}
@@ -161,11 +161,8 @@ void GO_SS_Player::PlayerJumpMove(void)
 void GO_SS_Player::DebugOut(void)
 {
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
-
-	float u = Player_Vertex.u;
-	float v = Player_Vertex.v;
 	wsprintf(GetDebugStr(), WINDOW_CAPTION);
-	wsprintf(&GetDebugStr()[strlen(GetDebugStr())],"%d,%d",u,v);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())],"%d",Player_Vertex.frame);
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif

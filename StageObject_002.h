@@ -16,7 +16,7 @@ public:
     virtual STAGE_NUM ReturnStageNum(void) override { return STAGE_NUM_002; }
 
 private:
-    char m_TextureName[64] = "data/TEXTURE/wall.png";
+    char m_TextureName[64] = "data/TEXTURE/Select_Stage2.png";
     int  m_TextureIndex;
 };
 

@@ -34,7 +34,7 @@ protected:
     D3DXVECTOR2 m_MousePos;
 
 private:
-    char m_TextureName[64] = "data/TEXTURE/wall.png";
+    char m_TextureName[64] = "data/TEXTURE/Select_Stage1.png";
     int  m_TextureIndex;
 
    
