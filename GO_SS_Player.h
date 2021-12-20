@@ -72,7 +72,7 @@ private:
     char TEX_NAME[64] = "data/TEXTURE/fall1.png";
     
     int m_RunIndex;
-    char RUN_NAME[64] = "data/TEXTURE/time.png";
+    char RUN_NAME[64] = "data/TEXTURE/run.png";
 
     //Action
     FLOAT m_Gravity;

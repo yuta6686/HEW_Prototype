@@ -61,7 +61,7 @@ void GO_SS_Player::Update(void)
 		Player_Vertex.frame = 0;
 	}
 	else {
-		if (m_delay >= 30) {
+		if (m_delay >= 3) {
 			Player_Vertex.frame++;
 			m_delay = 0;
 		}
@@ -106,16 +106,16 @@ void GO_SS_Player::PlayerState(void)
 	//Dキーが押された時
 	if (GetKeyboardPress(DIK_D)) {
 		Player_Vertex.width = PLAYER_WIDTH;
-		Player_Vertex.u = (Player_Vertex.frame % PLAYER_X_NUM+1) * PLAYER_WIDTH;
-		Player_Vertex.v = (Player_Vertex.frame / PLAYER_Y_NUM) * PLAYER_HEIGHT;
+		Player_Vertex.u = (Player_Vertex.frame % PLAYER_X_NUM) * PLAYER_WIDTH;
+		Player_Vertex.v = (Player_Vertex.frame / PLAYER_X_NUM) * PLAYER_HEIGHT;
 			
 	}
 
 	//Aキーが押された時
 	if (GetKeyboardPress(DIK_A)) {
-		Player_Vertex.u = -1.0f + Player_Vertex.frame % PLAYER_X_NUM * PLAYER_WIDTH * -1.0f;
-		Player_Vertex.v = -1.0f + Player_Vertex.frame / PLAYER_Y_NUM * PLAYER_HEIGHT * -1.0f;
-		Player_Vertex.width = PLAYER_WIDTH * -1.0f;
+		Player_Vertex.u = Player_Vertex.frame % PLAYER_X_NUM * PLAYER_WIDTH;
+		Player_Vertex.v = Player_Vertex.frame / PLAYER_X_NUM * PLAYER_HEIGHT;
+		Player_Vertex.width = -PLAYER_WIDTH;
 	}
 
 
@@ -161,8 +161,11 @@ void GO_SS_Player::PlayerJumpMove(void)
 void GO_SS_Player::DebugOut(void)
 {
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+
+	float u = Player_Vertex.u;
+	float v = Player_Vertex.v;
 	wsprintf(GetDebugStr(), WINDOW_CAPTION);
-	wsprintf(&GetDebugStr()[strlen(GetDebugStr())],"%d",Player_Vertex.frame);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())],"%d,%d",u,v);
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
