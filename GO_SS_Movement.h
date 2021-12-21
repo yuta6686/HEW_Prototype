@@ -24,6 +24,7 @@ class GO_SS_Map;
 class GO_SS_Effect_Wind;
 class GO_SS_Goal;
 class GO_SS_TimeDelay;
+class GO_SS_Fan;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
@@ -68,6 +69,11 @@ public:
         m_pTarget = pTarget;
         m_ssCollision.SetTarget(pTarget);
     }
+    void SetFan(GO_SS_Fan* p) {
+        m_pFan = p;
+        m_ssCollision.SetFan(p);
+    }
+
     void SetMap(GO_SS_Map* p) { m_pMap = p; }
     void SetEffWind(GO_SS_Effect_Wind* p) { m_pEffectWind = p; }
     void SetTimeDelay(GO_SS_TimeDelay* p) { m_pTimeDelay = p; }
@@ -87,6 +93,7 @@ private:
     GO_SS_Effect_Wind* m_pEffectWind;
     GO_SS_Goal* m_pGoal;
     GO_SS_TimeDelay* m_pTimeDelay;
+    GO_SS_Fan* m_pFan;
 
     //ÉÅÉìÉoïœêî
     int JumpCounter = 0;

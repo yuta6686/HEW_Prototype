@@ -222,6 +222,9 @@
     <ClCompile Include="NattoRotateObject.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GO_SS_Fan.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
     <ClCompile Include="NRO_Natto.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -389,8 +392,8 @@
     <ClInclude Include="NattoRotateObject.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS\納豆</Filter>
     </ClInclude>
-    <ClInclude Include="NRO_Natto.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO_SS\納豆</Filter>
+    <ClInclude Include="GO_SS_Fan.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

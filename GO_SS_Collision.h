@@ -8,6 +8,7 @@ class GO_SS_Wall;
 class GO_SS_ShotString;
 class GO_SS_Target;
 class GO_SS_ZipLine;
+class GO_SS_Fan;
 
 class GO_SS_Collision
 {
@@ -20,6 +21,7 @@ public:
     void SetShotString(GO_SS_ShotString* p) { m_pShotString = p; }
     void SetTarget(GO_SS_Target* pTarget) { m_pTarget = pTarget; }
     void SetZipLine(GO_SS_ZipLine* p) { m_pZipLine = p; }
+    void SetFan(GO_SS_Fan* p) { m_pFan = p; }
 
     //??????????????????
     void CollisionUpdate(void);
@@ -31,7 +33,9 @@ private:
 
     VERTEX_T Goal_Vertex;
 
-    
+    FAN_VARTEX* m_FanInfo;
+
+
     //?|?C???^???
     GO_SS_BackGround* m_pBackGround;
     GO_SS_Player* m_pPlayer;
@@ -40,12 +44,14 @@ private:
     GO_SS_ShotString* m_pShotString;
     GO_SS_Target* m_pTarget;
     GO_SS_ZipLine* m_pZipLine;
+    GO_SS_Fan* m_pFan;
  
 //????????         CollisionJudge_ -> CJ_
 
 //?v???C???[???
     int CJ_PlayerWall(void);
     int CJ_PWSide(void);
+    bool CJ_PlayerFan(void);
      
 
 //????????e???v???[?g

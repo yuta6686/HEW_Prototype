@@ -164,7 +164,7 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 		else {
 			FLOAT rot = (Pendulum_Counter * 3.6f);
 			m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
-			DebugOut(rot);
+			//DebugOut(rot);
 		}
 
 		m_pShotString->SetStringUse(true);
