@@ -23,7 +23,6 @@ void GO_SS_Map::Update(void)
 	if (once == false)return;
 	once = false;
 
-	//?}?b?v?`??
 	for (int y = 0; y < STAGE_WALL_NUM_Y; y++)
 	{
 		for (int x = 0; x < STAGE_WALL_NUM_X; x++)

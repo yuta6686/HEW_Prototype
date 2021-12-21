@@ -32,7 +32,7 @@ public:
 
 private:
 
-	bool FCCollision(D3DXVECTOR2 pos1, float size1, D3DXVECTOR2 pos2, float size2);
+	bool FCCollision(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, float size2);
 	void DebugOut(void);
 
 
