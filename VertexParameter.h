@@ -131,3 +131,10 @@ struct VERTEX_NATTO :public VERTEX_NOMAL {
 
 	D3DXVECTOR2 dpos;
 };
+
+struct FAN_VARTEX :public VERTEX_NOMAL
+{
+	bool use;
+	bool isWork;
+	D3DXVECTOR2 fanB_Pos;
+};

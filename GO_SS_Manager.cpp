@@ -109,6 +109,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetMap(mp_ssMap);
 		mp_ssMovement->SetEffWind(mp_ssEffWind);
 		mp_ssMovement->SetTimeDelay(mp_ssTimeDelay);
+		mp_ssMovement->SetFan(mp_ssFan);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);

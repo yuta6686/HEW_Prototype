@@ -5,6 +5,7 @@
 #include "GO_SS_Target.h"
 #include "GO_SS_Wall.h"
 #include "GO_SS_Goal.h"
+#include "GO_SS_Fan.h"
 #include "game.h"
 #include "main.h"
 #include "input.h"
@@ -17,6 +18,8 @@ void GO_SS_Collision::CollisionUpdate(void)
 	playerPos = m_pPlayer->GetPos();
 	playerSize = m_pPlayer->GetSize();
 
+	m_FanInfo = m_pFan->GetFan();
+
 	m_pPlayer->IsCollSide = CJ_PWSide();
 
 	Goal_Vertex = m_pGoal->GetGoal();
@@ -25,9 +28,13 @@ void GO_SS_Collision::CollisionUpdate(void)
 	if (CJ_PlayerWall() >= 0)m_pPlayer->IsColl = true;
 	else m_pPlayer->IsColl = false;
 
+	//プレイヤーと稼働中換気扇衝突判定
+	if (CJ_PlayerFan()) /*ここに衝突時の処理*/;
+	else /*ここにnot衝突時の処理(必要ないかも)*/;
+
 	CJ_GoalPlayer();
 
-	//DebugOut();
+	DebugOut();
 
 }
 
@@ -71,6 +78,26 @@ int GO_SS_Collision::CJ_PWSide(void)
 		}
 	}
 	return -1;
+}
+
+bool GO_SS_Collision::CJ_PlayerFan(void)
+{
+	for (int i = 0; i < m_pFan->FANS_MAX; i++)
+	{
+		if (m_FanInfo[i].use)
+		{
+			if (m_FanInfo[i].isWork)
+			{
+				if (BBCollision(playerPos, playerSize,
+					D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x + WALL_WIDTH / 2,
+						m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 bool GO_SS_Collision::BBCollision(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2)
@@ -133,10 +160,9 @@ void GO_SS_Collision::DebugOut(void)
 {
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
 	wsprintf(GetDebugStr(), WINDOW_CAPTION);
-	wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " IsCollSide:%d",
-		m_pPlayer->IsCollSide);
+	//wsprintf(&GetDebugStr()[strlen(GetDebugStr())], " test:%d",);
 
-	//SetWindowText(GethWnd()[0], GetDebugStr());
+	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
 }
 

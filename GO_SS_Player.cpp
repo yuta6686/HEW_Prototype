@@ -76,7 +76,7 @@ void GO_SS_Player::Update(void)
 
 	PlayerState();
 
-	DebugOut();
+	//DebugOut();
 }
 /*---------------------------------------------
 *				•`‰æˆ—

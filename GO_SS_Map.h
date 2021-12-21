@@ -42,6 +42,7 @@ public:
 
 private:
 	//bool SeekZipLineB(int CurrentNum, int CurrentNumY);
+	bool SeekFanB(int CurrentNumX, int CurrentNumY);
 
 	int GAME_SCENE = GAMESCENE_GAME_TEST;
 	int MapData[STAGE_WALL_NUM_Y][STAGE_WALL_NUM_X];//Ç‹Ç¡Ç’Ç≈Å[ÇΩ

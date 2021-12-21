@@ -3,7 +3,7 @@
 void GO_SS_Fan::Initialize(void)
 {
 	m_FanATex = LoadTexture("data/TEXTURE/”[“¤.png");
-	//m_FanBTex = LoadTexture();
+	m_FanBTex = LoadTexture("data/TEXTURE/bullet00.png");
 
 	once = true;
 
@@ -34,7 +34,7 @@ void GO_SS_Fan::Update(void)
 		}
 	}
 	
-	DebugOut();
+	//DebugOut();
 }
 
 void GO_SS_Fan::Draw(void)
@@ -43,16 +43,24 @@ void GO_SS_Fan::Draw(void)
 	{
 		if (m_FanInfo[i].use)
 		{
-			if (m_FanInfo[i].isWork)
-			{
+
 				DrawSpriteLeftTop(m_FanATex, m_FanInfo[i].pos.x, m_FanInfo[i].pos.y,
 					m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
-			}
-			else
-			{
-				DrawSpriteLeftTop(m_FanATex, m_FanInfo[i].pos.x, m_FanInfo[i].pos.y,
-					m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f,0.5f, 1.0f);
-			}
+
+				DrawSpriteLeftTop(m_FanBTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y,
+					m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
+
+		}
+	}
+}
+
+void GO_SS_Fan::LinkFanB(D3DXVECTOR2 pos)
+{
+	for (int i = 0; i < FANS_MAX; i++)
+	{
+		if (!m_FanInfo[i].use)
+		{
+			m_FanInfo[i].fanB_Pos = pos;
 		}
 	}
 }
@@ -77,6 +85,7 @@ void GO_SS_Fan::AddX(FLOAT x)
 	{
 		if (!m_FanInfo[i].use)continue;
 		m_FanInfo[i].pos.x += x;
+		m_FanInfo[i].fanB_Pos.x += x;
 	}
 }
 

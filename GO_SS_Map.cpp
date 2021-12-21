@@ -38,11 +38,12 @@ void GO_SS_Map::Update(void)
 				break;
 
 			case FAN_A_NUM:
-				m_pFan->SetFan(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				if (SeekFanB(x, y)) 
+				{
+					m_pFan->SetFan(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				}
 				break;
 
-			case FAN_B_NUM:
-				break;
 
 			//case ZIPLINE_A_NUM:
 			//	//ZIPLINE_A_NUM‚ª—ˆ‚½‚çB‚ğ’T‚µ‚És‚­
@@ -74,6 +75,24 @@ void GO_SS_Map::ResetOnce(void)
 	m_pFan->ResetOnce();
 	once = true;
 }
+
+bool GO_SS_Map::SeekFanB(int CurrentNumX, int CurrentNumY)
+{
+	for (int y = 0; y < STAGE_WALL_NUM_Y; y++)
+	{
+		for (int x = CurrentNumX; x < STAGE_WALL_NUM_X - CurrentNumX; x++)
+		{
+			if (MapData[y][x] == FAN_B_NUM)
+			{
+				m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+
 
 //
 ////zipline‚ÌB‚ğ’T‚µ‚És‚­ŠÖ”
