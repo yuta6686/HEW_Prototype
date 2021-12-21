@@ -16,37 +16,7 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-
-
-//*****************************************************************************
-// プロトタイプ宣言
-//*****************************************************************************
-bool EnterToNext(void);
-
-//*****************************************************************************
-// グローバル変数
-//*****************************************************************************
-static int g_TextureNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
-static int g_AdvertisementNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
-
-int g_String_Texture;	// テクスチャ情報
-
-static VERTEX_TITLE_PLAYER g_Player;
-
-float natto = 1200.0f;
-
-int i = 0;
-int count = 0;
-
-static const FLOAT GRAVITY_ACCELERATION = 0.3f;
-
-static FLOAT m_Jump = -10.75f;
-static FLOAT g_gravity = 1.0f;
-int Action = 0;
-
-VERTEX_SHOOTSTIRNG	g_String_Vertex;
-
-
+//フックの位置
 #define Target_x SCREEN_WIDTH * 0.7
 #define Target_y 250.0f
 
@@ -55,6 +25,36 @@ VERTEX_SHOOTSTIRNG	g_String_Vertex;
 #define Bys 0.20f
 #define Bxg 0.49f
 #define Byg 0.52f
+
+//*****************************************************************************
+// プロトタイプ宣言
+//*****************************************************************************
+
+
+//*****************************************************************************
+// グローバル変数
+//*****************************************************************************
+static int g_TextureNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
+static int g_AdvertisementNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
+
+static int g_String_Texture;	// テクスチャ情報
+
+static VERTEX_TITLE_PLAYER g_Player;
+
+static float g_natto = 1200.0f;
+
+static int g_i = 0;
+static int g_count = 0;
+
+static const FLOAT GRAVITY_ACCELERATION = 0.3f;
+
+static FLOAT m_Jump = -10.75f;
+static FLOAT g_gravity = 1.0f;
+static int g_Action = 0;
+
+static VERTEX_SHOOTSTIRNG	g_String_Vertex;
+
+
 
 float biruk[4] = { 0.0f,0.0f,1.0f,1.0f };
 float g_U = 0.0f;
@@ -114,7 +114,9 @@ void UninitTitle(void)
 //=============================================================================
 void UpdateTitle(void)
 {
+	//背景の移動
 	g_U += 0.0000001f;
+
 	//アニメーションのフレーム処理
 	if (g_Player.use) {
 		if (g_Player.frame >= PLAYER_X_NUM * PLAYER_Y_NUM)
@@ -122,12 +124,12 @@ void UpdateTitle(void)
 			g_Player.frame = 0;
 		}
 		else {
-			if (i == 10) {
+			if (g_i == 10) {
 				g_Player.frame++;
-				i = 0;
+				g_i = 0;
 			}
 			else
-				i++;
+				g_i++;
 		}
 		if (g_Player.use) {
 			g_Player.u = g_Player.frame % PLAYER_X_NUM * PLAYER_WIDTH;
@@ -136,89 +138,16 @@ void UpdateTitle(void)
 
 	}
 
-
-	TO_Update();
-
-	if (Action == 0)
-	{
-
-		//プレイヤーのx方向の動き
-		if (g_Player.pos.x >= SCREEN_WIDTH / 2.0f + 10.0f) {
-			g_Player.pos.x = SCREEN_WIDTH / 2.0f + 10.0f;
-			Action = 1;
-		}
-		else {
-			g_Player.pos.x += 11.0f;
-		}
-
-		//プレイヤーy方向の動き
-		if (g_Player.pos.y >= SCREEN_HEIGHT / 2.0f + 200.0f) {
-			g_Player.pos.y = SCREEN_HEIGHT / 2.0f + 200.0f;
-		}
-		else {
-			g_gravity += GRAVITY_ACCELERATION * 1.5;
-			g_Player.pos.y += g_gravity;
-		}
-	}
-
-	if (Action >= 1)
-	{
-		count++;
-		//ポジションをプレイヤーのポジションにする
-		g_String_Vertex.pos = g_Player.pos;
-
-
-		//プレイヤーとカーソルの角度取得
-		g_String_Vertex.angle = atan2f(g_String_Vertex.pos.y - (Target_y + 100.0f),
-			g_String_Vertex.pos.x - Target_x);
-
-
-		//g_String_Vertex.size.x += 20.0f;
-
-		if (g_String_Vertex.size.x >= natto) {
-			g_String_Vertex.size.x = natto;
-			Action = 2;
-		}
-		else {
-			//糸の長さ伸ばす
-			g_String_Vertex.size.x += 20.0f;
-		}
-
-		if (Action == 2)
-		{
-			if (g_Player.pos.x >= SCREEN_WIDTH) {
-				Action = 3;
-			}
-
-			g_Player.pos.x += 11.0f;
-			g_Player.pos.y -= 13.0f;
-			if (g_Player.pos.y <= Target_y)
-				g_String_Vertex.size.x = 0.0f;
-
-		}
-	}
+	//アクションの再生
+	Action(g_Action);
 
 	//シーン遷移
-	if (GetKeyboardTrigger(DIK_RETURN) ||EnterToNext()==true	&&
-		GetFadeState() == FADE_NONE && Action >= 2)
-	{
-		Action = 9;
-	}
+	if (GetKeyboardTrigger(DIK_RETURN) ||
+		IsMouseLeftPressed() &&
+		GetFadeState() == FADE_NONE)
+		g_Action = 9;
 
-	if (Action == 9)
-	{
-		if (biruk[0] >= 0.05f)
-			SceneTransition(SCENE_SELECT_STAGE);
-		else
-		{
-			biruk[0] += 0.0016f;
-			biruk[1] += 0.0066f;
-			biruk[2] -= 0.0163f;
-			biruk[3] -= 0.0173f;
-
-		}
-
-	}
+	Action(g_Action);
 
 
 }
@@ -273,10 +202,78 @@ void DrawTitle(void)
 }
 
 
-bool EnterToNext() {
-	if (IsMouseLeftTriggered() ||
-		IsMouseRightTriggered()) {
-		return true;
+//各アクションを割り当てる
+void Action(int ActionScene)//引数：アクションナンバー
+{
+	switch (ActionScene)
+	{
+	case 0:	//ジャンプして着地する
+		//プレイヤーのx方向の動き
+		if (g_Player.pos.x >= SCREEN_WIDTH / 2.0f + 10.0f) {
+			g_Player.pos.x = SCREEN_WIDTH / 2.0f + 10.0f;
+			g_Action = 2;
+		}
+		else {
+			g_Player.pos.x += 11.0f;
+		}
+
+		//プレイヤーy方向の動き
+		if (g_Player.pos.y >= SCREEN_HEIGHT / 2.0f + 200.0f) {
+			g_Player.pos.y = SCREEN_HEIGHT / 2.0f + 200.0f;
+		}
+		else {
+			g_gravity += GRAVITY_ACCELERATION * 1.5;
+			g_Player.pos.y += g_gravity;
+		}
+		break;
+
+
+	case 1:		//(糸を伸ばしきったら)飛び立つ
+		g_Player.pos.x += 11.0f;
+		g_Player.pos.y -= 13.0f;
+		if (g_Player.pos.y <= Target_y)
+			g_String_Vertex.size.x = 0.0f;
+
+
+	case 2:	//ターゲットに糸を伸ばす
+		g_count++;
+		//ポジションをプレイヤーのポジションにする
+		g_String_Vertex.pos = g_Player.pos;
+
+
+		//プレイヤーとカーソルの角度取得
+		g_String_Vertex.angle = atan2f(g_String_Vertex.pos.y - (Target_y + 100.0f),
+			g_String_Vertex.pos.x - Target_x);
+
+
+		//g_String_Vertex.size.x += 20.0f;
+
+		if (g_String_Vertex.size.x >= g_natto) {
+			g_String_Vertex.size.x = g_natto;
+			g_Action = 1;
+		}
+		else {
+			//糸の長さ伸ばす
+			g_String_Vertex.size.x += 20.0f;
+		}
+		break;
+
+	case 9://シーン移行のアクション
+		if (biruk[0] >= 0.05f)
+			SceneTransition(SCENE_SELECT_STAGE);
+		else
+		{
+			biruk[0] += 0.0016f;
+			biruk[1] += 0.0066f;
+			biruk[2] -= 0.0163f;
+			biruk[3] -= 0.0173f;
+
+		}
+		break;
+	default:
+		break;
 	}
-	return false;
 }
+
+
+

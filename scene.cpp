@@ -119,6 +119,8 @@ void UpdateScene(void)
 
 	case SCENE_SELECT_STAGE:
 		g_sStage.Update();
+
+		
 		break;
 
 	case SCENE_GAME:
