@@ -146,6 +146,7 @@
     <ClCompile Include="GO_SS_Map.cpp" />
     <ClCompile Include="GO_SS_Movement.cpp" />
     <ClCompile Include="GO_SS_Manager.cpp" />
+    <ClCompile Include="GO_SS_NattoRotate.cpp" />
     <ClCompile Include="GO_SS_Player.cpp" />
     <ClCompile Include="GO_SS_Scramble.cpp" />
     <ClCompile Include="GO_SS_Target.cpp" />
@@ -158,12 +159,15 @@
     <ClCompile Include="GO_Timer.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NattoRotateObject.cpp" />
+    <ClCompile Include="NRO_Natto.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="SelectStage.cpp" />
     <ClCompile Include="Spotlight.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="StageObjectArrowKey.cpp" />
     <ClCompile Include="StageObject_001.cpp" />
     <ClCompile Include="StageObject_002.cpp" />
     <ClCompile Include="StageObject_003.cpp" />
@@ -197,6 +201,7 @@
     <ClInclude Include="GO_SS_Map.h" />
     <ClInclude Include="GO_SS_Movement.h" />
     <ClInclude Include="GO_SS_Manager.h" />
+    <ClInclude Include="GO_SS_NattoRotate.h" />
     <ClInclude Include="GO_SS_Player.h" />
     <ClInclude Include="GO_SS_Scramble.h" />
     <ClInclude Include="GO_SS_Target.h" />
@@ -209,6 +214,8 @@
     <ClInclude Include="GO_Timer.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="NattoRotateObject.h" />
+    <ClInclude Include="NRO_Natto.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="scene.h" />
@@ -217,6 +224,7 @@
     <ClInclude Include="sprite.h" />
     <ClInclude Include="StageObectFactory.h" />
     <ClInclude Include="StageObject.h" />
+    <ClInclude Include="StageObjectArrowKey.h" />
     <ClInclude Include="StageObject_001.h" />
     <ClInclude Include="StageObject_002.h" />
     <ClInclude Include="StageObject_003.h" />

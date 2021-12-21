@@ -94,11 +94,10 @@ void GO_SS_Movement::JumpMove_Liner()
 //-----------------------------------------------------------------------------------------
 void GO_SS_Movement::JumpMove_Pendulum()
 {
+	
+
 	//糸を出したら
 	if (!m_pShotString->IsClickTarget)return;
-	//if (!m_pShotString->IsCollTarget)return;
-
-	m_pShotString->SetPos(m_pTarget->GetTarget()[m_pShotString->IsInsideTarget].pos);
 
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
@@ -129,8 +128,13 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 		//元のフラグ解除
 		m_pShotString->IsClickTarget = false;
 
+		//糸描画しない
+		m_pShotString->SetStringUse(false);
+
 		//風エフェクト
 		m_pEffectWind->SetWindEff();
+
+		
 	}
 	//最初の1フレーム目の処理
 	else if (Pendulum_Counter == 1)
@@ -162,6 +166,8 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 			m_pPlayer->AddYPos(sinf(rot * RADIAN) * 10.0f);
 			DebugOut(rot);
 		}
+
+		m_pShotString->SetStringUse(true);
 	}
 
 }

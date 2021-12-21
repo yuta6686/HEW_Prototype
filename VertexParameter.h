@@ -55,6 +55,12 @@ struct VERTEX_UV :public VERTEX_NOMAL {
 struct VERTEX_PLAYER :public VERTEX_NOMAL {
 	FLOAT delay;
 	
+	int frame;
+
+	FLOAT u;
+	FLOAT v;
+	FLOAT width;
+	FLOAT height;
 };
 
 struct VERTEX_BACKGROUND :public VERTEX_NOMAL {
@@ -63,6 +69,7 @@ struct VERTEX_BACKGROUND :public VERTEX_NOMAL {
 
 struct VERTEX_SHOOTSTIRNG :public VERTEX_NOMAL {
 	float angle;
+	bool use;
 };
 
 
@@ -113,4 +120,14 @@ struct VERTEX_ALL_EFFECT :public VERTEX_EFF {
 struct VERTEX_SELECT_STAGE :public VERTEX_NOMAL {
 	bool use;
 	FLOAT alpha;
+};
+
+struct VERTEX_NATTO :public VERTEX_NOMAL {
+	bool use;
+	FLOAT alpha;
+	FLOAT angle;
+	FLOAT radius;
+	FLOAT rot;
+
+	D3DXVECTOR2 dpos;
 };
