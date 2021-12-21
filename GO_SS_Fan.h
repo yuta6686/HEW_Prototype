@@ -1,12 +1,6 @@
 #pragma once
 #include "GameObject.h"
 
-struct FAN_VARTEX :public VERTEX_NOMAL
-{
-	bool use;
-	bool isWork;
-};
-
 class GO_SS_Fan : public GameObject
 {
 public:
@@ -17,8 +11,12 @@ public:
 	virtual void Draw(void) override;
 	virtual int GetGameScene(void) { return GAME_SCENE; }
 
+	void LinkFanB(D3DXVECTOR2 pos);
+
 	void SetFan(D3DXVECTOR2 pos);
 	void SetCircle(VERTEX_CIRCLE* p) { m_pCircle = p; }
+
+	FAN_VARTEX* GetFan(void) { return m_FanInfo; }
 
 	void AddX(FLOAT x);
 
@@ -29,10 +27,12 @@ public:
 		once = true;
 	}
 
+	static const int FANS_MAX = 5;		//ä∑ãCêÓÇÃç≈ëÂêî
 
 private:
 
-	bool FCCollision(D3DXVECTOR2 pos1, float size1, D3DXVECTOR2 pos2, float size2);
+	bool FCCollision(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, float size2);
+	void DebugOut(void);
 
 
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -40,7 +40,7 @@ private:
 	int m_FanATex;
 	int m_FanBTex;
 
-	static const int FANS_MAX = 5;		//ä∑ãCêÓÇÃç≈ëÂêî
+
 
 	FAN_VARTEX m_FanInfo[FANS_MAX];
 
