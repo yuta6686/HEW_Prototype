@@ -1,9 +1,31 @@
 #pragma once
 #include "GO_SS_TimeDelay.h"
 
+#define PLAYER_X_NUM 5
+#define PLAYER_Y_NUM 4
+
+#define PLAYER_WIDTH  (1.0f / PLAYER_X_NUM)
+#define PLAYER_HEIGHT (1.0f / PLAYER_Y_NUM)
+
+enum PLAYER_STATE {
+    
+    PS_NONE,
+    PS_RIGHT,
+    PS_LEFT,
+};
+
 class GO_SS_Player :
     public GO_SS_TimeDelay
 {
+private:
+
+
+    const FLOAT m_Jump = -12.5f;
+    const FLOAT GRAVITY_ACCELERATION = 0.3f;
+    const FLOAT DEFAULT_GRAVITY = 1.0f;
+    const FLOAT JUMP_DELAY = 12.0f;
+
+    
 public:
     virtual void Initialize(void) override;
 
@@ -24,11 +46,8 @@ public:
     
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
-    void SetGravitysoft(FLOAT f) { m_Gravity -= f; }
     void SetGravity(FLOAT f) { m_Gravity = f; }
 
-    void WavePosPlus(FLOAT angle);
-    void WavePosMinus(FLOAT angle);
 
     void AddXPos(FLOAT x) { Player_Vertex.pos.x += x; }
     void AddYPos(FLOAT y) { Player_Vertex.pos.y += y; }
@@ -51,18 +70,22 @@ private:
     //Texture
     int Player_Texture;
     char TEX_NAME[64] = "data/TEXTURE/fall1.png";
+    
+    int m_RunIndex;
+    char RUN_NAME[64] = "data/TEXTURE/run.png";
 
     //Action
     FLOAT m_Gravity;
-    FLOAT m_Jump = -12.5f;
-    const FLOAT GRAVITY_ACCELERATION = 0.3f;
-    const FLOAT DEFAULT_GRAVITY = 1.0f;
-    const FLOAT JUMP_DELAY = 12.0f;
+    int m_delay = 0;
+
+    void PlayerState(void);
+    int m_State = PS_NONE;
+    bool m_IsKeyPress = false;
 
     //Vertex Parameter
     VERTEX_PLAYER Player_Vertex;
 
-//?????o???
+//ÉÅÉìÉoä÷êî
 
     //?v???C???[???????????????Gameover??
     void SceneToGameOver(void);
@@ -75,6 +98,6 @@ private:
 
     void PlayerJumpMove(void);
     
-
+    void DebugOut(void);
 };
 

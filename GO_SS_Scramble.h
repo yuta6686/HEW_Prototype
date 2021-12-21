@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
-class GO_SS_Player;
+#include "GO_SS_Player.h"
+#include "GO_SS_NattoRotate.h"
 
 struct VERTEX_SCRAMBLE :VERTEX_NOMAL {
     bool use;
@@ -15,6 +16,8 @@ class GO_SS_Scramble :
     public GameObject
 {
 public:
+    ~GO_SS_Scramble()override;
+
     // GameObject ‚ð‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
     virtual void Initialize(void) override;
 
@@ -36,6 +39,8 @@ public:
 
     FLOAT GetPreviousDiff(void);
 
+    void SetNato(void) { m_Natto->SetNatto(); }
+
 private:
     char TEX_NAME[128] = "data/TEXTURE/natto.png";
 
@@ -49,5 +54,7 @@ private:
 
     D3DXVECTOR2 m_PrePos;
     D3DXVECTOR2 m_CurPos;
+
+    GO_SS_NattoRotate* m_Natto;
 };
 

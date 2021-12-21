@@ -10,8 +10,13 @@
 #include "GO_SS_Scramble.h"
 #include "Texture.h"
 #include "sprite.h"
-#include "GO_SS_Player.h"
 
+
+
+GO_SS_Scramble::~GO_SS_Scramble()
+{
+	delete m_Natto;
+}
 
 void GO_SS_Scramble::Initialize(void)
 {
@@ -26,10 +31,15 @@ void GO_SS_Scramble::Initialize(void)
 
 	m_PrePos = D3DXVECTOR2(0.0f, 0.0f);
 	m_CurPos = D3DXVECTOR2(0.0f, 0.0f);
+
+	m_Natto = new GO_SS_NattoRotate();
+
+	m_Natto->Initialize();
 }
 
 void GO_SS_Scramble::Finalize(void)
 {
+	m_Natto->Finalize();
 }
 
 void GO_SS_Scramble::Update(void)
@@ -92,6 +102,10 @@ void GO_SS_Scramble::Update(void)
 		}
 		
 	}
+
+	//	”[“¤‚Ìˆ—
+	m_Natto->SetPos(Vortex_Vertex.pos);
+	m_Natto->Update();
 }
 
 void GO_SS_Scramble::LastUpdate(void)
@@ -107,6 +121,8 @@ void GO_SS_Scramble::Draw(void)
 			Vortex_Vertex.size.x, Vortex_Vertex.size.y,
 			0.0f, 0.0f, 1.0f, 1.0f, Vortex_Vertex.color, Vortex_Vertex.angle);
 	}
+
+	m_Natto->Draw();
 }
 
 FLOAT GO_SS_Scramble::GetPreviousDiff(void)

@@ -1,4 +1,10 @@
 #pragma once
+//=============================================================================
+//
+// ステージ選択画面オブジェクト_003 [SelectStage.h]
+// Author :	yuta yanagisawa 
+//
+//=============================================================================
 #include "main.h"
 #include "renderer.h"
 #include "scene.h"
@@ -7,6 +13,21 @@
 #include "sprite.h"
 #include "input.h"
 #include "Spotlight.h"
+
+enum STAGE_NUM {
+	STAGE_NUM_NONE = 0,
+	STAGE_NUM_001,
+	STAGE_NUM_002,
+	STAGE_NUM_003,
+	STAGE_NUM_MAX,
+};
+
+enum ARROW_KEYS {
+	ARROW_KEY_NONE,
+	ARROW_KEY_RIGHT,
+	ARROW_KEY_LEFT,
+	ARROW_KEY_MAX,
+};
 
 class StageObject
 {
@@ -29,10 +50,18 @@ public:
 	virtual bool IsMouseOver(void) = 0;
 	virtual void MouseOverUpdate(void) = 0;
 
+
+
+	virtual STAGE_NUM ReturnStageNum(void) = 0;
+
+	virtual D3DXVECTOR2 GetPos(void) { return m_Vertex.pos; }
+
 protected:
 
 	VERTEX_SELECT_STAGE m_Vertex;
 
 	Spotlight m_light;
+
+	
 };
 

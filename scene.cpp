@@ -16,6 +16,7 @@
 #include "SelectStage.h"
 
 
+
 /*------------------------------------------------------------------------------
    定数定義
 ------------------------------------------------------------------------------*/
@@ -35,6 +36,7 @@ static SCENE g_SceneIndex = SCENE_NONE;
 static SCENE g_SceneNextIndex = g_SceneIndex;
 
 static SelectStage g_sStage;
+static STAGE_NUM g_StageNum;
 /*------------------------------------------------------------------------------
    初期化関数
 ------------------------------------------------------------------------------*/
@@ -192,4 +194,12 @@ void CheckScene(void)
 		//遷移先シーンの初期化処理を行う
 		InitScene(g_SceneNextIndex);
 	}
+}
+
+int GetStageNum(void) {
+	return g_StageNum;
+}
+
+void SetStageNum(int sn) {
+	g_StageNum = (STAGE_NUM)sn;
 }

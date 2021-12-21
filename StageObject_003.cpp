@@ -20,7 +20,7 @@ void StageObject_003::Draw(void)
         m_Vertex.size.x, m_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f,
         D3DXCOLOR(1.0f, 1.0f, 1.0f, m_Vertex.alpha));
 
-    m_light.Draw(m_Vertex.pos);
+    m_light.Draw();
 }
 
 void StageObject_003::ClickUpdate(void)

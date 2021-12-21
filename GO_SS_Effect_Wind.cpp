@@ -67,7 +67,7 @@ void GO_SS_Effect_Wind::Draw(void)
         DrawSpriteLeftTopColor(Eff_Texture, windEff.pos.x, windEff.pos.y,
             windEff.size.x, windEff.size.y,
             windEff.frame % WIND_X_NUM * WIND_WIDTH,
-            windEff.frame / WIND_Y_NUM * WIND_HEIGHT,
+            windEff.frame / WIND_X_NUM * WIND_HEIGHT,
             WIND_WIDTH, WIND_HEIGHT,
             D3DXCOLOR(1.0f, 1.0f, 1.0f, windEff.alpha));
     }
