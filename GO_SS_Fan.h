@@ -41,7 +41,6 @@ private:
 	int m_FanBTex;
 
 
-
 	FAN_VARTEX m_FanInfo[FANS_MAX];
 
 	VERTEX_CIRCLE* m_pCircle;

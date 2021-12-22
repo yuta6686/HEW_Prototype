@@ -18,6 +18,7 @@ void GO_SS_Fan::Initialize(void)
 
 void GO_SS_Fan::Finalize(void)
 {
+
 }
 
 void GO_SS_Fan::Update(void)
@@ -34,7 +35,7 @@ void GO_SS_Fan::Update(void)
 		}
 	}
 	
-	//DebugOut();
+	DebugOut();
 }
 
 void GO_SS_Fan::Draw(void)
@@ -44,11 +45,12 @@ void GO_SS_Fan::Draw(void)
 		if (m_FanInfo[i].use)
 		{
 
-				DrawSpriteLeftTop(m_FanATex, m_FanInfo[i].pos.x, m_FanInfo[i].pos.y,
-					m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
+			DrawSpriteLeftTop(m_FanATex, m_FanInfo[i].pos.x, m_FanInfo[i].pos.y,
+				m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
 
-				DrawSpriteLeftTop(m_FanBTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y,
-					m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
+
+			DrawSpriteLeftTop(m_FanBTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y,
+				m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
 
 		}
 	}

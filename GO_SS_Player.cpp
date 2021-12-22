@@ -71,8 +71,6 @@ void GO_SS_Player::Update(void)
 		else {
 			m_delay++;
 		}
-		
-		
 	}
 
 	PlayerState();
