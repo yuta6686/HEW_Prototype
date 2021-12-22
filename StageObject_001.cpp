@@ -64,6 +64,8 @@ void StageObject_001::ClickUpdate(void)
 {
 	if (!IsClick())return;
 
+	SetStageNum(ReturnStageNum());
+
 	//	ステージ1へ
 	if (GetFadeState() == FADE_NONE)
 	{
@@ -103,5 +105,7 @@ void StageObject_001::MouseOverUpdate(void)
 		m_light.SetIlluminate(false, m_Vertex.pos);
 	}
 }
+
+
 
 

@@ -36,5 +36,6 @@ protected:
 private:
     char m_TextureName[64] = "data/TEXTURE/Select_Stage1.png";
     int  m_TextureIndex;
+
 };
 

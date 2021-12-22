@@ -50,8 +50,6 @@ public:
 	virtual bool IsMouseOver(void) = 0;
 	virtual void MouseOverUpdate(void) = 0;
 
-
-
 	virtual STAGE_NUM ReturnStageNum(void) = 0;
 
 	virtual D3DXVECTOR2 GetPos(void) { return m_Vertex.pos; }

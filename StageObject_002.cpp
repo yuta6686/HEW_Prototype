@@ -27,6 +27,8 @@ void StageObject_002::ClickUpdate(void)
 {
     if (!IsClick())return;
 
+    SetStageNum(ReturnStageNum());
+
     //ƒV[ƒ“‘JˆÚ
     if (GetFadeState() == FADE_NONE)
     {

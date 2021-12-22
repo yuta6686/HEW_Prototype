@@ -146,3 +146,7 @@ void SelectStage::IlluminateUpdate(void)
 		}
 	}
 }
+
+void SelectStage::ToSelectStage(void)
+{
+}

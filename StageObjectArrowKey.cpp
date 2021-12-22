@@ -87,5 +87,5 @@ void StageObjectArrowKey::EnterUpdate(void)
 
 STAGE_NUM StageObjectArrowKey::ReturnStageNum(void)
 {
-    return STAGE_NUM();
+    return (STAGE_NUM)GetStageNumSelect();
 }
