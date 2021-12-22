@@ -64,15 +64,21 @@ public:
 
     
 private:
+
     //GameScene
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
 
     //Texture
-    int Player_Texture;
+    int m_nowTexIndex;
+
+    int Player_TexIndex;
     char TEX_NAME[64] = "data/TEXTURE/fall1.png";
     
-    int m_RunIndex;
+    int m_RunTexIndex;
     char RUN_NAME[64] = "data/TEXTURE/run.png";
+
+    int m_RunMirrorTexIndex;
+    char RUN_MIRROR_NAME[64] = "data/TEXTURE/run2.png";
 
     //Action
     FLOAT m_Gravity;

@@ -7,8 +7,11 @@
 ---------------------------------------------*/
 void GO_SS_Player::Initialize(void)
 {
-	Player_Texture = LoadTexture(TEX_NAME);
-	m_RunIndex = LoadTexture(RUN_NAME);
+	Player_TexIndex = LoadTexture(TEX_NAME);
+	m_RunTexIndex = LoadTexture(RUN_NAME);
+	m_RunMirrorTexIndex = LoadTexture(RUN_MIRROR_NAME);
+
+	m_nowTexIndex = m_RunTexIndex;
 
 	Player_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH / 4, 100.0f);
 	Player_Vertex.size = D3DXVECTOR2(200.0f, 200.0f);
@@ -69,12 +72,14 @@ void GO_SS_Player::Update(void)
 			m_delay++;
 		}
 		
-		/*if (GetKeyboardTrigger(DIK_D)) {
-			Player_Vertex.frame++;
-		}*/
+		
 	}
 
 	PlayerState();
+
+	Player_Vertex.width = PLAYER_WIDTH;
+	Player_Vertex.u = (Player_Vertex.frame % PLAYER_X_NUM) * PLAYER_WIDTH;
+	Player_Vertex.v = (Player_Vertex.frame / PLAYER_X_NUM) * PLAYER_HEIGHT;
 
 	//DebugOut();
 }
@@ -83,16 +88,12 @@ void GO_SS_Player::Update(void)
 ---------------------------------------------*/
 void GO_SS_Player::Draw(void)
 {
-	DrawSprite(m_RunIndex, Player_Vertex.pos.x, Player_Vertex.pos.y,
+	DrawSprite(m_nowTexIndex, Player_Vertex.pos.x, Player_Vertex.pos.y,
 		Player_Vertex.size.x, Player_Vertex.size.y,
 		Player_Vertex.u,
 		Player_Vertex.v,
 		Player_Vertex.width, Player_Vertex.height);
-	//DrawSprite(m_RunIndex, Player_Vertex.pos.x, Player_Vertex.pos.y,
-	//	Player_Vertex.size.x, Player_Vertex.size.y,
-	//	(Player_Vertex.frame % PLAYER_X_NUM )* PLAYER_WIDTH,
-	//	(Player_Vertex.frame / PLAYER_Y_NUM )* PLAYER_HEIGHT,
-	//	PLAYER_WIDTH, PLAYER_HEIGHT);
+	
 }
 
 void GO_SS_Player::PlayerState(void)
@@ -105,20 +106,13 @@ void GO_SS_Player::PlayerState(void)
 
 	//Dキーが押された時
 	if (GetKeyboardPress(DIK_D)) {
-		Player_Vertex.width = PLAYER_WIDTH;
-		Player_Vertex.u = (Player_Vertex.frame % PLAYER_X_NUM) * PLAYER_WIDTH;
-		Player_Vertex.v = (Player_Vertex.frame / PLAYER_X_NUM) * PLAYER_HEIGHT;
-			
+		m_nowTexIndex = m_RunTexIndex;
 	}
 
 	//Aキーが押された時
 	if (GetKeyboardPress(DIK_A)) {
-		Player_Vertex.u = Player_Vertex.frame % PLAYER_X_NUM * PLAYER_WIDTH;
-		Player_Vertex.v = Player_Vertex.frame / PLAYER_X_NUM * PLAYER_HEIGHT;
-		Player_Vertex.width = -PLAYER_WIDTH;
+		m_nowTexIndex = m_RunMirrorTexIndex;
 	}
-
-
 }
 
 //プライヤーが画面下に落ちたらGameoverへ
