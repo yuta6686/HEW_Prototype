@@ -1,4 +1,5 @@
 ﻿#include "GO_SS_FileLoad.h"
+#include "StageObject.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -27,7 +28,20 @@ void GO_SS_FileLoad::Draw(void)
 
 void GO_SS_FileLoad::MapFileLoad(int MapData[][STAGE_WALL_NUM_X])
 {
-	ifstream ifs("data/MapData.csv");	//ファイルストリーム
+	ifstream ifs;	//ファイルストリーム
+	switch (GetStageNum())
+	{
+	case STAGE_NUM_001:
+		 ifs.open("data/MapData1.csv");	//ファイルストリーム
+		break;
+	case STAGE_NUM_002:
+		 ifs.open("data/MapData2.csv");	//ファイルストリーム
+		break;
+	case STAGE_NUM_003:
+		 ifs.open("data/MapData3.csv");	//ファイルストリーム
+		break;
+	}
+
 	string str;					//分割する為のstring
 	//int x = 0;					
 	//int y = 0;
