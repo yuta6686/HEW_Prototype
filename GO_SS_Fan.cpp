@@ -4,6 +4,7 @@ void GO_SS_Fan::Initialize(void)
 {
 	m_FanATex = LoadTexture("data/TEXTURE/”[“¤.png");
 	m_FanBTex = LoadTexture("data/TEXTURE/bullet00.png");
+	m_WindTex = LoadTexture("data/TEXTURE/fan_wind.png");
 
 	once = true;
 
@@ -52,6 +53,27 @@ void GO_SS_Fan::Draw(void)
 			DrawSpriteLeftTop(m_FanBTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y,
 				m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
 
+			if (m_FanInfo[i].isWork)
+			{
+				static int cnt = 0;
+				static float u, v;
+
+				cnt++;
+
+				u = cnt % WIND_WIDTH_SPLIT * WIND_ADD_U;
+				v = cnt / WIND_HEIGHT_SPLIT * WIND_ADD_V;
+
+				SetBlendState(BLEND_MODE_ADD);
+
+				DrawSpriteLeftTop(m_WindTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT,
+					m_FanInfo[i].size.x, m_FanInfo[i].size.y, u, v, WIND_ADD_U, WIND_ADD_V);
+
+				if (cnt > WIND_TEX_MAX)
+				{
+					cnt = 0;
+				}
+				SetBlendState(BLEND_MODE_ALPHABLEND);
+			}
 		}
 	}
 }

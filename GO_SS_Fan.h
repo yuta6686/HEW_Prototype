@@ -36,10 +36,15 @@ private:
 
 
 	const int GAME_SCENE = GAMESCENE_GAME_TEST;
+	const int WIND_TEX_MAX = 60;
+	const int WIND_HEIGHT_SPLIT = 12;
+	const int WIND_WIDTH_SPLIT = 5;
+	const float WIND_ADD_V = 0.083f;
+	const float WIND_ADD_U = 0.2f;
 
 	int m_FanATex;
 	int m_FanBTex;
-
+	int m_WindTex;
 
 	FAN_VARTEX m_FanInfo[FANS_MAX];
 
