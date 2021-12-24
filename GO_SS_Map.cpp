@@ -38,6 +38,8 @@ void GO_SS_Map::Update(void)
 				break;
 
 			case FAN_A_NUM:
+				//Š·‹Cî‹z‚¢ž‚ÝŒû‚ª—ˆ‚½‚ç“f‚«o‚µŒû‚ð’T‚µ‚És‚­
+				//‚È‚¢ê‡•`‰æ‚µ‚È‚¢
 				if (SeekFanB(x, y)) 
 				{
 					m_pFan->SetFan(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
@@ -82,9 +84,13 @@ bool GO_SS_Map::SeekFanB(int CurrentNumX, int CurrentNumY)
 	{
 		for (int x = CurrentNumX; x < STAGE_WALL_NUM_X - CurrentNumX; x++)
 		{
-			if (MapData[y][x] == FAN_B_NUM)
+			if (MapData[y][x] == FAN_B_UP_NUM || MapData[y][x] == FAN_B_LEFT_NUM)
 			{
-				m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				if (MapData[y][x] == FAN_B_UP_NUM)
+					m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y), false);
+				if(MapData[y][x] == FAN_B_LEFT_NUM)
+					m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y), true);
+
 				return true;
 			}
 		}
