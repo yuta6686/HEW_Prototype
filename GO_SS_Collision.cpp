@@ -29,8 +29,11 @@ void GO_SS_Collision::CollisionUpdate(void)
 	else m_pPlayer->IsColl = false;
 
 	//プレイヤーと稼働中換気扇衝突判定
-	if (CJ_PlayerFan()) /*ここに衝突時の処理*/;
-	else /*ここにnot衝突時の処理(必要ないかも)*/;
+	//************************************
+	//この関数ないに追加
+	//************************************
+	CJ_PlayerFan();
+
 
 	CJ_GoalPlayer();
 
@@ -80,7 +83,7 @@ int GO_SS_Collision::CJ_PWSide(void)
 	return -1;
 }
 
-bool GO_SS_Collision::CJ_PlayerFan(void)
+void GO_SS_Collision::CJ_PlayerFan(void)
 {
 	for (int i = 0; i < m_pFan->FANS_MAX; i++)
 	{
@@ -95,7 +98,7 @@ bool GO_SS_Collision::CJ_PlayerFan(void)
 						D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x + WALL_WIDTH / 2,
 							m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
 					{
-						return true;
+						/*上向き当たり判定処理*/
 					}
 				}
 				//左むき
@@ -105,13 +108,12 @@ bool GO_SS_Collision::CJ_PlayerFan(void)
 						D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x - WALL_WIDTH + WALL_WIDTH / 2,
 							m_FanInfo[i].fanB_Pos.y + WALL_HEIGHT / 2), m_FanInfo[i].size))
 					{
-						return true;
+						/*左向き当たり判定の処理*/
 					}
 				}
 			}
 		}
 	}
-	return false;
 }
 
 bool GO_SS_Collision::BBCollision(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2)
