@@ -228,6 +228,9 @@
     <ClCompile Include="NRO_Natto.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GO_SS_KitchenTimer.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -394,6 +397,12 @@
     </ClInclude>
     <ClInclude Include="GO_SS_Fan.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="NRO_Natto.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_KitchenTimer.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ class GO_SS_ShotString;
 class GO_SS_Target;
 class GO_SS_ZipLine;
 class GO_SS_Fan;
+class GO_SS_KitchenTimer;
 
 class GO_SS_Collision
 {
@@ -22,6 +23,7 @@ public:
     void SetTarget(GO_SS_Target* pTarget) { m_pTarget = pTarget; }
     void SetZipLine(GO_SS_ZipLine* p) { m_pZipLine = p; }
     void SetFan(GO_SS_Fan* p) { m_pFan = p; }
+    void SetKitchenTimer(GO_SS_KitchenTimer* p_KitchenTimer) { m_pKitchenTimer = p_KitchenTimer; }
 
     //??????????????????
     void CollisionUpdate(void);
@@ -32,6 +34,8 @@ private:
     D3DXVECTOR2 playerSize;
 
     VERTEX_T Goal_Vertex;
+
+    //VERTEX_T KitchenTimer_Vertex;
 
     FAN_VARTEX* m_FanInfo;
 
@@ -45,6 +49,7 @@ private:
     GO_SS_Target* m_pTarget;
     GO_SS_ZipLine* m_pZipLine;
     GO_SS_Fan* m_pFan;
+    GO_SS_KitchenTimer* m_pKitchenTimer;
  
 //????????         CollisionJudge_ -> CJ_
 
@@ -52,7 +57,6 @@ private:
     int CJ_PlayerWall(void);
     int CJ_PWSide(void);
     bool CJ_PlayerFan(void);
-     
 
 //????????e???v???[?g
     bool BBCollision(D3DXVECTOR2 pos1,D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);
@@ -62,5 +66,6 @@ private:
 
     void DebugOut(void);
     void CJ_GoalPlayer(void);
+    void CJ_KitchenTimerPlayer(void);
 };
 

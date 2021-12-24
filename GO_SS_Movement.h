@@ -25,6 +25,7 @@ class GO_SS_Effect_Wind;
 class GO_SS_Goal;
 class GO_SS_TimeDelay;
 class GO_SS_Fan;
+class GO_SS_KitchenTimer;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
@@ -73,6 +74,10 @@ public:
         m_pFan = p;
         m_ssCollision.SetFan(p);
     }
+    void SetKitchenTimer(GO_SS_KitchenTimer* p_KitchenTimer) {
+        m_pKitchenTimer = p_KitchenTimer;
+        m_ssCollision.SetKitchenTimer(p_KitchenTimer);
+    }
 
     void SetMap(GO_SS_Map* p) { m_pMap = p; }
     void SetEffWind(GO_SS_Effect_Wind* p) { m_pEffectWind = p; }
@@ -94,6 +99,7 @@ private:
     GO_SS_Goal* m_pGoal;
     GO_SS_TimeDelay* m_pTimeDelay;
     GO_SS_Fan* m_pFan;
+    GO_SS_KitchenTimer* m_pKitchenTimer;
 
     //ÉÅÉìÉoïœêî
     int JumpCounter = 0;
@@ -159,6 +165,7 @@ private:
     const FLOAT BG_SCROLL_SPEED = 0.001f;
     const FLOAT MAP_OBJ_MOVING_SPEED = 5.0f;
     const FLOAT GOAL_MOVING_SPEED = 5.0f;
+    const FLOAT KTIMER_MOVING_SPEED = 5.0f;
 };
 
 

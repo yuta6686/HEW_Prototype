@@ -10,7 +10,7 @@
 #include "main.h"
 #include "input.h"
 #include "fade.h"
-
+#include "GO_SS_KitchenTimer.h"
 
 
 void GO_SS_Collision::CollisionUpdate(void)
@@ -24,6 +24,8 @@ void GO_SS_Collision::CollisionUpdate(void)
 
 	Goal_Vertex = m_pGoal->GetGoal();
 
+	//KitchenTimer_Vertex = m_pKitchenTimer->GetKitchenTimer();
+
 	//プレイヤーと壁の衝突処理
 	if (CJ_PlayerWall() >= 0)m_pPlayer->IsColl = true;
 	else m_pPlayer->IsColl = false;
@@ -33,6 +35,8 @@ void GO_SS_Collision::CollisionUpdate(void)
 	else /*ここにnot衝突時の処理(必要ないかも)*/;
 
 	CJ_GoalPlayer();
+
+	CJ_KitchenTimerPlayer();
 
 	DebugOut();
 
@@ -172,4 +176,13 @@ void GO_SS_Collision::CJ_GoalPlayer(void)
 	{
 		SceneTransition(SCENE_RESULT);
 	}
+}
+
+void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
+{
+	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), m_pKitchenTimer->GetKitchenTimer().pos, m_pKitchenTimer->GetKitchenTimer().size))
+	{
+		m_pKitchenTimer->SetUse(false);
+	}
+
 }
