@@ -136,5 +136,6 @@ struct FAN_VARTEX :public VERTEX_NOMAL
 {
 	bool use;
 	bool isWork;
+	bool isLeft;
 	D3DXVECTOR2 fanB_Pos;
 };

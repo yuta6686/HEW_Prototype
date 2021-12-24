@@ -11,9 +11,12 @@ public:
 	virtual void Draw(void) override;
 	virtual int GetGameScene(void) { return GAME_SCENE; }
 
-	void LinkFanB(D3DXVECTOR2 pos);
+	//吐き出す側の設定　引数:位置
+	void LinkFanB(D3DXVECTOR2 pos, bool isLeft);
 
+	//換気扇のセット　引数:位置
 	void SetFan(D3DXVECTOR2 pos);
+
 	void SetCircle(VERTEX_CIRCLE* p) { m_pCircle = p; }
 
 	FAN_VARTEX* GetFan(void) { return m_FanInfo; }
@@ -41,6 +44,8 @@ private:
 	const int WIND_WIDTH_SPLIT = 5;
 	const float WIND_ADD_V = 0.083f;
 	const float WIND_ADD_U = 0.2f;
+
+	const float LEFT_QUANTITY = 4.71238898038469f;
 
 	int m_FanATex;
 	int m_FanBTex;

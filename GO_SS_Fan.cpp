@@ -13,6 +13,7 @@ void GO_SS_Fan::Initialize(void)
 		m_FanInfo[i].pos = D3DXVECTOR2(0.0f, 0.0f);
 		m_FanInfo[i].size = D3DXVECTOR2(0.0f, 0.0f);
 		m_FanInfo[i].use = false;
+		m_FanInfo[i].isLeft = false;
 		m_FanInfo[i].isWork = false;
 	}
 }
@@ -45,13 +46,24 @@ void GO_SS_Fan::Draw(void)
 	{
 		if (m_FanInfo[i].use)
 		{
-
+			//‹z‚¢ž‚ÝŒû•`‰æ
 			DrawSpriteLeftTop(m_FanATex, m_FanInfo[i].pos.x, m_FanInfo[i].pos.y,
 				m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
 
-
-			DrawSpriteLeftTop(m_FanBTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y,
-				m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
+			//“f‚«o‚µŒûã•`‰æ
+			if (!m_FanInfo[i].isLeft)
+			{
+				DrawSpriteLeftTop(m_FanBTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y,
+					m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f);
+			}
+			//¶
+			else
+			{
+				DrawSpriteColorRotate(m_FanBTex, m_FanInfo[i].fanB_Pos.x + WALL_WIDTH * 0.5f, m_FanInfo[i].fanB_Pos.y + WALL_HEIGHT * 0.5f,
+					m_FanInfo[i].size.x, m_FanInfo[i].size.y, 0.0f, 0.0f, 1.0f, 1.0f,
+					D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), LEFT_QUANTITY);
+			}
+		
 
 			if (m_FanInfo[i].isWork)
 			{
@@ -63,28 +75,40 @@ void GO_SS_Fan::Draw(void)
 				u = cnt % WIND_WIDTH_SPLIT * WIND_ADD_U;
 				v = cnt / WIND_HEIGHT_SPLIT * WIND_ADD_V;
 
+				//•—•`‰æ
 				SetBlendState(BLEND_MODE_ADD);
 
-				DrawSpriteLeftTop(m_WindTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT,
-					m_FanInfo[i].size.x, m_FanInfo[i].size.y, u, v, WIND_ADD_U, WIND_ADD_V);
+				if (!m_FanInfo[i].isLeft)
+				{
+					DrawSpriteLeftTop(m_WindTex, m_FanInfo[i].fanB_Pos.x, m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT,
+						m_FanInfo[i].size.x, m_FanInfo[i].size.y, u, v, WIND_ADD_U, WIND_ADD_V);
+				}
+				else
+				{
+					DrawSpriteColorRotate(m_WindTex, m_FanInfo[i].fanB_Pos.x - WALL_WIDTH * 0.5f, m_FanInfo[i].fanB_Pos.y + WALL_HEIGHT * 0.5f,
+						m_FanInfo[i].size.x, m_FanInfo[i].size.y, u, v, WIND_ADD_U, WIND_ADD_V,
+						D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), LEFT_QUANTITY);
+				}
 
 				if (cnt > WIND_TEX_MAX)
 				{
 					cnt = 0;
 				}
+
 				SetBlendState(BLEND_MODE_ALPHABLEND);
 			}
 		}
 	}
 }
 
-void GO_SS_Fan::LinkFanB(D3DXVECTOR2 pos)
+void GO_SS_Fan::LinkFanB(D3DXVECTOR2 pos, bool isLeft)
 {
 	for (int i = 0; i < FANS_MAX; i++)
 	{
 		if (!m_FanInfo[i].use)
 		{
 			m_FanInfo[i].fanB_Pos = pos;
+			m_FanInfo[i].isLeft = isLeft;
 		}
 	}
 }

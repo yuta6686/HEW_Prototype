@@ -14,7 +14,8 @@ typedef enum{
 	WALL_NUM = 1,
 	TARGET_NUM,
 	FAN_A_NUM,
-	FAN_B_NUM,
+	FAN_B_UP_NUM,
+	FAN_B_LEFT_NUM,
 	ZIPLINE_A_NUM,
 	ZIPLINE_B_NUM
 }MAP_CHIP_NO;
@@ -33,7 +34,7 @@ public:
 	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
 	void SetFan(GO_SS_Fan* p) { m_pFan = p; }
 	//void SetZipline(GO_SS_ZipLine* p) { m_pZipLine = p; }
-
+	
 	void MoveMapObject(FLOAT x);
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
