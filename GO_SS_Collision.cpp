@@ -88,11 +88,25 @@ bool GO_SS_Collision::CJ_PlayerFan(void)
 		{
 			if (m_FanInfo[i].isWork)
 			{
-				if (BBCollision(playerPos, playerSize,
-					D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x + WALL_WIDTH / 2,
-						m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
+				//è„å¸Ç´
+				if (!m_FanInfo[i].isLeft)
 				{
-					return true;
+					if (BBCollision(playerPos, playerSize,
+						D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x + WALL_WIDTH / 2,
+							m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
+					{
+						return true;
+					}
+				}
+				//ç∂ÇﬁÇ´
+				else
+				{
+					if (BBCollision(playerPos, playerSize,
+						D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x - WALL_WIDTH + WALL_WIDTH / 2,
+							m_FanInfo[i].fanB_Pos.y + WALL_HEIGHT / 2), m_FanInfo[i].size))
+					{
+						return true;
+					}
 				}
 			}
 		}
