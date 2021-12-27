@@ -10,7 +10,8 @@
 #include "main.h"
 #include "input.h"
 #include "fade.h"
-
+#include "GO_SS_KitchenTimer.h"
+#include "GO_SS_Timer.h"
 
 
 void GO_SS_Collision::CollisionUpdate(void)
@@ -23,6 +24,8 @@ void GO_SS_Collision::CollisionUpdate(void)
 	m_pPlayer->IsCollSide = CJ_PWSide();
 
 	Goal_Vertex = m_pGoal->GetGoal();
+
+	//KitchenTimer_Vertex = m_pKitchenTimer->GetKitchenTimer();
 
 	//ƒvƒŒƒCƒ„[‚Æ•Ç‚ÌÕ“Ëˆ—
 	if (CJ_PlayerWall() >= 0)m_pPlayer->IsColl = true;
@@ -37,8 +40,9 @@ void GO_SS_Collision::CollisionUpdate(void)
 
 	CJ_GoalPlayer();
 
-	DebugOut();
+	CJ_KitchenTimerPlayer();
 
+	DebugOut();
 }
 
 // ----------------------------------------------------------------
@@ -200,5 +204,13 @@ void GO_SS_Collision::CJ_GoalPlayer(void)
 	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), Goal_Vertex.pos, Goal_Vertex.size))
 	{
 		SceneTransition(SCENE_RESULT);
+	}
+}
+
+void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
+{
+	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), m_pKitchenTimer->GetKitchenTimer().pos, m_pKitchenTimer->GetKitchenTimer().size))
+	{
+		m_pKitchenTimer->SetUse(false);
 	}
 }

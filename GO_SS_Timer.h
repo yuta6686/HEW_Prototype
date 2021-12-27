@@ -61,5 +61,7 @@ private:
 
 	//タイマーが0になったらGameoverへ
 	void SceneToGameOver(void);
+
+	void CJ_KitchenTimerPlayer(void);
 };
 

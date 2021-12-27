@@ -143,6 +143,7 @@
     <ClCompile Include="GO_SS_BackGround.cpp" />
     <ClCompile Include="GO_SS_Collision.cpp" />
     <ClCompile Include="GO_SS_Goal.cpp" />
+    <ClCompile Include="GO_SS_KitchenTimer.cpp" />
     <ClCompile Include="GO_SS_Map.cpp" />
     <ClCompile Include="GO_SS_Movement.cpp" />
     <ClCompile Include="GO_SS_Manager.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="GO_SS_BackGround.h" />
     <ClInclude Include="GO_SS_Collision.h" />
     <ClInclude Include="GO_SS_Goal.h" />
+    <ClInclude Include="GO_SS_KitchenTimer.h" />
     <ClInclude Include="GO_SS_Map.h" />
     <ClInclude Include="GO_SS_Movement.h" />
     <ClInclude Include="GO_SS_Manager.h" />
