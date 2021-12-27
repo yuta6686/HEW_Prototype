@@ -56,7 +56,8 @@ private:
 //?v???C???[???
     int CJ_PlayerWall(void);
     int CJ_PWSide(void);
-    bool CJ_PlayerFan(void);
+    void CJ_PlayerFan(void);
+     
 
 //????????e???v???[?g
     bool BBCollision(D3DXVECTOR2 pos1,D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2);

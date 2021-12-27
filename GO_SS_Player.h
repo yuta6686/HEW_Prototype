@@ -18,14 +18,14 @@ class GO_SS_Player :
     public GO_SS_TimeDelay
 {
 private:
-
-
     const FLOAT m_Jump = -12.5f;
+
     const FLOAT GRAVITY_ACCELERATION = 0.3f;
+
     const FLOAT DEFAULT_GRAVITY = 1.0f;
+
     const FLOAT JUMP_DELAY = 12.0f;
 
-    
 public:
     virtual void Initialize(void) override;
 
@@ -52,6 +52,8 @@ public:
     void AddXPos(FLOAT x) { Player_Vertex.pos.x += x; }
     void AddYPos(FLOAT y) { Player_Vertex.pos.y += y; }
 
+    
+
     bool IsJump;
     bool OkJump;
     bool IsColl;
@@ -59,10 +61,8 @@ public:
     //not:-1 left:1 right:2 
     int IsCollSide;
 
-
     FLOAT m_TimeDelay = 1.0f;
 
-    
 private:
 
     //GameScene

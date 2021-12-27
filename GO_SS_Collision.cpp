@@ -32,8 +32,11 @@ void GO_SS_Collision::CollisionUpdate(void)
 	else m_pPlayer->IsColl = false;
 
 	//プレイヤーと稼働中換気扇衝突判定
-	if (CJ_PlayerFan()) /*ここに衝突時の処理*/;
-	else /*ここにnot衝突時の処理(必要ないかも)*/;
+	//************************************
+	//この関数ないに追加
+	//************************************
+	CJ_PlayerFan();
+
 
 	CJ_GoalPlayer();
 
@@ -84,24 +87,50 @@ int GO_SS_Collision::CJ_PWSide(void)
 	return -1;
 }
 
-bool GO_SS_Collision::CJ_PlayerFan(void)
+void GO_SS_Collision::CJ_PlayerFan(void)
 {
 	for (int i = 0; i < m_pFan->FANS_MAX; i++)
 	{
-		if (m_FanInfo[i].use)
-		{
+		if (m_FanInfo[i].use) {
 			if (m_FanInfo[i].isWork)
 			{
-				if (BBCollision(playerPos, playerSize,
-					D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x + WALL_WIDTH / 2,
-						m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
+				//上向き
+				if (!m_FanInfo[i].isLeft)
 				{
-					return true;
+					if (BBCollision(playerPos, playerSize,
+						D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x + WALL_WIDTH / 2,
+							m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
+					{
+						/*上向き当たり判定処理*/
+						m_pFan->SetCollisionNum(FAN_COLL_UP);
+					}
+					else
+					{
+						m_pFan->SetCollisionNum(FAN_COLL_NONE);
+					}
 				}
+				//左むき
+				else
+				{
+					if (BBCollision(playerPos, playerSize,
+						D3DXVECTOR2(m_FanInfo[i].fanB_Pos.x - WALL_WIDTH + WALL_WIDTH / 2,
+							m_FanInfo[i].fanB_Pos.y + WALL_HEIGHT / 2), m_FanInfo[i].size))
+					{
+						/*左向き当たり判定の処理*/
+						m_pFan->SetCollisionNum(FAN_COLL_LEFT);
+
+					}
+					else {
+						m_pFan->SetCollisionNum(FAN_COLL_NONE);
+					}
+
+				}
+			}
+			else {
+				m_pFan->SetCollisionNum(FAN_COLL_NONE);
 			}
 		}
 	}
-	return false;
 }
 
 bool GO_SS_Collision::BBCollision(D3DXVECTOR2 pos1, D3DXVECTOR2 size1, D3DXVECTOR2 pos2, D3DXVECTOR2 size2)
