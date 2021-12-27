@@ -14,6 +14,7 @@ class GO_SS_Timer;
 class GO_SS_Goal;
 class GO_SS_TimeDelay;
 class GO_SS_Fan;
+class GO_SS_KitchenTimer;
 
 class GO_SS_Effect_Wind;
 
@@ -60,6 +61,7 @@ private:
     GO_SS_Goal* mp_ssGoal;
     GO_SS_TimeDelay* mp_ssTimeDelay;
     GO_SS_Fan* mp_ssFan;
+    GO_SS_KitchenTimer* mp_ssKitchenTimer;
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
     //コンストラクタで使用

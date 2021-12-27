@@ -2,6 +2,9 @@
 #include "GO_SS_Wall.h"
 #include "fade.h"
 #include <cmath>
+#include "GO_SS_Collision.h"
+#include "GO_SS_KitchenTimer.h"
+#include "GO_SS_Player.h"
 
 void GO_SS_Timer::Initialize(void)
 {
@@ -35,6 +38,8 @@ void GO_SS_Timer::Initialize(void)
 		Timer_Third.u = 0.0f;
 		Timer_Third.v = 0.0f;
 	}
+
+
 }
 
 void GO_SS_Timer::Finalize(void)
@@ -100,6 +105,10 @@ void GO_SS_Timer::FirstNum(void)
 		//GAMEOVERÇ÷à⁄çsÇ∑ÇÈ
 		//SceneTransition(SCENE_GAMEOVER);
 	}
+
+
+
+	
 
 	//---------------------------------------------
 	//	uvílÇÃê›íË

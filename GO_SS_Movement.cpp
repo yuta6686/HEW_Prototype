@@ -7,6 +7,7 @@
 #include "GO_SS_Map.h"
 #include "GO_SS_Effect_Wind.h"
 #include "GO_SS_Goal.h"
+#include "GO_SS_KitchenTimer.h"
 
 #include <cmath>
 
@@ -82,6 +83,8 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pMap->MoveMapObject(-10.0f);
 
 	m_pGoal->AddX(-10.0f);
+
+	m_pKitchenTimer->AddX(-10.0f);
 
 	//m_pEffectWind->SetEffTrue();
 }
@@ -183,6 +186,8 @@ void GO_SS_Movement::BackGroundMovement_Pendulum()
 	m_pMap->MoveMapObject(-10.0f * m_TimeDelay);
 
 	m_pGoal->AddX(-10.0f * m_TimeDelay);
+
+	m_pKitchenTimer->AddX(-10.0f * m_TimeDelay);
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
@@ -214,6 +219,7 @@ void GO_SS_Movement::MovementManager(void)
 		m_pBackGround->SubU(BG_SCROLL_SPEED * m_TimeDelay);
 		m_pMap->MoveMapObject(MAP_OBJ_MOVING_SPEED * m_TimeDelay);
 		m_pGoal->AddX(GOAL_MOVING_SPEED * m_TimeDelay);
+		m_pKitchenTimer->AddX(KTIMER_MOVING_SPEED * m_TimeDelay);
 	}
 	//¶“ü—Í
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
@@ -221,6 +227,7 @@ void GO_SS_Movement::MovementManager(void)
 		m_pBackGround->AddU(BG_SCROLL_SPEED * m_TimeDelay);
 		m_pMap->MoveMapObject(-MAP_OBJ_MOVING_SPEED * m_TimeDelay);
 		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay);
+		m_pKitchenTimer->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay);
 	}
 
 	MovementManager_ForFan();

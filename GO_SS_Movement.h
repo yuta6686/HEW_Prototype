@@ -28,6 +28,7 @@ class GO_SS_Effect_Wind;
 class GO_SS_Goal;
 class GO_SS_TimeDelay;
 class GO_SS_Fan;
+class GO_SS_KitchenTimer;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
@@ -75,6 +76,7 @@ private:
     GO_SS_Goal* m_pGoal;
     GO_SS_TimeDelay* m_pTimeDelay;
     GO_SS_Fan* m_pFan;
+    GO_SS_KitchenTimer* m_pKitchenTimer;
 
     //ÉÅÉìÉoïœêî
     int JumpCounter = 0;
