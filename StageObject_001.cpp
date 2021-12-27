@@ -99,10 +99,10 @@ bool StageObject_001::IsMouseOver(void)
 void StageObject_001::MouseOverUpdate(void)
 {
 	if (IsMouseOver()) {
-		m_light.SetIlluminate(true,m_Vertex.pos);
+		m_light.SetIlluminate(true,m_Vertex.pos,m_Vertex.size);
 	}
 	else {
-		m_light.SetIlluminate(false, m_Vertex.pos);
+		m_light.SetIlluminate(false, m_Vertex.pos, m_Vertex.size);
 	}
 }
 

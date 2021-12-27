@@ -171,10 +171,13 @@
     <ClCompile Include="StageObject_001.cpp" />
     <ClCompile Include="StageObject_002.cpp" />
     <ClCompile Include="StageObject_003.cpp" />
+    <ClCompile Include="StageObject_GoBack.cpp" />
+    <ClCompile Include="StageObject_Tutorial.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="Title_Object.cpp" />
+    <ClCompile Include="Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Effect.h" />
@@ -217,6 +220,7 @@
     <ClInclude Include="NattoRotateObject.h" />
     <ClInclude Include="NRO_Natto.h" />
     <ClInclude Include="renderer.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="SelectStage.h" />
@@ -228,10 +232,16 @@
     <ClInclude Include="StageObject_001.h" />
     <ClInclude Include="StageObject_002.h" />
     <ClInclude Include="StageObject_003.h" />
+    <ClInclude Include="StageObject_GoBack.h" />
+    <ClInclude Include="StageObject_Tutorial.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="Title_Object.h" />
+    <ClInclude Include="Tutorial.h" />
     <ClInclude Include="VertexParameter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="sample.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

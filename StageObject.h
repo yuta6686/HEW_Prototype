@@ -52,7 +52,8 @@ public:
 
 	virtual STAGE_NUM ReturnStageNum(void) = 0;
 
-	virtual D3DXVECTOR2 GetPos(void) { return m_Vertex.pos; }
+	virtual D3DXVECTOR2 GetPos(void)	{ return m_Vertex.pos; }
+	virtual D3DXVECTOR2 GetSize(void)	{ return m_Vertex.size; }
 
 protected:
 

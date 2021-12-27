@@ -95,6 +95,20 @@ HRESULT InitTitle(void)
 	g_String_Vertex.size = D3DXVECTOR2(0.0f, 5.0f);
 
 
+	g_natto = 1200.0f;
+	g_i = 0;
+	g_count = 0;
+
+	m_Jump = -10.75f;
+	g_gravity = 1.0f;
+	g_Action = 0;
+
+	biruk[0] = 0.0f;
+	biruk[1] = 0.0f;
+	biruk[2] = 1.0f;
+	biruk[3] = 1.0f;
+
+	g_U = 0.0f;
 
 	return S_OK;
 
@@ -260,7 +274,11 @@ void Action(int ActionScene)//引数：アクションナンバー
 
 	case 9://シーン移行のアクション
 		if (biruk[0] >= 0.05f)
+		{
+			g_Action = 0;
 			SceneTransition(SCENE_SELECT_STAGE);
+		}
+		
 		else
 		{
 			biruk[0] += 0.0016f;
