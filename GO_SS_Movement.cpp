@@ -222,6 +222,33 @@ void GO_SS_Movement::MovementManager(void)
 		m_pMap->MoveMapObject(-MAP_OBJ_MOVING_SPEED * m_TimeDelay);
 		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay);
 	}
+
+	MovementManager_ForFan();
+}
+
+void GO_SS_Movement::MovementManager_ForFan()
+{
+	switch (m_pFan->GetCollisionNum())
+	{
+	case FAN_COLL_NONE:
+		m_ForFan.SetOnceFlag(false);
+		break;
+	case FAN_COLL_UP:
+		m_ForFan.SetOnceFlag(true);
+		m_pPlayer->AddYPos(m_ForFan.GetWindSpeed() * -1.0f);
+
+		break;
+	case FAN_COLL_LEFT:
+		m_ForFan.SetOnceFlag(true);
+
+		//m_pBackGround->AddU(m_ForFan.GetWindSpeed() * m_TimeDelay);
+		m_pMap->MoveMapObject(m_ForFan.GetWindSpeed() * m_TimeDelay);
+		m_pGoal->AddX(m_ForFan.GetWindSpeed() * m_TimeDelay);
+		break;
+	default:
+		m_ForFan.SetOnceFlag(false);
+		break;
+	}
 }
 
 void GO_SS_Movement::FromAbyss()

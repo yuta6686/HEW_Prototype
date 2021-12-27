@@ -160,3 +160,17 @@ void GO_SS_Fan::DebugOut(void)
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
 }
+
+void PlayerMoveForFan::ChangeWindSpeed()
+{
+	if (once) {
+		if (windSpeed >= 10.0f) {
+			once = false;
+			windSpeed = WIND_DEFAULT_SPEED;
+		}
+		else {
+			windSpeed += WIND_ACCELERATION;
+		}
+	}
+	
+}

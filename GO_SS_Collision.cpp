@@ -87,8 +87,7 @@ void GO_SS_Collision::CJ_PlayerFan(void)
 {
 	for (int i = 0; i < m_pFan->FANS_MAX; i++)
 	{
-		if (m_FanInfo[i].use)
-		{
+		if (m_FanInfo[i].use) {
 			if (m_FanInfo[i].isWork)
 			{
 				//ãŒü‚«
@@ -99,6 +98,11 @@ void GO_SS_Collision::CJ_PlayerFan(void)
 							m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
 					{
 						/*ãŒü‚«“–‚½‚è”»’èˆ—*/
+						m_pFan->SetCollisionNum(FAN_COLL_UP);
+					}
+					else
+					{
+						m_pFan->SetCollisionNum(FAN_COLL_NONE);
 					}
 				}
 				//¶‚Þ‚«
@@ -109,8 +113,17 @@ void GO_SS_Collision::CJ_PlayerFan(void)
 							m_FanInfo[i].fanB_Pos.y + WALL_HEIGHT / 2), m_FanInfo[i].size))
 					{
 						/*¶Œü‚«“–‚½‚è”»’è‚Ìˆ—*/
+						m_pFan->SetCollisionNum(FAN_COLL_LEFT);
+
 					}
+					else {
+						m_pFan->SetCollisionNum(FAN_COLL_NONE);
+					}
+
 				}
+			}
+			else {
+				m_pFan->SetCollisionNum(FAN_COLL_NONE);
 			}
 		}
 	}
