@@ -67,5 +67,6 @@ private:
     void DebugOut(void);
     void CJ_GoalPlayer(void);
     void CJ_KitchenTimerPlayer(void);
+
 };
 

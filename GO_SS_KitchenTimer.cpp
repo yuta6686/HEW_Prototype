@@ -6,6 +6,7 @@
 #include "input.h"
 #include "fade.h"
 
+
 void GO_SS_KitchenTimer::Initialize(void)
 {
 	KitchenTimer_Texture = LoadTexture(KTIMER_TEX_NAME);

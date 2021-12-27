@@ -11,6 +11,7 @@
 #include "input.h"
 #include "fade.h"
 #include "GO_SS_KitchenTimer.h"
+#include "GO_SS_Timer.h"
 
 
 void GO_SS_Collision::CollisionUpdate(void)
@@ -39,7 +40,6 @@ void GO_SS_Collision::CollisionUpdate(void)
 	CJ_KitchenTimerPlayer();
 
 	DebugOut();
-
 }
 
 // ----------------------------------------------------------------
@@ -184,5 +184,4 @@ void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
 	{
 		m_pKitchenTimer->SetUse(false);
 	}
-
 }
