@@ -29,104 +29,6 @@ void Tutorial::TutorialTextureLoad()
 	//	↑中村書いて
 }
 
-
-void Tutorial::Init()
-{
-	//オブジェクト情報初期化
-	for (int i = 0; i < TUTORIAL_MAX; i++) {
-		m_Obj[i].pos	= D3DXVECTOR2(0.0f, 0.0f);
-		m_Obj[i].size	= D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT);
-		m_Obj[i].use	= true;
-	}
-	
-	//現在ページリセット
-	m_nowPage = TUTORIAL_001;
-
-	//テクスチャロード
-	TutorialTextureLoad();
-
-	//この中には処理を書かないでください
-	//関数の中に書いてください
-	TutorialInit_001();
-	TutorialInit_002();
-	TutorialInit_003();
-	TutorialInit_004();
-
-
-}
-
-void Tutorial::Uninit()
-{
-	//この中には処理を書かないでください
-	//関数の中に書いてください
-	
-	//ここはいらないかも？
-
-}
-
-void Tutorial::Update()
-{
-	//この中には処理を書かないでください
-	//関数の中に書いてください
-
-	//	useフラグ管理
-	ObjUseManag();
-
-	switch (m_nowPage)
-	{
-	case TUTORIAL_001:
-		TutorialUpdate_001();
-		break;
-	case TUTORIAL_002:
-		TutorialUpdate_002();
-		break;
-	case TUTORIAL_003:
-		TutorialUpdate_003();
-		break;
-	case TUTORIAL_004:
-		TutorialUpdate_004();
-		break;
-	case TUTORIAL_MAX:
-		TutorialUpdate_Max();
-		break;
-	default:
-		break;
-	}
-
-	//	次のページへ
-	if (GetKeyboardTrigger(DIK_RETURN) ||
-		GetKeyboardTrigger(DIK_SPACE) ||
-		IsMouseLeftTriggered())
-	{
-		m_nowPage++;
-	}
-}
-
-void Tutorial::Draw()
-{
-	//この中には処理を書かないでください
-	//関数の中に書いてください
-	switch (m_nowPage)
-	{
-	case TUTORIAL_001:
-		TutorialDraw_001();
-		break;
-	case TUTORIAL_002:
-		TutorialDraw_002();
-		break;
-	case TUTORIAL_003:
-		TutorialDraw_003();
-		break;
-	case TUTORIAL_004:
-		TutorialDraw_004();
-		break;
-	default:
-		break;
-	}
-}
-
-
-
 //-------------------------------
 //	Init
 //-------------------------------
@@ -264,17 +166,7 @@ void Tutorial::TutorialUpdate_Max()
 
 }
 
-void Tutorial::ObjUseManag()
-{
-	for (int i = 0; i < TUTORIAL_MAX; i++) {
-		if (i == m_nowPage) {
-			m_Obj[i].use = true;
-		}
-		else {
-			m_Obj[i].use = false;
-		}
-	}
-}
+
 
 
 
@@ -358,3 +250,109 @@ void Tutorial::TutorialDraw_004()
 }
 
 
+void Tutorial::Init()
+{
+	//オブジェクト情報初期化
+	for (int i = 0; i < TUTORIAL_MAX; i++) {
+		m_Obj[i].pos = D3DXVECTOR2(0.0f, 0.0f);
+		m_Obj[i].size = D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT);
+		m_Obj[i].use = true;
+	}
+
+	//現在ページリセット
+	m_nowPage = TUTORIAL_001;
+
+	//テクスチャロード
+	TutorialTextureLoad();
+
+	//この中には処理を書かないでください
+	//関数の中に書いてください
+	TutorialInit_001();
+	TutorialInit_002();
+	TutorialInit_003();
+	TutorialInit_004();
+
+
+}
+
+void Tutorial::Uninit()
+{
+	//この中には処理を書かないでください
+	//関数の中に書いてください
+
+	//ここはいらないかも？
+
+}
+
+void Tutorial::ObjUseManag()
+{
+	for (int i = 0; i < TUTORIAL_MAX; i++) {
+		if (i == m_nowPage) {
+			m_Obj[i].use = true;
+		}
+		else {
+			m_Obj[i].use = false;
+		}
+	}
+}
+
+void Tutorial::Update()
+{
+	//この中には処理を書かないでください
+	//関数の中に書いてください
+
+	//	useフラグ管理
+	ObjUseManag();
+
+	switch (m_nowPage)
+	{
+	case TUTORIAL_001:
+		TutorialUpdate_001();
+		break;
+	case TUTORIAL_002:
+		TutorialUpdate_002();
+		break;
+	case TUTORIAL_003:
+		TutorialUpdate_003();
+		break;
+	case TUTORIAL_004:
+		TutorialUpdate_004();
+		break;
+	case TUTORIAL_MAX:
+		TutorialUpdate_Max();
+		break;
+	default:
+		break;
+	}
+
+	//	次のページへ
+	if (GetKeyboardTrigger(DIK_RETURN) ||
+		GetKeyboardTrigger(DIK_SPACE) ||
+		IsMouseLeftTriggered())
+	{
+		m_nowPage++;
+	}
+}
+
+void Tutorial::Draw()
+{
+	//この中には処理を書かないでください
+	//関数の中に書いてください
+	switch (m_nowPage)
+	{
+	case TUTORIAL_001:
+		TutorialDraw_001();
+		break;
+	case TUTORIAL_002:
+		TutorialDraw_002();
+		break;
+	case TUTORIAL_003:
+		TutorialDraw_003();
+		break;
+	case TUTORIAL_004:
+		TutorialDraw_004();
+		break;
+	default:
+		break;
+	}
+}
