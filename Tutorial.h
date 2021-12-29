@@ -6,6 +6,14 @@
 //	change -> 中村
 //	
 //-------------------------------
+#include "main.h"
+
+struct TUTORIAL_INFO {
+	D3DXVECTOR2 pos;
+	D3DXVECTOR2 size;
+
+	bool use;
+};
 
 //	ページ管理
 enum TUTORIAL {
@@ -19,22 +27,46 @@ enum TUTORIAL {
 
 class Tutorial
 {
-private:	
+
+private:	//	ヘッダー内で値を定義する変数はここに書く
+
 	//ページ管理変数
-	int m_nowPage = 0;
+	int m_nowPage = TUTORIAL_001;
 
-	char* m_TexName_001 = "data/TEXTURE/mati1.png";
-	//const char* m_TexName_002 = "data/TEXTURE/mati1.png";
-		//	↑こんな感じで追加していってくれ
+	char* m_TexName_001 = "data/TEXTURE/Tutorial_001.png";
+	char* m_TexName_002 = "data/TEXTURE/Tutorial_002.png";
+	char* m_TexName_003 = "data/TEXTURE/Tutorial_003.png";
+	char* m_TexName_004 = "data/TEXTURE/Tutorial_004.png";
 
-public:
-	void Init();
-	void Uninit();
-	void Update();
-	void Draw();
+	
+	
+
+	//	↓中村書いて
+
+
+
+
+
+
+
+	//	↑中村書いて
 
 private:
+	//	↓中村書いて
+
+
+
+
+
+
+
+	//	↑中村書いて
+private:
+	//	↓柳澤が書いた
 //	メンバ変数	
+
+	//	頂点データ
+	TUTORIAL_INFO m_Obj[TUTORIAL_MAX];
 
 	//	テクスチャーの保存用変数
 	int m_TexIndex_001;
@@ -63,7 +95,9 @@ private:
 	void TutorialUpdate_002();
 	void TutorialUpdate_003();
 	void TutorialUpdate_004();
+	void TutorialUpdate_Max();
 
+	void ObjUseManag();
 //-------------------------------
 //	Draw
 //-------------------------------
@@ -72,6 +106,13 @@ private:
 	void TutorialDraw_003();
 	void TutorialDraw_004();
 
+
+//	パブリックは基本書かない！
+public:
+	void Init();
+	void Uninit();
+	void Update();
+	void Draw();
 };
 
 
