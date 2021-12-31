@@ -37,7 +37,7 @@ void GO_SS_Fan::Update(void)
 		}
 	}
 	
-	DebugOut();
+	//DebugOut();
 }
 
 void GO_SS_Fan::Draw(void)

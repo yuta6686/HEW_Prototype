@@ -47,6 +47,7 @@ private:
     GO_SS_Fan* m_pFan;
  
 //????????         CollisionJudge_ -> CJ_
+    int collTemp;
 
 //?v???C???[???
     int CJ_PlayerWall(void);
@@ -62,5 +63,6 @@ private:
 
     void DebugOut(void);
     void CJ_GoalPlayer(void);
+    void PlayerYCorrection(int index);
 };
 
