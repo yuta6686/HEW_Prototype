@@ -8,10 +8,13 @@
 // 自分自身が他のオブジェクトの情報をしる必要がない。
 //      
 // こいつだけがすべてを知っている
+// 
+// セッターは下に移動しました
 //
 //---------------------------------------------
 #include "GameObject.h"
 #include "GO_SS_Collision.h"
+#include "GO_SS_Fan.h"
 
 #define TIME_DELAY_VALUE 0.3f
 
@@ -25,6 +28,7 @@ class GO_SS_Effect_Wind;
 class GO_SS_Goal;
 class GO_SS_TimeDelay;
 class GO_SS_Fan;
+class GO_SS_KitchenTimer;
 
 enum PlayerMove {
     PLAYERMOVE_NONE,
@@ -36,6 +40,17 @@ enum PlayerMove {
 class GO_SS_Movement :
     public GameObject
 {
+private:
+    //  定数
+    const FLOAT BG_SCROLL_SPEED = 0.001f;
+    const FLOAT MAP_OBJ_MOVING_SPEED = 5.0f;
+    const FLOAT GOAL_MOVING_SPEED = 5.0f;
+    const FLOAT KTIMER_MOVING_SPEED = 5.0f;
+
+    const int PENDULUM_COUNTER_MAX = 100;
+
+    //変更可能変数
+    FLOAT m_TimeDelay = 1.0f;
 public:
     // GameObject を介して継承されました
     virtual void Initialize(void) override {};
@@ -44,7 +59,76 @@ public:
     virtual void Draw(void) override {};
     virtual int GetGameScene(void) override { return GAME_SCENE; }
 
-    //セッター
+    void SetMap(GO_SS_Map* p) { m_pMap = p; }
+    void SetEffWind(GO_SS_Effect_Wind* p) { m_pEffectWind = p; }
+    void SetTimeDelay(GO_SS_TimeDelay* p) { m_pTimeDelay = p; }
+
+private:
+    //ゲームシーン
+    const int GAME_SCENE = GAMESCENE_GAME_TEST;
+
+    GO_SS_BackGround* m_pBackGround;
+    GO_SS_Player* m_pPlayer;
+    GO_SS_Wall* m_pWall;
+    GO_SS_ShotString* m_pShotString;
+    GO_SS_Target* m_pTarget;
+    GO_SS_Map* m_pMap;
+    GO_SS_Effect_Wind* m_pEffectWind;
+    GO_SS_Goal* m_pGoal;
+    GO_SS_TimeDelay* m_pTimeDelay;
+    GO_SS_Fan* m_pFan;
+    GO_SS_KitchenTimer* m_pKitchenTimer;
+
+    //メンバ変数
+    int JumpCounter = 0;
+    int JumpCountMax = 60;
+    int Pendulum_Counter = 0;
+
+    GO_SS_Collision m_ssCollision;      //当たり判定を司る者
+
+    //
+    PlayerMoveForFan m_ForFan;
+
+//メンバ関数
+
+    //  リニアー
+    void JumpMove_Liner();
+
+    //  振り子
+    void JumpMove_Pendulum();
+
+    //↑JumpMove_Pendulumに含まれる処理
+    //{
+        void PlayerMove_Pendulum();
+        void BackGroundMovement_Pendulum();
+    //}
+    
+
+    //  プレイヤーの動き切り替え
+    void PlayerMoveSwitch(PlayerMove index);
+
+
+    //移動
+    void MovementManager(void);
+       
+    //  風の移動
+    //{
+        void MovementManager_ForFan();
+    //}
+
+    //奈落からの期間
+    void FromAbyss();
+
+    //プレイヤー遅延処理
+    void SetTimeDelay(void);
+
+    //デバッグ用
+    void DebugOut(int i);
+
+
+
+public:
+//セッター
     void SetBackGround(GO_SS_BackGround* p_BackGround) {
         m_pBackGround = p_BackGround;
         m_ssCollision.SetBackGround(p_BackGround);
@@ -73,92 +157,10 @@ public:
         m_pFan = p;
         m_ssCollision.SetFan(p);
     }
-
-    void SetMap(GO_SS_Map* p) { m_pMap = p; }
-    void SetEffWind(GO_SS_Effect_Wind* p) { m_pEffectWind = p; }
-    void SetTimeDelay(GO_SS_TimeDelay* p) { m_pTimeDelay = p; }
-
-
-
-private:
-    //ゲームシーン
-    const int GAME_SCENE = GAMESCENE_GAME_TEST;
-
-    GO_SS_BackGround* m_pBackGround;
-    GO_SS_Player* m_pPlayer;
-    GO_SS_Wall* m_pWall;
-    GO_SS_ShotString* m_pShotString;
-    GO_SS_Target* m_pTarget;
-    GO_SS_Map* m_pMap;
-    GO_SS_Effect_Wind* m_pEffectWind;
-    GO_SS_Goal* m_pGoal;
-    GO_SS_TimeDelay* m_pTimeDelay;
-    GO_SS_Fan* m_pFan;
-
-    //メンバ変数
-    int JumpCounter = 0;
-    int JumpCountMax = 60;
-
-    void SetTimeDelay(void);
-
-    FLOAT m_TimeDelay = 1.0f;
-
-    GO_SS_Collision m_ssCollision;      //当たり判定を司る者
-
-//メンバ関数
-
-//-----------------------------------------------------------------------------------------
-//	JumpMove_Liner()
-//-----------------------------------------------------------------------------------------
-//	直線的な動き
-//	ターゲットまで直で向かう
-//-----------------------------------------------------------------------------------------
-    void JumpMove_Liner();
-
-    //-----------------------------------------------------------------------------------------
-    //	JumpMove_Pendulum()
-    //-----------------------------------------------------------------------------------------
-    //	振り子のような動き
-    //	下に動いてから、上に上がる
-    //-----------------------------------------------------------------------------------------
-    void JumpMove_Pendulum();
-
-    void PlayerMove_Pendulum();
-
-    void BackGroundMovement_Pendulum();
-
-    int Pendulum_Counter = 0;
-
-    const int PENDULUM_COUNTER_MAX = 100;
-
-    //-----------------------------------------------------------------------------------------
-    //    PlayerMoveSwitch(PlayerMove index);
-    //-----------------------------------------------------------------------------------------
-    //	プライヤーの挙動	-> 切り替え(PlayerMove　index)
-    //    PLAYERMOVE_LINEAR,
-    //    PLAYERMOVE_CURVE,
-    //    PLAYERMOVE_PENDULUM,
-    //-----------------------------------------------------------------------------------------
-    void PlayerMoveSwitch(PlayerMove index);
-
-
-    //移動
-    void MovementManager(void);
-
-    void FromAbyss();
-
-
-
-
-    //デバッグ用
-    void DebugOut(int i);
-
-    //========================================
-    //定数
-    //========================================
-    const FLOAT BG_SCROLL_SPEED = 0.001f;
-    const FLOAT MAP_OBJ_MOVING_SPEED = 5.0f;
-    const FLOAT GOAL_MOVING_SPEED = 5.0f;
+    void SetKitchenTimer(GO_SS_KitchenTimer* p_KitchenTimer) {
+        m_pKitchenTimer = p_KitchenTimer;
+        m_ssCollision.SetKitchenTimer(p_KitchenTimer);
+    }
 };
 
 

@@ -10,7 +10,8 @@
 #include "main.h"
 #include "input.h"
 #include "fade.h"
-
+#include "GO_SS_KitchenTimer.h"
+#include "GO_SS_Timer.h"
 
 
 void GO_SS_Collision::CollisionUpdate(void)
@@ -24,23 +25,27 @@ void GO_SS_Collision::CollisionUpdate(void)
 
 	Goal_Vertex = m_pGoal->GetGoal();
 
+	//KitchenTimer_Vertex = m_pKitchenTimer->GetKitchenTimer();
+
 	//プレイヤーと壁の衝突処理
 	if (collTemp = CJ_PlayerWall() >= 0)
 		m_pPlayer->IsColl = true;
 	else m_pPlayer->IsColl = false;
 
 	//プレイヤーと稼働中換気扇衝突判定
-	//************************************
-	//この関数ないに追加
-	//************************************
+		//************************************
+		//この関数ないに追加
+		//************************************
 	CJ_PlayerFan();
 
 	CJ_GoalPlayer();
 
 	PlayerYCorrection(collTemp);
+	CJ_KitchenTimerPlayer();
 
 	//DebugOut();
 
+	DebugOut();
 }
 
 // ----------------------------------------------------------------
@@ -89,8 +94,7 @@ void GO_SS_Collision::CJ_PlayerFan(void)
 {
 	for (int i = 0; i < m_pFan->FANS_MAX; i++)
 	{
-		if (m_FanInfo[i].use)
-		{
+		if (m_FanInfo[i].use) {
 			if (m_FanInfo[i].isWork)
 			{
 				//上向き
@@ -101,6 +105,11 @@ void GO_SS_Collision::CJ_PlayerFan(void)
 							m_FanInfo[i].fanB_Pos.y - WALL_HEIGHT + WALL_HEIGHT / 2), m_FanInfo[i].size))
 					{
 						/*上向き当たり判定処理*/
+						m_pFan->SetCollisionNum(FAN_COLL_UP);
+					}
+					else
+					{
+						m_pFan->SetCollisionNum(FAN_COLL_NONE);
 					}
 				}
 				//左むき
@@ -111,8 +120,17 @@ void GO_SS_Collision::CJ_PlayerFan(void)
 							m_FanInfo[i].fanB_Pos.y + WALL_HEIGHT / 2), m_FanInfo[i].size))
 					{
 						/*左向き当たり判定の処理*/
+						m_pFan->SetCollisionNum(FAN_COLL_LEFT);
+
 					}
+					else {
+						m_pFan->SetCollisionNum(FAN_COLL_NONE);
+					}
+
 				}
+			}
+			else {
+				m_pFan->SetCollisionNum(FAN_COLL_NONE);
 			}
 		}
 	}
@@ -205,5 +223,13 @@ void GO_SS_Collision::PlayerYCorrection(int index)
 			if (playerPos.y + playerSize.y * 0.5f >= vwall.pos.y)
 				m_pPlayer->SetPosY(vwall.pos.y - playerSize.y * 0.5f);
 		}
+	}
+}
+
+void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
+{
+	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), m_pKitchenTimer->GetKitchenTimer().pos, m_pKitchenTimer->GetKitchenTimer().size))
+	{
+		m_pKitchenTimer->SetUse(false);
 	}
 }

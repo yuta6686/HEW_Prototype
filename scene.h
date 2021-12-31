@@ -4,14 +4,15 @@
 // 登録シーン一覧
 enum SCENE
 {
-	SCENE_NONE,		//シーン処理なし
-	SCENE_TITLE,	//タイトル
-	SCENE_SELECT_STAGE,
-	SCENE_GAME,		//ゲーム
-	SCENE_RESULT,	//リザルト
-	SCENE_GAMEOVER,	//ゲームオーバー
+	SCENE_NONE,			//シーン処理なし
+	SCENE_TITLE,		//タイトル
+	SCENE_SELECT_STAGE,	//ステージ選択
+	SCENE_TUTORIAL,		//チュートリアル
+	SCENE_GAME,			//ゲーム
+	SCENE_RESULT,		//リザルト
+	SCENE_GAMEOVER,		//ゲームオーバー
 
-	SCENE_MAX		//最後だとわかる奴をいれる
+	SCENE_MAX			//最後だとわかる奴をいれる
 };
 
 void InitScene(SCENE index);

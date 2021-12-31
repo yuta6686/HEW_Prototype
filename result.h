@@ -1,6 +1,6 @@
-//=============================================================================
+ï»¿//=============================================================================
 //
-// ƒŠƒUƒ‹ƒg‰æ–Êˆ— [result.h]
+// ãƒªã‚¶ãƒ«ãƒˆç”»é¢å‡¦ç† [result.h]
 // Author : 
 //
 //=============================================================================
@@ -8,20 +8,44 @@
 
 #include "main.h"
 #include "renderer.h"
+#include "Title_Object.h"
+
+
+
+
 
 //*****************************************************************************
-// ƒ}ƒNƒ’è‹`
+// ãƒã‚¯ãƒ­å®šç¾©
 //*****************************************************************************
+static char TEX_NAME[128] = "data/TEXTURE/number2.png";
+
+//static int Number_Texture;
+
+
+//	GameSceneç”¨å¤‰æ•°
+//const int m_GameScene = GAMESCENE_GAME_TEST;
+
+//	UVç”¨ã®å¤‰æ•°
+const float NUMBER_X = 4.0f;
+const float NUMBER_Y = 4.0f;
+const float NUMBER_WIDTH = 1.0f / NUMBER_X;
+const float NUMBER_HEIGHT = 1.0f / NUMBER_Y;
+
+
+static VERTEX_ALPHA_ANIMATION_USE Timer_Vertex;	//1æ¡ç›®
+static VERTEX_UV Timer_Second;					//å°æ•°ç‚¹ç¬¬ä¸€ä½
+static VERTEX_UV Timer_Third;					//å°æ•°ç‚¹ç¬¬äºŒä½
 
 
 
 
 //*****************************************************************************
-// ƒvƒƒgƒ^ƒCƒvéŒ¾
+// ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
 //*****************************************************************************
 HRESULT InitResult(void);
 void UninitResult(void);
 void UpdateResult(void);
 void DrawResult(void);
-
-
+void FirstNum();
+void SecondNum();
+void ThirdNum();

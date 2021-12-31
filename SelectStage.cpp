@@ -4,6 +4,16 @@
 
 #include "input.h"
 
+void SelectStage::Create(void)
+{
+	m_pStageObjects[0] = m_SO_Factory.Create_001();
+	m_pStageObjects[1] = m_SO_Factory.Create_002();
+	m_pStageObjects[2] = m_SO_Factory.Create_003();
+	m_pStageObjects[3] = m_SO_Factory.Create_Tutorial();
+	m_pStageObjects[4] = m_SO_Factory.Create_GoBack();
+
+	m_effect[0] = m_EF.Create();
+}
 
 SelectStage::SelectStage()
 {
@@ -104,14 +114,7 @@ void SelectStage::Draw(void)
 	SetBlendState(BLEND_MODE_ALPHABLEND);
 }
 
-void SelectStage::Create(void)
-{
-	m_pStageObjects[0] = m_SO_Factory.Create_001();
-	m_pStageObjects[1] = m_SO_Factory.Create_002();
-	m_pStageObjects[2] = m_SO_Factory.Create_003();
 
-	m_effect[0] = m_EF.Create();
-}
 
 void SelectStage::Click()
 {
@@ -142,7 +145,7 @@ void SelectStage::IlluminateUpdate(void)
 		if (m_pStageObjects[i] == nullptr)continue;
 
 		if (m_pStageObjects[i]->ReturnStageNum() == m_SO_ArrowKey.GetStageNumSelect()) {
-			m_Spotlight.SetIlluminate(true, m_pStageObjects[i]->GetPos());
+			m_Spotlight.SetIlluminate(true, m_pStageObjects[i]->GetPos(),m_pStageObjects[i]->GetSize());
 		}
 	}
 }

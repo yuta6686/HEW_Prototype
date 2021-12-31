@@ -14,6 +14,8 @@ struct VERTEX_T {
 	D3DXVECTOR2		vel;	//速度ベクトル
 	D3DXCOLOR		color;	//頂点カラー
 	D3DXVECTOR2		size;
+
+	bool use;
 };
 
 struct VERTEX_A :public VERTEX_T {
@@ -78,6 +80,10 @@ struct VERTEX_WALL :public VERTEX_NOMAL {
 };
 
 struct VERTEX_GOAL :public VERTEX_NOMAL {
+	bool use;
+};
+
+struct VERTEX_KTIMER :public VERTEX_NOMAL {
 	bool use;
 };
 
