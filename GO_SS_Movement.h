@@ -105,6 +105,8 @@ private:
     
 
     //  ƒvƒŒƒCƒ„[‚Ì“®‚«Ø‚è‘Ö‚¦
+
+    void Update_PlayerMoveSwitch();
     void PlayerMoveSwitch(PlayerMove index);
 
 

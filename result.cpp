@@ -5,7 +5,7 @@
 //
 //=============================================================================
 
-#include"main.h"
+#include "main.h"
 #include "result.h"
 #include "input.h"
 #include "texture.h"
@@ -51,6 +51,7 @@ float Result_Uipos3;
 //=============================================================================
 HRESULT InitResult(void)
 {
+	ShowCursor(false);
 
 	//テクスチャロード----------------
 	Number_Texture = LoadTexture("data/TEXTURE/number2.png");
@@ -109,7 +110,7 @@ HRESULT InitResult(void)
 //=============================================================================
 void UninitResult(void)
 {
-
+	ShowCursor(true);
 }
 
 //=============================================================================

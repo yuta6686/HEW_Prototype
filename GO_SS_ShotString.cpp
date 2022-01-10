@@ -143,7 +143,7 @@ void GO_SS_ShotString::TargetClick(void)
 		m_AimFlag = false;		
 	}
 
-	if (m_AimTarget < 0 || m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f) {
+	if (m_AimTarget < 0 || m_pTarget->GetTarget()[m_AimTarget].pos.x <= 0.0f) {
 		SetStringUse(false);
 	}
 

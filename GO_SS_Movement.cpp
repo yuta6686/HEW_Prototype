@@ -16,11 +16,9 @@ void GO_SS_Movement::Update(void)
 	//時間停止処理
 	SetTimeDelay();
 
-	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
-		PLAYERMOVE_LINEAR,
-		PLAYERMOVE_PENDULUM,
-	*/
-	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
+	Update_PlayerMoveSwitch();
+
+
 
 
 	//当たり判定の更新処理
@@ -188,6 +186,19 @@ void GO_SS_Movement::BackGroundMovement_Pendulum()
 	m_pGoal->AddX(-10.0f * m_TimeDelay);
 
 	m_pKitchenTimer->AddX(-10.0f * m_TimeDelay);
+}
+
+void GO_SS_Movement::Update_PlayerMoveSwitch()
+{
+	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
+	PLAYERMOVE_LINEAR,
+	PLAYERMOVE_PENDULUM,
+*/
+	
+	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
+
+	
+	
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
