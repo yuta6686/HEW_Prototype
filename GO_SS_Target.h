@@ -33,6 +33,7 @@ public:
     void AddPosX(FLOAT x);
 
     VERTEX_TARGET* GetTarget(void) { return &Target_Vertex[0]; }
+    VERTEX_TARGET* GetTarget(int index) { return &Target_Vertex[index]; }
 
     int GetTargetNumMax(void) { return TARGET_NUM_MAX; }
 

@@ -143,7 +143,7 @@ void GO_SS_ShotString::TargetClick(void)
 		m_AimFlag = false;		
 	}
 
-	if (m_AimTarget < 0 || m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f) {
+	if (m_AimTarget < 0 || m_pTarget->GetTarget()[m_AimTarget].pos.x <= 0.0f) {
 		SetStringUse(false);
 	}
 
@@ -164,6 +164,10 @@ void GO_SS_ShotString::TargetClick(void)
 		if (m_jumpCounter >= 120) {
 			IsClickTarget = false;
 
+			m_LinerEnd = false;
+
+			//m_IsPlayerMove = false;
+
 			m_pScramble->SetNato();
 		}
 
@@ -175,9 +179,12 @@ void GO_SS_ShotString::TargetClick(void)
 			Circle_Vertex.size.x -= Circle_Vertex.size.x / 20.0f;
 		}
 	}
-	else {
+	else 
+	{
 		IsClickTarget = false;
 		m_AimFlag = false;
+		m_LinerEnd = false;
+		//m_IsPlayerMove = false;
 	}
 }
 

@@ -16,11 +16,9 @@ void GO_SS_Movement::Update(void)
 	//時間停止処理
 	SetTimeDelay();
 
-	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
-		PLAYERMOVE_LINEAR,
-		PLAYERMOVE_PENDULUM,
-	*/
-	PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
+	Update_PlayerMoveSwitch();
+
+
 
 
 	//当たり判定の更新処理
@@ -55,6 +53,8 @@ void GO_SS_Movement::SetTimeDelay(void)
 	m_pPlayer->m_TimeDelay = m_TimeDelay;
 }
 
+
+
 //-----------------------------------------------------------------------------------------
 //	JumpMove_Liner()
 //-----------------------------------------------------------------------------------------
@@ -64,22 +64,32 @@ void GO_SS_Movement::SetTimeDelay(void)
 void GO_SS_Movement::JumpMove_Liner()
 {
 	//糸を出したら
-	if (!m_pShotString->IsClickTarget)return;
+	if (!m_pShotString->IsClickTarget || m_pShotString->m_LinerEnd)return;
 	//if (!m_pShotString->IsCollTarget)return;
 
 	m_pShotString->SetPos(m_pTarget->GetTarget()[0].pos);
 
+	
+
+	//プレイヤーと糸の角度取得
+	m_Angle = m_pShotString->GetAngle();
+
+	if (m_pShotString->GetAngle() < PI / 8.0f) {
+		m_pPlayer->IsJump = true;
+		m_pShotString->m_LinerEnd = true;
+		IsLiner = false;
+		return;
+	}
+	
+	
 	//重力リセット
 	m_pPlayer->SetGravityDefault();
 
-	//プレイヤーと糸の角度取得
-	FLOAT angle = m_pShotString->GetAngle();
-
 	//プレイヤーのY軸　動き　
-	m_pPlayer->AddYPos(-sinf(angle) * 25.0f);
+	m_pPlayer->AddYPos(-sinf(m_Angle) * 25.0f);
 
 	//背景スクロール処理
-	m_pBackGround->SubU(cosf(angle) / 100.0f);
+	m_pBackGround->SubU(cosf(m_Angle) / 100.0f);
 	m_pMap->MoveMapObject(-10.0f);
 
 	m_pGoal->AddX(-10.0f);
@@ -127,6 +137,8 @@ void GO_SS_Movement::PlayerMove_Pendulum()
 
 		//最後にジャンプ！
 		m_pPlayer->SetGravity(-10.0f);
+
+		IsPendulum = false;
 
 		//元のフラグ解除
 		m_pShotString->IsClickTarget = false;
@@ -188,6 +200,67 @@ void GO_SS_Movement::BackGroundMovement_Pendulum()
 	m_pGoal->AddX(-10.0f * m_TimeDelay);
 
 	m_pKitchenTimer->AddX(-10.0f * m_TimeDelay);
+}
+
+void GO_SS_Movement::Update_PlayerMoveSwitch()
+{
+	/*	プライヤーの挙動	-> 切り替え(PlayerMove　index)
+	PLAYERMOVE_LINEAR,
+	PLAYERMOVE_PENDULUM,
+*/
+	
+	//PlayerMoveSwitch(PLAYERMOVE_LINEAR);
+	//PlayerMoveSwitch(PLAYERMOVE_PENDULUM);
+
+
+	if (m_pTarget->GetTarget(m_pShotString->m_AimTarget)->pos.y < m_pPlayer->GetPos().y && 
+		IsLiner == false && IsPendulum == false ) 
+	{
+		m_ChaMove = PLAYERMOVE_LINEAR;
+	}
+	else 
+	{
+		m_ChaMove = PLAYERMOVE_PENDULUM;
+	}
+
+	/*if (IsLiner || IsPendulum) {
+		m_pShotString->m_IsPlayerMove = true;
+		
+	}*/
+
+	//	次の動き（m_ChaMove）と今までの動き（m_PreMove）を比較
+	//	違っていたら、クールタイムが発動
+	CheckNowMove();
+
+	PlayerMoveSwitch((PlayerMove)m_NowMove);
+
+	m_PreMove = m_NowMove;
+}
+
+void GO_SS_Movement::CheckNowMove()
+{
+	if (m_PreMove != m_ChaMove) {
+		m_ChengeMove = true;
+	}
+
+	if (m_ChengeMove) {
+		if (m_NowMove == PLAYERMOVE_PENDULUM) 
+		{
+			m_CoolMax = 120;
+		}
+		else {
+			m_CoolMax = 30;
+		}
+
+		if (m_CoolTime >= m_CoolMax) {
+			m_CoolTime = 0;
+			m_ChengeMove = false;
+			m_NowMove = m_ChaMove;
+		}
+		else {
+			m_CoolTime++;
+		}
+	}
 }
 
 void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)

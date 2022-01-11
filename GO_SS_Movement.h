@@ -84,6 +84,21 @@ private:
     int JumpCountMax = 60;
     int Pendulum_Counter = 0;
 
+    float m_Angle = 0.0f;
+
+    bool IsPendulum = false;
+    bool IsLiner = false;
+    bool m_ChengeMove = false;
+
+    int m_CoolTime = 0;
+    int m_CoolMax = 30;
+
+    int m_NowMove = PLAYERMOVE_NONE;
+    int m_PreMove = PLAYERMOVE_NONE;
+    int m_ChaMove = PLAYERMOVE_NONE;
+
+    void CheckNowMove();
+
     GO_SS_Collision m_ssCollision;      //“–‚½‚è”»’è‚ği‚éÒ
 
     //
@@ -105,6 +120,8 @@ private:
     
 
     //  ƒvƒŒƒCƒ„[‚Ì“®‚«Ø‚è‘Ö‚¦
+
+    void Update_PlayerMoveSwitch();
     void PlayerMoveSwitch(PlayerMove index);
 
 
@@ -161,6 +178,7 @@ public:
         m_pKitchenTimer = p_KitchenTimer;
         m_ssCollision.SetKitchenTimer(p_KitchenTimer);
     }
+
 };
 
 

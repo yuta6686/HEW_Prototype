@@ -38,6 +38,8 @@ public:
 
 //public •Ï”
 
+	bool m_LinerEnd = false;
+
 	bool IsClickTarget = false;
 
 	int IsInsideTarget = -1;
