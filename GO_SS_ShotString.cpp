@@ -164,6 +164,10 @@ void GO_SS_ShotString::TargetClick(void)
 		if (m_jumpCounter >= 120) {
 			IsClickTarget = false;
 
+			m_LinerEnd = false;
+
+			//m_IsPlayerMove = false;
+
 			m_pScramble->SetNato();
 		}
 
@@ -175,9 +179,12 @@ void GO_SS_ShotString::TargetClick(void)
 			Circle_Vertex.size.x -= Circle_Vertex.size.x / 20.0f;
 		}
 	}
-	else {
+	else 
+	{
 		IsClickTarget = false;
 		m_AimFlag = false;
+		m_LinerEnd = false;
+		//m_IsPlayerMove = false;
 	}
 }
 
