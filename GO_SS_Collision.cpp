@@ -28,19 +28,22 @@ void GO_SS_Collision::CollisionUpdate(void)
 	//KitchenTimer_Vertex = m_pKitchenTimer->GetKitchenTimer();
 
 	//プレイヤーと壁の衝突処理
-	if (CJ_PlayerWall() >= 0)m_pPlayer->IsColl = true;
+	if (collTemp = CJ_PlayerWall() >= 0)
+		m_pPlayer->IsColl = true;
 	else m_pPlayer->IsColl = false;
 
 	//プレイヤーと稼働中換気扇衝突判定
-	//************************************
-	//この関数ないに追加
-	//************************************
+		//************************************
+		//この関数ないに追加
+		//************************************
 	CJ_PlayerFan();
-
 
 	CJ_GoalPlayer();
 
+	PlayerYCorrection(collTemp);
 	CJ_KitchenTimerPlayer();
+
+	//DebugOut();
 
 	DebugOut();
 }
@@ -72,14 +75,14 @@ int GO_SS_Collision::CJ_PWSide(void)
 		VERTEX_WALL vwall = m_pWall->GetvWall(i);
 		if (!vwall.use)continue;
 		//左
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x, playerPos.y * 0.8f),
-			D3DXVECTOR2(playerSize.x, playerSize.y), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x, playerPos.y),
+			D3DXVECTOR2(playerSize.x, playerSize.y*0.8f), vwall.pos, vwall.size))
 		{
 			return 1;
 		}
 		//右
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.x * 0.5f, playerPos.y * 0.8f),
-			D3DXVECTOR2(playerSize.x * 0.1f, playerSize.y), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.x * 0.5f, playerPos.y),
+			D3DXVECTOR2(playerSize.x * 0.001f, playerSize.y*0.8f), vwall.pos, vwall.size))
 		{
 			return 2;
 		}
@@ -204,6 +207,22 @@ void GO_SS_Collision::CJ_GoalPlayer(void)
 	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), Goal_Vertex.pos, Goal_Vertex.size))
 	{
 		SceneTransition(SCENE_RESULT);
+	}
+}
+
+void GO_SS_Collision::PlayerYCorrection(int index)
+{
+	for (int i = 0; i < m_pWall->GetWallNumMax(); i++) {
+
+		VERTEX_WALL vwall = m_pWall->GetvWall(i);
+		if (!vwall.use)continue;
+
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x, playerPos.y + playerSize.y * 0.5f - 15.0f),
+			D3DXVECTOR2(playerSize.x * 0.8f, 8), vwall.pos, vwall.size))
+		{
+			if (playerPos.y + playerSize.y * 0.5f >= vwall.pos.y)
+				m_pPlayer->SetPosY(vwall.pos.y - playerSize.y * 0.5f);
+		}
 	}
 }
 

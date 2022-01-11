@@ -29,7 +29,7 @@ public:
     void CollisionUpdate(void);
 
 private:
-    //ƒƒ“ƒo•Ï”
+    //?????o???
     D3DXVECTOR2 playerPos;
     D3DXVECTOR2 playerSize;
 
@@ -52,6 +52,7 @@ private:
     GO_SS_KitchenTimer* m_pKitchenTimer;
  
 //????????         CollisionJudge_ -> CJ_
+    int collTemp;
 
 //?v???C???[???
     int CJ_PlayerWall(void);
@@ -67,6 +68,7 @@ private:
 
     void DebugOut(void);
     void CJ_GoalPlayer(void);
+    void PlayerYCorrection(int index);
     void CJ_KitchenTimerPlayer(void);
 
 };
