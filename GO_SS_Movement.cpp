@@ -249,7 +249,7 @@ void GO_SS_Movement::CheckNowMove()
 			m_CoolMax = 120;
 		}
 		else {
-			m_CoolMax = 30;
+			m_CoolMax = 60;
 		}
 
 		if (m_CoolTime >= m_CoolMax) {

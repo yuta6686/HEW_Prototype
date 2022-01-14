@@ -33,7 +33,7 @@ private:	//	ヘッダー内で値を定義する変数はここに書く
 	//ページ管理変数
 	int m_nowPage = TUTORIAL_001;
 
-	char* m_TexName_001 = "data/TEXTURE/Tutorial_001.png";
+	char* m_TexName_001 = "data/TEXTURE/Tutorial_00.png";
 	char* m_TexName_002 = "data/TEXTURE/Tutorial_002.png";
 	char* m_TexName_003 = "data/TEXTURE/Tutorial_003.png";
 	char* m_TexName_004 = "data/TEXTURE/Tutorial_004.png";

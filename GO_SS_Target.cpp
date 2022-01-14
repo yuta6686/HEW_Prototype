@@ -7,7 +7,7 @@ void GO_SS_Target::Initialize(void)
 	Target_Texture = LoadTexture(TEX_NAME);
 
     for (int i = 0; i < TARGET_NUM_MAX; i++) {
-        Target_Vertex[i].pos = D3DXVECTOR2(00.0f, 00.0f);
+        Target_Vertex[i].pos = D3DXVECTOR2(-1000.0f, 00.0f);
         Target_Vertex[i].size = D3DXVECTOR2(TARGET_WIDTH, TARGET_HEIGHT);
         Target_Vertex[i].use = false;
 
@@ -114,8 +114,8 @@ void GO_SS_Target::SetTargetOnce()
 {
     if (once) {
         once = false;
-        SetTarget(D3DXVECTOR2(1000.0f, 300.0f));
-        SetTarget(D3DXVECTOR2(2000.0f, 300.0f));
+       /* SetTarget(D3DXVECTOR2(1000.0f, 300.0f));
+        SetTarget(D3DXVECTOR2(2000.0f, 300.0f));*/
     }
 
 }
