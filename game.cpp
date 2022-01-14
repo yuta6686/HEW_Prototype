@@ -12,7 +12,7 @@
 #include "input.h"
 #include "fade.h"
 #include "GameFramework.h"
-
+#include "sound.h"
 
 /*------------------------------------------------------------------------------
    定数定義
@@ -32,12 +32,22 @@
 ------------------------------------------------------------------------------*/
 GameFramework g_GameFramework;
 
+//	サウンド用のインデックス
+static int g_SoundIndex = 0;
 /*------------------------------------------------------------------------------
    初期化関数
 ------------------------------------------------------------------------------*/
 void InitGame(void)
 {
 	g_GameFramework.Initialize();
+
+	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+
+	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+	//で音量が設定できます
+	SetVolume(g_SoundIndex, 0.5f);
+
+	PlaySound(g_SoundIndex, 256);
 	
 }
 

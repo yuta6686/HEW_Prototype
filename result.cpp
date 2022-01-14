@@ -12,6 +12,7 @@
 #include "sprite.h"
 #include "fade.h"
 #include <cmath>
+#include "sound.h"
 
 
 //*****************************************************************************
@@ -29,6 +30,7 @@
 //*****************************************************************************
 
 
+
 //*****************************************************************************
 // グローバル変数
 //*****************************************************************************
@@ -44,7 +46,8 @@ D3DXVECTOR2 Mouse_pos(0.0f, 0.0f);
 float Result_Uipos1;
 float Result_Uipos3;
 
-
+//	サウンド用のインデックス
+static int g_SoundIndex = 0;
 
 //=============================================================================
 // 初期化処理
@@ -100,6 +103,15 @@ HRESULT InitResult(void)
 	Result_Uipos1 = Result_Ui.pos.x - 500.0f;
 	Result_Uipos3 = Result_Ui.pos.x + 500.0f;
 
+	//BGM処理
+	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+
+	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+	//で音量が設定できます
+	SetVolume(g_SoundIndex, 0.5f);
+
+	PlaySound(g_SoundIndex, 256);
+
 
 	return S_OK;
 
@@ -111,6 +123,8 @@ HRESULT InitResult(void)
 void UninitResult(void)
 {
 	ShowCursor(true);
+
+	StopSound(g_SoundIndex);
 }
 
 //=============================================================================

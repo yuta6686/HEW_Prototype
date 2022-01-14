@@ -66,7 +66,7 @@ D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 static float g_TargetAlpha;
 
 //	サウンド用のインデックス
-static int g_SoundIndex=0;
+static int g_SoundIndex = 0;
 
 //=============================================================================
 // 初期化処理
@@ -81,7 +81,7 @@ HRESULT InitTitle(void)
 	g_TextureNo[3] = LoadTexture("data/TEXTURE/jump2.png");//プレイヤー
 	g_TextureNo[4] = LoadTexture("data/TEXTURE/mati3-1.png");//ライト
 
-	g_TexIndex_Sign = LoadTexture("data/TEXTURE/眠い1.png");
+	g_TexIndex_Sign = LoadTexture("data/TEXTURE/titleback2.png");
 
 
 	g_Player.angle = 0.0f;
@@ -123,7 +123,7 @@ HRESULT InitTitle(void)
 	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
 	//で音量が設定できます
 	SetVolume(g_SoundIndex, 0.5f);
-	
+
 	PlaySound(g_SoundIndex, 256);
 
 	return S_OK;
@@ -198,6 +198,13 @@ void DrawTitle(void)
 		SCREEN_WIDTH, SCREEN_HEIGHT,
 		biruk[0], biruk[1], biruk[2], biruk[3]);
 
+	//看板の画像
+	/*DrawSprite(g_TexIndex_Sign, 570.0f, 500.0f, SCREEN_WIDTH / 2.2f, SCREEN_HEIGHT / 2.2f,
+		1.0f, 1.0f, 1.0f, 1.0f);*/
+
+	DrawSprite(g_TexIndex_Sign, SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
+		SCREEN_WIDTH, SCREEN_HEIGHT,
+		biruk[0], biruk[1], biruk[2], biruk[3]);
 
 	//ライト
 	DrawSprite(g_TextureNo[4], SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
@@ -209,10 +216,9 @@ void DrawTitle(void)
 	DrawSpriteColor(g_TextureNo[2], Target_x, Target_y,
 		400, 400,
 		0.0f, 0.0f, 0.8f, 1.0f,
-		D3DXCOLOR(1.0f,1.0f,1.0f, g_TargetAlpha));
+		D3DXCOLOR(1.0f, 1.0f, 1.0f, g_TargetAlpha));
 
-	DrawSprite(g_TexIndex_Sign, 100.0f, 100.0f, SCREEN_WIDTH / 4.0f, SCREEN_HEIGHT / 4.0f,
-		1.0f, 1.0f, 1.0f, 1.0f);
+
 
 	if (g_Player.use)
 	{
