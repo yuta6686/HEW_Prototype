@@ -16,6 +16,7 @@ private:
 	int Circle_Texture;
 
 	const FLOAT m_CircleSizeMax = 200.0f;
+	const FLOAT m_DecreaseJump = 500.0f;
 public:
 	// GameObject‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
 	virtual void Initialize		(void)	override;

@@ -10,7 +10,7 @@
 #include "sprite.h"
 #include "fade.h"
 #include "GO_SS_Player.h"
-
+#include "sound.h"
 
 
 //*****************************************************************************
@@ -65,6 +65,7 @@ D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 
 static float g_TargetAlpha;
 
+static int g_SoundIndex=0;
 
 //=============================================================================
 // 初期化処理
@@ -79,7 +80,7 @@ HRESULT InitTitle(void)
 	g_TextureNo[3] = LoadTexture("data/TEXTURE/jump2.png");//プレイヤー
 	g_TextureNo[4] = LoadTexture("data/TEXTURE/mati3-1.png");//ライト
 
-	//g_TexIndex_Sign = LoadTexture("data/TEXTURE/")
+	g_TexIndex_Sign = LoadTexture("data/TEXTURE/眠い1.png");
 
 
 	g_Player.angle = 0.0f;
@@ -114,6 +115,9 @@ HRESULT InitTitle(void)
 	g_U = 0.0f;
 
 	g_TargetAlpha = 1.0f;
+
+	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+	
 
 	return S_OK;
 
@@ -199,6 +203,9 @@ void DrawTitle(void)
 		0.0f, 0.0f, 0.8f, 1.0f,
 		D3DXCOLOR(1.0f,1.0f,1.0f, g_TargetAlpha));
 
+	DrawSprite(g_TexIndex_Sign, 100.0f, 100.0f, SCREEN_WIDTH / 4.0f, SCREEN_HEIGHT / 4.0f,
+		1.0f, 1.0f, 1.0f, 1.0f);
+
 	if (g_Player.use)
 	{
 		//プレイヤー
@@ -213,6 +220,7 @@ void DrawTitle(void)
 
 
 	}
+
 
 
 }

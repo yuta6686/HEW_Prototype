@@ -6,6 +6,7 @@
 --------------------------------------------------------------------------------
 
 ==============================================================================*/
+
 #include "main.h"
 #include <time.h>
 #include "renderer.h"
@@ -15,7 +16,7 @@
 #include "fade.h"
 #include "sprite.h"
 #include "GameFramework.h"
-#include "Title_Object.h"
+#include "sound.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -223,6 +224,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// レンダリング処理の初期化
 	InitRenderer(hInstance, hWnd, bWindow);
 
+	//	サウンド初期化
+	InitSound(hWnd);
+
 	// 入力処理の初期化
 	InitInput(hInstance, hWnd);
 
@@ -256,6 +260,10 @@ void Uninit(void)
 
 	//テクスチャの解放
 	UninitTexture();
+
+	// サウンドの終了処理
+	StopSoundAll();
+	UninitSound();
 
 	// レンダリングの終了処理
 	UninitRenderer();
