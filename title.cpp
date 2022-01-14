@@ -65,6 +65,7 @@ D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 
 static float g_TargetAlpha;
 
+//	サウンド用のインデックス
 static int g_SoundIndex=0;
 
 //=============================================================================
@@ -116,8 +117,14 @@ HRESULT InitTitle(void)
 
 	g_TargetAlpha = 1.0f;
 
+
 	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+
+	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+	//で音量が設定できます
+	SetVolume(g_SoundIndex, 0.5f);
 	
+	PlaySound(g_SoundIndex, 256);
 
 	return S_OK;
 
@@ -129,6 +136,7 @@ HRESULT InitTitle(void)
 //=============================================================================
 void UninitTitle(void)
 {
+	StopSound(g_SoundIndex);
 }
 
 //=============================================================================
