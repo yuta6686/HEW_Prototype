@@ -213,32 +213,32 @@
     <ClCompile Include="GO_SS_Movement.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="StageObjectArrowKey.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_NattoRotate.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="NattoRotateObject.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="GO_SS_Fan.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="NRO_Natto.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="GO_SS_KitchenTimer.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_NattoRotate.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="Tutorial.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="StageObject_Tutorial.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="NattoRotateObject.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
+    </ClCompile>
+    <ClCompile Include="NRO_Natto.cpp">
+      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="StageObject_GoBack.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\SelectStage</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_KitchenTimer.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="StageObject_Tutorial.cpp">
+      <Filter>ソース ファイル\SelectStage</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObjectArrowKey.cpp">
+      <Filter>ソース ファイル\SelectStage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -407,23 +407,23 @@
     <ClInclude Include="GO_SS_Fan.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="NRO_Natto.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Tutorial.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="GO_SS_KitchenTimer.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
-    <ClInclude Include="StageObject_Tutorial.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="NRO_Natto.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS\納豆</Filter>
     </ClInclude>
     <ClInclude Include="StageObject_GoBack.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
     </ClInclude>
-    <ClInclude Include="GO_SS_KitchenTimer.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="StageObject_Tutorial.h">
+      <Filter>ヘッダー ファイル\SelectStage</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
