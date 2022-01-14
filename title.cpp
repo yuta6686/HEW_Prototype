@@ -37,6 +37,8 @@
 static int g_TextureNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
 static int g_AdvertisementNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
 
+static int g_TexIndex_Sign;
+
 static int g_String_Texture;	// テクスチャ情報
 
 static VERTEX_TITLE_PLAYER g_Player;
@@ -61,6 +63,7 @@ float g_U = 0.0f;
 
 D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 
+static float g_TargetAlpha;
 
 
 //=============================================================================
@@ -68,7 +71,6 @@ D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 //=============================================================================
 HRESULT InitTitle(void)
 {
-	TO_Init();
 
 	//テクスチャ生成
 	g_TextureNo[0] = LoadTexture("data/TEXTURE/haikei2.png");
@@ -77,6 +79,7 @@ HRESULT InitTitle(void)
 	g_TextureNo[3] = LoadTexture("data/TEXTURE/jump2.png");//プレイヤー
 	g_TextureNo[4] = LoadTexture("data/TEXTURE/mati3-1.png");//ライト
 
+	//g_TexIndex_Sign = LoadTexture("data/TEXTURE/")
 
 
 	g_Player.angle = 0.0f;
@@ -110,6 +113,8 @@ HRESULT InitTitle(void)
 
 	g_U = 0.0f;
 
+	g_TargetAlpha = 1.0f;
+
 	return S_OK;
 
 
@@ -120,7 +125,6 @@ HRESULT InitTitle(void)
 //=============================================================================
 void UninitTitle(void)
 {
-	TO_Uninit();
 }
 
 //=============================================================================
@@ -152,8 +156,6 @@ void UpdateTitle(void)
 
 	}
 
-	//アクションの再生
-	Action(g_Action);
 
 	//シーン遷移
 	if (GetKeyboardTrigger(DIK_RETURN) ||
@@ -171,7 +173,6 @@ void UpdateTitle(void)
 //=============================================================================
 void DrawTitle(void)
 {
-	TO_Draw();
 
 	// １枚のポリゴンの頂点とテクスチャ座標を設定
 
@@ -189,13 +190,14 @@ void DrawTitle(void)
 	//ライト
 	DrawSprite(g_TextureNo[4], SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
 		SCREEN_WIDTH, SCREEN_HEIGHT,
-		0.0f, 0.0f, 1.0f, 1.0f);
+		biruk[0], biruk[1], biruk[2], biruk[3]);
 
 
 	//フック	
-	DrawSprite(g_TextureNo[2], Target_x, Target_y,
+	DrawSpriteColor(g_TextureNo[2], Target_x, Target_y,
 		400, 400,
-		0.0f, 0.0f, 0.8f, 1.0f);
+		0.0f, 0.0f, 0.8f, 1.0f,
+		D3DXCOLOR(1.0f,1.0f,1.0f, g_TargetAlpha));
 
 	if (g_Player.use)
 	{
@@ -278,7 +280,7 @@ void Action(int ActionScene)//引数：アクションナンバー
 			g_Action = 0;
 			SceneTransition(SCENE_SELECT_STAGE);
 		}
-		
+
 		else
 		{
 			biruk[0] += 0.0016f;
@@ -286,12 +288,18 @@ void Action(int ActionScene)//引数：アクションナンバー
 			biruk[2] -= 0.0163f;
 			biruk[3] -= 0.0173f;
 
+
+		}
+
+		//	ターゲットの透明度いじる
+		if (g_TargetAlpha <= 0.0f) {
+			g_TargetAlpha = 0.0f;
+		}
+		else {
+			g_TargetAlpha -= 0.1f;
 		}
 		break;
 	default:
 		break;
 	}
 }
-
-
-

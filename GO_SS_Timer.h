@@ -23,6 +23,8 @@ public:
 	bool GetTimerUse(void) { return Timer_Vertex.use; }
 	void SetTimerUse(bool flag) { Timer_Vertex.use = flag; }
 
+	int GetTimerCounter(void) { return Timer_Vertex.counter; }
+	void SetTimerCounter(int count) { Timer_Vertex.counter = count; }
 private:
 	//--------------------------------------------------------
 	//	ƒƒ“ƒo•Ï”

@@ -8,7 +8,8 @@
 //-------------------------------
 #include "main.h"
 
-struct TUTORIAL_INFO {
+struct TUTORIAL_INFO 
+{
 	D3DXVECTOR2 pos;
 	D3DXVECTOR2 size;
 
