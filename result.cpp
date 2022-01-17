@@ -80,15 +80,17 @@ HRESULT InitResult(void)
 	//-------------‰Šú‰»-------------
 	////////==”š==////////
 	//‚PŒ…–Ú
-	//{
-	//	Timer_Vertex.alpha = 0.0f;
-	//	Timer_Vertex.counter = 0;
-	//	Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH * 6.5 / 8, SCREEN_HEIGHT / 10);
-	//	Timer_Vertex.size = D3DXVECTOR2(75, 75);
-	//	Timer_Vertex.u = 0.0f;
-	//	Timer_Vertex.v = 0.0f;
-	//	Timer_Vertex.use = true;
-	//}
+	{
+		Timer_Vertex.alpha = 0.0f;
+		Timer_Vertex.counter = 0;
+		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH * 6.5 / 8, SCREEN_HEIGHT / 10);
+		Timer_Vertex.size = D3DXVECTOR2(75, 75);
+		Timer_Vertex.u = 0.0f;
+		Timer_Vertex.v = 0.0f;
+		Timer_Vertex.use = true;
+	}
+
+	g_Timer.SetVertex(Timer_Vertex);
 
 	////¬”“_‘æ1ˆÊ
 	//{

@@ -29,7 +29,7 @@ public:
 	void SetTimerCounter(int count) { Timer_Vertex.counter = count; }
 
 
-	
+	void SetVertex(VERTEX_ALPHA_ANIMATION_USE info) { Timer_Vertex = info; }
 private:
 //--------------------------------------------------------
 //	ƒƒ“ƒo•Ï”
