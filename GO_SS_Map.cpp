@@ -3,6 +3,8 @@
 #include "GO_SS_Wall.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_Fan.h"
+#include "GO_SS_Goal.h"
+
 //#include "GO_SS_ZipLine.h"
 
 //#define SEEK_ZIP_MAX  5
@@ -45,7 +47,8 @@ void GO_SS_Map::Update(void)
 					m_pFan->SetFan(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 				}
 				break;
-
+			case GOAL_NUM:
+				m_pGoal->SetGoalPos(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 
 			//case ZIPLINE_A_NUM:
 			//	//ZIPLINE_A_NUM‚ª—ˆ‚½‚çB‚ð’T‚µ‚És‚­

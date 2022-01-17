@@ -318,7 +318,8 @@ void GO_SS_Movement::MovementManager_ForFan()
 		m_pPlayer->AddYPos(m_ForFan.GetWindSpeed() * -1.0f);
 
 		break;
-	case FAN_COLL_LEFT:
+	case
+	FAN_COLL_LEFT:
 		m_ForFan.SetOnceFlag(true);
 
 		//m_pBackGround->AddU(m_ForFan.GetWindSpeed() * m_TimeDelay);

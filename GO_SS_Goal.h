@@ -17,6 +17,7 @@ public:
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
 
 	VERTEX_T GetGoal() { return Goal_Vertex; }
+	void SetGoalPos(D3DXVECTOR2 pos);
 
 	void AddX(FLOAT x);
 private:

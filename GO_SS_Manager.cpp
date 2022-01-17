@@ -124,6 +124,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMap->SetWall(mp_ssWall);
 		mp_ssMap->SetTarget(mp_ssTarget);
 		mp_ssMap->SetFan(mp_ssFan);
+		mp_ssMap->SetGoal(mp_ssGoal);
 		
 
 		mp_ssFan->SetCircle(mp_ssShotString->GetCircle());
