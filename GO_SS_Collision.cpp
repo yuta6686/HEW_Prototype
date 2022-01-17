@@ -12,6 +12,8 @@
 #include "fade.h"
 #include "GO_SS_KitchenTimer.h"
 #include "GO_SS_Timer.h"
+#include "result.h"
+
 
 
 void GO_SS_Collision::CollisionUpdate(void)
@@ -204,8 +206,18 @@ void GO_SS_Collision::DebugOut(void)
 
 void GO_SS_Collision::CJ_GoalPlayer(void)
 {
+	//スペースキーが押されていて、フェード処理中ではないとき
+	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE) {
+		SetTime(m_pTimer->GetTimerCounter());
+
+		//RESULTへ移行する
+		SceneTransition(SCENE_RESULT);
+	}
+
 	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), Goal_Vertex.pos, Goal_Vertex.size))
 	{
+		SetTime(m_pTimer->GetTimerCounter());
+		
 		SceneTransition(SCENE_RESULT);
 	}
 }

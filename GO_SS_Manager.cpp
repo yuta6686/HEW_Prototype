@@ -116,6 +116,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetTimeDelay(mp_ssTimeDelay);
 		mp_ssMovement->SetFan(mp_ssFan);
 		mp_ssMovement->SetKitchenTimer(mp_ssKitchenTimer);
+		mp_ssMovement->SetTimer(mp_ssTimer);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);

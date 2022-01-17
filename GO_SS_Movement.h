@@ -15,6 +15,7 @@
 #include "GameObject.h"
 #include "GO_SS_Collision.h"
 #include "GO_SS_Fan.h"
+#include "GO_SS_Timer.h"
 
 #define TIME_DELAY_VALUE 0.3f
 
@@ -78,6 +79,7 @@ private:
     GO_SS_TimeDelay* m_pTimeDelay;
     GO_SS_Fan* m_pFan;
     GO_SS_KitchenTimer* m_pKitchenTimer;
+    GO_SS_Timer* m_pTimer;
 
     //ÉÅÉìÉoïœêî
     int JumpCounter = 0;
@@ -178,7 +180,10 @@ public:
         m_pKitchenTimer = p_KitchenTimer;
         m_ssCollision.SetKitchenTimer(p_KitchenTimer);
     }
-
+    void SetTimer(GO_SS_Timer* pTimer) {
+        m_pTimer = pTimer;
+        m_ssCollision.SetTimer(pTimer);
+    }
 };
 
 

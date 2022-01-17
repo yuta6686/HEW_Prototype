@@ -27,6 +27,9 @@ public:
 
 	int GetTimerCounter(void) { return Timer_Vertex.counter; }
 	void SetTimerCounter(int count) { Timer_Vertex.counter = count; }
+
+
+	
 private:
 //--------------------------------------------------------
 //	ƒƒ“ƒo•Ï”

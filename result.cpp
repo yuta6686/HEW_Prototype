@@ -14,6 +14,8 @@
 #include <cmath>
 #include "sound.h"
 #include "E_Prizum.h"
+#include "GO_SS_Timer.h"
+
 
 
 //*****************************************************************************
@@ -49,6 +51,13 @@ float Result_Uipos1;
 float Result_Uipos3;
 
 E_Prizum g_Prizum;
+GO_SS_Timer g_Timer;
+
+bool g_TimerOnce;
+
+int g_Time;
+
+void SetTime(int time) { g_Time = time; }
 
 //=============================================================================
 // 初期化処理
@@ -58,7 +67,7 @@ HRESULT InitResult(void)
 	ShowCursor(false);
 
 	//テクスチャロード----------------
-	Number_Texture = LoadTexture("data/TEXTURE/number2.png");
+	//Number_Texture = LoadTexture("data/TEXTURE/number2.png");
 	g_TextureNo = LoadTexture("data/TEXTURE/result.png");
 	g_cursor = LoadTexture("data/TEXTURE/cursor.png");
 
@@ -71,31 +80,31 @@ HRESULT InitResult(void)
 	//-------------初期化-------------
 	////////==数字==////////
 	//１桁目
-	{
-		Timer_Vertex.alpha = 0.0f;
-		Timer_Vertex.counter = 0;
-		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH * 6.5 / 8, SCREEN_HEIGHT / 10);
-		Timer_Vertex.size = D3DXVECTOR2(75, 75);
-		Timer_Vertex.u = 0.0f;
-		Timer_Vertex.v = 0.0f;
-		Timer_Vertex.use = true;
-	}
+	//{
+	//	Timer_Vertex.alpha = 0.0f;
+	//	Timer_Vertex.counter = 0;
+	//	Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH * 6.5 / 8, SCREEN_HEIGHT / 10);
+	//	Timer_Vertex.size = D3DXVECTOR2(75, 75);
+	//	Timer_Vertex.u = 0.0f;
+	//	Timer_Vertex.v = 0.0f;
+	//	Timer_Vertex.use = true;
+	//}
 
-	//小数点第1位
-	{
-		Timer_Second.pos = D3DXVECTOR2(Timer_Vertex.pos.x + 100.0f, SCREEN_HEIGHT / 10);
-		Timer_Second.size = D3DXVECTOR2(75, 75);
-		Timer_Second.u = 0.0f;
-		Timer_Second.v = 0.0f;
-	}
+	////小数点第1位
+	//{
+	//	Timer_Second.pos = D3DXVECTOR2(Timer_Vertex.pos.x + 100.0f, SCREEN_HEIGHT / 10);
+	//	Timer_Second.size = D3DXVECTOR2(75, 75);
+	//	Timer_Second.u = 0.0f;
+	//	Timer_Second.v = 0.0f;
+	//}
 
-	//小数点第2位
-	{
-		Timer_Third.pos = D3DXVECTOR2(Timer_Vertex.pos.x + 200.0f, SCREEN_HEIGHT / 10);
-		Timer_Third.size = D3DXVECTOR2(75, 75);
-		Timer_Third.u = 0.0f;
-		Timer_Third.v = 0.0f;
-	}
+	////小数点第2位
+	//{
+	//	Timer_Third.pos = D3DXVECTOR2(Timer_Vertex.pos.x + 200.0f, SCREEN_HEIGHT / 10);
+	//	Timer_Third.size = D3DXVECTOR2(75, 75);
+	//	Timer_Third.u = 0.0f;
+	//	Timer_Third.v = 0.0f;
+	//}
 
 	////////==UI==////////
 	Result_Ui.pos = D3DXVECTOR2(SCEREN_WIDTH_HURF, SCREEN_HEIGHT * 0.75);
@@ -115,6 +124,10 @@ HRESULT InitResult(void)
 
 	g_Prizum.Initialize();
 
+	g_Timer.Initialize();
+
+	g_TimerOnce = false;
+
 	return S_OK;
 
 }
@@ -129,6 +142,8 @@ void UninitResult(void)
 	StopSound(g_SoundIndex);
 
 	g_Prizum.Finalize();
+
+	g_Timer.Finalize();
 }
 
 //=============================================================================
@@ -148,20 +163,21 @@ void UpdateResult(void)
 				Mouse_pos.x <= Result_Uipos1 + Result_Ui.size.x / 2)
 			{
 				SceneTransition(SCENE_TITLE);
-				//g_Prizum.SetEffect(Mouse_pos);
+				g_Prizum.SetEffect(Mouse_pos);
 			}
 
 			if (Mouse_pos.x >= Result_Ui.pos.x - Result_Ui.size.x / 2 &&
 				Mouse_pos.x <= Result_Ui.pos.x + Result_Ui.size.x / 2)
 			{
 				SceneTransition(SCENE_TITLE);
-
+				g_Prizum.SetEffect(Mouse_pos);
 			}
 
 			if (Mouse_pos.x >= Result_Uipos3 - Result_Ui.size.x / 2 &&
 				Mouse_pos.x <= Result_Uipos3 + Result_Ui.size.x / 2)
 			{
 				SceneTransition(SCENE_SELECT_STAGE);
+				g_Prizum.SetEffect(Mouse_pos);
 			}
 
 		}
@@ -173,7 +189,15 @@ void UpdateResult(void)
 	//	SceneTransition(SCENE_TITLE);
 	//}
 
-	g_Prizum.Update();
+	//g_Prizum.Update();
+	if (!g_TimerOnce) {
+		g_Timer.SetTimerCounter(g_Time);
+		g_Timer.Update();
+		g_TimerOnce = true;
+	}
+	
+
+	
 }
 
 //=============================================================================
@@ -184,20 +208,20 @@ void DrawResult(void)
 	//１枚のポリゴンの頂点とテクスチャ座標を設定
 	DrawSpriteLeftTop(g_TextureNo, 0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 0.0f, 1.0f, 1.0f);
 
-	//////１桁目
-	DrawSprite(Number_Texture, Timer_Vertex.pos.x, Timer_Vertex.pos.y,
-		Timer_Vertex.size.x, Timer_Vertex.size.y,
-		Timer_Vertex.u, Timer_Vertex.v, NUMBER_WIDTH, NUMBER_HEIGHT);
+	////////１桁目
+	//DrawSprite(Number_Texture, Timer_Vertex.pos.x, Timer_Vertex.pos.y,
+	//	Timer_Vertex.size.x, Timer_Vertex.size.y,
+	//	Timer_Vertex.u, Timer_Vertex.v, NUMBER_WIDTH, NUMBER_HEIGHT);
 
-	////小数点第1位
-	DrawSprite(g_TextureNo, Timer_Second.pos.x, Timer_Second.pos.y,
-		Timer_Second.size.x, Timer_Second.size.y,
-		Timer_Second.u, Timer_Second.v, NUMBER_WIDTH, NUMBER_HEIGHT);
+	//////小数点第1位
+	//DrawSprite(g_TextureNo, Timer_Second.pos.x, Timer_Second.pos.y,
+	//	Timer_Second.size.x, Timer_Second.size.y,
+	//	Timer_Second.u, Timer_Second.v, NUMBER_WIDTH, NUMBER_HEIGHT);
 
-	////小数点第2位
-	DrawSprite(g_TextureNo, Timer_Third.pos.x, Timer_Third.pos.y,
-		Timer_Third.size.x, Timer_Third.size.y,
-		Timer_Third.u, Timer_Third.v, NUMBER_WIDTH, NUMBER_HEIGHT);
+	//////小数点第2位
+	//DrawSprite(g_TextureNo, Timer_Third.pos.x, Timer_Third.pos.y,
+	//	Timer_Third.size.x, Timer_Third.size.y,
+	//	Timer_Third.u, Timer_Third.v, NUMBER_WIDTH, NUMBER_HEIGHT);
 
 	////UI
 	DrawSprite(g_UI[0], Result_Uipos1, Result_Ui.pos.y,
@@ -218,6 +242,7 @@ void DrawResult(void)
 		75.0f, 75.0f,
 		0.0f, 0.0f, 1.0f, 1.0f);
 
-
-
+	g_Prizum.Draw();
+	
+	g_Timer.Draw();
 }

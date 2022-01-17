@@ -19,6 +19,13 @@ public:
 		m_Vertex.use = true;
 	}
 
+	virtual void SetEffect(D3DXVECTOR2 pos) {
+		m_Vertex.use = true;
+		m_Vertex.pos = pos;
+	}
+
+	bool GetUse() { return m_Vertex.use; }
+
 private:
 
 protected:

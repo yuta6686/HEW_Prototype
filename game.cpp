@@ -68,12 +68,7 @@ void UpdateGame(void)
 	g_GameFramework.Update();
 
 
-	//スペースキーが押されていて、フェード処理中ではないとき
-	if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE) {
-
-		//RESULTへ移行する
-		SceneTransition(SCENE_RESULT);
-	}
+	//	シーン遷移はGO_SS_Collision.cppの210行目
 }
 
 /*------------------------------------------------------------------------------
