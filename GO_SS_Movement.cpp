@@ -34,7 +34,8 @@ void GO_SS_Movement::Update(void)
 
 void GO_SS_Movement::SetTimeDelay(void)
 {
-	if (IsMouseRightPressed() && !m_pShotString->IsClickTarget) {
+	if (IsMouseRightPressed() && !m_pShotString->IsClickTarget) 
+	{
 		m_pTimeDelay->SetTimeDelay(true);
 	}
 	else {
@@ -219,7 +220,7 @@ void GO_SS_Movement::Update_PlayerMoveSwitch()
 		m_ChaMove = PLAYERMOVE_LINEAR;
 	}
 	else 
-	{
+	{	
 		m_ChaMove = PLAYERMOVE_PENDULUM;
 	}
 

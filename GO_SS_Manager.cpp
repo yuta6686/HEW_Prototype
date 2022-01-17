@@ -92,6 +92,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssTimeDelay);
 		Register(mp_ssKitchenTimer);
 	
+		//IsMouseRightPressed()
 	}
 }
 

@@ -13,6 +13,7 @@
 #include "fade.h"
 #include <cmath>
 #include "sound.h"
+#include "E_Prizum.h"
 
 
 //*****************************************************************************
@@ -29,7 +30,8 @@
 // プロトタイプ宣言
 //*****************************************************************************
 
-
+//	サウンド用のインデックス
+static int g_SoundIndex = 0;
 
 //*****************************************************************************
 // グローバル変数
@@ -46,8 +48,7 @@ D3DXVECTOR2 Mouse_pos(0.0f, 0.0f);
 float Result_Uipos1;
 float Result_Uipos3;
 
-//	サウンド用のインデックス
-static int g_SoundIndex = 0;
+E_Prizum g_Prizum;
 
 //=============================================================================
 // 初期化処理
@@ -112,6 +113,7 @@ HRESULT InitResult(void)
 
 	PlaySound(g_SoundIndex, 256);
 
+	g_Prizum.Initialize();
 
 	return S_OK;
 
@@ -125,6 +127,8 @@ void UninitResult(void)
 	ShowCursor(true);
 
 	StopSound(g_SoundIndex);
+
+	g_Prizum.Finalize();
 }
 
 //=============================================================================
@@ -144,7 +148,7 @@ void UpdateResult(void)
 				Mouse_pos.x <= Result_Uipos1 + Result_Ui.size.x / 2)
 			{
 				SceneTransition(SCENE_TITLE);
-
+				//g_Prizum.SetEffect(Mouse_pos);
 			}
 
 			if (Mouse_pos.x >= Result_Ui.pos.x - Result_Ui.size.x / 2 &&
@@ -157,7 +161,7 @@ void UpdateResult(void)
 			if (Mouse_pos.x >= Result_Uipos3 - Result_Ui.size.x / 2 &&
 				Mouse_pos.x <= Result_Uipos3 + Result_Ui.size.x / 2)
 			{
-
+				SceneTransition(SCENE_SELECT_STAGE);
 			}
 
 		}
@@ -168,6 +172,8 @@ void UpdateResult(void)
 	//{
 	//	SceneTransition(SCENE_TITLE);
 	//}
+
+	g_Prizum.Update();
 }
 
 //=============================================================================
