@@ -11,6 +11,7 @@ void E_Prizum::Initialize(void)
 	m_Vertex.frame = 0;
 	m_Vertex.u = m_Vertex.v = 0.0f;
 	
+	IsMousePlace = false;
 }
 
 void E_Prizum::Finalize(void)
@@ -32,8 +33,12 @@ void E_Prizum::Update(void)
 
 			m_Vertex.frame++;
 
-			m_Vertex.pos.x = GetMousePosX();
-			m_Vertex.pos.y = GetMousePosY();
+			if (IsMousePlace) {
+				m_Vertex.pos.x = GetMousePosX();
+				m_Vertex.pos.y = GetMousePosY();
+			}
+
+			
 		}
 		else {
 			m_Vertex.frame++;

@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "E_Prizum.h"
+#include "E_AddTime.h"
 
 class GO_SS_Player;
 
@@ -30,6 +32,12 @@ public:
 
 
 	void SetVertex(VERTEX_ALPHA_ANIMATION_USE info) { Timer_Vertex = info; }
+	void AddTimer(int value) { Timer_Vertex.counter = value; }
+
+	void SetEffect() { 
+		m_Eff.SetEffectNoMouse( D3DXVECTOR2(Timer_TenDigits.pos.x + 200.0f, Timer_TenDigits.pos.y),300.0f);
+		m_AddTime.SetEffectNoMouse(D3DXVECTOR2(Timer_TenDigits.pos.x, Timer_TenDigits.pos.y), 300.0f);
+	}
 private:
 //--------------------------------------------------------
 //	メンバ変数
@@ -58,6 +66,10 @@ private:
 	VERTEX_UV Timer_Second;						//小数点第一位
 	VERTEX_UV Timer_Third;						//小数点第二位
 	VERTEX_UV Timer_TenDigits;					//10の位
+
+	E_Prizum m_Eff;
+	E_AddTime m_AddTime;
+	
 //--------------------------------------------------------
 //	メンバ関数
 //--------------------------------------------------------

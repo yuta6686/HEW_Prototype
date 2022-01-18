@@ -26,8 +26,8 @@ void GO_SS_BackGround::Draw(void)
 		BackGround_Vertex.size.x, BackGround_Vertex.size.y,
 		BackGround_Vertex.u, 1.0f, 0.5f, 1.0f);
 
-	DrawSpriteLeftTopColor(CmpTexture,0.0f,0.0f, SCREEN_WIDTH, SCREEN_HEIGHT,
+	/*DrawSpriteLeftTopColor(CmpTexture,0.0f,0.0f, SCREEN_WIDTH, SCREEN_HEIGHT,
 		1.0f, 1.0f, 1.0f, 1.0f,
-		D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f));
+		D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f));*/
 }
 

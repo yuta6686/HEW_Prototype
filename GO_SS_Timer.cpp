@@ -48,10 +48,15 @@ void GO_SS_Timer::Initialize(void)
 		Timer_TenDigits.u = 0.0f;
 		Timer_TenDigits.v = 0.0f;
 	}
+
+	m_Eff.Initialize();
+	m_AddTime.Initialize();
 }
 
 void GO_SS_Timer::Finalize(void)
 {
+	m_Eff.Finalize();
+	m_AddTime.Finalize();
 }
 
 void GO_SS_Timer::Update(void)
@@ -72,6 +77,10 @@ void GO_SS_Timer::Update(void)
 
 
 	SceneToGameOver();
+
+	m_Eff.Update();
+
+	m_AddTime.Update();
 }
 
 void GO_SS_Timer::Draw(void)
@@ -105,6 +114,9 @@ void GO_SS_Timer::Draw(void)
 	//	è¨êîì_
 	DrawSpriteColor(m_TexIndex_Point, Timer_Vertex.pos.x + 50.0f, Timer_Vertex.pos.y + 25.0f,
 		50.0f, 50.0f, 1.0f, 1.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
+
+	m_Eff.Draw();
+	m_AddTime.Draw();
 }
 
 void GO_SS_Timer::FirstNum(void)

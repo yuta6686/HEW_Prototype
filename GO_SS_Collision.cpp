@@ -240,8 +240,18 @@ void GO_SS_Collision::PlayerYCorrection(int index)
 
 void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
 {
-	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), m_pKitchenTimer->GetKitchenTimer().pos, m_pKitchenTimer->GetKitchenTimer().size))
-	{
-		m_pKitchenTimer->SetUse(false);
+	for (int i = 0; i < m_pKitchenTimer->GetKichenTimerMax(); i++) {
+		if (m_pKitchenTimer->GetKitchenTimer(i)->use)
+		{
+			if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), m_pKitchenTimer->GetKitchenTimer(i)->pos, m_pKitchenTimer->GetKitchenTimer(i)->size))
+			{
+				m_pKitchenTimer->SetUse(i,false);
+
+				m_pTimer->AddTimer(m_pKitchenTimer->GetAddTimer());
+
+				m_pTimer->SetEffect();
+			}
+		}
 	}
+	
 }
