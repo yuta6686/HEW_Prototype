@@ -8,6 +8,7 @@ class GO_SS_Wall;
 class GO_SS_Target;
 class GO_SS_Fan;
 class GO_SS_Goal;
+class GO_SS_KitchenTimer;
 //class GO_SS_ZipLine;
 
 //マップチップの列挙型
@@ -37,6 +38,7 @@ public:
 	void SetFan(GO_SS_Fan* p) { m_pFan = p; }
 	void SetGoal(GO_SS_Goal* p) { m_pGoal = p; }
 	//void SetZipline(GO_SS_ZipLine* p) { m_pZipLine = p; }
+	void SetKTimer(GO_SS_KitchenTimer* p) { m_pKTimer = p; }
 	
 	void MoveMapObject(FLOAT x);
 
@@ -58,6 +60,8 @@ private:
 	GO_SS_Fan* m_pFan;
 	GO_SS_Goal* m_pGoal;
 	//GO_SS_ZipLine* m_pZipLine;		//ZipLineポインタ
+
+	GO_SS_KitchenTimer* m_pKTimer;
 
 	MAP_CHIP_NO mapChipNo;
 

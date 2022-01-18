@@ -4,6 +4,7 @@
 #include "GO_SS_Target.h"
 #include "GO_SS_Fan.h"
 #include "GO_SS_Goal.h"
+#include "GO_SS_KitchenTimer.h"
 
 //#include "GO_SS_ZipLine.h"
 
