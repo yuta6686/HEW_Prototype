@@ -44,6 +44,7 @@ public:
 	{
 		SetEffect();
 		m_Circle.SetEffectNoMouse(pos,100.0f);
+		m_Circle_001.SetEffectNoMouse(pos, 0.0f);
 	}
 private:
 //--------------------------------------------------------
@@ -78,6 +79,7 @@ private:
 	E_Prizum m_Eff;
 	E_AddTime m_AddTime;
 	E_Circle m_Circle;
+	E_Circle m_Circle_001;
 	
 //--------------------------------------------------------
 //	ÉÅÉìÉoä÷êî
