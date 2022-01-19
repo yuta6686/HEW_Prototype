@@ -51,12 +51,14 @@ void GO_SS_Timer::Initialize(void)
 
 	m_Eff.Initialize();
 	m_AddTime.Initialize();
+	m_Circle.Initialize();
 }
 
 void GO_SS_Timer::Finalize(void)
 {
 	m_Eff.Finalize();
 	m_AddTime.Finalize();
+	m_Circle.Finalize();
 }
 
 void GO_SS_Timer::Update(void)
@@ -81,6 +83,8 @@ void GO_SS_Timer::Update(void)
 	m_Eff.Update();
 
 	m_AddTime.Update();
+
+	m_Circle.Update();
 }
 
 void GO_SS_Timer::Draw(void)
@@ -117,6 +121,7 @@ void GO_SS_Timer::Draw(void)
 
 	m_Eff.Draw();
 	m_AddTime.Draw();
+	m_Circle.Draw();
 }
 
 void GO_SS_Timer::FirstNum(void)
