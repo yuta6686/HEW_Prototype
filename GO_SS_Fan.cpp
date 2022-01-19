@@ -15,6 +15,7 @@ void GO_SS_Fan::Initialize(void)
 		m_FanInfo[i].use = false;
 		m_FanInfo[i].isLeft = false;
 		m_FanInfo[i].isWork = false;
+		m_FanInfo[i].isLink = false;
 	}
 }
 
@@ -105,10 +106,12 @@ void GO_SS_Fan::LinkFanB(D3DXVECTOR2 pos, bool isLeft)
 {
 	for (int i = 0; i < FANS_MAX; i++)
 	{
-		if (!m_FanInfo[i].use)
+		if (!m_FanInfo[i].isLink)
 		{
 			m_FanInfo[i].fanB_Pos = pos;
 			m_FanInfo[i].isLeft = isLeft;
+			m_FanInfo[i].isLink = true;
+			break;
 		}
 	}
 }
