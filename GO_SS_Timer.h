@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "E_Prizum.h"
 #include "E_AddTime.h"
+#include "E_Circle.h"
 
 class GO_SS_Player;
 
@@ -36,7 +37,13 @@ public:
 
 	void SetEffect() { 
 		m_Eff.SetEffectNoMouse( D3DXVECTOR2(Timer_TenDigits.pos.x + 200.0f, Timer_TenDigits.pos.y),300.0f);
-		m_AddTime.SetEffectNoMouse(D3DXVECTOR2(Timer_TenDigits.pos.x, Timer_TenDigits.pos.y), 300.0f);
+		m_AddTime.SetEffectNoMouse(D3DXVECTOR2(Timer_TenDigits.pos.x, Timer_TenDigits.pos.y), 300.0f);	
+	}
+
+	void SetEffect(D3DXVECTOR2 pos) 
+	{
+		SetEffect();
+		m_Circle.SetEffectNoMouse(pos,100.0f);
 	}
 private:
 //--------------------------------------------------------
@@ -67,8 +74,10 @@ private:
 	VERTEX_UV Timer_Third;						//小数点第二位
 	VERTEX_UV Timer_TenDigits;					//10の位
 
+	//	エフェクト
 	E_Prizum m_Eff;
 	E_AddTime m_AddTime;
+	E_Circle m_Circle;
 	
 //--------------------------------------------------------
 //	メンバ関数

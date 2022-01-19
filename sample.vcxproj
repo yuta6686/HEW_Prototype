@@ -129,6 +129,7 @@
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectFactory.cpp" />
     <ClCompile Include="E_AddTime.cpp" />
+    <ClCompile Include="E_Circle.cpp" />
     <ClCompile Include="E_Prizum.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="GO_SS_Effect_Wind.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectFactory.h" />
     <ClInclude Include="E_AddTime.h" />
+    <ClInclude Include="E_Circle.h" />
     <ClInclude Include="E_Prizum.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="GO_SS_Effect_Wind.h" />
