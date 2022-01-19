@@ -13,7 +13,7 @@ public:
     virtual void Draw(void) override;
 
 private:
-    char* m_pTexName = "data/TEXTURE/circle_effect_noisecolor.png";
+    char* m_pTexName = "data/TEXTURE/circle_effect_noisecolor1.png";
 
     float m_AddSize;
 };

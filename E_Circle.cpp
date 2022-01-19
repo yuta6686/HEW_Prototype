@@ -27,7 +27,7 @@ void E_Circle::Update(void)
 			m_Vertex.use = false;
 		}
 		else {
-			m_Vertex.alpha -= 0.04f;
+			m_Vertex.alpha -= 0.06f;
 			m_AddSize += SIZE_ACCELERATION;
 			m_Vertex.size.y += m_AddSize;
 		}
