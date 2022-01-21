@@ -311,3 +311,21 @@ long GetMousePosY(void)
 {
 	return g_MouseY;
 }
+
+float frand(void)
+{
+	return (((float)rand()) / RAND_MAX);
+}
+
+float frand_pn()
+{
+	int index = rand() % 2;
+
+	switch (index)
+	{
+	case 0:
+		return frand();
+	case 1:
+		return frand() * (-1.0f);
+	}
+}

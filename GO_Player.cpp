@@ -54,8 +54,3 @@ void GO_Player::Draw(void)
 		Player_Vertex.size.x, Player_Vertex.size.y,
 		0.0f, 0.0f, 0.5f, 0.5f);
 }
-
-float frand(void)
-{
-	return (float)rand() / RAND_MAX;
-}

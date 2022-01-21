@@ -67,6 +67,8 @@ long GetMousePosY(void);
 HWND* GethWnd(void);
 char* GetDebugStr(void);
 
+float frand();
+float frand_pn();
 
 //*****************************************************************************
 // ’è”

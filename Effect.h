@@ -2,6 +2,8 @@
 #include "GameObject.h"
 class Effect :public GameObject
 {
+private:
+	static const int VERTEX_NUM_MAX = 50;
 public:
 	virtual void Initialize(void) =0;
 
@@ -54,10 +56,15 @@ public:
 
 	bool GetUse() { return m_Vertex.use; }
 
+	int GetVERTEXNUMMAX(void) {
+		return VERTEX_NUM_MAX;
+	}
+
 private:
 
 protected:
 	VERTEX_ALL_EFFECT m_Vertex;
+	VERTEX_ALL_EFFECT m_Vertexes[VERTEX_NUM_MAX];
 
 	int m_TexIndex;
 	//char m_TexName[64];

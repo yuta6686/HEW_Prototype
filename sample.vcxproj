@@ -128,6 +128,8 @@
   <ItemGroup>
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectFactory.cpp" />
+    <ClCompile Include="Effect_Vertex.cpp" />
+    <ClCompile Include="EV_GetItem.cpp" />
     <ClCompile Include="E_AddTime.cpp" />
     <ClCompile Include="E_Circle.cpp" />
     <ClCompile Include="E_Prizum.cpp" />
@@ -187,6 +189,8 @@
   <ItemGroup>
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectFactory.h" />
+    <ClInclude Include="Effect_Vertex.h" />
+    <ClInclude Include="EV_GetItem.h" />
     <ClInclude Include="E_AddTime.h" />
     <ClInclude Include="E_Circle.h" />
     <ClInclude Include="E_Prizum.h" />
