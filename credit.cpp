@@ -61,7 +61,7 @@ void UninitCredit(void)
 //=============================================================================
 void UpdateCredit(void)
 {
-    if (GetKeyboardTrigger(DIK_RETURN))
+    if (GetKeyboardTrigger(DIK_RETURN) || IsMouseLeftTriggered() && GetFadeState()==FADE_NONE)
     {
         SceneTransition(SCENE_TITLE);
     }
