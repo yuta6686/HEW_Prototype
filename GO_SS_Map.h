@@ -12,13 +12,14 @@ class GO_SS_KitchenTimer;
 //class GO_SS_ZipLine;
 
 //マップチップの列挙型
-typedef enum{
+typedef enum {
 	WALL_NUM = 1,
 	TARGET_NUM,
 	FAN_A_NUM,
 	FAN_B_UP_NUM,
 	FAN_B_LEFT_NUM,
 	GOAL_NUM,
+	KITCHEN_TIMER_NUM,
 	ZIPLINE_A_NUM,
 	ZIPLINE_B_NUM,
 }MAP_CHIP_NO;

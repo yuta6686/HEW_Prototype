@@ -58,6 +58,12 @@ void GO_SS_Map::Update(void)
 
 			case GOAL_NUM:
 				m_pGoal->SetGoalPos(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				break;
+				
+			case KITCHEN_TIMER_NUM:
+				m_pKTimer->SetKTimer(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				break;
+
 
 			//case ZIPLINE_A_NUM:
 			//	//ZIPLINE_A_NUM‚ª—ˆ‚½‚çB‚ð’T‚µ‚És‚­
