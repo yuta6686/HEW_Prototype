@@ -15,9 +15,44 @@ public:
 		return GAMESCENE_GAME_TEST;
 	}
 
+	//	マウスに追尾するセッター
 	virtual void SetEffect(void) {
 		m_Vertex.use = true;
+		IsMousePlace = true;
 	}
+	virtual void SetEffect(D3DXVECTOR2 pos) {
+		m_Vertex.use = true;
+		IsMousePlace = true;
+		m_Vertex.pos = pos;
+	}
+	virtual void SetEffect(D3DXVECTOR2 pos, float size) {
+		m_Vertex.use = true;
+		IsMousePlace = true;
+		m_Vertex.pos = pos;
+		m_Vertex.size.x = m_Vertex.size.y = size;
+	}
+
+	//	マウスに追尾しないセッター
+	virtual void SetEffectNoMouse(void) {
+		m_Vertex.alpha = 2.0f;
+		m_Vertex.use = true;
+		IsMousePlace = false;
+	}
+	virtual void SetEffectNoMouse(D3DXVECTOR2 pos) {
+		m_Vertex.alpha = 2.0f;
+		m_Vertex.use = true;
+		IsMousePlace = false;
+		m_Vertex.pos = pos;
+	}
+	virtual void SetEffectNoMouse(D3DXVECTOR2 pos, float size) {
+		m_Vertex.alpha = 2.0f;
+		m_Vertex.use = true;
+		IsMousePlace = false;
+		m_Vertex.pos = pos;
+		m_Vertex.size.x = m_Vertex.size.y = size;
+	}
+
+	bool GetUse() { return m_Vertex.use; }
 
 private:
 
@@ -32,5 +67,8 @@ protected:
 
 	const float m_Width = (1.0f / m_Xnum);
 	const float m_Height = (1.0f / m_Ynum);
+
+	//	マウスにエフェクトを追尾させるか？
+	bool IsMousePlace;
 };
 

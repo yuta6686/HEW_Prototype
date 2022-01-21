@@ -15,7 +15,7 @@ public:
     virtual void Draw(void) override;
 
 private:
-
+    
 
     char m_TexName[64] = "data/TEXTURE/Prizum_Effect.png";
 };

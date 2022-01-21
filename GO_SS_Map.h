@@ -7,6 +7,8 @@ class GO_SS_FileLoad;
 class GO_SS_Wall;
 class GO_SS_Target;
 class GO_SS_Fan;
+class GO_SS_Goal;
+class GO_SS_KitchenTimer;
 //class GO_SS_ZipLine;
 
 //マップチップの列挙型
@@ -16,8 +18,9 @@ typedef enum{
 	FAN_A_NUM,
 	FAN_B_UP_NUM,
 	FAN_B_LEFT_NUM,
+	GOAL_NUM,
 	ZIPLINE_A_NUM,
-	ZIPLINE_B_NUM
+	ZIPLINE_B_NUM,
 }MAP_CHIP_NO;
 
 class GO_SS_Map :public GameObject
@@ -33,7 +36,9 @@ public:
 	void SetWall(GO_SS_Wall* p) { m_pWall = p; }
 	void SetTarget(GO_SS_Target* p) { m_pTarget = p; }
 	void SetFan(GO_SS_Fan* p) { m_pFan = p; }
+	void SetGoal(GO_SS_Goal* p) { m_pGoal = p; }
 	//void SetZipline(GO_SS_ZipLine* p) { m_pZipLine = p; }
+	void SetKTimer(GO_SS_KitchenTimer* p) { m_pKTimer = p; }
 	
 	void MoveMapObject(FLOAT x);
 
@@ -53,7 +58,10 @@ private:
 	GO_SS_Wall* m_pWall;			//Wallポインタ
 	GO_SS_Target* m_pTarget;		//targetポインタ
 	GO_SS_Fan* m_pFan;
+	GO_SS_Goal* m_pGoal;
 	//GO_SS_ZipLine* m_pZipLine;		//ZipLineポインタ
+
+	GO_SS_KitchenTimer* m_pKTimer;
 
 	MAP_CHIP_NO mapChipNo;
 

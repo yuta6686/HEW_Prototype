@@ -92,6 +92,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssTimeDelay);
 		Register(mp_ssKitchenTimer);
 	
+		//IsMouseRightPressed()
 	}
 }
 
@@ -115,6 +116,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetTimeDelay(mp_ssTimeDelay);
 		mp_ssMovement->SetFan(mp_ssFan);
 		mp_ssMovement->SetKitchenTimer(mp_ssKitchenTimer);
+		mp_ssMovement->SetTimer(mp_ssTimer);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);
@@ -124,6 +126,8 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMap->SetWall(mp_ssWall);
 		mp_ssMap->SetTarget(mp_ssTarget);
 		mp_ssMap->SetFan(mp_ssFan);
+		mp_ssMap->SetGoal(mp_ssGoal);
+		mp_ssMap->SetKTimer(mp_ssKitchenTimer);
 		
 
 		mp_ssFan->SetCircle(mp_ssShotString->GetCircle());

@@ -10,6 +10,8 @@ void GO_SS_Timer::Initialize(void)
 {
 	//テクスチャロード----------------
 	Number_Texture = LoadTexture(TEX_NAME);
+	m_TexIndex_Minority = LoadTexture(TEX_NAME_MINORITY);
+	m_TexIndex_Point = LoadTexture(TEX_NAME_POINT);
 
 	//-------------初期化-------------
 	//１桁目
@@ -40,14 +42,29 @@ void GO_SS_Timer::Initialize(void)
 	}
 
 
+	{
+		Timer_TenDigits.pos = D3DXVECTOR2(Timer_Vertex.pos.x - 100.0f, SCREEN_HEIGHT / 10);
+		Timer_TenDigits.size = D3DXVECTOR2(75, 75);
+		Timer_TenDigits.u = 0.0f;
+		Timer_TenDigits.v = 0.0f;
+	}
+
+	m_Eff.Initialize();
+	m_AddTime.Initialize();
+	m_Circle.Initialize();
 }
 
 void GO_SS_Timer::Finalize(void)
 {
+	m_Eff.Finalize();
+	m_AddTime.Finalize();
+	m_Circle.Finalize();
 }
 
 void GO_SS_Timer::Update(void)
 {
+	
+
 	//１桁目
 	FirstNum();
 
@@ -57,8 +74,17 @@ void GO_SS_Timer::Update(void)
 	//小数点第2位
 	ThirdNum();
 
+	//	10桁目
+	TenDigits();
+
 
 	SceneToGameOver();
+
+	m_Eff.Update();
+
+	m_AddTime.Update();
+
+	m_Circle.Update();
 }
 
 void GO_SS_Timer::Draw(void)
@@ -72,16 +98,30 @@ void GO_SS_Timer::Draw(void)
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
 
 	//小数点第1位
-	DrawSpriteColor(Number_Texture, Timer_Second.pos.x, Timer_Second.pos.y,
+	DrawSpriteColor(m_TexIndex_Minority, Timer_Second.pos.x, Timer_Second.pos.y,
 		Timer_Second.size.x, Timer_Second.size.y,
 		Timer_Second.u, Timer_Second.v, NUMBER_WIDTH, NUMBER_HEIGHT,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
 
 	//小数点第2位
-	DrawSpriteColor(Number_Texture, Timer_Third.pos.x, Timer_Third.pos.y,
+	DrawSpriteColor(m_TexIndex_Minority, Timer_Third.pos.x, Timer_Third.pos.y,
 		Timer_Third.size.x, Timer_Third.size.y,
 		Timer_Third.u, Timer_Third.v, NUMBER_WIDTH, NUMBER_HEIGHT,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
+
+	//10桁目
+	DrawSpriteColor(Number_Texture, Timer_TenDigits.pos.x, Timer_TenDigits.pos.y,
+		Timer_TenDigits.size.x, Timer_TenDigits.size.y,
+		Timer_TenDigits.u, Timer_TenDigits.v, NUMBER_WIDTH, NUMBER_HEIGHT,
+		D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
+
+	//	小数点
+	DrawSpriteColor(m_TexIndex_Point, Timer_Vertex.pos.x + 50.0f, Timer_Vertex.pos.y + 25.0f,
+		50.0f, 50.0f, 1.0f, 1.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
+
+	m_Eff.Draw();
+	m_AddTime.Draw();
+	m_Circle.Draw();
 }
 
 void GO_SS_Timer::FirstNum(void)
@@ -89,22 +129,17 @@ void GO_SS_Timer::FirstNum(void)
 	if (Timer_Vertex.use == false)return;
 
 	//１秒たったら
-	if (Timer_Vertex.counter >= 600) {
-
-		//納豆まぜまぜ終了
+	if (Timer_Vertex.counter >= TIMER_LIMIT) 
+	{
 		Timer_Vertex.counter = 0;
 		Timer_Vertex.use = false;
-		
+
+		SceneTransition(SCENE_GAMEOVER);
 	}
 	else {
 		Timer_Vertex.counter++;
 	}
 
-	if (Timer_Vertex.counter == 0) {
-
-		//GAMEOVERへ移行する
-		//SceneTransition(SCENE_GAMEOVER);
-	}
 
 
 
@@ -115,10 +150,10 @@ void GO_SS_Timer::FirstNum(void)
 	//	1 秒 = 60 フレーム　ー＞　10秒 = 600フレーム
 	//---------------------------------------------
 
-	int cnt = ((600 - Timer_Vertex.counter) / 60);
+	int cnt = (((TIMER_LIMIT - Timer_Vertex.counter)%600) / 60);
 
 	//数値変わる瞬間点滅
-	Timer_Vertex.alpha = ((600 - Timer_Vertex.counter) % 60) / 10;
+	Timer_Vertex.alpha = ((TIMER_LIMIT - Timer_Vertex.counter) % 60) / 10;
 
 	//いつものアニメーションUV設定
 	Timer_Vertex.u = NUMBER_WIDTH * (cnt % NUMBER_X);
@@ -133,7 +168,7 @@ void GO_SS_Timer::SecondNum(void)
 	//	0.1秒	=	よくわからない。
 	//	なら、1秒の処理を10倍の速さでやればよくね
 	//---------------------------------------------
-	int cnt = ((600 - Timer_Vertex.counter) / 6) % 10;
+	int cnt = ((TIMER_LIMIT - Timer_Vertex.counter) / 6) % 10;
 
 
 	Timer_Second.u = NUMBER_WIDTH * (cnt % NUMBER_X);
@@ -148,10 +183,21 @@ void GO_SS_Timer::ThirdNum(void)
 	//	0.01秒	=	よくわからない。
 	//	なら、0.1秒の処理を10倍の速さでやればよくね
 	//---------------------------------------------
-	int cnt = (int)((600 - Timer_Vertex.counter) / (6.0f / 10.0f)) % 10;
+	int cnt = (int)((TIMER_LIMIT - Timer_Vertex.counter) / (6.0f / 10.0f)) % 10;
 
 	Timer_Third.u = NUMBER_WIDTH * (cnt % NUMBER_X);
 	Timer_Third.v = NUMBER_HEIGHT * (cnt / NUMBER_Y);
+}
+
+void GO_SS_Timer::TenDigits(void)
+{
+	int cnt = (((TIMER_LIMIT - Timer_Vertex.counter) % 6000) / 600);
+
+	//数値変わる瞬間点滅
+
+	//いつものアニメーションUV設定
+	Timer_TenDigits.u = NUMBER_WIDTH * (cnt % NUMBER_X);
+	Timer_TenDigits.v = NUMBER_HEIGHT * (cnt / NUMBER_Y);
 }
 
 //タイマーが0になったらGameoverへ

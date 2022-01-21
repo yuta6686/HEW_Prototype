@@ -3,6 +3,10 @@
 #include "GO_SS_Wall.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_Fan.h"
+#include "GO_SS_Goal.h"
+#include "GO_SS_KitchenTimer.h"
+#include <cstdlib>
+
 //#include "GO_SS_ZipLine.h"
 
 //#define SEEK_ZIP_MAX  5
@@ -46,6 +50,14 @@ void GO_SS_Map::Update(void)
 				}
 				break;
 
+			case FAN_B_UP_NUM:
+				break;
+
+			case FAN_B_LEFT_NUM:
+				break;
+
+			case GOAL_NUM:
+				m_pGoal->SetGoalPos(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 
 			//case ZIPLINE_A_NUM:
 			//	//ZIPLINE_A_NUMÇ™óàÇΩÇÁBÇíTÇµÇ…çsÇ≠
@@ -80,21 +92,42 @@ void GO_SS_Map::ResetOnce(void)
 
 bool GO_SS_Map::SeekFanB(int CurrentNumX, int CurrentNumY)
 {
-	for (int y = 0; y < STAGE_WALL_NUM_Y; y++)
+	int nearX = STAGE_WALL_NUM_X, nearY = STAGE_WALL_NUM_Y;
+	int absX, absY;
+	int total;
+	bool disc = false;
+	int x, y;
+
+	for (y = 0; y < STAGE_WALL_NUM_Y; y++)
 	{
-		for (int x = CurrentNumX; x < STAGE_WALL_NUM_X - CurrentNumX; x++)
+		for (x = 0; x < STAGE_WALL_NUM_X; x++)
 		{
 			if (MapData[y][x] == FAN_B_UP_NUM || MapData[y][x] == FAN_B_LEFT_NUM)
 			{
-				if (MapData[y][x] == FAN_B_UP_NUM)
-					m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y), false);
-				if(MapData[y][x] == FAN_B_LEFT_NUM)
-					m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y), true);
+				absX = abs(CurrentNumX - x);
+				absY = abs(CurrentNumY - y);
 
-				return true;
+				total = absX + absY;
+
+				if (total < abs(CurrentNumX -nearX) + abs(CurrentNumY - nearY))
+				{
+					nearX = x;
+					nearY = y;
+					disc = true;
+				}
 			}
 		}
+	}	
+	if (disc)
+	{
+		if (MapData[nearY][nearX] == FAN_B_UP_NUM)
+			m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * nearX, WALL_HEIGHT * nearY), false);
+		if (MapData[nearY][nearX] == FAN_B_LEFT_NUM)
+			m_pFan->LinkFanB(D3DXVECTOR2(WALL_WIDTH * nearX, WALL_HEIGHT * nearY), true);
+
+		return true;
 	}
+	
 	return false;
 }
 

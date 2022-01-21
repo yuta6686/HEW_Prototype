@@ -1,11 +1,16 @@
 #pragma once
 #include "GameObject.h"
+#include "E_Prizum.h"
+#include "E_AddTime.h"
+#include "E_Circle.h"
 
 class GO_SS_Player;
 
 class GO_SS_Timer :
     public GameObject
 {
+private:
+	static const int TIMER_LIMIT = 6000;
 public:
 	// GameObject を介して継承されました
 	virtual void Initialize(void) override;
@@ -23,15 +28,36 @@ public:
 	bool GetTimerUse(void) { return Timer_Vertex.use; }
 	void SetTimerUse(bool flag) { Timer_Vertex.use = flag; }
 
+	int GetTimerCounter(void) { return Timer_Vertex.counter; }
+	void SetTimerCounter(int count) { Timer_Vertex.counter = count; }
+
+
+	void SetVertex(VERTEX_ALPHA_ANIMATION_USE info) { Timer_Vertex = info; }
+	void AddTimer(int value) { Timer_Vertex.counter = value; }
+
+	void SetEffect() { 
+		m_Eff.SetEffectNoMouse( D3DXVECTOR2(Timer_TenDigits.pos.x + 200.0f, Timer_TenDigits.pos.y),300.0f);
+		m_AddTime.SetEffectNoMouse(D3DXVECTOR2(Timer_TenDigits.pos.x, Timer_TenDigits.pos.y), 300.0f);	
+	}
+
+	void SetEffect(D3DXVECTOR2 pos) 
+	{
+		SetEffect();
+		m_Circle.SetEffectNoMouse(pos,100.0f);
+	}
 private:
-	//--------------------------------------------------------
-	//	メンバ変数
-	//--------------------------------------------------------
+//--------------------------------------------------------
+//	メンバ変数
+//--------------------------------------------------------
 
 		//	Texture用変数
-	char TEX_NAME[128] = "data/TEXTURE/number2.png";
+	char TEX_NAME[128] = "data/TEXTURE/number02.png";
+	char* TEX_NAME_MINORITY = "data/TEXTURE/number02_mono.png";
+	char* TEX_NAME_POINT = "data/TEXTURE/ten.png";
 
 	int Number_Texture;
+	int m_TexIndex_Minority;
+	int m_TexIndex_Point;
 
 	//	GameScene用変数
 	const int m_GameScene = GAMESCENE_GAME_TEST;
@@ -46,7 +72,13 @@ private:
 	VERTEX_ALPHA_ANIMATION_USE Timer_Vertex;	//1桁目
 	VERTEX_UV Timer_Second;						//小数点第一位
 	VERTEX_UV Timer_Third;						//小数点第二位
+	VERTEX_UV Timer_TenDigits;					//10の位
 
+	//	エフェクト
+	E_Prizum m_Eff;
+	E_AddTime m_AddTime;
+	E_Circle m_Circle;
+	
 //--------------------------------------------------------
 //	メンバ関数
 //--------------------------------------------------------
@@ -58,6 +90,8 @@ private:
 	void SecondNum(void);
 	
 	void ThirdNum(void);
+
+	void TenDigits(void);
 
 	//タイマーが0になったらGameoverへ
 	void SceneToGameOver(void);

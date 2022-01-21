@@ -9,6 +9,7 @@
 #include "texture.h"
 #include "sprite.h"
 #include "fade.h"
+#include "sound.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -25,6 +26,8 @@
 //*****************************************************************************
 static int	g_TextureNo = 0;	// テクスチャ情報
 
+//	サウンド用のインデックス
+static int g_SoundIndex = 0;
 
 //=============================================================================
 // 初期化処理
@@ -32,6 +35,15 @@ static int	g_TextureNo = 0;	// テクスチャ情報
 HRESULT InitGameOver(void)
 {
 	g_TextureNo = LoadTexture("data/TEXTURE/gameOver.png");
+
+	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+
+	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+	//で音量が設定できます
+	SetVolume(g_SoundIndex, 0.5f);
+
+	PlaySound(g_SoundIndex, 256);
+
 
 	return S_OK;
 }
@@ -41,7 +53,7 @@ HRESULT InitGameOver(void)
 //=============================================================================
 void UninitGameOver(void)
 {
-
+	StopSound(g_SoundIndex);
 }
 
 //=============================================================================

@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>false</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -127,6 +128,8 @@
   <ItemGroup>
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectFactory.cpp" />
+    <ClCompile Include="E_AddTime.cpp" />
+    <ClCompile Include="E_Circle.cpp" />
     <ClCompile Include="E_Prizum.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="GO_SS_Effect_Wind.cpp" />
@@ -167,6 +170,7 @@
     <ClCompile Include="result.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="SelectStage.cpp" />
+    <ClCompile Include="sound.cpp" />
     <ClCompile Include="Spotlight.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="StageObjectArrowKey.cpp" />
@@ -183,6 +187,8 @@
   <ItemGroup>
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectFactory.h" />
+    <ClInclude Include="E_AddTime.h" />
+    <ClInclude Include="E_Circle.h" />
     <ClInclude Include="E_Prizum.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="GO_SS_Effect_Wind.h" />
@@ -226,6 +232,7 @@
     <ClInclude Include="result.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="SelectStage.h" />
+    <ClInclude Include="sound.h" />
     <ClInclude Include="Spotlight.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="StageObectFactory.h" />

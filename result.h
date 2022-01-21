@@ -48,3 +48,5 @@ void DrawResult(void);
 void FirstNum();
 void SecondNum();
 void ThirdNum();
+
+void SetTime(int time);

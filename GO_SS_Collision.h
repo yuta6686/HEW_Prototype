@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "GO_SS_Timer.h"
 
 class GO_SS_BackGround;
 class GO_SS_Player;
@@ -10,6 +11,7 @@ class GO_SS_Target;
 class GO_SS_ZipLine;
 class GO_SS_Fan;
 class GO_SS_KitchenTimer;
+
 
 class GO_SS_Collision
 {
@@ -24,6 +26,7 @@ public:
     void SetZipLine(GO_SS_ZipLine* p) { m_pZipLine = p; }
     void SetFan(GO_SS_Fan* p) { m_pFan = p; }
     void SetKitchenTimer(GO_SS_KitchenTimer* p_KitchenTimer) { m_pKitchenTimer = p_KitchenTimer; }
+    void SetTimer(GO_SS_Timer* pTimer) { m_pTimer = pTimer; }
 
     //??????????????????
     void CollisionUpdate(void);
@@ -50,6 +53,7 @@ private:
     GO_SS_ZipLine* m_pZipLine;
     GO_SS_Fan* m_pFan;
     GO_SS_KitchenTimer* m_pKitchenTimer;
+    GO_SS_Timer* m_pTimer;
  
 //????????         CollisionJudge_ -> CJ_
     int collTemp;
