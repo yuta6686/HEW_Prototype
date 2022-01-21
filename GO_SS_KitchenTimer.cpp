@@ -19,9 +19,9 @@ void GO_SS_KitchenTimer::Initialize(void)
 		KitchenTimer_Vertex[i].use = false;
 	}
 	
-	for (int i = 0; i < 50; i++) {
-		SetKTimer(D3DXVECTOR2(800.0f*i, 300.0f));
-	}
+	//for (int i = 0; i < 50; i++) {
+	//	SetKTimer(D3DXVECTOR2(800.0f*i, 300.0f));
+	//}
 	
 }
 
