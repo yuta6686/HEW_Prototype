@@ -68,7 +68,7 @@ D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 //=============================================================================
 HRESULT InitTitle(void)
 {
-	TO_Init();
+
 
 	//テクスチャ生成
 	g_TextureNo[0] = LoadTexture("data/TEXTURE/haikei2.png");
@@ -120,7 +120,7 @@ HRESULT InitTitle(void)
 //=============================================================================
 void UninitTitle(void)
 {
-	TO_Uninit();
+
 }
 
 //=============================================================================
@@ -171,7 +171,7 @@ void UpdateTitle(void)
 //=============================================================================
 void DrawTitle(void)
 {
-	TO_Draw();
+
 
 	// １枚のポリゴンの頂点とテクスチャ座標を設定
 

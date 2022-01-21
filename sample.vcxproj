@@ -178,7 +178,6 @@
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="title.cpp" />
-    <ClCompile Include="Title_Object.cpp" />
     <ClCompile Include="Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -239,7 +238,6 @@
     <ClInclude Include="StageObject_Tutorial.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="title.h" />
-    <ClInclude Include="Title_Object.h" />
     <ClInclude Include="Tutorial.h" />
     <ClInclude Include="VertexParameter.h" />
   </ItemGroup>
