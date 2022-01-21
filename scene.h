@@ -6,6 +6,7 @@ enum SCENE
 {
 	SCENE_NONE,			//シーン処理なし
 	SCENE_TITLE,		//タイトル
+	SCENE_CREDIT,		//クレジット
 	SCENE_SELECT_STAGE,	//ステージ選択
 	SCENE_TUTORIAL,		//チュートリアル
 	SCENE_GAME,			//ゲーム

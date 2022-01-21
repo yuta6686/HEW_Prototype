@@ -15,6 +15,7 @@
 #include "fade.h"
 #include "SelectStage.h"
 #include "Tutorial.h"
+#include "credit.h"
 
 
 
@@ -56,6 +57,10 @@ void InitScene(SCENE index)
 		InitTitle();
 		break;
 
+	case SCENE_CREDIT:
+		InitCredit();
+		break;
+
 	case SCENE_SELECT_STAGE:
 		g_sStage.Init();
 		break;
@@ -92,6 +97,10 @@ void UninitScene(void)
 		UninitTitle();
 		break;
 
+	case SCENE_CREDIT:
+		UninitCredit();
+		break;
+
 	case SCENE_SELECT_STAGE:
 		g_sStage.Uninit();
 		break;
@@ -119,13 +128,17 @@ void UninitScene(void)
 ------------------------------------------------------------------------------*/
 void UpdateScene(void)
 {
-	switch( g_SceneIndex ) 
+	switch (g_SceneIndex)
 	{
 	case SCENE_NONE:
 		break;
 
 	case SCENE_TITLE:
 		UpdateTitle();
+		break;
+
+	case SCENE_CREDIT:
+		UpdateCredit();
 		break;
 
 	case SCENE_SELECT_STAGE:
@@ -157,13 +170,17 @@ void UpdateScene(void)
 ------------------------------------------------------------------------------*/
 void DrawScene(void)
 {
-	switch( g_SceneIndex )
+	switch (g_SceneIndex)
 	{
 	case SCENE_NONE:
 		break;
 
 	case SCENE_TITLE:
 		DrawTitle();
+		break;
+
+	case SCENE_CREDIT:
+		DrawCredit();
 		break;
 
 	case SCENE_SELECT_STAGE:
@@ -205,11 +222,11 @@ void SetScene(SCENE index)
 void CheckScene(void)
 {
 	//現在のシーンと遷移先シーンが違っていたら
-	if( g_SceneIndex != g_SceneNextIndex )
+	if (g_SceneIndex != g_SceneNextIndex)
 	{
 		//現在のシーンを終了させる
 		UninitScene();
-		
+
 		//遷移先シーンの初期化処理を行う
 		InitScene(g_SceneNextIndex);
 	}

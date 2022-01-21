@@ -126,6 +126,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="credit.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectFactory.cpp" />
     <ClCompile Include="Effect_Vertex.cpp" />
@@ -187,6 +188,7 @@
     <ClCompile Include="Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="credit.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectFactory.h" />
     <ClInclude Include="Effect_Vertex.h" />
