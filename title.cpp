@@ -35,40 +35,37 @@
 //*****************************************************************************
 // グローバル変数
 //*****************************************************************************
+//	int (texture)
 static int g_TextureNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
 static int g_AdvertisementNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
-
 static int g_String_Texture;	// テクスチャ情報
+static int g_TexIndex_Sign;
+static int g_CreditTextureNo = 0;	// クレジット
 
-static VERTEX_TITLE_PLAYER g_Player;
-
-static float g_natto = 1200.0f;
-
+//	int
+static int g_Action = 0;
 static int g_i = 0;
 static int g_count = 0;
 
+//	const FLOAT
 static const FLOAT GRAVITY_ACCELERATION = 0.3f;
 
+//	FLOAT
+static FLOAT g_natto = 1200.0f;
 static FLOAT m_Jump = -10.75f;
 static FLOAT g_gravity = 1.0f;
-static int g_Action = 0;
+static FLOAT biruk[4] = { 0.0f,0.0f,1.0f,1.0f };
+static FLOAT g_U = 0.0f;
+static FLOAT g_Transparent;
 
+//	Vertex
+static VERTEX_TITLE_PLAYER g_Player;
 static VERTEX_SHOOTSTIRNG	g_String_Vertex;
 
-
-
-float biruk[4] = { 0.0f,0.0f,1.0f,1.0f };
-float g_U = 0.0f;
-
-D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
-
-D3DXVECTOR2 g_Mouse_pos(0.0f, 0.0f);
-
-
-//クレジット
-static int g_CreditTextureNo = 0;	// テクスチャ情報
-static VERTEX_NOMAL Credit;
-
+//	D3DXVECTOR2	
+static D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
+static D3DXVECTOR2 g_Mouse_pos(0.0f, 0.0f);
+static VERTEX_NOMAL Credit;		//クレジット
 
 //=============================================================================
 // 初期化処理
@@ -82,6 +79,8 @@ HRESULT InitTitle(void)
 	g_TextureNo[3] = LoadTexture("data/TEXTURE/jump2.png");//プレイヤー
 	g_TextureNo[4] = LoadTexture("data/TEXTURE/mati3-1.png");//ライト
 	g_CreditTextureNo = LoadTexture("data/TEXTURE/natto.png");//ライト
+
+	g_TexIndex_Sign = LoadTexture("data/TEXTURE/titleback2.png");
 
 
 	g_Player.angle = 0.0f;
@@ -114,10 +113,12 @@ HRESULT InitTitle(void)
 	biruk[3] = 1.0f;
 
 	g_U = 0.0f;
+	g_Transparent = 1.0f;
 
 	Credit.pos = D3DXVECTOR2(SCREEN_WIDTH * 0.9, SCREEN_HEIGHT * 0.9);
 	Credit.size = D3DXVECTOR2(200.0f, 200.0F);
 
+	
 
 	return S_OK;
 
@@ -138,7 +139,7 @@ void UpdateTitle(void)
 {
 
 	//背景の移動
-	g_U += 0.0000001f;
+	g_U += 0.001f;
 
 	//アニメーションのフレーム処理
 	if (g_Player.use) {
@@ -168,8 +169,8 @@ void UpdateTitle(void)
 
 
 	//シーン遷移
-	if (GetKeyboardTrigger(DIK_RETURN) /*||
-		IsMouseLeftPressed()*/ &&
+	if (GetKeyboardTrigger(DIK_RETURN) ||
+		IsMouseLeftPressed() &&
 		GetFadeState() == FADE_NONE)
 		g_Action = 9;
 
@@ -200,7 +201,7 @@ void DrawTitle(void)
 
 	DrawSpriteLeftTop(g_TextureNo[0], 0, 0,
 		SCREEN_WIDTH * 36, SCREEN_HEIGHT,
-		g_U, g_U, 1.0f + g_U, 1.0f + g_U);
+		g_U, 1.0f, 1.0f + g_U, 1.0f);
 
 
 	//ビル群
@@ -208,6 +209,9 @@ void DrawTitle(void)
 		SCREEN_WIDTH, SCREEN_HEIGHT,
 		biruk[0], biruk[1], biruk[2], biruk[3]);
 
+	DrawSprite(g_TexIndex_Sign, SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
+		SCREEN_WIDTH, SCREEN_HEIGHT,
+		biruk[0], biruk[1], biruk[2], biruk[3]);
 
 	//ライト
 	DrawSprite(g_TextureNo[4], SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
@@ -216,29 +220,31 @@ void DrawTitle(void)
 
 
 	//フック	
-	DrawSprite(g_TextureNo[2], Target_x, Target_y,
+	DrawSpriteColor(g_TextureNo[2], Target_x, Target_y,
 		400, 400,
-		0.0f, 0.0f, 0.8f, 1.0f);
+		0.0f, 0.0f, 0.8f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent));
 
 	if (g_Player.use)
 	{
 		//プレイヤー
-		DrawSprite(g_TextureNo[3], g_Player.pos.x, g_Player.pos.y,
+		DrawSpriteColor(g_TextureNo[3], g_Player.pos.x, g_Player.pos.y,
 			186, 223,
-			g_Player.u, g_Player.v, PLAYER_WIDTH, PLAYER_HEIGHT);
+			g_Player.u, g_Player.v, PLAYER_WIDTH, PLAYER_HEIGHT,
+			D3DXCOLOR(1.0f,1.0f,1.0f, g_Transparent));
 
 		//納豆の糸
 		DrawSpriteColorRotate(g_String_Texture, g_String_Vertex.pos.x, g_String_Vertex.pos.y,
 			g_String_Vertex.size.x, g_String_Vertex.size.y,
-			0.0f, 0.0f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), g_String_Vertex.angle);
+			0.0f, 0.0f, 0.9f, 0.9f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent),
+			g_String_Vertex.angle);
 
 
 	}
 
 	//クレジット
-	DrawSprite(g_CreditTextureNo, Credit.pos.x, Credit.pos.y,
+	DrawSpriteColor(g_CreditTextureNo, Credit.pos.x, Credit.pos.y,
 		Credit.size.x, Credit.size.y,
-		0.0f, 0.0f, 1.0f, 1.0f);
+		0.0f, 0.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent));
 
 }
 
@@ -302,7 +308,14 @@ void Action(int ActionScene)//引数：アクションナンバー
 	case 9://シーン移行のアクション
 		if (biruk[0] >= 0.05f)
 		{
-			g_Action = 0;
+
+			//g_Action = 0;
+
+			biruk[0] += 0.0016f;
+			biruk[1] += 0.0066f;
+			biruk[2] -= 0.0163f;
+			biruk[3] -= 0.0173f;
+
 			SceneTransition(SCENE_SELECT_STAGE);
 		}
 
@@ -314,6 +327,8 @@ void Action(int ActionScene)//引数：アクションナンバー
 			biruk[3] -= 0.0173f;
 
 		}
+
+		g_Transparent -= 0.05f;
 		break;
 	default:
 		break;
