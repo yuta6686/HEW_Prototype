@@ -18,6 +18,8 @@ void NRO_Natto::Initialize(void)
         //  bool
         m_Vertex[i].use = false;
 
+        //  èâä˙Rotï€ë∂óp
+        m_Rots[i] = m_Vertex[i].rot;
     }
 
 }
@@ -34,10 +36,6 @@ void NRO_Natto::Update(void)
 
 void NRO_Natto::Draw(void)
 {
-    /*DrawSprite(GetTexIndex(), SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 3*2, 
-        100.0f, 100.0f,
-        1.0f, 1.0f, 1.0f, 1.0f);*/
-
     NattoRotateObject::Draw();
 }
 

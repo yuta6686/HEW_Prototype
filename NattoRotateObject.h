@@ -27,16 +27,38 @@ public:
 
     virtual int GetTexIndex(void) { return m_TexIndex; }
 
-    void SetPos(D3DXVECTOR2 pos) { m_PlayerPos = pos; }
+    //  セッター  //
+    // 
+    //  引数無し
     void SetNatto(void);
+    
+    //  引数有り
+    // 
+    //  D3DXVECTOR2
+    void SetPos(D3DXVECTOR2 pos) { m_PlayerPos = pos; }
+
+    // int    &   float
+    void SetRots(int index, float rot) { m_Vertex[index].rot = rot; }
+
+    //  ゲッター   //
+    //  int
+
+    //  float
+    FLOAT GetRots(int index) { return m_Vertex[index].rot; }
+    FLOAT GetFirstRots(int index) { return m_Rots[index]; }
+    
 protected:
+    //  メンバ変数
     int m_TexIndex;
 
-    
-
+    //  頂点情報
     VERTEX_NATTO m_Vertex[NATTO_MAX];
 
+    //  前のフレームのポジション
     D3DXVECTOR2 m_PlayerPos = D3DXVECTOR2(0.0f, 0.0f);
+
+    //  初期Rot保存用
+    FLOAT m_Rots[NATTO_MAX];
 
 //  メンバ関数
     void Rotation(int index);

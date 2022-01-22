@@ -39,8 +39,6 @@ void GO_SS_NattoRotate::Finalize(void)
 
 void GO_SS_NattoRotate::Update(void)
 {
-
-
     for (int i = 0; i < NATTO_ROTATE_OBJECT_MAX; i++) {
         if (!m_pNattoRotateObjects[i])continue;
         m_pNattoRotateObjects[i]->Update();

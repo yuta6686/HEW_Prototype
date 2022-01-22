@@ -32,6 +32,10 @@ public:
     void SetNatto(int index);
 
     void SetPos(D3DXVECTOR2 pos);
+
+    NattoRotateObject* GetNRObject(int index) { return m_pNattoRotateObjects[index]; }
+
+    int GetNattoRotateObjectMax(void) { return NATTO_ROTATE_OBJECT_MAX; }
 private:
 
 

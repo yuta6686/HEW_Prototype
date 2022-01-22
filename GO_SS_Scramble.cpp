@@ -44,6 +44,9 @@ void GO_SS_Scramble::Finalize(void)
 
 void GO_SS_Scramble::Update(void)
 {
+	NattoRotation();
+
+
 	if (IsMouseRightPressed()) {
 
 		Vortex_Vertex.use = true;
@@ -116,11 +119,11 @@ void GO_SS_Scramble::LastUpdate(void)
 
 void GO_SS_Scramble::Draw(void)
 {
-	if (Vortex_Vertex.use) {
+	/*if (Vortex_Vertex.use) {
 		DrawSpriteColorRotate(Scramble_texture, Vortex_Vertex.pos.x, Vortex_Vertex.pos.y,
 			Vortex_Vertex.size.x, Vortex_Vertex.size.y,
 			0.0f, 0.0f, 1.0f, 1.0f, Vortex_Vertex.color, Vortex_Vertex.angle);
-	}
+	}*/
 
 	m_Natto->Draw();
 }
@@ -134,4 +137,46 @@ FLOAT GO_SS_Scramble::GetPreviousDiff(void)
 	}
 
 	return dist;
+}
+
+void GO_SS_Scramble::NattoRotation()
+{
+	for (int i = 0; i < NRN_MAX; i++) {
+
+		//	ˆê•Ï”‚É“ü‚ê‚é
+		NattoRotateObject* pNro = m_Natto->GetNRObject(i);
+
+		if (pNro == nullptr)continue;
+
+		//	NRO‚ÌƒIƒuƒWƒFƒNƒg
+		for (int j = 0; j < m_Natto->GetNattoRotateObjectMax(); j++) 
+		{		
+			//	Œ»İ‚Ì‰ñ“]Šp
+			FLOAT nowRot = pNro->GetRots(j);
+
+			//	ƒ}ƒEƒX‚Ì‰E‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½‚ç			
+			if (IsMouseRightPressed()) 
+			{	//	ƒ}ƒEƒX‚Ì·•ª‰ñ“]‚³‚¹‚é
+				pNro->SetRots(j, nowRot + GetPreviousDiff() / DECREASE_PREVIOUS_DIFF);
+			}
+			else //	Å‰‚Ì‰ñ“]Šp‚Ü‚Å–ß‚·
+			{
+				//	Å‰‚Ì‰ñ“]Šp
+				FLOAT firstRot = pNro->GetFirstRots(j);
+
+				//	Œ¸Š
+				FLOAT decrease = nowRot * 0.9f;
+
+				//	¡‚Ì‰ñ“]Šp‚ªÅ‰‚Ì‰ñ“]Šp‚æ‚è¬‚³‚©‚Á‚½‚ç
+				if (decrease <= firstRot)
+				{
+					pNro->SetRots(j, firstRot);
+				}
+				else
+				{
+					pNro->SetRots(j, decrease);
+				}
+			}
+		}		
+	}	
 }

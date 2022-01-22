@@ -270,7 +270,8 @@ void GO_SS_Collision::CJ_NegiAndPlayer(void)
 			{
 				m_pNegi->SetUse(i, false);
 
-				m_pNegi->SetEffect(m_pPlayer->GetPos());
+				m_pNegi->SetEffect(D3DXVECTOR2(m_pNegi->GetNegi(i)->pos.x + m_pNegi->GetNegi(i)->size.x/2.0f,
+					m_pNegi->GetNegi(i)->pos.y += m_pNegi->GetNegi(i)->size.y/2.0f));
 
 				m_pShotString->SetIsNegi(true);
 

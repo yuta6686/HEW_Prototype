@@ -11,13 +11,15 @@ void NattoRotateObject::Initialize(void)
 
         //  FLOAT
         m_Vertex[i].angle = 0.1f;
-        m_Vertex[i].rot = frand_r();
+        m_Vertex[i].rot = frand_r();       
         m_Vertex[i].alpha = 1.0f;
         m_Vertex[i].radius = frand() * 100.0f + 50.0f;
 
         //  bool
         m_Vertex[i].use = false;
 
+        //  ‰ŠúRot•Û‘¶—p
+        m_Rots[i] = m_Vertex[i].rot;
     }
 
     //  ‰Šúó‘Ô‚Ì”[“¤•Û—L”
@@ -43,6 +45,8 @@ void NattoRotateObject::Update(void)
         Rotation(i);
 
     }
+
+    
 }
 
 void NattoRotateObject::Draw(void)

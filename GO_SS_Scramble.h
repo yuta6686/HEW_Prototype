@@ -15,6 +15,8 @@ struct VERTEX_SCRAMBLE :VERTEX_NOMAL {
 class GO_SS_Scramble :
     public GameObject
 {
+private:
+    const float DECREASE_PREVIOUS_DIFF = 10000.0f;
 public:
     ~GO_SS_Scramble()override;
 
@@ -57,5 +59,8 @@ private:
     D3DXVECTOR2 m_CurPos;
 
     GO_SS_NattoRotate* m_Natto;
+
+    //  ÉÅÉìÉoä÷êî
+    void NattoRotation();
 };
 
