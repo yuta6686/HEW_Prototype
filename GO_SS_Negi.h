@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "E_Circle.h"
 class GO_SS_Negi :
     public GameObject
 {
@@ -29,7 +30,15 @@ public:
     //	ìÆÇ´
     void AddX(FLOAT x);
 
+    void SetEffect(D3DXVECTOR2 pos) {
+        m_Circle.SetEffectNoMouse(pos, 100.0f);
+        m_Circle_001.SetEffectNoMouse(pos, 0.0f);
+    }
+
 private:
+
+    E_Circle m_Circle;
+    E_Circle m_Circle_001;
     
     //  í∏ì_èÓïÒ
     VERTEX_T m_Negi[NEGI_MAX];

@@ -18,14 +18,21 @@ void GO_SS_Negi::Initialize(void)
 		m_Negi[i].pos = D3DXVECTOR2(i*500.0f, 300.0f);
 		m_Negi[i].use = true;
 	}
+
+	m_Circle.Initialize();
+	m_Circle_001.Initialize();
 }
 
 void GO_SS_Negi::Finalize(void)
 {
+	m_Circle.Finalize();
+	m_Circle_001.Finalize();
 }
 
 void GO_SS_Negi::Update(void)
 {
+	m_Circle.Update();
+	m_Circle_001.Update();
 }
 
 void GO_SS_Negi::Draw(void)
@@ -33,10 +40,13 @@ void GO_SS_Negi::Draw(void)
 	for (int i = 0; i < NEGI_MAX; i++) {
 		if (m_Negi[i].use)
 		{
-			DrawSprite(m_TexIndex, m_Negi[i].pos.x, m_Negi[i].pos.y,
+			DrawSpriteLeftTop(m_TexIndex, m_Negi[i].pos.x, m_Negi[i].pos.y,
 				m_Negi[i].size.x, m_Negi[i].size.y, 1.0f, 1.0f, 1.0f, 1.0f);
 		}
 	}
+	
+	m_Circle.Draw();
+	m_Circle_001.Draw();
 }
 
 int GO_SS_Negi::GetGameScene(void)

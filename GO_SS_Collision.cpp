@@ -270,9 +270,12 @@ void GO_SS_Collision::CJ_NegiAndPlayer(void)
 			{
 				m_pNegi->SetUse(i, false);
 
+				m_pNegi->SetEffect(m_pPlayer->GetPos());
+
 				m_pShotString->SetIsNegi(true);
 
 				m_pShotString->SetNatto(NRN_NEGI);
+
 			}
 		}
 	}
