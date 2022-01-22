@@ -30,8 +30,13 @@ void GO_SS_ShotString::Initialize(void)
 	m_DecreaseCircleCounter = 0;
 
 	m_IsNegi = false;
+	
 
 	m_AimFlag = false;
+
+	IsInsideTarget = -1;
+
+	m_AimTarget = -1;
 }
 
 void GO_SS_ShotString::Finalize(void)
@@ -42,6 +47,15 @@ void GO_SS_ShotString::Finalize(void)
 void GO_SS_ShotString::Update(void)
 {
 	NegiEffects();
+
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+
+
+
+	sprintf(&GetDebugStr()[strlen(GetDebugStr())], "減少値：%.2f", m_DecreaseCircleValue);
+
+	SetWindowText(GethWnd()[0], GetDebugStr());
+#endif
 
 	m_pScramble->SetPos(m_pPlayer->GetPos());
 
@@ -104,15 +118,19 @@ void GO_SS_ShotString::ChangeSizeOfCircle()
 	if (IsMouseRightPressed()) {
 		Circle_Vertex.size.x += m_pScramble->GetPreviousDiff() / 10.0f;
 
-		Circle_Vertex.size.x -= Circle_Vertex.size.x / m_CircleSizeMax * m_TimeDelay;
+		//Circle_Vertex.size.x -= Circle_Vertex.size.x / m_CircleSizeMax * m_TimeDelay;
 	}
 	else {
-		if (Circle_Vertex.size.x <= m_CircleSizeMax) {
-			Circle_Vertex.size.x = m_CircleSizeMax;
+		if (Circle_Vertex.size.x <= m_CircleSizeMin) {
+			Circle_Vertex.size.x = m_CircleSizeMin;
 		}
 		else {
-			Circle_Vertex.size.x -= m_DecreaseCircleValue * m_TimeDelay;
+			
 		}
+
+
+
+		Circle_Vertex.size.x -= m_DecreaseCircleValue * m_TimeDelay;
 	}
 
 	//	yとxのサイズ同じにする
@@ -126,6 +144,8 @@ void GO_SS_ShotString::NegiEffects()
 		return;
 	}
 
+	
+
 	if (m_DecreaseCircleCounter >= m_DECREASE_CIRCLE_COUNTER_MAX) 
 	{
 		m_DecreaseCircleCounter = 0;
@@ -137,7 +157,8 @@ void GO_SS_ShotString::NegiEffects()
 					
 		//	新しい減衰値	  = デフォルト値			  * (		カウンター				カウンターの最大値		)
 		//	カウンター / 最大値 = カウンターの増加に応じた、0　～　1までの値が取得できる。
-		m_DecreaseCircleValue = m_DECREASE_CIRCLE_DEFAULT * (m_DecreaseCircleCounter / m_DECREASE_CIRCLE_COUNTER_MAX);
+		FLOAT value = ((FLOAT)m_DecreaseCircleCounter / (FLOAT)(m_DECREASE_CIRCLE_COUNTER_MAX*2.0f));
+		m_DecreaseCircleValue = m_DECREASE_CIRCLE_DEFAULT * value;
 		
 	}
 }
@@ -159,7 +180,7 @@ void GO_SS_ShotString::TargetClick(void)
 	IsInsideTarget = TargetIsInRange();
 
 	if (IsInsideTarget >= 0) {
-		if (m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f) {
+		if (m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f || m_pTarget->GetTarget()[IsInsideTarget].pos.x >= SCREEN_WIDTH) {
 			m_AimFlag = false;
 			
 		}

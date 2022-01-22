@@ -15,14 +15,14 @@ private:
 	char CIRCLE_TEX_NAME[64] = "data/TEXTURE/circle1.png";
 	int Circle_Texture;
 
-	const FLOAT m_CircleSizeMax = 200.0f;
+	const FLOAT m_CircleSizeMin = 200.0f;
 	const FLOAT m_DecreaseJump = 500.0f;
 
 	const FLOAT m_DECREASE_CIRCLE_DEFAULT = 10.0f;
 
-	float m_DecreaseCircleValue;
+	FLOAT m_DecreaseCircleValue;
 
-	static const int m_DECREASE_CIRCLE_COUNTER_MAX = 60 * 5;
+	static const int m_DECREASE_CIRCLE_COUNTER_MAX = 300;
 	int m_DecreaseCircleCounter;
 public:
 	// GameObject‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
@@ -45,7 +45,16 @@ public:
 	void SetPos(D3DXVECTOR2 pos)	{ String_Vertex.pos = pos; }
 	void SetNatto(int index) { m_pScramble->SetNato(index); }
 
-	void SetIsNegi(bool flag) { m_IsNegi = flag; }
+	void SetIsNegi(bool flag) 
+	{ 
+		if (m_IsNegi == flag) 
+		{
+			m_DecreaseCircleCounter = 0;
+		}
+
+		m_IsNegi = flag;
+		
+	}
 
 //public •Ï”
 
