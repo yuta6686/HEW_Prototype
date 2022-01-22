@@ -82,6 +82,7 @@ private:
     GO_SS_KitchenTimer* m_pKitchenTimer;
     GO_SS_Timer* m_pTimer;
     GO_SS_Negi* m_pNegi;
+    GO_SS_Karashi* m_pKarashi;
 
 
     //ƒƒ“ƒo•Ï”
@@ -191,6 +192,11 @@ public:
     void SetNegi(GO_SS_Negi* pNegi) {
         m_pNegi = pNegi;
         m_ssCollision.SetNegi(pNegi);
+    }
+
+    void SetKarashi(GO_SS_Karashi* pKarashi) {
+        m_pKarashi = pKarashi;
+        m_ssCollision.SetKarashi(pKarashi);
     }
 };
 

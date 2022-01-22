@@ -7,6 +7,7 @@ enum NATTO_ROTATE_NUM {
     NRN_NATTO,
     NRN_TIMER,
     NRN_NEGI,
+    NRN_KARASHI,
     NRN_MAX,
 };
 

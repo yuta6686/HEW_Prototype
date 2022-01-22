@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "GO_SS_Negi.h"
+#include "GO_SS_Karashi.h"
 
 class GO_ShootString;
 class GO_SS_Player;
@@ -65,6 +66,7 @@ private:
     GO_SS_Fan* mp_ssFan;
     GO_SS_KitchenTimer* mp_ssKitchenTimer;
     GO_SS_Negi* mp_ssNegi;
+    GO_SS_Karashi* mp_ssKarashi;
 
     //nullptr代入ー＞newで動的生成ー＞Register登録をまとめてやる場所。
     //コンストラクタで使用

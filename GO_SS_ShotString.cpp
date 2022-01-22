@@ -180,14 +180,16 @@ void GO_SS_ShotString::TargetClick(void)
 	IsInsideTarget = TargetIsInRange();
 
 	if (IsInsideTarget >= 0) {
-		if (m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f || m_pTarget->GetTarget()[IsInsideTarget].pos.x >= SCREEN_WIDTH) {
-			m_AimFlag = false;
-			
-		}
-
 		m_AimTarget = IsInsideTarget;
 
 		m_AimFlag = true;
+
+		if (m_pTarget->GetTarget()[IsInsideTarget].pos.x <= 0.0f || m_pTarget->GetTarget()[IsInsideTarget].pos.x >= SCREEN_WIDTH) {
+			m_AimFlag = false;
+			m_AimTarget = -1;
+		}
+
+
 	}
 	else {
 		m_AimFlag = false;		

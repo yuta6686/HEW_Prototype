@@ -162,6 +162,7 @@ void GO_SS_Scramble::NattoRotation()
 			{	//	マウスの差分回転させる
 				pNro->SetRots(j, nowRot + GetPreviousDiff() / DECREASE_PREVIOUS_DIFF);
 
+				//	マウスの差分半径を増やす
 				pNro->SetRadius(j, nowRadius + GetPreviousDiff() / 25.0f);
 			}
 			else //	最初の回転角まで戻す
@@ -188,6 +189,8 @@ void GO_SS_Scramble::NattoRotation()
 				//	減衰
 				FLOAT RadiusDecrease = nowRadius * 0.9f;
 
+				
+				//	減衰最小制限
 				if (RadiusDecrease <= firstRadius) 
 				{
 					pNro->SetRadius(j, firstRadius);

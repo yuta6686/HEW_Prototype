@@ -73,6 +73,15 @@
     <Filter Include="ソース ファイル\GameObjects\Natto">
       <UniqueIdentifier>{50740bb4-c5d0-4acd-acfe-89cf73a42fb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\GameObjects\GO_SS\Item">
+      <UniqueIdentifier>{a141f24d-44ac-4153-966c-53fb9fe6c76a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObjects\Item">
+      <UniqueIdentifier>{4340d8dc-5fba-4eae-98f0-f261c472ef53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObjects\Map">
+      <UniqueIdentifier>{67748e3f-2ef9-4b78-b37b-af84911904de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -120,13 +129,7 @@
     <ClCompile Include="gameOver.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_FileLoad.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
     <ClCompile Include="GO_SS_Collision.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_Map.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Player.cpp">
@@ -183,15 +186,6 @@
     <ClCompile Include="E_Prizum.cpp">
       <Filter>ソース ファイル\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Effect.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EffectFactory.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="GO_SS_TimeDelay.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
     <ClCompile Include="Spotlight.cpp">
       <Filter>ソース ファイル\SelectStage</Filter>
     </ClCompile>
@@ -216,9 +210,6 @@
     <ClCompile Include="GO_SS_Fan.cpp">
       <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
     </ClCompile>
-    <ClCompile Include="GO_SS_KitchenTimer.cpp">
-      <Filter>ソース ファイル\GameObjects\GO_SS</Filter>
-    </ClCompile>
     <ClCompile Include="Tutorial.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
@@ -234,21 +225,6 @@
     <ClCompile Include="sound.cpp">
       <Filter>ソース ファイル\main</Filter>
     </ClCompile>
-    <ClCompile Include="E_AddTime.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="E_Circle.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Effect_Vertex.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="EV_GetItem.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="credit.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="NRO_Natto.cpp">
       <Filter>ソース ファイル\GameObjects\Natto</Filter>
     </ClCompile>
@@ -258,7 +234,37 @@
     <ClCompile Include="GO_SS_NattoRotate.cpp">
       <Filter>ソース ファイル\GameObjects\Natto</Filter>
     </ClCompile>
+    <ClCompile Include="credit.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="E_AddTime.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="E_Circle.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_Vertex.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EV_GetItem.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
     <ClCompile Include="GO_SS_Negi.cpp">
+      <Filter>ソース ファイル\GameObjects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_KitchenTimer.cpp">
+      <Filter>ソース ファイル\GameObjects\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_TimeDelay.cpp">
+      <Filter>ソース ファイル\GameObjects\TimeDelay</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Map.cpp">
+      <Filter>ソース ファイル\GameObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_FileLoad.cpp">
+      <Filter>ソース ファイル\GameObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="GO_SS_Karashi.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -428,9 +434,6 @@
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GO_SS_KitchenTimer.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
-    </ClInclude>
     <ClInclude Include="NRO_Natto.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS\納豆</Filter>
     </ClInclude>
@@ -461,7 +464,13 @@
     <ClInclude Include="credit.h">
       <Filter>ヘッダー ファイル\main</Filter>
     </ClInclude>
+    <ClInclude Include="GO_SS_KitchenTimer.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS\Item</Filter>
+    </ClInclude>
     <ClInclude Include="GO_SS_Negi.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_Karashi.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

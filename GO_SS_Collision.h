@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "GO_SS_Timer.h"
 #include "GO_SS_Negi.h"
+#include "GO_SS_Karashi.h"
 
 class GO_SS_BackGround;
 class GO_SS_Player;
@@ -29,6 +30,7 @@ public:
     void SetKitchenTimer(GO_SS_KitchenTimer* p_KitchenTimer) { m_pKitchenTimer = p_KitchenTimer; }
     void SetTimer(GO_SS_Timer* pTimer) { m_pTimer = pTimer; }
     void SetNegi(GO_SS_Negi* pNegi) { m_pNegi = pNegi; }
+    void SetKarashi(GO_SS_Karashi* pKarashi) { m_pKarashi = pKarashi; }
 
     //??????????????????
     void CollisionUpdate(void);
@@ -57,6 +59,7 @@ private:
     GO_SS_KitchenTimer* m_pKitchenTimer;
     GO_SS_Timer* m_pTimer;
     GO_SS_Negi* m_pNegi;
+    GO_SS_Karashi* m_pKarashi;
  
 //????????         CollisionJudge_ -> CJ_
     int collTemp;
@@ -78,5 +81,6 @@ private:
     void PlayerYCorrection(int index);
     void CJ_KitchenTimerPlayer(void);
     void CJ_NegiAndPlayer(void);
+    void CJ_KarashiAndPlayer(void);
 };
 

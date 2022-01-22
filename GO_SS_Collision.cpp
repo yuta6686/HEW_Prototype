@@ -48,6 +48,8 @@ void GO_SS_Collision::CollisionUpdate(void)
 
 	CJ_NegiAndPlayer();
 
+	CJ_KarashiAndPlayer();
+
 	//DebugOut();
 
 	DebugOut();
@@ -276,6 +278,27 @@ void GO_SS_Collision::CJ_NegiAndPlayer(void)
 				m_pShotString->SetIsNegi(true);
 
 				m_pShotString->SetNatto(NRN_NEGI);
+
+			}
+		}
+	}
+}
+
+void GO_SS_Collision::CJ_KarashiAndPlayer(void)
+{
+	for (int i = 0; i < m_pKarashi->GetNegiMax(); i++) {
+		if (m_pKarashi->GetKarashi(i)->use)
+		{
+			if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), m_pKarashi->GetKarashi(i)->pos, m_pKarashi->GetKarashi(i)->size))
+			{
+				m_pKarashi->SetUse(i, false);
+
+				m_pKarashi->SetEffect(D3DXVECTOR2(m_pKarashi->GetKarashi(i)->pos.x + m_pKarashi->GetKarashi(i)->size.x / 2.0f,
+					m_pKarashi->GetKarashi(i)->pos.y += m_pKarashi->GetKarashi(i)->size.y / 2.0f));
+
+				
+
+				m_pShotString->SetNatto(NRN_KARASHI);
 
 			}
 		}

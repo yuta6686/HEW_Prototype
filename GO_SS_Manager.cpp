@@ -53,6 +53,7 @@ void GO_SS_Manager::Create()
 		mp_ssFan = nullptr;
 		mp_ssKitchenTimer = nullptr;
 		mp_ssNegi = nullptr;
+		mp_ssKarashi = nullptr;
 	}
 
 	//new
@@ -74,12 +75,13 @@ void GO_SS_Manager::Create()
 		mp_ssFan = new GO_SS_Fan;
 		mp_ssKitchenTimer = new GO_SS_KitchenTimer;
 		mp_ssNegi = new GO_SS_Negi;
+		mp_ssKarashi = new GO_SS_Karashi;
 	}
 
 	//Register
 	{
 		Register(mp_ssBackGround);
-		Register(mp_ssTimer);
+		
 		Register(mp_ssScramble);
 		Register(mp_ssGoal);
 		Register(mp_ssPlayer);
@@ -95,6 +97,9 @@ void GO_SS_Manager::Create()
 		Register(mp_ssTimeDelay);
 		Register(mp_ssKitchenTimer);
 		Register(mp_ssNegi);
+		Register(mp_ssKarashi);
+
+		Register(mp_ssTimer);
 	
 		//IsMouseRightPressed()
 	}
@@ -122,6 +127,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetKitchenTimer(mp_ssKitchenTimer);
 		mp_ssMovement->SetTimer(mp_ssTimer);
 		mp_ssMovement->SetNegi(mp_ssNegi);
+		mp_ssMovement->SetKarashi(mp_ssKarashi);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);
