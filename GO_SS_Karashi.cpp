@@ -13,11 +13,11 @@ void GO_SS_Karashi::Initialize(void)
 	}
 
 	//	‰Šú
-	for (int i = 0; i < 10; i++)
+	/*for (int i = 0; i < 10; i++)
 	{
 		m_Karashi[i].pos = D3DXVECTOR2(i * 500.0f, 400.0f);
 		m_Karashi[i].use = true;
-	}
+	}*/
 
 	m_Circle.Initialize();
 	m_Circle_001.Initialize();

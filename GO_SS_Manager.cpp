@@ -101,7 +101,6 @@ void GO_SS_Manager::Create()
 
 		Register(mp_ssTimer);
 	
-		//IsMouseRightPressed()
 	}
 }
 
@@ -140,6 +139,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMap->SetGoal(mp_ssGoal);
 		mp_ssMap->SetKTimer(mp_ssKitchenTimer);
 		mp_ssMap->SetNegi(mp_ssNegi);
+		mp_ssMap->SetKarashi(mp_ssKarashi);
 		
 
 		mp_ssFan->SetCircle(mp_ssShotString->GetCircle());

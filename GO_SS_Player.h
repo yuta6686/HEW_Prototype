@@ -26,6 +26,10 @@ private:
 
     const FLOAT JUMP_DELAY = 12.0f;
 
+    const FLOAT SPEED_UP = 1.5f;
+    const FLOAT SPEED_DEFAULT = 1.0f;
+
+    static const int SPEED_UP_TIME = 60 * 10;
 public:
     virtual void Initialize(void) override;
 
@@ -52,11 +56,19 @@ public:
     void AddXPos(FLOAT x) { Player_Vertex.pos.x += x; }
     void AddYPos(FLOAT y) { Player_Vertex.pos.y += y; }
 
-    
+    void SetSpeedUp(bool flag) { 
+        if (m_KarashiSpeedUp != flag) {
+            m_SpeedUpCounter = 0;
+        }
+        m_KarashiSpeedUp = flag; 
+    }
+    FLOAT GetSpeedUp(void) { return m_SpeedUP; }
 
     bool IsJump;
     bool OkJump;
     bool IsColl;
+
+
 
     //not:-1 left:1 right:2 
     int IsCollSide;
@@ -83,6 +95,12 @@ private:
     //Action
     FLOAT m_Gravity;
     int m_delay = 0;
+
+    bool m_KarashiSpeedUp;
+    FLOAT m_SpeedUP;
+    int m_SpeedUpCounter;
+
+    void KrashiSpeedUp(void);
 
     void PlayerState(void);
     int m_State = PS_NONE;

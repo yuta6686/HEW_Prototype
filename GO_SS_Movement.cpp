@@ -291,26 +291,28 @@ void GO_SS_Movement::PlayerMoveSwitch(PlayerMove index)
 
 void GO_SS_Movement::MovementManager(void)
 {
+	FLOAT speedUp = m_pPlayer->GetSpeedUp();
+
 	//“–‚½‚è”»’è
 	//‰E“ü—Í
 	if (GetKeyboardPress(DIK_A) && m_pPlayer->IsCollSide != 1)
 	{
-		m_pBackGround->SubU(BG_SCROLL_SPEED * m_TimeDelay);
-		m_pMap->MoveMapObject(MAP_OBJ_MOVING_SPEED * m_TimeDelay);
-		m_pGoal->AddX(GOAL_MOVING_SPEED * m_TimeDelay);
-		m_pKitchenTimer->AddX(KTIMER_MOVING_SPEED * m_TimeDelay);
-		m_pNegi->AddX(KTIMER_MOVING_SPEED * m_TimeDelay);
-		m_pKarashi->AddX(KTIMER_MOVING_SPEED * m_TimeDelay);
+		m_pBackGround->SubU(BG_SCROLL_SPEED * m_TimeDelay * speedUp);
+		m_pMap->MoveMapObject(MAP_OBJ_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pGoal->AddX(GOAL_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pKitchenTimer->AddX(KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pNegi->AddX(KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pKarashi->AddX(KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
 	}
 	//¶“ü—Í
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
 	{
-		m_pBackGround->AddU(BG_SCROLL_SPEED * m_TimeDelay);
-		m_pMap->MoveMapObject(-MAP_OBJ_MOVING_SPEED * m_TimeDelay);
-		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay);
-		m_pKitchenTimer->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay);
-		m_pNegi->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay);
-		m_pKarashi->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay);
+		m_pBackGround->AddU(BG_SCROLL_SPEED * m_TimeDelay * speedUp);
+		m_pMap->MoveMapObject(-MAP_OBJ_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pKitchenTimer->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pNegi->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
+		m_pKarashi->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
 	}
 
 	MovementManager_ForFan();

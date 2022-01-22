@@ -13,11 +13,11 @@ void GO_SS_Negi::Initialize(void)
 	}
 
 	//	‰Šú
-	for (int i = 0; i < 10; i++)
+	/*for (int i = 0; i < 10; i++)
 	{
 		m_Negi[i].pos = D3DXVECTOR2(i*500.0f, 300.0f);
 		m_Negi[i].use = true;
-	}
+	}*/
 
 	m_Circle.Initialize();
 	m_Circle_001.Initialize();

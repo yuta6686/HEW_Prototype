@@ -28,6 +28,9 @@ void GO_SS_Player::Initialize(void)
 	IsColl = false;
 	OkJump = true;
 
+	m_KarashiSpeedUp = false;
+	m_SpeedUP = SPEED_DEFAULT;
+	m_SpeedUpCounter = 0;
 }
 /*---------------------------------------------
 *				終了処理
@@ -43,6 +46,9 @@ void GO_SS_Player::Update(void)
 {
 	//プライヤーが画面下に落ちたらGameoverへ
 	SceneToGameOver();
+
+	//	からしのスピードアップ
+	KrashiSpeedUp();
 
 	if (IsColl) {
 		OkJump = true;
@@ -92,6 +98,27 @@ void GO_SS_Player::Draw(void)
 		Player_Vertex.v,
 		Player_Vertex.width, Player_Vertex.height);
 	
+}
+
+void GO_SS_Player::KrashiSpeedUp(void)
+{
+	if (m_KarashiSpeedUp) 
+	{
+		if (m_SpeedUpCounter >= SPEED_UP_TIME) 
+		{
+			m_SpeedUpCounter = 0;
+			m_KarashiSpeedUp = false;
+		}
+		else 
+		{
+			m_SpeedUP = SPEED_UP;
+			m_SpeedUpCounter++;
+		}
+	
+	}
+	else {
+		m_SpeedUP = SPEED_DEFAULT;
+	}
 }
 
 void GO_SS_Player::PlayerState(void)

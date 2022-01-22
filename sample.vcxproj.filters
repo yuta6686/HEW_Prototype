@@ -265,7 +265,7 @@
       <Filter>ソース ファイル\GameObjects\Map</Filter>
     </ClCompile>
     <ClCompile Include="GO_SS_Karashi.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\GameObjects\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
