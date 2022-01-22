@@ -57,7 +57,7 @@ public:
     void AddYPos(FLOAT y) { Player_Vertex.pos.y += y; }
 
     void SetSpeedUp(bool flag) { 
-        if (m_KarashiSpeedUp != flag) {
+        if (m_KarashiSpeedUp == flag) {
             m_SpeedUpCounter = 0;
         }
         m_KarashiSpeedUp = flag; 
