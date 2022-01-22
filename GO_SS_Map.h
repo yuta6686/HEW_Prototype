@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 
+#include "GO_SS_Negi.h"
+
 class GO_SS_FileLoad;
 class GO_SS_Wall;
 class GO_SS_Target;
@@ -40,6 +42,7 @@ public:
 	void SetGoal(GO_SS_Goal* p) { m_pGoal = p; }
 	//void SetZipline(GO_SS_ZipLine* p) { m_pZipLine = p; }
 	void SetKTimer(GO_SS_KitchenTimer* p) { m_pKTimer = p; }
+	void SetNegi(GO_SS_Negi* pNegi) { m_pNegi = pNegi; }
 	
 	void MoveMapObject(FLOAT x);
 
@@ -60,6 +63,7 @@ private:
 	GO_SS_Target* m_pTarget;		//targetポインタ
 	GO_SS_Fan* m_pFan;
 	GO_SS_Goal* m_pGoal;
+	GO_SS_Negi* m_pNegi;
 	//GO_SS_ZipLine* m_pZipLine;		//ZipLineポインタ
 
 	GO_SS_KitchenTimer* m_pKTimer;

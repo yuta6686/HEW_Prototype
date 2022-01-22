@@ -134,16 +134,11 @@ void GO_SS_ShotString::NegiEffects()
 	else 
 	{
 		m_DecreaseCircleCounter++;
-		if (m_DecreaseCircleValue <= m_DECREASE_CIRCLE_MIN) 
-		{
-			m_DecreaseCircleValue = m_DECREASE_CIRCLE_MIN;
-		}
-		else 
-		{				
-			//	新しい減衰値	  = デフォルト値			  * (		カウンター				カウンターの最大値		)
-			//	カウンター / 最大値 = カウンターの増加に応じた、0　～　1までの値が取得できる。
-			m_DecreaseCircleValue = m_DECREASE_CIRCLE_MIN * (m_DecreaseCircleCounter / m_DECREASE_CIRCLE_COUNTER_MAX);
-		}
+					
+		//	新しい減衰値	  = デフォルト値			  * (		カウンター				カウンターの最大値		)
+		//	カウンター / 最大値 = カウンターの増加に応じた、0　～　1までの値が取得できる。
+		m_DecreaseCircleValue = m_DECREASE_CIRCLE_DEFAULT * (m_DecreaseCircleCounter / m_DECREASE_CIRCLE_COUNTER_MAX);
+		
 	}
 }
 

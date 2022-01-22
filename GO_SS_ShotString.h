@@ -5,7 +5,6 @@
 class GO_SS_Player;
 class GO_SS_Target;
 
-
 class GO_SS_ShotString :public GameObject
 {
 private:
@@ -20,7 +19,6 @@ private:
 	const FLOAT m_DecreaseJump = 500.0f;
 
 	const FLOAT m_DECREASE_CIRCLE_DEFAULT = 10.0f;
-	const FLOAT m_DECREASE_CIRCLE_MIN = 5.0f;
 
 	float m_DecreaseCircleValue;
 

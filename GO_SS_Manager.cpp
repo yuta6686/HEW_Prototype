@@ -133,6 +133,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMap->SetFan(mp_ssFan);
 		mp_ssMap->SetGoal(mp_ssGoal);
 		mp_ssMap->SetKTimer(mp_ssKitchenTimer);
+		mp_ssMap->SetNegi(mp_ssNegi);
 		
 
 		mp_ssFan->SetCircle(mp_ssShotString->GetCircle());
