@@ -154,10 +154,15 @@ void GO_SS_Scramble::NattoRotation()
 			//	Œ»İ‚Ì‰ñ“]Šp
 			FLOAT nowRot = pNro->GetRots(j);
 
+			//	Œ»İ‚Ì”¼Œa
+			FLOAT nowRadius = pNro->GetRadius(j);
+
 			//	ƒ}ƒEƒX‚Ì‰E‚ª‰Ÿ‚³‚ê‚Ä‚¢‚½‚ç			
 			if (IsMouseRightPressed()) 
 			{	//	ƒ}ƒEƒX‚Ì·•ª‰ñ“]‚³‚¹‚é
 				pNro->SetRots(j, nowRot + GetPreviousDiff() / DECREASE_PREVIOUS_DIFF);
+
+				pNro->SetRadius(j, nowRadius + GetPreviousDiff() / 25.0f);
 			}
 			else //	Å‰‚Ì‰ñ“]Šp‚Ü‚Å–ß‚·
 			{
@@ -175,6 +180,21 @@ void GO_SS_Scramble::NattoRotation()
 				else
 				{
 					pNro->SetRots(j, decrease);
+				}
+				
+				//	Å‰‚Ì”¼Œa
+				FLOAT firstRadius = pNro->GetFirstRadius(j);
+
+				//	Œ¸Š
+				FLOAT RadiusDecrease = nowRadius * 0.9f;
+
+				if (RadiusDecrease <= firstRadius) 
+				{
+					pNro->SetRadius(j, firstRadius);
+				}
+				else 
+				{
+					pNro->SetRadius(j, RadiusDecrease);
 				}
 			}
 		}		

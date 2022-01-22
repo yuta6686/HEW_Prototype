@@ -39,6 +39,7 @@ public:
 
     // int    &   float
     void SetRots(int index, float rot) { m_Vertex[index].rot = rot; }
+    void SetRadius(int index, float radius) { m_Vertex[index].radius = radius; }
 
     //  ゲッター   //
     //  int
@@ -46,6 +47,9 @@ public:
     //  float
     FLOAT GetRots(int index) { return m_Vertex[index].rot; }
     FLOAT GetFirstRots(int index) { return m_Rots[index]; }
+
+    FLOAT GetRadius(int index) { return m_Vertex[index].radius; }
+    FLOAT GetFirstRadius(int index) { return m_Radius[index]; }
     
 protected:
     //  メンバ変数
@@ -59,6 +63,9 @@ protected:
 
     //  初期Rot保存用
     FLOAT m_Rots[NATTO_MAX];
+
+    //  初期Radius
+    FLOAT m_Radius[NATTO_MAX];
 
 //  メンバ関数
     void Rotation(int index);

@@ -20,6 +20,9 @@ void NattoRotateObject::Initialize(void)
 
         //  ‰ŠúRot•Û‘¶—p
         m_Rots[i] = m_Vertex[i].rot;
+
+        //  ‰ŠúRadius•Û‘¶—p
+        m_Radius[i] = m_Vertex[i].radius;
     }
 
     //  ‰Šúó‘Ô‚Ì”[“¤•Û—L”
