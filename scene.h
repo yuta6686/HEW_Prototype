@@ -26,3 +26,4 @@ void CheckScene(void);
 
 void SetStageNum(int sn);
 int GetStageNum(void);
+void AddStageNum(void);

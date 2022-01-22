@@ -239,3 +239,26 @@ int GetStageNum(void) {
 void SetStageNum(int sn) {
 	g_StageNum = (STAGE_NUM)sn;
 }
+
+void AddStageNum(void) {
+	switch (g_StageNum)
+	{
+	case STAGE_NUM_NONE:
+		g_StageNum = STAGE_NUM_001;
+		break;
+	case STAGE_NUM_001:
+		g_StageNum = STAGE_NUM_002;
+		break;
+	case STAGE_NUM_002:
+		g_StageNum = STAGE_NUM_003;
+		break;
+	case STAGE_NUM_003:
+		g_StageNum = STAGE_NUM_001;
+		break;
+	case STAGE_NUM_MAX:
+		break;
+	default:
+		g_StageNum = STAGE_NUM_001;
+		break;
+	}
+}

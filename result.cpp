@@ -68,12 +68,12 @@ HRESULT InitResult(void)
 
 	//テクスチャロード----------------
 	//Number_Texture = LoadTexture("data/TEXTURE/number2.png");
-	g_TextureNo = LoadTexture("data/TEXTURE/result.png");
+	g_TextureNo = LoadTexture("data/TEXTURE/result_back.png");
 	g_cursor = LoadTexture("data/TEXTURE/cursor.png");
 
-	g_UI[0] = LoadTexture("data/TEXTURE/UI1.png");
+	g_UI[0] = LoadTexture("data/TEXTURE/result_button_title.png");
 	g_UI[1] = LoadTexture("data/TEXTURE/UI2.png");
-	g_UI[2] = LoadTexture("data/TEXTURE/UI3.png");
+	g_UI[2] = LoadTexture("data/TEXTURE/result_button_next.png");
 
 
 
@@ -178,7 +178,8 @@ void UpdateResult(void)
 			if (Mouse_pos.x >= Result_Uipos3 - Result_Ui.size.x / 2 &&
 				Mouse_pos.x <= Result_Uipos3 + Result_Ui.size.x / 2)
 			{
-				SceneTransition(SCENE_SELECT_STAGE);
+				AddStageNum();
+				SceneTransition(SCENE_GAME);
 				g_Prizum.SetEffect(Mouse_pos);
 			}
 

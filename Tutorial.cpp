@@ -330,7 +330,13 @@ void Tutorial::Update()
 		GetKeyboardTrigger(DIK_SPACE) ||
 		IsMouseLeftTriggered())
 	{
-		m_nowPage++;
+		if (m_nowPage >= TUTORIAL_MAX) {
+			m_nowPage = TUTORIAL_MAX;
+		}
+		else {
+			m_nowPage++;
+		}
+		
 	}
 }
 

@@ -24,6 +24,8 @@ private:
 
     VERTEX_ALL_EFFECT m_eTimeDelay;
 
+    float m_PointOfExtinction;
+
     int ConcentrationLineTexture;
     char TEX_NAME[64] = "data/TEXTURE/W’†ü3.png";
 

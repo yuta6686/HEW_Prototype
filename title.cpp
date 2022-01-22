@@ -309,12 +309,7 @@ void Action(int ActionScene)//引数：アクションナンバー
 		if (biruk[0] >= 0.05f)
 		{
 
-			//g_Action = 0;
-
-			biruk[0] += 0.0016f;
-			biruk[1] += 0.0066f;
-			biruk[2] -= 0.0163f;
-			biruk[3] -= 0.0173f;
+			g_Action = 0;
 
 			SceneTransition(SCENE_SELECT_STAGE);
 		}
