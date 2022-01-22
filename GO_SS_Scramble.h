@@ -40,6 +40,7 @@ public:
     FLOAT GetPreviousDiff(void);
 
     void SetNato(void) { m_Natto->SetNatto(); }
+    void SetNato(int index) { m_Natto->SetNatto(index); }
 
 private:
     char TEX_NAME[128] = "data/TEXTURE/natto.png";

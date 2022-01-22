@@ -3,6 +3,8 @@
 class GO_SS_TimeDelay :
     public GameObject
 {
+private:
+    const int TIME_DELAY_LIMIT = 60 * 5;
 public:
     virtual void Initialize(void) override;
 

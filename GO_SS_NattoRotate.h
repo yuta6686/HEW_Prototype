@@ -2,6 +2,13 @@
 #include "GameObject.h"
 #include "NRO_Natto.h"
 
+enum NATTO_ROTATE_NUM {
+    NRN_NONE = -1,
+    NRN_NATTO,
+    NRN_TIMER,
+    NRN_MAX,
+};
+
 class GO_SS_NattoRotate :
     public GameObject
 {
@@ -21,6 +28,7 @@ public:
     virtual int GetGameScene(void) override;
 
     void SetNatto(void);
+    void SetNatto(int index);
 
     void SetPos(D3DXVECTOR2 pos);
 private:

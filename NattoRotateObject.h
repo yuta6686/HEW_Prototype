@@ -3,7 +3,7 @@
 class NattoRotateObject :
     public GameObject
 {
-private:
+protected:
     static const int NATTO_MAX = 50;
     static const int FIRST_NATTO = 10;
 
@@ -29,8 +29,10 @@ public:
 
     void SetPos(D3DXVECTOR2 pos) { m_PlayerPos = pos; }
     void SetNatto(void);
-private:
+protected:
     int m_TexIndex;
+
+    
 
     VERTEX_NATTO m_Vertex[NATTO_MAX];
 

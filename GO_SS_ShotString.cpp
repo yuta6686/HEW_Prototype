@@ -168,7 +168,7 @@ void GO_SS_ShotString::TargetClick(void)
 
 			//m_IsPlayerMove = false;
 
-			m_pScramble->SetNato();
+			m_pScramble->SetNato(NRN_NATTO);
 		}
 
 		else {

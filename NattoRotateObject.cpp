@@ -2,6 +2,7 @@
 
 void NattoRotateObject::Initialize(void)
 {
+
     for (int i = 0; i < NATTO_MAX; i++) {
         //  D3DXVECTOR2
         m_Vertex[i].pos = D3DXVECTOR2(SCREEN_WIDTH / 4 * frand(), 100.0f * frand());
@@ -20,7 +21,8 @@ void NattoRotateObject::Initialize(void)
     }
 
     //  ‰Šúó‘Ô‚Ì”[“¤•Û—L”
-    for (int i = 0; i < FIRST_NATTO; i++) {
+    for (int i = 0; i < FIRST_NATTO; i++) 
+    {
         SetNatto();
     }
 }

@@ -8,6 +8,7 @@ GO_SS_NattoRotate::GO_SS_NattoRotate()
     }
 
     m_pNattoRotateObjects[0] = new NattoRotateObject("data/TEXTURE/”[“¤.png");
+    m_pNattoRotateObjects[1] = new NRO_Natto("data/TEXTURE/Timer.png");
 }
 
 GO_SS_NattoRotate::~GO_SS_NattoRotate()
@@ -68,6 +69,12 @@ void GO_SS_NattoRotate::SetNatto(void)
         if (!m_pNattoRotateObjects[i])continue;
         m_pNattoRotateObjects[i]->SetNatto();
     }
+}
+
+void GO_SS_NattoRotate::SetNatto(int index)
+{
+    if (!m_pNattoRotateObjects[index])return;
+    m_pNattoRotateObjects[index]->SetNatto();
 }
 
 void GO_SS_NattoRotate::SetPos(D3DXVECTOR2 pos)

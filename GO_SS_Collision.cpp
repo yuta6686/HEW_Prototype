@@ -250,6 +250,8 @@ void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
 				m_pTimer->AddTimer(m_pKitchenTimer->GetAddTimer());
 
 				m_pTimer->SetEffect(m_pPlayer->GetPos());
+
+				m_pShotString->SetNatto(NRN_TIMER);
 			}
 		}
 	}

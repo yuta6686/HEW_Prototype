@@ -3,7 +3,7 @@
 
 class GO_SS_Player;
 class GO_SS_Target;
-class GO_SS_Scramble;
+#include "GO_SS_Scramble.h"
 
 class GO_SS_ShotString :public GameObject
 {
@@ -36,6 +36,7 @@ public:
 	void SetScramble(GO_SS_Scramble* p) { m_pScramble = p; }
 
 	void SetPos(D3DXVECTOR2 pos)	{ String_Vertex.pos = pos; }
+	void SetNatto(int index) { m_pScramble->SetNato(index); }
 
 //public •Ï”
 
