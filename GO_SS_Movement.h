@@ -17,6 +17,7 @@
 #include "GO_SS_Fan.h"
 #include "GO_SS_Timer.h"
 
+
 #define TIME_DELAY_VALUE 0.3f
 
 class GO_SS_BackGround;
@@ -80,6 +81,8 @@ private:
     GO_SS_Fan* m_pFan;
     GO_SS_KitchenTimer* m_pKitchenTimer;
     GO_SS_Timer* m_pTimer;
+    GO_SS_Negi* m_pNegi;
+
 
     //ÉÅÉìÉoïœêî
     int JumpCounter = 0;
@@ -183,6 +186,11 @@ public:
     void SetTimer(GO_SS_Timer* pTimer) {
         m_pTimer = pTimer;
         m_ssCollision.SetTimer(pTimer);
+    }
+
+    void SetNegi(GO_SS_Negi* pNegi) {
+        m_pNegi = pNegi;
+        m_ssCollision.SetNegi(pNegi);
     }
 };
 

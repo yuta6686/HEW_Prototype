@@ -7,8 +7,9 @@ GO_SS_NattoRotate::GO_SS_NattoRotate()
         m_pNattoRotateObjects[i] = nullptr;
     }
 
-    m_pNattoRotateObjects[0] = new NattoRotateObject("data/TEXTURE/”[“¤.png");
-    m_pNattoRotateObjects[1] = new NRO_Natto("data/TEXTURE/Timer.png");
+    m_pNattoRotateObjects[NRN_NATTO] = new NattoRotateObject("data/TEXTURE/”[“¤.png");
+    m_pNattoRotateObjects[NRN_TIMER] = new NRO_Natto("data/TEXTURE/Timer.png");
+    m_pNattoRotateObjects[NRN_NEGI] = new NRO_Natto("data/TEXTURE/negi.png");
 }
 
 GO_SS_NattoRotate::~GO_SS_NattoRotate()

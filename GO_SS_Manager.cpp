@@ -15,6 +15,7 @@
 #include "GO_SS_TimeDelay.h"
 #include "GO_SS_Fan.h"
 #include "GO_SS_KitchenTimer.h"
+
 /*---------------------------------------------
 				?R???X?g???N?^
 ---------------------------------------------*/
@@ -51,6 +52,7 @@ void GO_SS_Manager::Create()
 		mp_ssTimeDelay = nullptr;
 		mp_ssFan = nullptr;
 		mp_ssKitchenTimer = nullptr;
+		mp_ssNegi = nullptr;
 	}
 
 	//new
@@ -71,6 +73,7 @@ void GO_SS_Manager::Create()
 		mp_ssTimeDelay = new GO_SS_TimeDelay;
 		mp_ssFan = new GO_SS_Fan;
 		mp_ssKitchenTimer = new GO_SS_KitchenTimer;
+		mp_ssNegi = new GO_SS_Negi;
 	}
 
 	//Register
@@ -91,6 +94,7 @@ void GO_SS_Manager::Create()
 		Register(mp_ssEffWind);
 		Register(mp_ssTimeDelay);
 		Register(mp_ssKitchenTimer);
+		Register(mp_ssNegi);
 	
 		//IsMouseRightPressed()
 	}
@@ -117,6 +121,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMovement->SetFan(mp_ssFan);
 		mp_ssMovement->SetKitchenTimer(mp_ssKitchenTimer);
 		mp_ssMovement->SetTimer(mp_ssTimer);
+		mp_ssMovement->SetNegi(mp_ssNegi);
 
 		mp_ssShotString->SetPlayer(mp_ssPlayer);
 		mp_ssShotString->SetTarget(mp_ssTarget);

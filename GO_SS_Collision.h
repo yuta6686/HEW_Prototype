@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "GO_SS_Timer.h"
+#include "GO_SS_Negi.h"
 
 class GO_SS_BackGround;
 class GO_SS_Player;
@@ -27,6 +28,7 @@ public:
     void SetFan(GO_SS_Fan* p) { m_pFan = p; }
     void SetKitchenTimer(GO_SS_KitchenTimer* p_KitchenTimer) { m_pKitchenTimer = p_KitchenTimer; }
     void SetTimer(GO_SS_Timer* pTimer) { m_pTimer = pTimer; }
+    void SetNegi(GO_SS_Negi* pNegi) { m_pNegi = pNegi; }
 
     //??????????????????
     void CollisionUpdate(void);
@@ -54,6 +56,7 @@ private:
     GO_SS_Fan* m_pFan;
     GO_SS_KitchenTimer* m_pKitchenTimer;
     GO_SS_Timer* m_pTimer;
+    GO_SS_Negi* m_pNegi;
  
 //????????         CollisionJudge_ -> CJ_
     int collTemp;
@@ -74,6 +77,6 @@ private:
     void CJ_GoalPlayer(void);
     void PlayerYCorrection(int index);
     void CJ_KitchenTimerPlayer(void);
-
+    void CJ_NegiAndPlayer(void);
 };
 

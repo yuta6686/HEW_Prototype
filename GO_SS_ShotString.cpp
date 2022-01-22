@@ -25,6 +25,11 @@ void GO_SS_ShotString::Initialize(void)
 		Circle_Vertex.alpha = 1.0f;
 	}
 
+	m_DecreaseCircleValue = m_DECREASE_CIRCLE_DEFAULT;
+
+	m_DecreaseCircleCounter = 0;
+
+	m_IsNegi = false;
 
 	m_AimFlag = false;
 }
@@ -36,6 +41,7 @@ void GO_SS_ShotString::Finalize(void)
 
 void GO_SS_ShotString::Update(void)
 {
+	NegiEffects();
 
 	m_pScramble->SetPos(m_pPlayer->GetPos());
 
@@ -105,12 +111,40 @@ void GO_SS_ShotString::ChangeSizeOfCircle()
 			Circle_Vertex.size.x = m_CircleSizeMax;
 		}
 		else {
-			Circle_Vertex.size.x -= 10.0f * m_TimeDelay;
+			Circle_Vertex.size.x -= m_DecreaseCircleValue * m_TimeDelay;
 		}
 	}
 
 	//	yとxのサイズ同じにする
 	Circle_Vertex.size.y = Circle_Vertex.size.x;
+}
+
+void GO_SS_ShotString::NegiEffects()
+{
+	if (!m_IsNegi) {
+		m_DecreaseCircleValue = m_DECREASE_CIRCLE_DEFAULT;
+		return;
+	}
+
+	if (m_DecreaseCircleCounter >= m_DECREASE_CIRCLE_COUNTER_MAX) 
+	{
+		m_DecreaseCircleCounter = 0;
+		m_IsNegi = false;
+	}
+	else 
+	{
+		m_DecreaseCircleCounter++;
+		if (m_DecreaseCircleValue <= m_DECREASE_CIRCLE_MIN) 
+		{
+			m_DecreaseCircleValue = m_DECREASE_CIRCLE_MIN;
+		}
+		else 
+		{				
+			//	新しい減衰値	  = デフォルト値			  * (		カウンター				カウンターの最大値		)
+			//	カウンター / 最大値 = カウンターの増加に応じた、0　～　1までの値が取得できる。
+			m_DecreaseCircleValue = m_DECREASE_CIRCLE_MIN * (m_DecreaseCircleCounter / m_DECREASE_CIRCLE_COUNTER_MAX);
+		}
+	}
 }
 
 void GO_SS_ShotString::DebugOut(void)

@@ -1,9 +1,10 @@
 #pragma once
 #include "GameObject.h"
+#include "GO_SS_Scramble.h"
 
 class GO_SS_Player;
 class GO_SS_Target;
-#include "GO_SS_Scramble.h"
+
 
 class GO_SS_ShotString :public GameObject
 {
@@ -17,6 +18,14 @@ private:
 
 	const FLOAT m_CircleSizeMax = 200.0f;
 	const FLOAT m_DecreaseJump = 500.0f;
+
+	const FLOAT m_DECREASE_CIRCLE_DEFAULT = 10.0f;
+	const FLOAT m_DECREASE_CIRCLE_MIN = 5.0f;
+
+	float m_DecreaseCircleValue;
+
+	static const int m_DECREASE_CIRCLE_COUNTER_MAX = 60 * 5;
+	int m_DecreaseCircleCounter;
 public:
 	// GameObjectを介して継承されました
 	virtual void Initialize		(void)	override;
@@ -37,6 +46,8 @@ public:
 
 	void SetPos(D3DXVECTOR2 pos)	{ String_Vertex.pos = pos; }
 	void SetNatto(int index) { m_pScramble->SetNato(index); }
+
+	void SetIsNegi(bool flag) { m_IsNegi = flag; }
 
 //public 変数
 
@@ -70,7 +81,7 @@ private:
 
 	bool m_AimFlag;
 
-	
+	bool m_IsNegi;
 
 //メンバ関数
 	
@@ -100,5 +111,8 @@ private:
 
 	//	円のサイズを変更する
 	void ChangeSizeOfCircle();
+
+	//	ネギの影響
+	void NegiEffects();
 };
 

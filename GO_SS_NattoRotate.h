@@ -6,6 +6,7 @@ enum NATTO_ROTATE_NUM {
     NRN_NONE = -1,
     NRN_NATTO,
     NRN_TIMER,
+    NRN_NEGI,
     NRN_MAX,
 };
 

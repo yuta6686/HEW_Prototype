@@ -43,7 +43,10 @@ void GO_SS_Collision::CollisionUpdate(void)
 	CJ_GoalPlayer();
 
 	PlayerYCorrection(collTemp);
+
 	CJ_KitchenTimerPlayer();
+
+	CJ_NegiAndPlayer();
 
 	//DebugOut();
 
@@ -256,4 +259,21 @@ void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
 		}
 	}
 	
+}
+
+void GO_SS_Collision::CJ_NegiAndPlayer(void)
+{
+	for (int i = 0; i < m_pNegi->GetNegiMax(); i++) {
+		if (m_pNegi->GetNegi(i)->use)
+		{
+			if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), m_pNegi->GetNegi(i)->pos, m_pNegi->GetNegi(i)->size))
+			{
+				m_pNegi->SetUse(i, false);
+
+				m_pShotString->SetIsNegi(true);
+
+				m_pShotString->SetNatto(NRN_NEGI);
+			}
+		}
+	}
 }

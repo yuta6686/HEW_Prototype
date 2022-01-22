@@ -96,6 +96,7 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pGoal->AddX(-10.0f);
 
 	m_pKitchenTimer->AddX(-10.0f);
+	m_pNegi->AddX(-10.0f);
 
 	//m_pEffectWind->SetEffTrue();
 }
@@ -201,6 +202,8 @@ void GO_SS_Movement::BackGroundMovement_Pendulum()
 	m_pGoal->AddX(-10.0f * m_TimeDelay);
 
 	m_pKitchenTimer->AddX(-10.0f * m_TimeDelay);
+
+	m_pNegi->AddX(-10.0f * m_TimeDelay);
 }
 
 void GO_SS_Movement::Update_PlayerMoveSwitch()
@@ -294,6 +297,7 @@ void GO_SS_Movement::MovementManager(void)
 		m_pMap->MoveMapObject(MAP_OBJ_MOVING_SPEED * m_TimeDelay);
 		m_pGoal->AddX(GOAL_MOVING_SPEED * m_TimeDelay);
 		m_pKitchenTimer->AddX(KTIMER_MOVING_SPEED * m_TimeDelay);
+		m_pNegi->AddX(KTIMER_MOVING_SPEED * m_TimeDelay);
 	}
 	//¶“ü—Í
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
@@ -302,6 +306,7 @@ void GO_SS_Movement::MovementManager(void)
 		m_pMap->MoveMapObject(-MAP_OBJ_MOVING_SPEED * m_TimeDelay);
 		m_pGoal->AddX(-GOAL_MOVING_SPEED * m_TimeDelay);
 		m_pKitchenTimer->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay);
+		m_pNegi->AddX(-KTIMER_MOVING_SPEED * m_TimeDelay);
 	}
 
 	MovementManager_ForFan();
