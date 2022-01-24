@@ -43,8 +43,8 @@ static int Number_Texture;	// 番号
 static int g_cursor;		//カーソル
 static int g_UI[3];			//UI
 
-static float g_title_Alpha = 0.0f;
-static float g_next_Alpha = 0.0f;
+static float g_AlphaRot = 0.0f;
+
 
 struct VERTEX_NOMAL Result_Ui;
 
@@ -86,14 +86,16 @@ HRESULT InitResult(void)
 	{
 		Timer_Vertex.alpha = 0.0f;
 		Timer_Vertex.counter = 0;
-		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH * 6.5 / 8, SCREEN_HEIGHT / 10);
+		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH /2.0f, SCREEN_HEIGHT / 2.0f);
 		Timer_Vertex.size = D3DXVECTOR2(75, 75);
 		Timer_Vertex.u = 0.0f;
 		Timer_Vertex.v = 0.0f;
 		Timer_Vertex.use = true;
 	}
 
+	
 	g_Timer.SetVertex(Timer_Vertex);
+
 
 	////小数点第1位
 	//{
@@ -118,8 +120,8 @@ HRESULT InitResult(void)
 	Result_Uipos1 = Result_Ui.pos.x - 500.0f;
 	Result_Uipos3 = Result_Ui.pos.x + 500.0f;
 
-	g_next_Alpha = frand();
-	g_title_Alpha = frand();
+	g_AlphaRot = 0.0f;
+	
 
 	//BGM処理
 	g_SoundIndex = LoadSound("data/BGM/mega.wav");
@@ -133,6 +135,7 @@ HRESULT InitResult(void)
 	g_Prizum.Initialize();
 
 	g_Timer.Initialize();
+	
 
 	g_TimerOnce = false;
 
@@ -193,6 +196,17 @@ void UpdateResult(void)
 
 	}
 
+	if (g_AlphaRot >= D3DX_PI * 2.0f)
+	{
+		g_AlphaRot = 0.0f;
+	}
+	else 
+	{
+		g_AlphaRot += 0.05f;
+	}
+
+
+
 	//if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
 	//{
 	//	SceneTransition(SCENE_TITLE);
@@ -235,7 +249,7 @@ void DrawResult(void)
 	////UI
 	DrawSpriteColor(g_UI[0], Result_Uipos1, Result_Ui.pos.y,
 		Result_Ui.size.x, Result_Ui.size.y,
-		0.0f, 0.0f, 1.0f, 1.0f,D3DXCOLOR(1.0f,1.0f,1.0f, g_title_Alpha));
+		0.0f, 0.0f, 1.0f, 1.0f,D3DXCOLOR(1.0f,1.0f,1.0f, sinf(g_AlphaRot) + 0.75f));
 
 
 	//DrawSprite(g_UI[1], Result_Ui.pos.x, Result_Ui.pos.y,
@@ -244,7 +258,7 @@ void DrawResult(void)
 
 	DrawSpriteColor(g_UI[2], Result_Uipos3, Result_Ui.pos.y,
 		Result_Ui.size.x, Result_Ui.size.y,
-		0.0f, 0.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_next_Alpha));
+		0.0f, 0.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, sinf(g_AlphaRot)+0.75f));
 
 	//// マウスカーソル
 	DrawSprite(g_cursor, Mouse_pos.x, Mouse_pos.y,

@@ -46,6 +46,10 @@ public:
 		m_Circle.SetEffectNoMouse(pos,100.0f);
 		m_Circle_001.SetEffectNoMouse(pos, 0.0f);
 	}
+
+	void SetPos(D3DXVECTOR2 pos) {
+		
+	}
 private:
 //--------------------------------------------------------
 //	ƒƒ“ƒo•Ï”
