@@ -225,7 +225,7 @@ void GO_SS_Collision::CJ_GoalPlayer(void)
 	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), Goal_Vertex.pos, Goal_Vertex.size))
 	{
 		SetTime(m_pTimer->GetTimerCounter());
-		
+		m_pGoal->SetGoalUse(false);
 		SceneTransition(SCENE_RESULT);
 	}
 }
