@@ -64,6 +64,8 @@ void SetTime(int time) { g_Time = time; }
 //=============================================================================
 HRESULT InitResult(void)
 {
+	StopSoundAll();
+
 	ShowCursor(false);
 
 	//テクスチャロード----------------
@@ -116,7 +118,7 @@ HRESULT InitResult(void)
 	Result_Uipos3 = Result_Ui.pos.x + 500.0f;
 
 	//BGM処理
-	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+	g_SoundIndex = LoadSound("data/BGM/result.wav");
 
 	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
 	//で音量が設定できます
