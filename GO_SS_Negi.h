@@ -35,6 +35,8 @@ public:
         m_Circle_001.SetEffectNoMouse(pos, 0.0f);
     }
 
+    void SetNegi(D3DXVECTOR2 pos);
+
 private:
 
     E_Circle m_Circle;

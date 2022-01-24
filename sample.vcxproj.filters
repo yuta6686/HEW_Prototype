@@ -82,6 +82,9 @@
     <Filter Include="ソース ファイル\GameObjects\Map">
       <UniqueIdentifier>{67748e3f-2ef9-4b78-b37b-af84911904de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\GameObjects\GO_SS\Map">
+      <UniqueIdentifier>{44e1f52e-1f46-4d89-b03d-54a46d5f11fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="result.cpp">
@@ -320,13 +323,7 @@
     <ClInclude Include="gameOver.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="GO_SS_FileLoad.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
-    </ClInclude>
     <ClInclude Include="GO_SS_Collision.h">
-      <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
-    </ClInclude>
-    <ClInclude Include="GO_SS_Map.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS</Filter>
     </ClInclude>
     <ClInclude Include="GO_SS_Scramble.h">
@@ -470,8 +467,14 @@
     <ClInclude Include="GO_SS_Negi.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS\Item</Filter>
     </ClInclude>
+    <ClInclude Include="GO_SS_Map.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="GO_SS_FileLoad.h">
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS\Map</Filter>
+    </ClInclude>
     <ClInclude Include="GO_SS_Karashi.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\GameObjects\GO_SS\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

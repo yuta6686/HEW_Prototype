@@ -12,13 +12,6 @@ void GO_SS_Karashi::Initialize(void)
 		m_Karashi[i].use = false;
 	}
 
-	//	‰Šú
-	for (int i = 0; i < 10; i++)
-	{
-		m_Karashi[i].pos = D3DXVECTOR2(i * 500.0f, 400.0f);
-		m_Karashi[i].use = true;
-	}
-
 	m_Circle.Initialize();
 	m_Circle_001.Initialize();
 }
@@ -62,5 +55,18 @@ void GO_SS_Karashi::AddX(FLOAT x)
 			m_Karashi[i].pos.x += x;
 
 		}
+	}
+}
+
+void GO_SS_Karashi::SetKarashi(D3DXVECTOR2 pos)
+{
+	for (int i = 0; i < KARASHI_MAX; i++)
+	{
+		if (m_Karashi[i].use)
+			continue;
+
+		m_Karashi[i].pos = pos;
+		m_Karashi[i].use = true;
+		break;
 	}
 }

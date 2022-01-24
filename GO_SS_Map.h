@@ -12,6 +12,7 @@ class GO_SS_Target;
 class GO_SS_Fan;
 class GO_SS_Goal;
 class GO_SS_KitchenTimer;
+class GO_SS_Negi;
 //class GO_SS_ZipLine;
 
 //マップチップの列挙型
@@ -23,6 +24,8 @@ typedef enum {
 	FAN_B_LEFT_NUM,
 	GOAL_NUM,
 	KITCHEN_TIMER_NUM,
+	NEGI_NUM,
+	KARASHI_NUM,
 	ZIPLINE_A_NUM,
 	ZIPLINE_B_NUM,
 }MAP_CHIP_NO;
@@ -70,6 +73,7 @@ private:
 	GO_SS_KitchenTimer* m_pKTimer;
 	GO_SS_Negi* m_pNegi;
 	GO_SS_Karashi* m_pKarashi;
+
 
 	MAP_CHIP_NO mapChipNo;
 
