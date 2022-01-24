@@ -43,6 +43,9 @@ static int Number_Texture;	// 番号
 static int g_cursor;		//カーソル
 static int g_UI[3];			//UI
 
+static float g_title_Alpha = 0.0f;
+static float g_next_Alpha = 0.0f;
+
 struct VERTEX_NOMAL Result_Ui;
 
 D3DXVECTOR2 Mouse_pos(0.0f, 0.0f);
@@ -110,10 +113,13 @@ HRESULT InitResult(void)
 
 	////////==UI==////////
 	Result_Ui.pos = D3DXVECTOR2(SCEREN_WIDTH_HURF, SCREEN_HEIGHT * 0.75);
-	Result_Ui.size = D3DXVECTOR2(300.0f, 300.0f);
+	Result_Ui.size = D3DXVECTOR2(480.0f, 160.0f);
 
 	Result_Uipos1 = Result_Ui.pos.x - 500.0f;
 	Result_Uipos3 = Result_Ui.pos.x + 500.0f;
+
+	g_next_Alpha = frand();
+	g_title_Alpha = frand();
 
 	//BGM処理
 	g_SoundIndex = LoadSound("data/BGM/mega.wav");
@@ -227,18 +233,18 @@ void DrawResult(void)
 	//	Timer_Third.u, Timer_Third.v, NUMBER_WIDTH, NUMBER_HEIGHT);
 
 	////UI
-	DrawSprite(g_UI[0], Result_Uipos1, Result_Ui.pos.y,
+	DrawSpriteColor(g_UI[0], Result_Uipos1, Result_Ui.pos.y,
 		Result_Ui.size.x, Result_Ui.size.y,
-		0.0f, 0.0f, 1.0f, 1.0f);
+		0.0f, 0.0f, 1.0f, 1.0f,D3DXCOLOR(1.0f,1.0f,1.0f, g_title_Alpha));
 
 
-	DrawSprite(g_UI[1], Result_Ui.pos.x, Result_Ui.pos.y,
-		Result_Ui.size.x + 100.0f, Result_Ui.size.y,
-		0.0f, 0.0f, 1.0f, 1.0f);
+	//DrawSprite(g_UI[1], Result_Ui.pos.x, Result_Ui.pos.y,
+	//	Result_Ui.size.x + 100.0f, Result_Ui.size.y,
+	//	0.0f, 0.0f, 1.0f, 1.0f);
 
-	DrawSprite(g_UI[2], Result_Uipos3, Result_Ui.pos.y,
+	DrawSpriteColor(g_UI[2], Result_Uipos3, Result_Ui.pos.y,
 		Result_Ui.size.x, Result_Ui.size.y,
-		0.0f, 0.0f, 1.0f, 1.0f);
+		0.0f, 0.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_next_Alpha));
 
 	//// マウスカーソル
 	DrawSprite(g_cursor, Mouse_pos.x, Mouse_pos.y,
