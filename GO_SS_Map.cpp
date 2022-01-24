@@ -5,6 +5,7 @@
 #include "GO_SS_Fan.h"
 #include "GO_SS_Goal.h"
 #include "GO_SS_KitchenTimer.h"
+#include "GO_SS_Negi.h"
 #include <cstdlib>
 
 //#include "GO_SS_ZipLine.h"
@@ -64,6 +65,13 @@ void GO_SS_Map::Update(void)
 				m_pKTimer->SetKTimer(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
 				break;
 
+			case NEGI_NUM:
+				m_pNegi->SetNegi(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				break;
+
+			case KARASHI_NUM:
+				m_pKarashi->SetKarashi(D3DXVECTOR2(WALL_WIDTH * x, WALL_HEIGHT * y));
+				break;
 
 			//case ZIPLINE_A_NUM:
 			//	//ZIPLINE_A_NUM‚ª—ˆ‚½‚çB‚ğ’T‚µ‚És‚­
