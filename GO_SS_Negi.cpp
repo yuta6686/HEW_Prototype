@@ -64,3 +64,16 @@ void GO_SS_Negi::AddX(FLOAT x)
 		}
 	}
 }
+
+void GO_SS_Negi::SetNegi(D3DXVECTOR2 pos)
+{
+	for (int i = 0; i < NEGI_MAX; i++)
+	{
+		if (m_Negi[i].use)
+			continue;
+
+		m_Negi[i].pos = pos;
+		m_Negi[i].use = true;
+		break;
+	}
+}
