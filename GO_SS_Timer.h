@@ -48,6 +48,23 @@ public:
 	}
 
 	void SetPos(D3DXVECTOR2 pos) {
+		Timer_Vertex.pos = pos;
+		Timer_Second.pos = D3DXVECTOR2(Timer_Vertex.pos.x + Timer_Vertex.size.x + 25.0f, pos.y);
+		Timer_Third.pos = D3DXVECTOR2(Timer_Second.pos.x + Timer_Vertex.size.x + 25.0f, pos.y);
+		Timer_TenDigits.pos = D3DXVECTOR2(Timer_Vertex.pos.x - (Timer_Vertex.size.x + 25.0f), pos.y);
+
+		Timer_Point.pos.x = Timer_Vertex.pos.x + (Timer_Vertex.size.x * 1 / 2);
+		Timer_Point.pos.y = Timer_Vertex.pos.y + (Timer_Vertex.size.x * 1 / 3);
+	}
+
+	void SetSize(D3DXVECTOR2 size) 
+	{
+		Timer_Vertex.size = size;
+		Timer_Second.size = size;
+		Timer_Third.size = size;
+		Timer_TenDigits.size = size;
+
+		Timer_Point.size = D3DXVECTOR2(Timer_Vertex.size.x * 3 / 4, Timer_Vertex.size.y * 3 / 4);
 		
 	}
 private:
@@ -78,6 +95,7 @@ private:
 	VERTEX_UV Timer_Second;						//小数点第一位
 	VERTEX_UV Timer_Third;						//小数点第二位
 	VERTEX_UV Timer_TenDigits;					//10の位
+	VERTEX_UV Timer_Point;						//小数点
 
 	//	エフェクト
 	E_Prizum m_Eff;

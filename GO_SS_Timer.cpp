@@ -49,6 +49,13 @@ void GO_SS_Timer::Initialize(void)
 		Timer_TenDigits.v = 0.0f;
 	}
 
+	//	è¨êîì_
+	{
+		Timer_Point.size = D3DXVECTOR2(Timer_Vertex.size.x * 3 / 4, Timer_Vertex.size.y * 3 / 4);
+		Timer_Point.pos.x = Timer_Vertex.pos.x + (Timer_Vertex.size.x * 1 / 2);
+		Timer_Point.pos.y = Timer_Vertex.pos.y + (Timer_Vertex.size.x * 1 / 3);
+	}
+
 	m_Eff.Initialize();
 	m_AddTime.Initialize();
 	m_Circle.Initialize();
@@ -120,8 +127,9 @@ void GO_SS_Timer::Draw(void)
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
 
 	//	è¨êîì_
-	DrawSpriteColor(m_TexIndex_Point, Timer_Vertex.pos.x + 50.0f, Timer_Vertex.pos.y + 25.0f,
-		50.0f, 50.0f, 1.0f, 1.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
+	DrawSpriteColor(m_TexIndex_Point,
+		Timer_Point.pos.x,Timer_Point.pos.y,
+		Timer_Point.size.x,Timer_Point.size.y, 1.0f, 1.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, Timer_Vertex.alpha));
 
 	m_Eff.Draw();
 	m_AddTime.Draw();

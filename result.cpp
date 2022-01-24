@@ -86,8 +86,8 @@ HRESULT InitResult(void)
 	{
 		Timer_Vertex.alpha = 0.0f;
 		Timer_Vertex.counter = 0;
-		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH /2.0f, SCREEN_HEIGHT / 2.0f);
-		Timer_Vertex.size = D3DXVECTOR2(75, 75);
+		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH /2.0f - 75.0f, SCREEN_HEIGHT / 2.0f );
+		Timer_Vertex.size = D3DXVECTOR2(200.0f, 200.0f);
 		Timer_Vertex.u = 0.0f;
 		Timer_Vertex.v = 0.0f;
 		Timer_Vertex.use = true;
@@ -135,7 +135,8 @@ HRESULT InitResult(void)
 	g_Prizum.Initialize();
 
 	g_Timer.Initialize();
-	
+	g_Timer.SetSize(Timer_Vertex.size);
+	g_Timer.SetPos(Timer_Vertex.pos);
 
 	g_TimerOnce = false;
 
@@ -205,7 +206,9 @@ void UpdateResult(void)
 		g_AlphaRot += 0.05f;
 	}
 
-
+	g_Timer.SetSize(
+		D3DXVECTOR2(Timer_Vertex.size.x + ((sinf(g_AlphaRot)+ 0.5f)*50.0f),
+		Timer_Vertex.size.y + ((sinf(g_AlphaRot) + 0.5f) * 50.0f)));
 
 	//if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
 	//{
