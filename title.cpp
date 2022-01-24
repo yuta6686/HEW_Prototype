@@ -75,6 +75,8 @@ static int g_SoundIndex = 0;
 //=============================================================================
 HRESULT InitTitle(void)
 {
+	StopSoundAll();
+
 	g_SoundIndex = LoadSound("data/BGM/title.wav");
 
 	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値

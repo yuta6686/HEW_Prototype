@@ -2,9 +2,12 @@
 #include "GO_SS_Wall.h"
 #include "fade.h"
 #include <cmath>
+#include "sound.h"
 /*---------------------------------------------
 *				初期化処理
 ---------------------------------------------*/
+static int g_SoundIndex = 0;
+
 void GO_SS_Player::Initialize(void)
 {
 	Player_TexIndex = LoadTexture(TEX_NAME);
@@ -158,6 +161,14 @@ void GO_SS_Player::InputPlayerMove(void)
 	if (GetKeyboardTrigger(DIK_SPACE) && OkJump) {
 		IsJump = true;
 		OkJump = false;
+
+		g_SoundIndex = LoadSound("data/BGM/se_jump.wav");
+
+		//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+		//で音量が設定できます
+		SetVolume(g_SoundIndex, 0.5f);
+
+		PlaySound(g_SoundIndex, 0);
 	}
 }
 

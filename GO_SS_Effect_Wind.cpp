@@ -1,5 +1,8 @@
 #include "GO_SS_Effect_Wind.h"
 #include "renderer.h"
+#include "sound.h"
+
+static int g_SoundIndex = 0;
 
 void GO_SS_Effect_Wind::Initialize(void)
 {
@@ -41,6 +44,14 @@ void GO_SS_Effect_Wind::Update(void)
         {
             windEff.frame = 0;
             windEff.use = false;
+
+            g_SoundIndex = LoadSound("data/BGM/se_nattofly.wav");
+
+            //	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+            //で音量が設定できます
+            SetVolume(g_SoundIndex, 0.5f);
+
+            PlaySound(g_SoundIndex, 0);
         }
         else {
             windEff.frame++;

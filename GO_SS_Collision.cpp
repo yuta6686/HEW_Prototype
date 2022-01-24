@@ -13,8 +13,9 @@
 #include "GO_SS_KitchenTimer.h"
 #include "GO_SS_Timer.h"
 #include "result.h"
+#include "sound.h"
 
-
+static int g_SoundIndex = 0;
 
 void GO_SS_Collision::CollisionUpdate(void)
 {
@@ -224,9 +225,22 @@ void GO_SS_Collision::CJ_GoalPlayer(void)
 
 	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), Goal_Vertex.pos, Goal_Vertex.size))
 	{
-		SetTime(m_pTimer->GetTimerCounter());
-		m_pGoal->SetGoalUse(false);
-		SceneTransition(SCENE_RESULT);
+		g_SoundIndex = LoadSound("data/BGM/se_goal.wav");
+
+		//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+		//で音量が設定できます
+		SetVolume(g_SoundIndex, 0.5f);
+
+		PlaySound(g_SoundIndex, 0);
+
+		
+		
+		//if ()
+		//{
+			SetTime(m_pTimer->GetTimerCounter());
+			m_pGoal->SetGoalUse(false);
+			SceneTransition(SCENE_RESULT);
+		//}
 	}
 }
 
