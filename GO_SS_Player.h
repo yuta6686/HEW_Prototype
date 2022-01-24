@@ -47,7 +47,7 @@ public:
     D3DXVECTOR2 GetSize() { return  Player_Vertex.size; }
     
     void SetPosY(FLOAT y) { Player_Vertex.pos.y = y; }
-    
+    void SetPosX(FLOAT x) { Player_Vertex.pos.x = x; }
 
     void SetGravityDefault(void) { m_Gravity = DEFAULT_GRAVITY; }
     void SetGravity(FLOAT f) { m_Gravity = f; }
@@ -69,9 +69,9 @@ public:
     bool IsColl;
 
 
-
     //not:-1 left:1 right:2 
     int IsCollSide;
+    
 
     FLOAT m_TimeDelay = 1.0f;
 

@@ -140,7 +140,7 @@ void GO_SS_Manager::SetGameObject()
 		mp_ssMap->SetKTimer(mp_ssKitchenTimer);
 		mp_ssMap->SetNegi(mp_ssNegi);
 		mp_ssMap->SetKarashi(mp_ssKarashi);
-		
+		mp_ssMap->SetPlayer(mp_ssPlayer);
 
 		mp_ssFan->SetCircle(mp_ssShotString->GetCircle());
 		//mp_ssMap->SetZipline(mp_ssZipLine);

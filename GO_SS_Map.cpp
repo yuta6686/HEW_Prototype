@@ -6,6 +6,7 @@
 #include "GO_SS_Goal.h"
 #include "GO_SS_KitchenTimer.h"
 #include "GO_SS_Negi.h"
+#include "GO_SS_Player.h"
 #include <cstdlib>
 
 //#include "GO_SS_ZipLine.h"
@@ -15,7 +16,6 @@
 void GO_SS_Map::Initialize(void)
 {
 	m_pFileLoad->MapFileLoad(MapData);
-
 	once = true;
 }
 
@@ -89,11 +89,27 @@ void GO_SS_Map::Draw(void)
 {
 	
 }
+//マップオブジェクトの移動
 void GO_SS_Map::MoveMapObject(FLOAT x)
 {
-	m_pWall->AddX(x);
-	m_pTarget->AddPosX(x);
-	m_pFan->AddX(x);
+	if (x > 0)
+	{
+		if (m_pPlayer->IsCollSide != 1)
+		{
+			m_pWall->AddX(x);
+			m_pTarget->AddPosX(x);
+			m_pFan->AddX(x);
+		}
+	}
+	if (x < 0)
+	{
+		if (m_pPlayer->IsCollSide != 2)
+		{
+			m_pWall->AddX(x);
+			m_pTarget->AddPosX(x);
+			m_pFan->AddX(x);
+		}
+	}
 }
 
 void GO_SS_Map::ResetOnce(void)

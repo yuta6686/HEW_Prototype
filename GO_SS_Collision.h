@@ -33,6 +33,7 @@ public:
     void SetKarashi(GO_SS_Karashi* pKarashi) { m_pKarashi = pKarashi; }
 
     //??????????????????
+    void CollisionInit(void);
     void CollisionUpdate(void);
 
 private:
@@ -63,6 +64,7 @@ private:
  
 //????????         CollisionJudge_ -> CJ_
     int collTemp;
+    bool jumpOnce;
 
 //?v???C???[???
     int CJ_PlayerWall(void);
