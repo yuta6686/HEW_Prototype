@@ -47,8 +47,10 @@ void GO_SS_Effect_Wind::Update(void)
         }
     }
 
-    if (windMoveEff.use) {
-        if (windMoveEff.u >= 5.0f) {
+    if (windMoveEff.use) 
+    {
+        if (windMoveEff.u >= 5.0f) 
+        {
             windMoveEff.u = 0.0f;
             windMoveEff.alpha = 1.5f;
             windMoveEff.use = false;

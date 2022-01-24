@@ -27,6 +27,7 @@ public:
     void SetWindEff(void) { windEff.use = true; }
     void SetWindMoveEff(void) { windMoveEff.use = true; }
 
+
 private:
     //ゲームシーン用
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
@@ -41,6 +42,8 @@ private:
 
     VERTEX_EFF_WIND windEff;
     VERTEX_EFF      windMoveEff;
+
+
 
     bool appear = false;
 };

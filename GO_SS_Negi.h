@@ -47,6 +47,6 @@ private:
 
     //  テクスチャ用
     int m_TexIndex;
-    char* m_pTexName = "data/TEXTURE/negi.png";
+    char* m_pTexName = "data/TEXTURE/negi1.png";
 };
 
