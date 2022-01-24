@@ -16,6 +16,11 @@
 
 
 
+void GO_SS_Collision::CollisionInit(void)
+{
+	jumpOnce = false;
+}
+
 void GO_SS_Collision::CollisionUpdate(void)
 {
 	playerPos = m_pPlayer->GetPos();
@@ -23,21 +28,24 @@ void GO_SS_Collision::CollisionUpdate(void)
 
 	m_FanInfo = m_pFan->GetFan();
 
-	m_pPlayer->IsCollSide = CJ_PWSide();
 
 	Goal_Vertex = m_pGoal->GetGoal();
 
-	//KitchenTimer_Vertex = m_pKitchenTimer->GetKitchenTimer();
-
 	//プレイヤーと壁の衝突処理
 	if (collTemp = CJ_PlayerWall() >= 0)
+	{
 		m_pPlayer->IsColl = true;
+		if (!jumpOnce) {
+			m_pPlayer->IsJump = true;
+			jumpOnce = true;
+		}
+	}
 	else m_pPlayer->IsColl = false;
 
-	//プレイヤーと稼働中換気扇衝突判定
-		//************************************
-		//この関数ないに追加
-		//************************************
+	//横判定 
+	m_pPlayer->IsCollSide = CJ_PWSide();
+
+
 	CJ_PlayerFan();
 
 	CJ_GoalPlayer();
@@ -69,7 +77,7 @@ int GO_SS_Collision::CJ_PlayerWall(void)
 	for (int i = 0; i < m_pWall->GetWallNumMax(); i++) {
 		VERTEX_WALL vwall = m_pWall->GetvWall(i);
 		if (!vwall.use)continue;
-		if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), vwall.pos, vwall.size)) {
+		if (BBCollision_LeftTop2(m_pPlayer->GetPos(), D3DXVECTOR2(playerSize.x*0.99f,playerSize.y), vwall.pos, vwall.size)) {
 			return i;
 		}
 	}
@@ -85,19 +93,21 @@ int GO_SS_Collision::CJ_PWSide(void)
 		VERTEX_WALL vwall = m_pWall->GetvWall(i);
 		if (!vwall.use)continue;
 		//左
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x, playerPos.y),
-			D3DXVECTOR2(playerSize.x, playerSize.y*0.8f), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x - playerSize.x * 0.5f + 30.0f, playerPos.y),
+			D3DXVECTOR2(60.0f, playerSize.y * 0.5f), vwall.pos, vwall.size))
 		{
+			m_pPlayer->SetPosX(vwall.pos.x + vwall.size.x + playerSize.x * 0.5f - 1);
 			return 1;
 		}
 		//右
-		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.x * 0.5f, playerPos.y),
-			D3DXVECTOR2(playerSize.x * 0.001f, playerSize.y*0.8f), vwall.pos, vwall.size))
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x + playerSize.x * 0.5f - 30.0f, playerPos.y),
+			D3DXVECTOR2(60.0f, playerSize.y * 0.5f), vwall.pos, vwall.size))
 		{
+			m_pPlayer->SetPosX(vwall.pos.x - playerSize.x * 0.5f + 1);
 			return 2;
 		}
 	}
-	return -1;
+	return false;
 }
 
 void GO_SS_Collision::CJ_PlayerFan(void)

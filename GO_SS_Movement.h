@@ -55,7 +55,7 @@ private:
     FLOAT m_TimeDelay = 1.0f;
 public:
     // GameObject ‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
-    virtual void Initialize(void) override {};
+    virtual void Initialize(void) override;
     virtual void Finalize(void) override {};
     virtual void Update(void) override;
     virtual void Draw(void) override {};

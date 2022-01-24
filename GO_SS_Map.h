@@ -13,6 +13,7 @@ class GO_SS_Fan;
 class GO_SS_Goal;
 class GO_SS_KitchenTimer;
 class GO_SS_Negi;
+class GO_SS_Player;
 //class GO_SS_ZipLine;
 
 //マップチップの列挙型
@@ -48,7 +49,8 @@ public:
 	void SetKTimer(GO_SS_KitchenTimer* p) { m_pKTimer = p; }
 	void SetNegi(GO_SS_Negi* pNegi) { m_pNegi = pNegi; }
 	void SetKarashi(GO_SS_Karashi* pKarashi) { m_pKarashi = pKarashi; }
-	
+	void SetPlayer(GO_SS_Player* pPlayer) { m_pPlayer = pPlayer; }
+	//マップオブジェクトの移動
 	void MoveMapObject(FLOAT x);
 
 	virtual int GetGameScene(void) override { return GAME_SCENE; }
@@ -73,10 +75,9 @@ private:
 	GO_SS_KitchenTimer* m_pKTimer;
 	GO_SS_Negi* m_pNegi;
 	GO_SS_Karashi* m_pKarashi;
-
+	GO_SS_Player* m_pPlayer;
 
 	MAP_CHIP_NO mapChipNo;
 
 	bool once;
-
 };
