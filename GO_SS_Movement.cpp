@@ -11,14 +11,17 @@
 
 #include <cmath>
 
+void GO_SS_Movement::Initialize(void)
+{
+	m_ssCollision.CollisionInit();
+}
+
 void GO_SS_Movement::Update(void)
 {
 	//時間停止処理
 	SetTimeDelay();
 
 	Update_PlayerMoveSwitch();
-
-
 
 
 	//当たり判定の更新処理
@@ -294,7 +297,7 @@ void GO_SS_Movement::MovementManager(void)
 	FLOAT speedUp = m_pPlayer->GetSpeedUp();
 
 	//当たり判定
-	//右入力
+	//左入力
 	if (GetKeyboardPress(DIK_A) && m_pPlayer->IsCollSide != 1)
 	{
 		m_pBackGround->SubU(BG_SCROLL_SPEED * m_TimeDelay * speedUp);
@@ -304,7 +307,7 @@ void GO_SS_Movement::MovementManager(void)
 		m_pNegi->AddX(KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
 		m_pKarashi->AddX(KTIMER_MOVING_SPEED * m_TimeDelay * speedUp);
 	}
-	//左入力
+	//右入力
 	if (GetKeyboardPress(DIK_D) && m_pPlayer->IsCollSide != 2)
 	{
 		m_pBackGround->AddU(BG_SCROLL_SPEED * m_TimeDelay * speedUp);
