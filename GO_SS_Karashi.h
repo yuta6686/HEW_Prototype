@@ -48,6 +48,6 @@ private:
 
     //  テクスチャ用
     int m_TexIndex;
-    char* m_pTexName = "data/TEXTURE/tube_karashi.png";
+    char* m_pTexName = "data/TEXTURE/karashi.png";
 };
 

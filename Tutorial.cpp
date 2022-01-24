@@ -10,14 +10,28 @@
 #include "Texture.h"
 #include "sprite.h"	
 #include "fade.h"
+#include "sound.h"
+
+static int g_SoundIndex = 0;
+
 
 void Tutorial::TutorialTextureLoad()
 {
+	StopSoundAll();
+
 	m_TexIndex_001 = LoadTexture(m_TexName_001);
 	m_TexIndex_002 = LoadTexture(m_TexName_002);
 	m_TexIndex_003 = LoadTexture(m_TexName_003);
 	m_TexIndex_004 = LoadTexture(m_TexName_004);
 	
+	g_SoundIndex = LoadSound("data/BGM/tutorial.wav");
+
+	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+	//で音量が設定できます
+	SetVolume(g_SoundIndex, 0.5f);
+
+	PlaySound(g_SoundIndex, 256);
+
 	//	↓中村書いて
 
 

@@ -11,6 +11,7 @@
 #include "fade.h"
 #include "GO_SS_Player.h"
 #include "result.h"
+#include "sound.h"
 
 
 
@@ -67,11 +68,21 @@ static D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 static D3DXVECTOR2 g_Mouse_pos(0.0f, 0.0f);
 static VERTEX_NOMAL Credit;		//クレジット
 
+static int g_SoundIndex = 0;
+
 //=============================================================================
 // 初期化処理
 //=============================================================================
 HRESULT InitTitle(void)
 {
+	g_SoundIndex = LoadSound("data/BGM/title.wav");
+
+	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+	//で音量が設定できます
+	SetVolume(g_SoundIndex, 0.5f);
+
+	PlaySound(g_SoundIndex, 256);
+
 	//テクスチャ生成
 	g_TextureNo[0] = LoadTexture("data/TEXTURE/haikei2.png");
 	g_TextureNo[1] = LoadTexture("data/TEXTURE/mati3.png");//ビル群
@@ -121,8 +132,6 @@ HRESULT InitTitle(void)
 	
 
 	return S_OK;
-
-
 }
 
 //=============================================================================

@@ -40,7 +40,7 @@ static int	g_TextureNo;	// テクスチャ情報
 //=============================================================================
 HRESULT InitCredit(void)
 {
-    g_TextureNo= LoadTexture("data/TEXTURE/number2.png");
+    g_TextureNo= LoadTexture("data/TEXTURE/credit.png");
 
     return E_NOTIMPL;
 }

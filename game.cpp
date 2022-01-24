@@ -41,7 +41,9 @@ void InitGame(void)
 {
 	g_GameFramework.Initialize();
 
-	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+	StopSoundAll();
+
+	g_SoundIndex = LoadSound("data/BGM/game.wav");
 
 	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
 	//で音量が設定できます
