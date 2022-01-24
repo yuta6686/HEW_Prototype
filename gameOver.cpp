@@ -34,9 +34,12 @@ static int g_SoundIndex = 0;
 //=============================================================================
 HRESULT InitGameOver(void)
 {
+	StopSoundAll();
+
 	g_TextureNo = LoadTexture("data/TEXTURE/gameOver.png");
 
-	g_SoundIndex = LoadSound("data/BGM/mega.wav");
+
+	g_SoundIndex = LoadSound("data/BGM/gameover.wav");
 
 	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
 	//で音量が設定できます
