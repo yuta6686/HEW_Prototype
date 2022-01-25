@@ -2,6 +2,9 @@
 #include "GO_SS_Player.h"
 #include "GO_SS_Target.h"
 #include "GO_SS_Scramble.h"
+#include "sound.h"
+
+static int g_SoundIndex = 0;
 
 void GO_SS_ShotString::Initialize(void)
 {
@@ -229,6 +232,14 @@ void GO_SS_ShotString::TargetClick(void)
 			//m_AimFlag = true;
 
 			Circle_Vertex.size.x -= Circle_Vertex.size.x / m_DecreaseJump;
+
+			g_SoundIndex = LoadSound("data/BGM/se_natto.wav");
+
+			//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+			//で音量が設定できます
+			SetVolume(g_SoundIndex, 0.5f);
+
+			PlaySound(g_SoundIndex, 0);
 		}
 	}
 	else 

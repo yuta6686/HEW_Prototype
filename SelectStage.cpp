@@ -3,6 +3,10 @@
 #include "Effect.h"
 
 #include "input.h"
+#include "sound.h"
+
+static int g_SoundIndex = 0;
+
 
 void SelectStage::Create(void)
 {
@@ -127,6 +131,14 @@ void SelectStage::Click()
 
 	if (IsMouseLeftTriggered()) {
 		m_effect[0]->SetEffect();
+
+		g_SoundIndex = LoadSound("data/BGM/se_click.wav");
+
+		//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
+		//で音量が設定できます
+		SetVolume(g_SoundIndex, 0.5f);
+
+		PlaySound(g_SoundIndex, 0);
 	}
 }
 
