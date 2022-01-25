@@ -31,9 +31,7 @@ const float NUMBER_WIDTH = 1.0f / NUMBER_X;
 const float NUMBER_HEIGHT = 1.0f / NUMBER_Y;
 
 
-static VERTEX_ALPHA_ANIMATION_USE Timer_Vertex;	//1桁目
-static VERTEX_UV Timer_Second;					//小数点第一位
-static VERTEX_UV Timer_Third;					//小数点第二位
+
 
 
 

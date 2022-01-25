@@ -62,6 +62,9 @@ int g_Time;
 
 void SetTime(int time) { g_Time = time; }
 
+static VERTEX_ALPHA_ANIMATION_USE r_Timer_Vertex;	//1åÖñ⁄
+
+
 //=============================================================================
 // èâä˙âªèàóù
 //=============================================================================
@@ -86,17 +89,17 @@ HRESULT InitResult(void)
 	////////==êîéö==////////
 	//ÇPåÖñ⁄
 	{
-		Timer_Vertex.alpha = 0.0f;
-		Timer_Vertex.counter = 0;
-		Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH /2.0f - 75.0f, SCREEN_HEIGHT / 2.0f );
-		Timer_Vertex.size = D3DXVECTOR2(200.0f, 200.0f);
-		Timer_Vertex.u = 0.0f;
-		Timer_Vertex.v = 0.0f;
-		Timer_Vertex.use = true;
+		r_Timer_Vertex.alpha = 0.0f;
+		r_Timer_Vertex.counter = 0;
+		r_Timer_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH /2.0f - 75.0f, SCREEN_HEIGHT / 2.0f );
+		r_Timer_Vertex.size = D3DXVECTOR2(200.0f, 200.0f);
+		r_Timer_Vertex.u = 0.0f;
+		r_Timer_Vertex.v = 0.0f;
+		r_Timer_Vertex.use = true;
 	}
 
 	
-	g_Timer.SetVertex(Timer_Vertex);
+	g_Timer.SetVertex(r_Timer_Vertex);
 
 
 	////è¨êîì_ëÊ1à 
@@ -137,8 +140,8 @@ HRESULT InitResult(void)
 	g_Prizum.Initialize();
 
 	g_Timer.Initialize();
-	g_Timer.SetSize(Timer_Vertex.size);
-	g_Timer.SetPos(Timer_Vertex.pos);
+	g_Timer.SetSize(r_Timer_Vertex.size);
+	g_Timer.SetPos(r_Timer_Vertex.pos);
 
 	g_TimerOnce = false;
 
@@ -209,13 +212,18 @@ void UpdateResult(void)
 	}
 
 	g_Timer.SetSize(
-		D3DXVECTOR2(Timer_Vertex.size.x + ((sinf(g_AlphaRot)+ 0.5f)*50.0f),
-		Timer_Vertex.size.y + ((sinf(g_AlphaRot) + 0.5f) * 50.0f)));
+		D3DXVECTOR2(r_Timer_Vertex.size.x + ((sinf(g_AlphaRot)+ 0.5f)*50.0f),
+			r_Timer_Vertex.size.y + ((sinf(g_AlphaRot) + 0.5f) * 50.0f)));
 
 	//if (GetKeyboardTrigger(DIK_RETURN) && GetFadeState() == FADE_NONE)
 	//{
 	//	SceneTransition(SCENE_TITLE);
 	//}
+
+	if (GetKeyboardTrigger(DIK_G)) {
+		g_Timer.AddTimer(10);
+		g_Timer.Update();
+	}
 
 	//g_Prizum.Update();
 	if (!g_TimerOnce) {

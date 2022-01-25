@@ -96,6 +96,15 @@ void GO_SS_Timer::Update(void)
 	m_Circle.Update();
 
 	m_Circle_001.Update();
+
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+
+
+
+	sprintf(&GetDebugStr()[strlen(GetDebugStr())], "TimerVertexCounter： %d", Timer_Vertex.counter);
+
+	SetWindowText(GethWnd()[0], GetDebugStr());
+#endif
 }
 
 void GO_SS_Timer::Draw(void)

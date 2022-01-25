@@ -10,7 +10,8 @@ private:
 	const float WIND_ACCELERATION = 0.5f;	//‰Á‘¬“x
 	const float WIND_DEFAULT_SPEED = 1.0f;	//‘¬“x
 public:
-	void SetOnceFlag(bool flag) { 
+	void SetOnceFlag(bool flag) 
+	{
 		if (once == true)return;
 		windSpeed = WIND_DEFAULT_SPEED;
 		once = flag; 

@@ -266,6 +266,7 @@ void GO_SS_Collision::CJ_KitchenTimerPlayer(void)
 				m_pKitchenTimer->SetUse(i,false);
 
 				m_pTimer->AddTimer(m_pKitchenTimer->GetAddTimer());
+				//m_pTimer->SetTimerCounter(m_pTimer->GetTimerCounter() - m_pKitchenTimer->GetAddTimer());
 
 				m_pTimer->SetEffect(m_pPlayer->GetPos());
 
@@ -317,3 +318,4 @@ void GO_SS_Collision::CJ_KarashiAndPlayer(void)
 		}
 	}
 }
+

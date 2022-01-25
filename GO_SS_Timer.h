@@ -33,7 +33,8 @@ public:
 
 
 	void SetVertex(VERTEX_ALPHA_ANIMATION_USE info) { Timer_Vertex = info; }
-	void AddTimer(int value) { Timer_Vertex.counter = value; }
+  	void AddTimer(int value) { Timer_Vertex.counter -= value * 60; }
+	
 
 	void SetEffect() { 
 		m_Eff.SetEffectNoMouse( D3DXVECTOR2(Timer_TenDigits.pos.x + 200.0f, Timer_TenDigits.pos.y),300.0f);
