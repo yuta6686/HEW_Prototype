@@ -270,6 +270,9 @@
     <ClCompile Include="GO_SS_Karashi.cpp">
       <Filter>ソース ファイル\GameObjects\Item</Filter>
     </ClCompile>
+    <ClCompile Include="E_SpeedUp.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -475,6 +478,9 @@
     </ClInclude>
     <ClInclude Include="GO_SS_Karashi.h">
       <Filter>ヘッダー ファイル\GameObjects\GO_SS\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="E_SpeedUp.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

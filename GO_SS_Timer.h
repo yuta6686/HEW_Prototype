@@ -33,7 +33,15 @@ public:
 
 
 	void SetVertex(VERTEX_ALPHA_ANIMATION_USE info) { Timer_Vertex = info; }
-  	void AddTimer(int value) { Timer_Vertex.counter -= value * 60; }
+  	void AddTimer(int value) { 
+		if (Timer_Vertex.counter <= value * 60) {
+			Timer_Vertex.counter = 0;
+		}
+		else {
+			Timer_Vertex.counter -= value * 60;
+		}
+		
+	}
 	
 
 	void SetEffect() { 
@@ -47,6 +55,8 @@ public:
 		m_Circle.SetEffectNoMouse(pos,100.0f);
 		m_Circle_001.SetEffectNoMouse(pos, 0.0f);
 	}
+
+	
 
 	void SetPos(D3DXVECTOR2 pos) {
 		Timer_Vertex.pos = pos;

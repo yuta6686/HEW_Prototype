@@ -62,6 +62,9 @@ void GO_SS_Collision::CollisionUpdate(void)
 	//	からしとプレイヤーの当たり判定処理
 	CJ_KarashiAndPlayer();
 
+	//	エフェクトをプレイヤーのポジションに追尾させる
+	m_pKarashi->SetEffectPos(m_pPlayer->GetPos());
+
 	//DebugOut();
 
 	DebugOut();
@@ -321,8 +324,7 @@ void GO_SS_Collision::CJ_KarashiAndPlayer(void)
 			{
 				m_pKarashi->SetUse(i, false);
 
-				m_pKarashi->SetEffect(D3DXVECTOR2(m_pKarashi->GetKarashi(i)->pos.x + m_pKarashi->GetKarashi(i)->size.x / 2.0f,
-					m_pKarashi->GetKarashi(i)->pos.y += m_pKarashi->GetKarashi(i)->size.y / 2.0f));
+				m_pKarashi->SetEffect(m_pPlayer->GetPos());
 
 				m_pPlayer->SetSpeedUp(true);
 

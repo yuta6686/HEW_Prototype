@@ -93,7 +93,7 @@ void GO_SS_Movement::JumpMove_Liner()
 	m_pPlayer->AddYPos(-sinf(m_Angle) * 25.0f);
 
 	//”wŒiƒXƒNƒ[ƒ‹ˆ—
-	m_pBackGround->SubU(cosf(m_Angle) / 100.0f);
+	m_pBackGround->SubU(-0.01f);
 	m_pMap->MoveMapObject(-10.0f);
 
 	m_pGoal->AddX(-10.0f);
@@ -199,7 +199,7 @@ void GO_SS_Movement::BackGroundMovement_Pendulum()
 	FLOAT angle = m_pShotString->GetAngle();
 
 	//”wŒiƒXƒNƒ[ƒ‹ˆ—
-	m_pBackGround->SubU(cosf(angle) / 100.0f * m_TimeDelay);
+	m_pBackGround->SubU(-0.01f * m_TimeDelay);
 
 	m_pMap->MoveMapObject(-10.0f * m_TimeDelay);
 

@@ -24,6 +24,8 @@ private:
 
 	static const int m_DECREASE_CIRCLE_COUNTER_MAX = 300;
 	int m_DecreaseCircleCounter;
+
+	D3DXCOLOR m_CircleColor;
 public:
 	// GameObject‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
 	virtual void Initialize		(void)	override;

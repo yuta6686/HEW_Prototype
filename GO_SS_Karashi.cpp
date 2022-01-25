@@ -14,18 +14,24 @@ void GO_SS_Karashi::Initialize(void)
 
 	m_Circle.Initialize();
 	m_Circle_001.Initialize();
+	m_SpeedUp.Initialize();
+	m_wind.Initialize();
 }
 
 void GO_SS_Karashi::Finalize(void)
 {
 	m_Circle.Finalize();
 	m_Circle_001.Finalize();
+	m_SpeedUp.Finalize();
+	m_wind.Finalize();
 }
 
 void GO_SS_Karashi::Update(void)
 {
 	m_Circle.Update();
 	m_Circle_001.Update();
+	m_SpeedUp.Update();
+	m_wind.Update();
 }
 
 void GO_SS_Karashi::Draw(void)
@@ -40,6 +46,8 @@ void GO_SS_Karashi::Draw(void)
 
 	m_Circle.Draw();
 	m_Circle_001.Draw();
+	m_SpeedUp.Draw();
+	m_wind.Draw();
 }
 
 int GO_SS_Karashi::GetGameScene(void)

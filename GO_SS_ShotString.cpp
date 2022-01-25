@@ -40,6 +40,8 @@ void GO_SS_ShotString::Initialize(void)
 	IsInsideTarget = -1;
 
 	m_AimTarget = -1;
+
+	m_CircleColor = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void GO_SS_ShotString::Finalize(void)
@@ -101,7 +103,7 @@ void GO_SS_ShotString::Draw(void)
 
 	DrawSpriteColor(Circle_Texture, Circle_Vertex.pos.x, Circle_Vertex.pos.y,
 		Circle_Vertex.size.x, Circle_Vertex.size.y, 1.0f, 1.0f, 1.0f, 1.0f,
-		D3DXCOLOR(1.0f, 1.0f, 1.0f, Circle_Vertex.alpha));
+		D3DXCOLOR(m_CircleColor.r, 1.0f, 1.0f, Circle_Vertex.alpha));
 
 	SetBlendState(BLEND_MODE_ADD);
 
@@ -144,6 +146,7 @@ void GO_SS_ShotString::NegiEffects()
 {
 	if (!m_IsNegi) {
 		m_DecreaseCircleValue = m_DECREASE_CIRCLE_DEFAULT;
+		m_CircleColor = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 		return;
 	}
 
@@ -162,6 +165,9 @@ void GO_SS_ShotString::NegiEffects()
 		//	カウンター / 最大値 = カウンターの増加に応じた、0　～　1までの値が取得できる。
 		FLOAT value = ((FLOAT)m_DecreaseCircleCounter / (FLOAT)(m_DECREASE_CIRCLE_COUNTER_MAX*2.0f));
 		m_DecreaseCircleValue = m_DECREASE_CIRCLE_DEFAULT * value;
+		
+		m_CircleColor = D3DXCOLOR(0.0f, 1.0f, 1.0f, 1.0f);
+
 		
 	}
 }

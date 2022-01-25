@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "E_Circle.h"
+#include "E_SpeedUp.h"
+#include "GO_SS_Effect_Wind.h"
 
 class GO_SS_Karashi :
     public GameObject
@@ -31,17 +33,26 @@ public:
     //	ìÆÇ´
     void AddX(FLOAT x);
 
+    
     void SetEffect(D3DXVECTOR2 pos) {
-        m_Circle.SetEffectNoMouse(pos, 100.0f);
-        m_Circle_001.SetEffectNoMouse(pos, 0.0f);
+        m_Circle.SetEffectNoMouse(m_Karashi->pos, 100.0f);
+        m_Circle_001.SetEffectNoMouse(m_Karashi->pos, 0.0f);
+        m_SpeedUp.SetEffectNoMouse(pos);
+        m_wind.SetWindMoveEff(5);
     }
 
     void SetKarashi(D3DXVECTOR2 pos);
+
+    void SetEffectPos(D3DXVECTOR2 pos) {
+        m_SpeedUp.SetPos(pos);
+    }
 
 private:
 
     E_Circle m_Circle;
     E_Circle m_Circle_001;
+    E_SpeedUp m_SpeedUp;
+    GO_SS_Effect_Wind m_wind;
 
     //  í∏ì_èÓïÒ
     VERTEX_T m_Karashi[KARASHI_MAX];

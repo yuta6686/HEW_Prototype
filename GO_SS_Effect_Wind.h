@@ -25,6 +25,11 @@ public:
     virtual int GetGameScene(void) override { return GAME_SCENE; }
 
     void SetWindEff(void) { windEff.use = true; }
+
+    void SetWindMoveEff(int num) {
+        m_numTImeMax = num;
+        windMoveEff.use = true;
+    }
     void SetWindMoveEff(void) { windMoveEff.use = true; }
 
 
@@ -43,7 +48,8 @@ private:
     VERTEX_EFF_WIND windEff;
     VERTEX_EFF      windMoveEff;
 
-
+    int m_numTime;
+    int m_numTImeMax;
 
     bool appear = false;
 };
