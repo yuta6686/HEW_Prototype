@@ -113,7 +113,7 @@ void SelectStage::Draw(void)
 		if (m_pStageObjects[i] == nullptr)continue;
 		m_pStageObjects[i]->Draw();
 	}
-
+	
 	SetBlendState(BLEND_MODE_ADD);
 
 	for (int i = 0; i < EFFECT_MAX; i++) {

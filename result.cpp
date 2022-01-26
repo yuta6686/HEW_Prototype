@@ -220,13 +220,15 @@ void UpdateResult(void)
 	//	SceneTransition(SCENE_TITLE);
 	//}
 
-	if (GetKeyboardTrigger(DIK_G)) {
+	if (GetKeyboardTrigger(DIK_G)) 
+	{
 		g_Timer.AddTimer(10);
 		g_Timer.Update();
 	}
 
 	//g_Prizum.Update();
-	if (!g_TimerOnce) {
+	if (!g_TimerOnce) 
+	{
 		g_Timer.SetTimerCounter(g_Time);
 		g_Timer.Update();
 		g_TimerOnce = true;

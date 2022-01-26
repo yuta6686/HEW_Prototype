@@ -27,7 +27,7 @@ private:
     char TEX_NAME[128] = "data/TEXTURE/mati.png";
 
     char* TEX_NAME_MORNING = "data/TEXTURE/morning.png";
-    char* TEX_NAME_NOON = "data/TEXTURE/noon.png";
+    char* TEX_NAME_NOON = "data/TEXTURE/noon001.png";
     char* TEX_NAME_NIGHT = "data/TEXTURE/night.png";
 
     int m_morning;
