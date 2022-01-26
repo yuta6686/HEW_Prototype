@@ -39,13 +39,14 @@ void GO_SS_Collision::CollisionUpdate(void)
 		if (!jumpOnce) {
 			m_pPlayer->IsJump = true;
 			jumpOnce = true;
+			upCollOnce = true;
 		}
 	}
 	else m_pPlayer->IsColl = false;
 
 	//â°îªíË 
 	m_pPlayer->IsCollSide = CJ_PWSide();
-
+	m_pPlayer->IsCollUp = CJ_PlayerUpper();
 
 	CJ_PlayerFan();
 
@@ -86,6 +87,19 @@ int GO_SS_Collision::CJ_PlayerWall(void)
 		}
 	}
 	return -1;
+}
+
+bool GO_SS_Collision::CJ_PlayerUpper(void)
+{
+	for (int i = 0; i < m_pWall->GetWallNumMax(); i++) {
+		VERTEX_WALL vwall = m_pWall->GetvWall(i);
+		if (!vwall.use)continue;
+		if (BBCollision_LeftTop2(D3DXVECTOR2(playerPos.x,playerPos.y- playerSize.y * 0.5f + 50.0f),
+			D3DXVECTOR2(playerSize.x * 0.99f, 60.0f), vwall.pos, vwall.size)) {
+			return true;
+		}
+	}
+	return false;
 }
 
 //ÉvÉåÉCÉÑÅ[ÇÃâ°Ç∆ï«

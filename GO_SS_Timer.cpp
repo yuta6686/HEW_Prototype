@@ -101,9 +101,9 @@ void GO_SS_Timer::Update(void)
 
 
 
-	sprintf(&GetDebugStr()[strlen(GetDebugStr())], "TimerVertexCounterÅF %d", Timer_Vertex.counter);
+	//sprintf(&GetDebugStr()[strlen(GetDebugStr())], "TimerVertexCounterÅF %d", Timer_Vertex.counter);
 
-	SetWindowText(GethWnd()[0], GetDebugStr());
+	//SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
 }
 

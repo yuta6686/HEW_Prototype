@@ -57,9 +57,9 @@ void GO_SS_ShotString::Update(void)
 
 
 
-	sprintf(&GetDebugStr()[strlen(GetDebugStr())], "減少値：%.2f", m_DecreaseCircleValue);
+	//sprintf(&GetDebugStr()[strlen(GetDebugStr())], "減少値：%.2f", m_DecreaseCircleValue);
 
-	SetWindowText(GethWnd()[0], GetDebugStr());
+	//SetWindowText(GethWnd()[0], GetDebugStr());
 #endif
 
 	m_pScramble->SetPos(m_pPlayer->GetPos());
