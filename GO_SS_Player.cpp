@@ -30,6 +30,8 @@ void GO_SS_Player::Initialize(void)
 	IsJump = false;
 	IsColl = false;
 	OkJump = true;
+	IsCollUp = false;
+	UpCollOnce = true;
 
 	m_KarashiSpeedUp = false;
 	m_SpeedUP = SPEED_DEFAULT;
@@ -179,6 +181,12 @@ void GO_SS_Player::PlayerGravity(void)
 
 	m_Gravity += GRAVITY_ACCELERATION * m_TimeDelay;
 	Player_Vertex.pos.y += m_Gravity * m_TimeDelay;
+
+	if (IsCollUp && UpCollOnce)
+	{
+		m_Gravity = DEFAULT_GRAVITY;
+		IsJump = false;
+	}
 }
 
 void GO_SS_Player::PlayerJumpMove(void)
@@ -192,7 +200,7 @@ void GO_SS_Player::DebugOut(void)
 {
 #ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
 	wsprintf(GetDebugStr(), WINDOW_CAPTION);
-	wsprintf(&GetDebugStr()[strlen(GetDebugStr())],"%d",Player_Vertex.frame);
+	wsprintf(&GetDebugStr()[strlen(GetDebugStr())],"%p",m_Gravity);
 
 	SetWindowText(GethWnd()[0], GetDebugStr());
 #endif

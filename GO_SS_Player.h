@@ -67,7 +67,8 @@ public:
     bool IsJump;
     bool OkJump;
     bool IsColl;
-
+    bool IsCollUp;
+    bool UpCollOnce;
 
     //not:-1 left:1 right:2 
     int IsCollSide;

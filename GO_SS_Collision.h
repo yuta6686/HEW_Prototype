@@ -65,9 +65,11 @@ private:
 //????????         CollisionJudge_ -> CJ_
     int collTemp;
     bool jumpOnce;
+    bool upCollOnce;
 
 //?v???C???[???
     int CJ_PlayerWall(void);
+    bool CJ_PlayerUpper(void);
     int CJ_PWSide(void);
     void CJ_PlayerFan(void);
      
