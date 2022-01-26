@@ -37,7 +37,7 @@ void StageObjectArrowKey::ArrowKeyUpdate()
 			break;
 		case ARROW_KEY_RIGHT:
 			if (m_StageNumSelect == STAGE_NUM_MAX) {
-				SetStageNumSelect(STAGE_NUM_003);
+				SetStageNumSelect(STAGE_GOBACK);
 			}
 			else {
 				StageNumAdd();

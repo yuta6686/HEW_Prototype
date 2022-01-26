@@ -42,6 +42,8 @@ static int g_AdvertisementNo[5] = { 0,0,0,0,0 };	// テクスチャ情報
 static int g_String_Texture;	// テクスチャ情報
 static int g_TexIndex_Sign;
 static int g_CreditTextureNo = 0;	// クレジット
+static int g_LogoTextureNo = 0;	// ロゴ
+
 
 //	int
 static int g_Action = 0;
@@ -67,6 +69,8 @@ static VERTEX_SHOOTSTIRNG	g_String_Vertex;
 static D3DXVECTOR2 Target_pos = D3DXVECTOR2(Target_x, Target_y);
 static D3DXVECTOR2 g_Mouse_pos(0.0f, 0.0f);
 static VERTEX_NOMAL Credit;		//クレジット
+static VERTEX_NOMAL Logo;		//ロゴ
+
 
 static int g_SoundIndex = 0;
 
@@ -86,12 +90,14 @@ HRESULT InitTitle(void)
 	PlaySound(g_SoundIndex, 256);
 
 	//テクスチャ生成
-	g_TextureNo[0] = LoadTexture("data/TEXTURE/haikei2.png");
-	g_TextureNo[1] = LoadTexture("data/TEXTURE/mati3.png");//ビル群
-	g_TextureNo[2] = LoadTexture("data/TEXTURE/target.png");//フック
-	g_TextureNo[3] = LoadTexture("data/TEXTURE/jump2.png");//プレイヤー
-	g_TextureNo[4] = LoadTexture("data/TEXTURE/mati3-1.png");//ライト
-	g_CreditTextureNo = LoadTexture("data/TEXTURE/natto.png");//ライト
+	g_TextureNo[0] = LoadTexture("data/TEXTURE/haikei2.png");		//背景	
+	g_TextureNo[1] = LoadTexture("data/TEXTURE/mati3.png");		//ビル群
+	g_TextureNo[2] = LoadTexture("data/TEXTURE/target.png");		//フック
+	g_TextureNo[3] = LoadTexture("data/TEXTURE/jump2.png");		//プレイヤー
+	g_TextureNo[4] = LoadTexture("data/TEXTURE/mati3-1.png");		//ライト
+	g_CreditTextureNo = LoadTexture("data/TEXTURE/credit_Icon.png");		//クレジット
+	g_LogoTextureNo = LoadTexture("data/TEXTURE/logo.png");			//ロゴ	
+
 
 	g_TexIndex_Sign = LoadTexture("data/TEXTURE/titleback2.png");
 
@@ -131,7 +137,9 @@ HRESULT InitTitle(void)
 	Credit.pos = D3DXVECTOR2(SCREEN_WIDTH * 0.9, SCREEN_HEIGHT * 0.9);
 	Credit.size = D3DXVECTOR2(200.0f, 200.0F);
 
-	
+	Logo.pos = D3DXVECTOR2(SCEREN_WIDTH_HURF, SCREEN_HEIGHT * 0.5);
+	Logo.size = D3DXVECTOR2(1920 * 0.5, 1080 * 0.5);
+
 
 	return S_OK;
 }
@@ -180,8 +188,8 @@ void UpdateTitle(void)
 
 
 	//シーン遷移
-	if (GetKeyboardTrigger(DIK_RETURN) ||
-		IsMouseLeftPressed() &&
+	if (GetKeyboardTrigger(DIK_RETURN)/* ||
+		IsMouseLeftPressed()*/ &&
 		GetFadeState() == FADE_NONE)
 		g_Action = 9;
 
@@ -214,6 +222,11 @@ void DrawTitle(void)
 		SCREEN_WIDTH * 36, SCREEN_HEIGHT,
 		g_U, 1.0f, 1.0f + g_U, 1.0f);
 
+	//ライト
+	DrawSprite(g_TextureNo[4], SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
+		SCREEN_WIDTH, SCREEN_HEIGHT,
+		biruk[0], biruk[1], biruk[2], biruk[3]);
+
 
 	//ビル群
 	DrawSprite(g_TextureNo[1], SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
@@ -224,10 +237,6 @@ void DrawTitle(void)
 		SCREEN_WIDTH, SCREEN_HEIGHT,
 		biruk[0], biruk[1], biruk[2], biruk[3]);
 
-	//ライト
-	DrawSprite(g_TextureNo[4], SCEREN_WIDTH_HURF, SCEREN_HEIGHT_HURF,
-		SCREEN_WIDTH, SCREEN_HEIGHT,
-		biruk[0], biruk[1], biruk[2], biruk[3]);
 
 
 	//フック	
@@ -241,7 +250,7 @@ void DrawTitle(void)
 		DrawSpriteColor(g_TextureNo[3], g_Player.pos.x, g_Player.pos.y,
 			186, 223,
 			g_Player.u, g_Player.v, PLAYER_WIDTH, PLAYER_HEIGHT,
-			D3DXCOLOR(1.0f,1.0f,1.0f, g_Transparent));
+			D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent));
 
 		//納豆の糸
 		DrawSpriteColorRotate(g_String_Texture, g_String_Vertex.pos.x, g_String_Vertex.pos.y,
@@ -256,6 +265,11 @@ void DrawTitle(void)
 	DrawSpriteColor(g_CreditTextureNo, Credit.pos.x, Credit.pos.y,
 		Credit.size.x, Credit.size.y,
 		0.0f, 0.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent));
+
+	DrawSpriteColor(g_LogoTextureNo, Logo.pos.x, Logo.pos.y,
+		Logo.size.x, Logo.size.y,
+		0.0f, 0.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent));
+
 
 }
 

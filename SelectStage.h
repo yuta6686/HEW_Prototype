@@ -25,6 +25,7 @@
 class StageObject;
 class Effect;
 
+
 class SelectStage {
 public:
 	SelectStage();
@@ -56,4 +57,9 @@ private:
 
 	void IlluminateUpdate(void);
 	void ToSelectStage(void);
+
+	int m_TexIndex_bg;
+	char* m_pTexName = "data/TEXTURE/haikei2.png";
+
+	float m_BackGround_u;
 };

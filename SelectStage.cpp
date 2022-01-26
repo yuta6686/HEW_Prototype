@@ -57,6 +57,10 @@ HRESULT SelectStage::Init(void)
 
 	m_Spotlight.Init();
 
+	m_TexIndex_bg = LoadTexture(m_pTexName);
+
+	m_BackGround_u = 0.0f;
+
 	return E_NOTIMPL;
 }
 
@@ -96,11 +100,15 @@ void SelectStage::Update(void)
 
 	}
 
-	
+	//”wŒi‚ÌˆÚ“®
+	m_BackGround_u += 0.001f;
 }
 
 void SelectStage::Draw(void)
 {
+	DrawSpriteLeftTopColor(m_TexIndex_bg, 0.0f, 0.0f, SCREEN_WIDTH * 36, SCREEN_HEIGHT,
+		m_BackGround_u, 1.0f, 1.0f + m_BackGround_u, 1.0f,D3DXCOLOR(1.0f,1.0f,1.0f,0.75f));
+
 	for (int i = 0; i < STAGE_OBJECT_MAX; i++) {
 		if (m_pStageObjects[i] == nullptr)continue;
 		m_pStageObjects[i]->Draw();
