@@ -81,3 +81,13 @@ const int STAGE_WALL_NUM_Y = 9;     //1ステージの縦マス数
 
 const float WALL_WIDTH = SCREEN_WIDTH / (float)WALL_NUM_X;
 const float WALL_HEIGHT = SCREEN_HEIGHT / (float)WALL_NUM_Y;
+
+/*
+
+#ifdef _DEBUG	// デバッグ版の時だけAngleを表示する
+	sprintf(&GetDebugStr()[strlen(GetDebugStr())], "〇〇：%.2f", m_);
+
+	SetWindowText(GethWnd()[0], GetDebugStr());
+#endif
+
+*/

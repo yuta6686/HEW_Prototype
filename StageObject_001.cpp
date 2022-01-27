@@ -5,7 +5,7 @@ HRESULT StageObject_001::Init(void)
 {
     m_TextureIndex = LoadTexture(m_TextureName);
 
-    m_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH/5, SCREEN_HEIGHT / 2);
+    m_Vertex.pos = D3DXVECTOR2(SCREEN_WIDTH/5, SCREEN_HEIGHT / 2 + 50.0f);
     m_Vertex.size = D3DXVECTOR2(SCREEN_WIDTH / 4, SCREEN_HEIGHT/3*2);
     m_Vertex.alpha = 1.0f;
     m_Vertex.use = true;

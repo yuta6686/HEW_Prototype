@@ -256,6 +256,7 @@ void AddStageNum(void) {
 		g_StageNum = STAGE_NUM_001;
 		break;
 	case STAGE_NUM_MAX:
+		g_StageNum = STAGE_NUM_001;
 		break;
 	default:
 		g_StageNum = STAGE_NUM_001;

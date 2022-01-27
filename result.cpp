@@ -171,7 +171,7 @@ void UpdateResult(void)
 	Mouse_pos.x = GetMousePosX();
 	Mouse_pos.y = GetMousePosY();
 
-	if (IsMouseLeftPressed())
+	if (IsMouseLeftTriggered())
 	{
 		if (Mouse_pos.y >= Result_Ui.pos.y - Result_Ui.size.y / 2 &&
 			Mouse_pos.y <= Result_Ui.pos.y + Result_Ui.size.y / 2)
