@@ -92,7 +92,7 @@ HRESULT InitTitle(void)
 	//テクスチャ生成
 	g_TextureNo[0] = LoadTexture("data/TEXTURE/haikei2.png");		//背景	
 	g_TextureNo[1] = LoadTexture("data/TEXTURE/mati3.png");		//ビル群
-	g_TextureNo[2] = LoadTexture("data/TEXTURE/target.png");		//フック
+	g_TextureNo[2] = LoadTexture("data/TEXTURE/target1.png");		//フック
 	g_TextureNo[3] = LoadTexture("data/TEXTURE/jump2.png");		//プレイヤー
 	g_TextureNo[4] = LoadTexture("data/TEXTURE/mati3-1.png");		//ライト
 	g_CreditTextureNo = LoadTexture("data/TEXTURE/credit_Icon.png");		//クレジット
@@ -138,7 +138,7 @@ HRESULT InitTitle(void)
 	Credit.size = D3DXVECTOR2(200.0f, 200.0F);
 
 	Logo.pos = D3DXVECTOR2(SCEREN_WIDTH_HURF, SCREEN_HEIGHT * 0.5);
-	Logo.size = D3DXVECTOR2(1920 * 0.5, 1080 * 0.5);
+	Logo.size = D3DXVECTOR2(1920 * 0.75, 1080 * 0.75);
 
 
 	return S_OK;
@@ -241,8 +241,8 @@ void DrawTitle(void)
 
 	//フック	
 	DrawSpriteColor(g_TextureNo[2], Target_x, Target_y,
-		400, 400,
-		0.0f, 0.0f, 0.8f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent));
+		300, 300,
+		0.0f, 0.0f, 1.0f, 1.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, g_Transparent));
 
 	if (g_Player.use)
 	{
