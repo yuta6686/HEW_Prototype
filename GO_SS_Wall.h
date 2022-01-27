@@ -36,7 +36,7 @@ public:
 private:
     //?e?N?X?`???p???
     int Wall_Texture;
-    char TEX_NAME[128] = "data/TEXTURE/wall.png";
+    char TEX_NAME[128] = "data/TEXTURE/yuka_001.png";
 
     //?Q?[???V?[??
     const int GAME_SCENE = GAMESCENE_GAME_TEST;
