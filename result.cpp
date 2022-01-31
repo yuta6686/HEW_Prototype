@@ -70,7 +70,7 @@ static VERTEX_ALPHA_ANIMATION_USE r_Timer_Vertex;	//1桁目
 //=============================================================================
 HRESULT InitResult(void)
 {
-	StopSoundAll();
+	//StopSoundAll();
 
 	ShowCursor(false);
 
@@ -133,7 +133,7 @@ HRESULT InitResult(void)
 
 	//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
 	//で音量が設定できます
-	SetVolume(g_SoundIndex, 0.5f);
+	SetVolume(g_SoundIndex, 0.1f);
 
 	PlaySound(g_SoundIndex, 256);
 

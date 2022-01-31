@@ -252,22 +252,19 @@ void GO_SS_Collision::CJ_GoalPlayer(void)
 
 	if (BBCollision_LeftTop2(m_pPlayer->GetPos(), m_pPlayer->GetSize(), Goal_Vertex.pos, Goal_Vertex.size))
 	{
+		StopSoundAll();
+
 		g_SoundIndex = LoadSound("data/BGM/se_goal.wav");
 
 		//	第一引数ー＞グローバル変数、第二引数ー＞0～1までの数値
 		//で音量が設定できます
-		SetVolume(g_SoundIndex, 0.5f);
+		SetVolume(g_SoundIndex, 0.3f);
 
 		PlaySound(g_SoundIndex, 0);
 
-		
-		
-		//if ()
-		//{
-			SetTime(m_pTimer->GetTimerCounter());
-			m_pGoal->SetGoalUse(false);
-			SceneTransition(SCENE_RESULT);
-		//}
+		SetTime(m_pTimer->GetTimerCounter());
+		m_pGoal->SetGoalUse(false);
+		SceneTransition(SCENE_RESULT);
 	}
 }
 
